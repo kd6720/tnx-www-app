@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import PotsReplacement from './pages/PotsReplacement';
-import FleetManagement from './pages/FleetManagement';
+import AiConsulting from './pages/AiConsulting';
 import InternetConnectivity from './pages/InternetConnectivity';
 import IpPbx from './pages/IpPbx';
 import MobilitySolutions from './pages/MobilitySolutions';
@@ -21,7 +21,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/pots-replacement" element={<PotsReplacement />} />
-          <Route path="/fleet-management" element={<FleetManagement />} />
+          <Route path="/ai-consulting" element={<AiConsulting />} />
+          <Route path="/fleet-management" element={<AiConsulting />} />
           <Route path="/internet-connectivity" element={<InternetConnectivity />} />
           <Route path="/ip-pbx" element={<IpPbx />} />
           <Route path="/mobility-solutions" element={<MobilitySolutions />} />
