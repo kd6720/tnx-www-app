@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.bg-dot-pattern {
+  position: relative;
+  z-index: 150;
+}
+
+.bg-dot-pattern::after {
+  position: absolute;
+  content: "";
+  width: 30%;
+  height: 50%;
+  top: 0;
+  right: 0;
+  background-size: 18px 18px;
+  background-image: radial-gradient(rgba(47, 106, 217, 0.4) 20%, transparent 20%);
+  opacity: 0.2;
+}
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.glass-blur {
+  background: rgba(214, 234, 254, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(214, 234, 254, 0.2);
+}
