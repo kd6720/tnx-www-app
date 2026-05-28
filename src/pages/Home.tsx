@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
     Phone,
-    Truck,
+    Bot,
     Wifi,
     PhoneCall,
     Smartphone,
@@ -99,13 +99,13 @@ const Home = () => {
                                         </div>
                                     </Link>
 
-                                    <Link to="/fleet-management" className="group h-full">
+                                    <Link to="/ai-consulting" className="group h-full">
                                         <div className="glass-morphism p-6 rounded-xl shadow-lg border border-gray-100 hover:bg-white hover:shadow-xl transition-shadow text-center h-full flex flex-col">
                                             <div className="mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-green-100 mb-4">
-                                                <Truck className="h-8 w-8 text-green-600" />
+                                                <Bot className="h-8 w-8 text-green-600" />
                                             </div>
-                                            <h3 className="text-xl font-bold text-gray-900">Fleet & Fuel Management</h3>
-                                            <p className="mt-2 text-gray-600 flex-grow">Efficient fleet and fuel tracking and management solutions</p>
+                                            <h3 className="text-xl font-bold text-gray-900">AI Consulting & Solutions</h3>
+                                            <p className="mt-2 text-gray-600 flex-grow">Practical AI automation, strategy, and implementation services</p>
                                             <div className="mt-4 flex items-center justify-center text-blue-600">
                                                 Learn more <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                                             </div>
