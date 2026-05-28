@@ -36,7 +36,7 @@ const Navbar = () => {
                   onMouseLeave={() => setIsDropdownOpen(false)}
                 >
                   <Link to="/pots-replacement" className="block px-4 py-2 text-gray-700 hover:bg-blue-50">POTS Replacement</Link>
-                  <Link to="/fleet-management" className="block px-4 py-2 text-gray-700 hover:bg-blue-50">Fleet & Fuel Management</Link>
+                  <Link to="/ai-consulting" className="block px-4 py-2 text-gray-700 hover:bg-blue-50">AI Consulting & Solutions</Link>
                   <Link to="/internet-connectivity" className="block px-4 py-2 text-gray-700 hover:bg-blue-50">Internet Connectivity</Link>
                   <Link to="/ip-pbx" className="block px-4 py-2 text-gray-700 hover:bg-blue-50">IP PBX</Link>
                   <Link to="/mobility-solutions" className="block px-4 py-2 text-gray-700 hover:bg-blue-50">Mobility Solutions</Link>
@@ -64,7 +64,7 @@ const Navbar = () => {
             <Link to="/" className="block px-3 py-2 text-gray-700 hover:bg-blue-50">Home</Link>
             <Link to="/about" className="block px-3 py-2 text-gray-700 hover:bg-blue-50">About</Link>
             <Link to="/pots-replacement" className="block px-3 py-2 text-gray-700 hover:bg-blue-50">POTS Replacement</Link>
-            <Link to="/fleet-management" className="block px-3 py-2 text-gray-700 hover:bg-blue-50">Fleet Management</Link>
+            <Link to="/ai-consulting" className="block px-3 py-2 text-gray-700 hover:bg-blue-50">AI Consulting</Link>
             <Link to="/internet-connectivity" className="block px-3 py-2 text-gray-700 hover:bg-blue-50">Internet Connectivity</Link>
             <Link to="/ip-pbx" className="block px-3 py-2 text-gray-700 hover:bg-blue-50">IP PBX</Link>
             <Link to="/mobility-solutions" className="block px-3 py-2 text-gray-700 hover:bg-blue-50">Mobility Solutions</Link>
