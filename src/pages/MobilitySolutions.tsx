@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Smartphone,
-  Truck,
+  BrainCircuit,
   Signal,
   Shield,
   Settings,
@@ -81,13 +81,13 @@ const MobilitySolutions = () => {
 
                   <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
                     <div className="text-blue-600 mb-4">
-                      <Truck size={32}/>
+                      <BrainCircuit size={32}/>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Fleet Management</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">AI Consulting</h3>
                     <ul className="text-gray-600 space-y-2">
                       <p className="mt-4 text-lg text-gray-600">
-                        Optimize your mobile assets with our advanced <a className="text-blue-600 font-bold" href="/fleet-management">Fleet Management Services</a>.
-                        Gain real-time insights into vehicle locations, driver behaviors, and maintenance needs to enhance efficiency and reduce operational costs.
+                        Improve mobile workforce operations with <a className="text-blue-600 font-bold" href="/ai-consulting">AI Consulting Services</a>.
+                        Automate repetitive workflows, surface operational insights, and reduce manual coordination across distributed teams.
                       </p>
                     </ul>
                   </div>
