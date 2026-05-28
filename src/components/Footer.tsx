@@ -18,7 +18,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Solutions</h4>
             <ul className="space-y-2">
               <li><Link to="/pots-replacement" className="text-gray-400 hover:text-white">POTS Replacement</Link></li>
-              <li><Link to="/fleet-management" className="text-gray-400 hover:text-white">Fleet Management</Link></li>
+              <li><Link to="/ai-consulting" className="text-gray-400 hover:text-white">AI Consulting & Solutions</Link></li>
               <li><Link to="/internet-connectivity" className="text-gray-400 hover:text-white">Internet Connectivity</Link></li>
               <li><Link to="/ip-pbx" className="text-gray-400 hover:text-white">IP PBX</Link></li>
               <li><Link to="/mobility-solutions" className="text-gray-400 hover:text-white">Mobility Solutions</Link></li>
