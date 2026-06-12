@@ -1,203 +1,272 @@
-import React, {useState} from 'react';
-import {Mail, MapPin, Phone} from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, MapPin, Phone, CheckCircle2, ArrowRight, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
+
+const encode = (data: Record<string, string>) =>
+  Object.keys(data)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join('&');
 
 const Contact = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        title: '',
-        company: '',
-        email: '',
-        phone: '',
-        message: ''
-    });
+  const [formData, setFormData] = useState({
+    name: '',
+    title: '',
+    company: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(false);
 
-        const emailBody = `
-Dear TrustedNetworx Team,
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', 'bot-field': '', ...formData }),
+    })
+      .then(() => setSubmitted(true))
+      .catch(() => setError(true));
+  };
 
-A new contact form submission has been received from ${formData.name} at ${formData.company}:
-${formData.message}
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-Contact Information:
-------------------
-Name: ${formData.name}
-${formData.title ? `Title: ${formData.title}` : ''}
-Company: ${formData.company}
-Email: ${formData.email}
-${formData.phone ? `Phone: ${formData.phone}` : ''}
+  const inputClass =
+    'mt-1.5 block w-full rounded-xl border border-navy-200 bg-white px-4 py-2.5 text-navy-900 shadow-sm transition-colors placeholder:text-navy-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30';
 
+  return (
+    <div className="bg-navy-50">
+      <Seo
+        title="Contact Us | TrustedNetworx"
+        description="Get in touch with the TrustedNetworx team to discuss your managed telecom, connectivity, voice, and AI needs."
+      />
 
-Best regards,
-${formData.name}
-${formData.company}
-    `.trim().replace(/\n/g, '%0D%0A');
-
-        window.location.href = `mailto:carter@trustednetworx.com?subject=New Contact Form Submission from ${formData.name} - ${formData.company}&body=${emailBody}`;
-    };
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
-    };
-
-    return (
-        <div className="bg-white">
-            {/* Hero Section */}
-            <div className="relative min-h-[400px] flex items-center">
-                {/* Background Image */}
-                <div className="absolute inset-0 z-0" style={{
-                    backgroundImage: 'url(/Circuit-Board.jpg)',
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat'
-                }}>
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/95 to-black/50"/>
-                </div>
-
-                <div className="relative z-10 w-full">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center">
-                            <h1 className="text-4xl font-extrabold text-blue-200 sm:text-5xl md:text-6xl">
-                                Contact Us
-                            </h1>
-                            <p className="mt-3 max-w-md mx-auto text-base text-white sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                                Get in touch with our team to discuss your business needs
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <div className="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-                        <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-8">Get In Touch</h2>
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name *</label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    required
-                                    className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                />
-                            </div>
-
-                            <div>
-                                <label htmlFor="title" className="block text-sm font-medium text-gray-700">Title</label>
-                                <input
-                                    type="text"
-                                    name="title"
-                                    id="title"
-                                    className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2"
-                                    value={formData.title}
-                                    onChange={handleChange}
-                                />
-                            </div>
-
-                            <div>
-                                <label htmlFor="company" className="block text-sm font-medium text-gray-700">Company
-                                    *</label>
-                                <input
-                                    type="text"
-                                    name="company"
-                                    id="company"
-                                    required
-                                    className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2"
-                                    value={formData.company}
-                                    onChange={handleChange}
-                                />
-                            </div>
-
-                            <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email
-                                    *</label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    required
-                                    className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                />
-                            </div>
-
-                            <div>
-                                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    id="phone"
-                                    className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                />
-                            </div>
-
-                            <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-700">Your
-                                    Message *</label>
-                                <textarea
-                                    name="message"
-                                    id="message"
-                                    required
-                                    rows={4}
-                                    className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                />
-                            </div>
-
-                            <div>
-                                <button
-                                    type="submit"
-                                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 p-2"
-                                >
-                                    Send Message
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-4">Contact Information</h3>
-                        <div className="space-y-6">
-                            <div className="flex items-center text-gray-700">
-                                <Phone className="h-6 w-6 text-blue-600 mr-3"/>
-                                <span>305-498-7530</span>
-                            </div>
-                            <div className="flex items-center text-gray-700">
-                                <Mail className="h-6 w-6 text-blue-600 mr-3"/>
-                                <span>carter@trustednetworx.com</span>
-                            </div>
-                            <div className="flex items-center text-gray-700">
-                                <MapPin className="h-6 w-6 text-blue-600 mr-3"/>
-                                <span>18001 Old Cutler Rd, Miami, FL 33157</span>
-                            </div>
-                        </div>
-
-                        <div className="mt-12">
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">About Us</h3>
-                            <p className="text-gray-600">
-                                TrustedNetworx is your partner in telecommunications solutions. We specialize in
-                                providing cutting-edge technology solutions that help businesses stay connected,
-                                efficient, and competitive in today's digital world.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      {/* Hero */}
+      <section className="relative flex min-h-[420px] items-center overflow-hidden">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: 'url(/Circuit-Board.jpg)',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60" />
         </div>
-    );
+        <div className="absolute inset-0 z-0 bg-grid-dark bg-grid opacity-40" />
+        <div className="relative z-10 w-full pt-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span className="eyebrow border border-brand-400/30 bg-brand-500/10 text-brand-200">Get in touch</span>
+            <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white">
+              Contact Us
+            </h1>
+            <p className="mt-4 mx-auto max-w-2xl text-lg text-navy-200">
+              Get in touch with our team to discuss your business needs.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="relative py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+            {/* Form */}
+            <div className="lg:col-span-3 rounded-2xl bg-white p-8 sm:p-10 border border-navy-100 shadow-card">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900">Get In Touch</h2>
+              <p className="mt-2 text-navy-500">Tell us what you need and we'll get back to you shortly.</p>
+
+              {submitted ? (
+                <div className="mt-8 rounded-2xl border border-emerald-200 bg-emerald-50 p-8 text-center">
+                  <CheckCircle2 className="mx-auto h-12 w-12 text-emerald-500" />
+                  <h3 className="mt-4 text-xl font-bold text-navy-900">Thank you!</h3>
+                  <p className="mt-2 text-navy-600">
+                    Your message has been received. A member of our team will reach out soon.
+                  </p>
+                </div>
+              ) : (
+                <form
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  netlify-honeypot="bot-field"
+                  onSubmit={handleSubmit}
+                  className="mt-8 space-y-5"
+                >
+                  {/* Netlify hidden fields */}
+                  <input type="hidden" name="form-name" value="contact" />
+                  <p className="hidden">
+                    <label>
+                      Don't fill this out if you're human: <input name="bot-field" onChange={handleChange} />
+                    </label>
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-navy-700">
+                        Name *
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        required
+                        className={inputClass}
+                        value={formData.name}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="title" className="block text-sm font-medium text-navy-700">
+                        Title
+                      </label>
+                      <input
+                        type="text"
+                        name="title"
+                        id="title"
+                        className={inputClass}
+                        value={formData.title}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="company" className="block text-sm font-medium text-navy-700">
+                        Company *
+                      </label>
+                      <input
+                        type="text"
+                        name="company"
+                        id="company"
+                        required
+                        className={inputClass}
+                        value={formData.company}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-navy-700">
+                        Phone
+                      </label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        id="phone"
+                        className={inputClass}
+                        value={formData.phone}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-navy-700">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      required
+                      className={inputClass}
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-navy-700">
+                      Your Message *
+                    </label>
+                    <textarea
+                      name="message"
+                      id="message"
+                      required
+                      rows={5}
+                      className={inputClass}
+                      value={formData.message}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  {error && (
+                    <p className="text-sm text-rose-600">
+                      Something went wrong sending your message. Please email us directly at
+                      carter@trustednetworx.com.
+                    </p>
+                  )}
+
+                  <button type="submit" className="btn-primary w-full">
+                    Send Message
+                    <ArrowRight size={18} />
+                  </button>
+                </form>
+              )}
+            </div>
+
+            {/* Info */}
+            <div className="lg:col-span-2 space-y-6">
+              <div className="rounded-2xl bg-navy-950 p-8 text-white relative overflow-hidden">
+                <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-600/30 blur-3xl" />
+                <h3 className="relative text-xl font-bold">Contact Information</h3>
+                <div className="relative mt-6 space-y-5">
+                  <a href="tel:13054987530" className="flex items-center gap-4 text-navy-200 transition-colors hover:text-white">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
+                      <Phone className="h-5 w-5 text-brand-300" />
+                    </span>
+                    305-498-7530
+                  </a>
+                  <a
+                    href="mailto:carter@trustednetworx.com"
+                    className="flex items-center gap-4 text-navy-200 transition-colors hover:text-white"
+                  >
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
+                      <Mail className="h-5 w-5 text-brand-300" />
+                    </span>
+                    carter@trustednetworx.com
+                  </a>
+                  <div className="flex items-center gap-4 text-navy-200">
+                    <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-white/10">
+                      <MapPin className="h-5 w-5 text-brand-300" />
+                    </span>
+                    18001 Old Cutler Rd, Miami, FL 33157
+                  </div>
+                  <div className="flex items-center gap-4 text-navy-200">
+                    <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-white/10">
+                      <Clock className="h-5 w-5 text-brand-300" />
+                    </span>
+                    Mon–Fri · 9:00 AM – 6:00 PM EST
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-2xl bg-white p-8 border border-navy-100 shadow-card">
+                <h3 className="text-xl font-bold text-navy-900">About Us</h3>
+                <p className="mt-3 text-navy-600 leading-relaxed">
+                  TrustedNetworx is your partner in telecommunications solutions. We specialize in providing
+                  cutting-edge technology solutions that help businesses stay connected, efficient, and
+                  competitive in today's digital world.
+                </p>
+                <Link to="/about" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-700">
+                  Learn more about us
+                  <ArrowRight size={16} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 };
 
 export default Contact;

@@ -1,12 +1,17 @@
 import React from 'react';
 import {Wifi, Shield, Zap, DollarSign, Globe, Network, Signal, Router, Headphones} from 'lucide-react';
 import {Link} from 'react-router-dom';
+import Seo from '../components/Seo';
 
 const InternetConnectivity = () => {
     return (
-        <div className="bg-gray-50">
+        <div className="bg-navy-50">
+            <Seo
+                title="Internet Connectivity | TrustedNetworx"
+                description="Enterprise-grade internet connectivity — managed SD-WAN, Starlink satellite broadband, and global IoT SIM solutions to keep your business securely online."
+            />
             {/* Hero Section */}
-            <div className="relative min-h-[400px] flex items-center">
+            <div className="relative min-h-[460px] flex items-center overflow-hidden">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0" style={{
                     backgroundImage: 'url(/Internet-Connectivity.jpg)',
@@ -15,13 +20,14 @@ const InternetConnectivity = () => {
                     backgroundRepeat: 'no-repeat'
                 }}>
                     {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/95 to-black/50"/>
+                    <div className="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"/>
+                    <div className="absolute inset-0 bg-grid-dark bg-grid opacity-40"/>
                 </div>
 
                 <div className="relative z-10 w-full">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center">
-                            <h1 className="text-4xl font-extrabold text-blue-200 sm:text-5xl md:text-6xl">
+                            <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl tracking-tight">
                                 Internet Connectivity Solutions
                             </h1>
                             <p
@@ -31,8 +37,7 @@ const InternetConnectivity = () => {
                                 Internet Connectivity solutions
                             </p>
                             <div className="mt-8">
-                                <Link to="mailto:carter@trustednetworx.com"
-                                      className="inline-flex items-center justify-center px-8 py-2 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 md:py-4 md:text-lg md:px-10">
+                                <Link to="/contact" className="btn-light">
                                     Learn More
                                 </Link>
                             </div>
@@ -47,8 +52,8 @@ const InternetConnectivity = () => {
                     <div
                         className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent">
                     </div>
-                    <div className="absolute shadow-xl w-1/2 h-[1000px] bg-blue-100 -skew-x-12 -left-1/4"></div>
-                    <div className="absolute shadow-xl w-1/2 h-full bg-blue-100 skew-x-12 -right-1/4 top-1/4"></div>
+                    <div className="absolute -left-32 top-24 h-96 w-96 rounded-full bg-brand-200/40 blur-3xl"></div>
+                    <div className="absolute -right-24 top-1/3 h-96 w-96 rounded-full bg-accent-200/30 blur-3xl"></div>
                 </div>
 
                 {/* Available Solutions Section */}

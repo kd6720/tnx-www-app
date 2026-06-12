@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  ArrowRight,
   Bot,
   BrainCircuit,
   Building2,
@@ -19,6 +20,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 
 const serviceCards = [
   {
@@ -173,8 +175,13 @@ const differentiators = [
 
 const AiConsulting = () => {
   return (
-    <div className="bg-gray-50">
-      <div className="relative min-h-[560px] flex items-center">
+    <div className="bg-navy-50">
+      <Seo
+        title="AI Consulting & Solutions | TrustedNetworx"
+        description="Practical AI consulting and implementation for telecom operators, channel partners, and multi-site businesses — automation, customer engagement, and strategy with measurable ROI."
+      />
+      {/* Hero Section */}
+      <div className="relative min-h-[560px] flex items-center overflow-hidden">
         <div
           className="absolute inset-0 z-0"
           style={{
@@ -184,42 +191,34 @@ const AiConsulting = () => {
             backgroundRepeat: 'no-repeat',
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-black/95 to-black/55" />
+          <div className="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60" />
+          <div className="absolute inset-0 bg-grid-dark bg-grid opacity-40" />
         </div>
-        <div
-          className="absolute inset-0 z-0 opacity-10"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(37,99,235,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.5) 1px, transparent 1px)',
-            backgroundSize: '40px 40px',
-          }}
-        />
 
-        <div className="relative z-10 w-full">
+        <div className="relative z-10 w-full pt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div className="max-w-3xl">
-              <p className="text-blue-300 text-sm font-semibold tracking-widest uppercase mb-3">TrustedNetworx</p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight">
-                AI Consulting
-                <br />
-                <span className="text-blue-300">& Solutions</span>
+              <span className="eyebrow border border-brand-400/30 bg-brand-500/10 text-brand-200">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
+                AI Consulting & Solutions
+              </span>
+              <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.05]">
+                Practical AI for{' '}
+                <span className="bg-gradient-to-r from-brand-300 via-accent-300 to-brand-200 bg-clip-text text-transparent">
+                  Modern Operations
+                </span>
               </h1>
-              <p className="mt-6 text-lg sm:text-xl text-gray-200 max-w-2xl">
+              <p className="mt-6 text-lg sm:text-xl text-navy-200 max-w-2xl">
                 Practical AI implementation for telecom operators, channel partners, and multi-site businesses. We cut
                 through the hype and deploy AI that reduces operational overhead, speeds up sales cycles, and creates
-                measurable ROI - without requiring a data science team.
+                measurable ROI — without requiring a data science team.
               </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-semibold rounded-md text-blue-600 bg-white hover:bg-blue-50 transition"
-                >
+              <div className="mt-9 flex flex-col sm:flex-row gap-4">
+                <Link to="/contact" className="btn-light">
                   Schedule a Consultation
+                  <ArrowRight size={18} />
                 </Link>
-                <a
-                  href="#services"
-                  className="inline-flex items-center justify-center px-8 py-3 border border-white text-base font-semibold rounded-md text-white hover:bg-white/10 transition"
-                >
+                <a href="#services" className="btn-outline">
                   Explore Services
                 </a>
               </div>
@@ -228,34 +227,35 @@ const AiConsulting = () => {
         </div>
       </div>
 
-      <div className="bg-blue-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div>
-              <p className="text-3xl font-extrabold text-white">40%+</p>
-              <p className="text-blue-100 text-sm mt-1">Reduction in manual admin time</p>
-            </div>
-            <div>
-              <p className="text-3xl font-extrabold text-white">3x</p>
-              <p className="text-blue-100 text-sm mt-1">Faster lead follow-up with AI automation</p>
-            </div>
-            <div>
-              <p className="text-3xl font-extrabold text-white">24/7</p>
-              <p className="text-blue-100 text-sm mt-1">AI-assisted customer engagement</p>
-            </div>
-            <div>
-              <p className="text-3xl font-extrabold text-white">Weeks</p>
-              <p className="text-blue-100 text-sm mt-1">Not months - to first deployment</p>
+      {/* Stats bar */}
+      <section className="relative z-20 -mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="glass-morphism rounded-2xl bg-white/90 px-6 py-8 shadow-card-hover">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { value: '40%+', label: 'Reduction in manual admin time' },
+                { value: '3x', label: 'Faster lead follow-up with AI automation' },
+                { value: '24/7', label: 'AI-assisted customer engagement' },
+                { value: 'Weeks', label: 'Not months — to first deployment' },
+              ].map(({ value, label }) => (
+                <div key={label}>
+                  <p className="text-3xl md:text-4xl font-extrabold bg-gradient-to-br from-brand-600 to-accent-600 bg-clip-text text-transparent">
+                    {value}
+                  </p>
+                  <p className="mt-1 text-sm text-navy-500">{label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="relative bg-gray-50">
+      <div className="relative">
+        {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
-          <div className="absolute shadow-xl w-1/2 h-[1000px] bg-blue-100 -skew-x-12 -left-1/4" />
-          <div className="absolute shadow-xl w-1/2 h-full bg-blue-100 skew-x-12 -right-1/4 top-1/4" />
+          <div className="absolute -left-32 top-24 h-96 w-96 rounded-full bg-brand-200/40 blur-3xl" />
+          <div className="absolute -right-24 top-1/3 h-96 w-96 rounded-full bg-accent-200/30 blur-3xl" />
         </div>
 
         <div id="services" className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -370,31 +370,28 @@ const AiConsulting = () => {
           </div>
         </div>
 
-        <div className="relative bg-blue-600">
-          <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 lg:flex lg:items-center lg:justify-between">
+        <div className="relative overflow-hidden bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600">
+          <div className="absolute inset-0 bg-grid-dark bg-grid opacity-20" />
+          <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+          <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 lg:flex lg:items-center lg:justify-between">
             <div>
               <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
                 <span className="block">Ready to put AI to work?</span>
-                <span className="block text-blue-200 text-2xl font-semibold mt-2">
-                  Start with a 30-minute strategy call - no commitment required.
+                <span className="block text-brand-100 text-2xl font-semibold mt-2">
+                  Start with a 30-minute strategy call — no commitment required.
                 </span>
               </h2>
-              <p className="mt-4 text-blue-100 max-w-xl">
+              <p className="mt-4 text-brand-100 max-w-xl">
                 Tell us what's eating your team's time or costing you deals, and we'll tell you exactly where AI can
-                help - and how fast.
+                help — and how fast.
               </p>
             </div>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 lg:mt-0 lg:flex-shrink-0">
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-7 py-3 border border-transparent text-base font-semibold rounded-md text-blue-600 bg-white hover:bg-blue-50 transition"
-              >
+              <Link to="/contact" className="btn-light">
                 Schedule a Call
+                <ArrowRight size={18} />
               </Link>
-              <a
-                href="mailto:info@trustednetworx.com"
-                className="inline-flex items-center justify-center px-7 py-3 border border-white text-base font-semibold rounded-md text-white hover:bg-white/10 transition"
-              >
+              <a href="mailto:info@trustednetworx.com" className="btn-outline">
                 Send Us a Message
               </a>
             </div>

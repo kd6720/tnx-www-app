@@ -2,49 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  body {
+    @apply font-sans text-navy-900 antialiased;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-brand-600/20 text-navy-900;
   }
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.2s ease-out;
-}
+@layer components {
+  /* Frosted glass panel — primary section container on light backgrounds */
+  .glass-morphism {
+    @apply bg-white/70 backdrop-blur-xl border border-white/60 shadow-card;
+  }
 
-.bg-dot-pattern {
-  position: relative;
-  z-index: 150;
-}
+  /* Frosted glass for dark surfaces (navbar) */
+  .glass-dark {
+    @apply bg-navy-950/70 backdrop-blur-xl border-b border-white/10;
+  }
 
-.bg-dot-pattern::after {
-  position: absolute;
-  content: "";
-  width: 30%;
-  height: 50%;
-  top: 0;
-  right: 0;
-  background-size: 18px 18px;
-  background-image: radial-gradient(rgba(47, 106, 217, 0.4) 20%, transparent 20%);
-  opacity: 0.2;
-}
+  /* Inner card sitting inside a glass panel */
+  .surface-card {
+    @apply bg-white rounded-2xl border border-navy-100 shadow-card transition-all duration-300 ease-out-expo;
+  }
 
-.glass-morphism {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-}
+  .surface-card-hover {
+    @apply surface-card hover:shadow-card-hover hover:-translate-y-1 hover:border-brand-200;
+  }
 
-.glass-blur {
-  background: rgba(214, 234, 254, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(214, 234, 254, 0.2);
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-300 ease-out-expo focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500;
+  }
+
+  .btn-primary {
+    @apply btn px-7 py-3.5 text-white bg-brand-600 hover:bg-brand-700 shadow-glow hover:shadow-card-hover hover:-translate-y-0.5;
+  }
+
+  .btn-light {
+    @apply btn px-7 py-3.5 text-brand-700 bg-white hover:bg-brand-50 shadow-lg hover:-translate-y-0.5;
+  }
+
+  .btn-outline {
+    @apply btn px-7 py-3.5 text-white border border-white/40 bg-white/5 hover:bg-white/10 hover:border-white/70;
+  }
+
+  .btn-ghost {
+    @apply btn px-7 py-3.5 text-brand-700 border border-brand-200 bg-white hover:border-brand-400 hover:bg-brand-50;
+  }
+
+  /* Pill / eyebrow label */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-widest;
+  }
 }

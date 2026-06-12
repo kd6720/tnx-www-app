@@ -1,12 +1,17 @@
 import React from 'react';
 import { PhoneCall, Mic, MessageSquare, Settings, Expand, AudioLines, BarChart, DollarSign } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 
 const VoiceSolutions = () => {
     return (
-        <div className="bg-gray-50">
+        <div className="bg-navy-50">
+            <Seo
+                title="Voice Solutions | TrustedNetworx"
+                description="Enterprise voice communications from TrustedNetworx — HD voice, unified communications, voice analytics, and scalable cloud calling for modern business."
+            />
             {/* Hero Section */}
-            <div className="relative min-h-[400px] flex items-center">
+            <div className="relative min-h-[460px] flex items-center overflow-hidden">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0" style={{
                     backgroundImage: 'url(/Voice-Solutions.jpg)',

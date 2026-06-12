@@ -1,270 +1,353 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-    Phone,
-    Bot,
-    Wifi,
-    PhoneCall,
-    Smartphone,
-    Mic,
-    ArrowRight,
-    Users,
-    Zap,
-    Shield,
-    Handshake
+  Phone,
+  Bot,
+  Wifi,
+  PhoneCall,
+  Smartphone,
+  Mic,
+  ArrowRight,
+  Users,
+  Zap,
+  Shield,
+  Handshake,
+  Star,
+  CheckCircle2,
 } from 'lucide-react';
+import Seo from '../components/Seo';
+
+const services = [
+  {
+    to: '/pots-replacement',
+    title: 'POTS Replacement',
+    description: 'Modern alternatives to traditional phone lines',
+    icon: Phone,
+    gradient: 'from-violet-500 to-purple-600',
+  },
+  {
+    to: '/ai-consulting',
+    title: 'AI Consulting & Solutions',
+    description: 'Practical AI automation, strategy, and implementation services',
+    icon: Bot,
+    gradient: 'from-emerald-500 to-teal-600',
+  },
+  {
+    to: '/internet-connectivity',
+    title: 'Internet Connectivity',
+    description: 'High-speed internet solutions for business',
+    icon: Wifi,
+    gradient: 'from-amber-500 to-orange-600',
+  },
+  {
+    to: '/ip-pbx',
+    title: 'IP PBX',
+    description: 'Advanced business phone systems',
+    icon: PhoneCall,
+    gradient: 'from-pink-500 to-rose-600',
+  },
+  {
+    to: '/mobility-solutions',
+    title: 'Mobility Solutions',
+    description: 'Enterprise mobility management and solutions',
+    icon: Smartphone,
+    gradient: 'from-blue-500 to-indigo-600',
+  },
+  {
+    to: '/voice-solutions',
+    title: 'Voice Solutions',
+    description: 'Advanced voice communication systems',
+    icon: Mic,
+    gradient: 'from-cyan-500 to-sky-600',
+  },
+];
+
+const whyChooseUs = [
+  {
+    icon: Handshake,
+    title: 'Proven Expertise',
+    description:
+      'With decades of experience in telecom and enterprise solutions, we understand the unique challenges businesses face in connectivity and infrastructure modernization.',
+  },
+  {
+    icon: Users,
+    title: 'Strategic Partnerships',
+    description:
+      'We have successfully led high-profile projects with global telecom providers, government agencies, and Fortune 500 companies.',
+  },
+  {
+    icon: Zap,
+    title: 'Innovative Solutions',
+    description:
+      'From cellular data technology to cloud-based communication systems, we offer future-proof solutions tailored to your needs.',
+  },
+  {
+    icon: Shield,
+    title: 'Reliable & Scalable',
+    description:
+      'Our solutions are designed for long-term success, helping businesses reduce costs, improve efficiency, and enhance communication capabilities.',
+  },
+];
+
+const stats = [
+  { value: '25+', label: 'Years of telecom expertise' },
+  { value: '900M+', label: 'Legacy lines we can modernize' },
+  { value: '50%', label: 'Typical reduction in line costs' },
+  { value: '24/7', label: 'Monitoring & support' },
+];
+
+const testimonials = [
+  {
+    quote:
+      'TrustedNetworx moved our entire portfolio off legacy copper without a single day of downtime. The savings hit our bottom line immediately.',
+    name: 'Operations Director',
+    role: 'Multi-Site Property Group',
+    initials: 'PG',
+  },
+  {
+    quote:
+      'Their team understood our compliance constraints from day one. The new voice and mobility stack just works across all of our facilities.',
+    name: 'IT Manager',
+    role: 'Senior Living Network',
+    initials: 'SL',
+  },
+  {
+    quote:
+      'Practical, no-nonsense partners. They scoped exactly what we needed, deployed fast, and stuck around to optimize. Genuinely refreshing.',
+    name: 'VP of Technology',
+    role: 'Regional Hospitality Brand',
+    initials: 'HB',
+  },
+];
 
 const Home = () => {
-    return (
-        <div className="bg-gray-50">
-            {/* Hero Section */}
-            <div className="relative min-h-[600px] flex items-center">
-                {/* Background Image */}
-                <div
-                    className="absolute inset-0 z-0"
-                    style={{
-                        backgroundImage: 'url(/TrustedNetworx-Hero-Image.jpg)',
-                        backgroundPosition: 'center',
-                        backgroundSize: 'cover',
-                        backgroundRepeat: 'no-repeat'
-                    }}
-                >
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/95 to-black/50" />
-                </div>
+  return (
+    <div className="bg-navy-50">
+      <Seo
+        title="TrustedNetworx — Managed Telecom Solutions"
+        description="Modern managed telecom solutions for enterprise and multi-site businesses: POTS replacement, AI consulting, internet connectivity, IP PBX, mobility, and voice."
+      />
 
-                <div className="relative z-10 w-full">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="relative px-4 sm:px-6 lg:px-8">
-                            <div className="text-center">
-                                <p className="text-base text-blue-200 sm:text-lg md:text-xl">
-                                    TRUSTEDNETWORX
-                                </p>
-                                <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl mt-2">
-                                    <span className="block">Modern Solutions for</span>
-                                    <span className="block text-blue-200">Modern Business</span>
-                                </h1>
-                                <div className="flex justify-center">
-                                    <h2 className="mt-3 text-base text-white sm:text-lg md:text-xl max-w-xl">
-                                        TrustedNetworx Managed Solution Provider
-                                    </h2>
-                                </div>
-                                <div className="mt-8">
-                                    <Link to="/contact"
-                                          className="inline-flex items-center justify-center px-8 py-2 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 md:py-4 md:text-lg md:px-10">
-                                        Learn More
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="relative">
-                {/* Background decorative elements */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div
-                        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent">
-                    </div>
-                    <div className="absolute shadow-xl w-1/2 h-[1000px] bg-blue-100 -skew-x-12 -left-1/4"></div>
-                    <div className="absolute shadow-xl w-1/2 h-full bg-blue-100 skew-x-12 -right-1/4 top-1/4"></div>
-                </div>
-
-                {/* Services Section */}
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                    <div className="space-y-16">
-                        <div className="glass-morphism rounded-2xl p-8">
-                            <div className="text-center">
-                                <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                                    Managed Services
-                                </h2>
-                                <p className="mt-4 max-w-2xl text-xl text-gray-600 lg:mx-auto">
-                                    Comprehensive telecommunications solutions for your business needs
-                                </p>
-                            </div>
-
-                            <div className="mt-10">
-                                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                                    <Link to="/pots-replacement" className="group h-full">
-                                        <div className="glass-morphism p-6 rounded-xl shadow-lg border border-gray-100 hover:bg-white hover:shadow-xl transition-shadow text-center h-full flex flex-col">
-                                            <div className="mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-purple-100 mb-4">
-                                                <Phone className="h-8 w-8 text-purple-600" />
-                                            </div>
-                                            <h3 className="text-xl font-bold text-gray-900">POTS Replacement</h3>
-                                            <p className="mt-2 text-gray-600 flex-grow">Modern alternatives to traditional phone lines</p>
-                                            <div className="mt-4 flex items-center justify-center text-blue-600">
-                                                Learn more <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                                            </div>
-                                        </div>
-                                    </Link>
-
-                                    <Link to="/ai-consulting" className="group h-full">
-                                        <div className="glass-morphism p-6 rounded-xl shadow-lg border border-gray-100 hover:bg-white hover:shadow-xl transition-shadow text-center h-full flex flex-col">
-                                            <div className="mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-green-100 mb-4">
-                                                <Bot className="h-8 w-8 text-green-600" />
-                                            </div>
-                                            <h3 className="text-xl font-bold text-gray-900">AI Consulting & Solutions</h3>
-                                            <p className="mt-2 text-gray-600 flex-grow">Practical AI automation, strategy, and implementation services</p>
-                                            <div className="mt-4 flex items-center justify-center text-blue-600">
-                                                Learn more <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                                            </div>
-                                        </div>
-                                    </Link>
-
-                                    <Link to="/internet-connectivity" className="group h-full">
-                                        <div className="glass-morphism p-6 rounded-xl shadow-lg border border-gray-100 hover:bg-white hover:shadow-xl transition-shadow text-center h-full flex flex-col">
-                                            <div className="mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-yellow-100 mb-4">
-                                                <Wifi className="h-8 w-8 text-yellow-600" />
-                                            </div>
-                                            <h3 className="text-xl font-bold text-gray-900">Internet Connectivity</h3>
-                                            <p className="mt-2 text-gray-600 flex-grow">High-speed internet solutions for business</p>
-                                            <div className="mt-4 flex items-center justify-center text-blue-600">
-                                                Learn more <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                                            </div>
-                                        </div>
-                                    </Link>
-
-                                    <Link to="/ip-pbx" className="group h-full">
-                                        <div className="glass-morphism p-6 rounded-xl shadow-lg border border-gray-100 hover:bg-white hover:shadow-xl transition-shadow text-center h-full flex flex-col">
-                                            <div className="mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-pink-100 mb-4">
-                                                <PhoneCall className="h-8 w-8 text-pink-600" />
-                                            </div>
-                                            <h3 className="text-xl font-bold text-gray-900">IP PBX</h3>
-                                            <p className="mt-2 text-gray-600 flex-grow">Advanced business phone systems</p>
-                                            <div className="mt-4 flex items-center justify-center text-blue-600">
-                                                Learn more <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                                            </div>
-                                        </div>
-                                    </Link>
-
-                                    <Link to="/mobility-solutions" className="group h-full">
-                                        <div className="glass-morphism p-6 rounded-xl shadow-lg border border-gray-100 hover:bg-white hover:shadow-xl transition-shadow text-center h-full flex flex-col">
-                                            <div className="mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 mb-4">
-                                                <Smartphone className="h-8 w-8 text-blue-600" />
-                                            </div>
-                                            <h3 className="text-xl font-bold text-gray-900">Mobility Solutions</h3>
-                                            <p className="mt-2 text-gray-600 flex-grow">Enterprise mobility management and solutions</p>
-                                            <div className="mt-4 flex items-center justify-center text-blue-600">
-                                                Learn more <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                                            </div>
-                                        </div>
-                                    </Link>
-
-                                    <Link to="/voice-solutions" className="group h-full">
-                                        <div className="glass-morphism p-6 rounded-xl shadow-lg border border-gray-100 hover:bg-white hover:shadow-xl transition-shadow text-center h-full flex flex-col">
-                                            <div className="mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-indigo-100 mb-4">
-                                                <Mic className="h-8 w-8 text-indigo-600" />
-                                            </div>
-                                            <h3 className="text-xl font-bold text-gray-900">Voice Solutions</h3>
-                                            <p className="mt-2 text-gray-600 flex-grow">Advanced voice communication systems</p>
-                                            <div className="mt-4 flex items-center justify-center text-blue-600">
-                                                Learn more <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Why Choose Us Section */}
-                <div className="py-16 bg-blue-50">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="glass-morphism rounded-2xl p-8 text-center">
-                            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-8">
-                                Why Choose Us?
-                            </h2>
-
-                            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-                                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                                    <div className="text-blue-600 mb-4 flex justify-center">
-                                        <Handshake size={32} />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-gray-900 mb-2">Proven Expertise</h3>
-                                    <p className="text-gray-600">
-                                        With decades of experience in telecom and enterprise solutions, we understand the unique challenges businesses face in connectivity and infrastructure modernization.
-                                    </p>
-                                </div>
-
-                                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                                    <div className="text-blue-600 mb-4 flex justify-center">
-                                        <Users size={32} />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-gray-900 mb-2">Strategic Partnerships</h3>
-                                    <p className="text-gray-600">
-                                        We have successfully led high-profile projects with global telecom providers, government agencies, and Fortune 500 companies.
-                                    </p>
-                                </div>
-
-                                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                                    <div className="text-blue-600 mb-4 flex justify-center">
-                                        <Zap size={32} />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-gray-900 mb-2">Innovative Solutions</h3>
-                                    <p className="text-gray-600">
-                                        From cellular data technology to cloud-based communication systems, we offer future-proof solutions tailored to your needs.
-                                    </p>
-                                </div>
-
-                                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                                    <div className="text-blue-600 mb-4 flex justify-center">
-                                        <Shield size={32} />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-gray-900 mb-2">Reliable & Scalable</h3>
-                                    <p className="text-gray-600">
-                                        Our solutions are designed for long-term success, helping businesses reduce costs, improve efficiency, and enhance communication capabilities.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Our Trusted Partners Section */}
-                <div className="relative py-16 bg-white-50">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center mb-6">
-                            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                                Our Trusted Partners
-                            </h2>
-                        </div>
-
-                        <div className="w-full">
-                            <img
-                                src="/partners/Partners-Banner-Desktop.png"
-                                alt="Our Trusted Partners"
-                                className="w-full hidden md:block"
-                            />
-                            <img
-                                src="/partners/Partners-Banner-Mobile.png"
-                                alt="Our Trusted Partners"
-                                className="w-full md:hidden"
-                            />
-                        </div>
-                    </div>
-                </div>
-
-                {/* CTA Section */}
-                <div className="relative bg-blue-600">
-                    <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-                        <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                            <span className="block">Ready to get started?</span>
-                            <span className="block text-blue-200">Contact us today for a consultation.</span>
-                        </h2>
-                        <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
-                            <div className="inline-flex rounded-md shadow">
-                                <Link to="/contact" className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50">
-                                    Contact Us
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      {/* Hero */}
+      <section className="relative flex min-h-[88vh] items-center overflow-hidden">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: 'url(/TrustedNetworx-Hero-Image.jpg)',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60" />
         </div>
-    );
+        <div className="absolute inset-0 z-0 bg-grid-dark bg-grid opacity-40" />
+        <div className="absolute inset-0 z-0 bg-hero-glow" />
+        {/* floating orbs */}
+        <div className="pointer-events-none absolute -left-20 top-1/4 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl animate-float" />
+        <div className="pointer-events-none absolute -right-10 bottom-10 h-80 w-80 rounded-full bg-accent-500/10 blur-3xl" />
+
+        <div className="relative z-10 w-full pt-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <span className="eyebrow border border-brand-400/30 bg-brand-500/10 text-brand-200 animate-fadeInUp">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
+                Managed Solution Provider
+              </span>
+              <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.05] animate-fadeInUp">
+                Modern Solutions for{' '}
+                <span className="bg-gradient-to-r from-brand-300 via-accent-300 to-brand-200 bg-clip-text text-transparent">
+                  Modern Business
+                </span>
+              </h1>
+              <p className="mt-6 max-w-xl text-lg sm:text-xl text-navy-200 animate-fadeInUp">
+                TrustedNetworx is your managed telecom partner — delivering reliable, future-proof
+                connectivity, voice, and AI solutions for enterprise and multi-site organizations.
+              </p>
+              <div className="mt-9 flex flex-col sm:flex-row gap-4 animate-fadeInUp">
+                <Link to="/contact" className="btn-light">
+                  Get Started
+                  <ArrowRight size={18} />
+                </Link>
+                <a href="#services" className="btn-outline">
+                  Explore Solutions
+                </a>
+              </div>
+              <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-navy-300 animate-fadeInUp">
+                <span className="inline-flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-accent-400" /> Enterprise-grade reliability
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-accent-400" /> Trusted nationwide
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-accent-400" /> No-bloat engagements
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats bar */}
+      <section className="relative z-20 -mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="glass-morphism rounded-2xl bg-white/90 px-6 py-8 shadow-card-hover">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {stats.map(({ value, label }) => (
+                <div key={label}>
+                  <p className="text-3xl md:text-4xl font-extrabold bg-gradient-to-br from-brand-600 to-accent-600 bg-clip-text text-transparent">
+                    {value}
+                  </p>
+                  <p className="mt-1 text-sm text-navy-500">{label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="relative py-20 sm:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="eyebrow bg-brand-50 text-brand-700">What we do</span>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-navy-900">
+              Managed Services
+            </h2>
+            <p className="mt-4 text-lg text-navy-500">
+              Comprehensive telecommunications solutions for your business needs.
+            </p>
+          </div>
+
+          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map(({ to, title, description, icon: Icon, gradient }) => (
+              <Link
+                key={to}
+                to={to}
+                className="group relative flex flex-col rounded-2xl bg-white p-7 border border-navy-100 shadow-card transition-all duration-300 ease-out-expo hover:-translate-y-1.5 hover:shadow-card-hover hover:border-brand-200"
+              >
+                <span
+                  className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${gradient} text-white shadow-lg transition-transform duration-300 group-hover:scale-110`}
+                >
+                  <Icon className="h-7 w-7" />
+                </span>
+                <h3 className="mt-6 text-xl font-bold text-navy-900">{title}</h3>
+                <p className="mt-2 flex-grow text-navy-500">{description}</p>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-600">
+                  Learn more
+                  <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="relative overflow-hidden bg-navy-950 py-20 sm:py-28">
+        <div className="absolute inset-0 bg-grid-dark bg-grid opacity-30" />
+        <div className="pointer-events-none absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-brand-600/20 blur-3xl" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="eyebrow border border-brand-400/30 bg-brand-500/10 text-brand-200">Why TrustedNetworx</span>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-white">Why Choose Us?</h2>
+            <p className="mt-4 text-lg text-navy-300">
+              A partner that combines deep telecom expertise with a relentless focus on outcomes.
+            </p>
+          </div>
+
+          <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {whyChooseUs.map(({ icon: Icon, title, description }) => (
+              <div
+                key={title}
+                className="group rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:-translate-y-1"
+              >
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/15 text-brand-300 transition-colors group-hover:bg-brand-500/25">
+                  <Icon size={26} />
+                </span>
+                <h3 className="mt-5 text-lg font-bold text-white">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-navy-300">{description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="relative py-20 sm:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="eyebrow bg-brand-50 text-brand-700">Trusted by teams</span>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-navy-900">
+              What our clients say
+            </h2>
+            <p className="mt-4 text-lg text-navy-500">
+              Organizations across property management, senior living, and hospitality rely on us.
+            </p>
+          </div>
+
+          <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {testimonials.map(({ quote, name, role, initials }) => (
+              <figure
+                key={name}
+                className="flex flex-col rounded-2xl bg-white p-7 border border-navy-100 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1"
+              >
+                <div className="flex gap-1 text-amber-400">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} size={18} className="fill-current" />
+                  ))}
+                </div>
+                <blockquote className="mt-5 flex-grow text-navy-700 leading-relaxed">“{quote}”</blockquote>
+                <figcaption className="mt-6 flex items-center gap-3 border-t border-navy-100 pt-5">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-accent-600 text-sm font-bold text-white">
+                    {initials}
+                  </span>
+                  <span>
+                    <span className="block text-sm font-semibold text-navy-900">{name}</span>
+                    <span className="block text-xs text-navy-500">{role}</span>
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted Partners */}
+      <section className="py-16 bg-white border-y border-navy-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <span className="eyebrow bg-brand-50 text-brand-700">Our network</span>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-navy-900">
+              Our Trusted Partners
+            </h2>
+          </div>
+          <div className="w-full">
+            <img src="/partners/Partners-Banner-Desktop.png" alt="Our Trusted Partners" className="w-full hidden md:block" />
+            <img src="/partners/Partners-Banner-Mobile.png" alt="Our Trusted Partners" className="w-full md:hidden" />
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600">
+        <div className="absolute inset-0 bg-grid-dark bg-grid opacity-20" />
+        <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+        <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 lg:flex lg:items-center lg:justify-between">
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+            <span className="block">Ready to get started?</span>
+            <span className="block text-brand-100">Contact us today for a consultation.</span>
+          </h2>
+          <div className="mt-8 lg:mt-0 lg:flex-shrink-0">
+            <Link to="/contact" className="btn-light">
+              Contact Us
+              <ArrowRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 };
 
 export default Home;
