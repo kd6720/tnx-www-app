@@ -90,7 +90,7 @@ const whyChooseUs = [
 
 const stats = [
   { value: '25+', label: 'Years of telecom expertise' },
-  { value: '900M+', label: 'Legacy lines we can modernize' },
+  { value: '12M+', label: 'Legacy lines we can modernize' },
   { value: '50%', label: 'Typical reduction in line costs' },
   { value: '24/7', label: 'Monitoring & support' },
 ];
