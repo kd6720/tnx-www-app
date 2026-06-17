@@ -329,6 +329,30 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Lead Capture Form */}
+      <section className="py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <span className="eyebrow bg-brand-50 text-brand-700">Get in touch</span>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-navy-900">
+              Ready to Get Started?
+            </h2>
+            <p className="mt-4 text-lg text-navy-500">
+              Tell us about your needs and we'll get back to you within one business day.
+            </p>
+          </div>
+          <div className="rounded-2xl bg-white border border-navy-100 shadow-card overflow-hidden">
+            <iframe
+              src="https://enhancedlines.com/embed/f042309a-4268-4d51-986d-c1a827af9dea"
+              width="100%"
+              height="520"
+              frameBorder="0"
+              title="Get Started"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="relative overflow-hidden bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600">
         <div className="absolute inset-0 bg-grid-dark bg-grid opacity-20" />

@@ -1,45 +1,8 @@
-import React, { useState } from 'react';
-import { Mail, MapPin, Phone, CheckCircle2, ArrowRight, Clock } from 'lucide-react';
+import { Mail, MapPin, Phone, Clock, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 
-const encode = (data: Record<string, string>) =>
-  Object.keys(data)
-    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-    .join('&');
-
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    title: '',
-    company: '',
-    email: '',
-    phone: '',
-    message: '',
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(false);
-
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact', 'bot-field': '', ...formData }),
-    })
-      .then(() => setSubmitted(true))
-      .catch(() => setError(true));
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const inputClass =
-    'mt-1.5 block w-full rounded-xl border border-navy-200 bg-white px-4 py-2.5 text-navy-900 shadow-sm transition-colors placeholder:text-navy-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30';
-
   return (
     <div className="bg-navy-50">
       <Seo
@@ -81,136 +44,18 @@ const Contact = () => {
             {/* Form */}
             <div className="lg:col-span-3 rounded-2xl bg-white p-8 sm:p-10 border border-navy-100 shadow-card">
               <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900">Get In Touch</h2>
-              <p className="mt-2 text-navy-500">Tell us what you need and we'll get back to you shortly.</p>
+              <p className="mt-2 text-navy-500">Fill out the form below and we'll get back to you shortly.</p>
 
-              {submitted ? (
-                <div className="mt-8 rounded-2xl border border-emerald-200 bg-emerald-50 p-8 text-center">
-                  <CheckCircle2 className="mx-auto h-12 w-12 text-emerald-500" />
-                  <h3 className="mt-4 text-xl font-bold text-navy-900">Thank you!</h3>
-                  <p className="mt-2 text-navy-600">
-                    Your message has been received. A member of our team will reach out soon.
-                  </p>
-                </div>
-              ) : (
-                <form
-                  name="contact"
-                  method="POST"
-                  data-netlify="true"
-                  netlify-honeypot="bot-field"
-                  onSubmit={handleSubmit}
-                  className="mt-8 space-y-5"
-                >
-                  {/* Netlify hidden fields */}
-                  <input type="hidden" name="form-name" value="contact" />
-                  <p className="hidden">
-                    <label>
-                      Don't fill this out if you're human: <input name="bot-field" onChange={handleChange} />
-                    </label>
-                  </p>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-navy-700">
-                        Name *
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        required
-                        className={inputClass}
-                        value={formData.name}
-                        onChange={handleChange}
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="title" className="block text-sm font-medium text-navy-700">
-                        Title
-                      </label>
-                      <input
-                        type="text"
-                        name="title"
-                        id="title"
-                        className={inputClass}
-                        value={formData.title}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label htmlFor="company" className="block text-sm font-medium text-navy-700">
-                        Company *
-                      </label>
-                      <input
-                        type="text"
-                        name="company"
-                        id="company"
-                        required
-                        className={inputClass}
-                        value={formData.company}
-                        onChange={handleChange}
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-navy-700">
-                        Phone
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        id="phone"
-                        className={inputClass}
-                        value={formData.phone}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-navy-700">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      required
-                      className={inputClass}
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-navy-700">
-                      Your Message *
-                    </label>
-                    <textarea
-                      name="message"
-                      id="message"
-                      required
-                      rows={5}
-                      className={inputClass}
-                      value={formData.message}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  {error && (
-                    <p className="text-sm text-rose-600">
-                      Something went wrong sending your message. Please email us directly at
-                      carter@trustednetworx.com.
-                    </p>
-                  )}
-
-                  <button type="submit" className="btn-primary w-full">
-                    Send Message
-                    <ArrowRight size={18} />
-                  </button>
-                </form>
-              )}
+              <div className="mt-8">
+                <iframe
+                  src="https://enhancedlines.com/embed/f042309a-4268-4d51-986d-c1a827af9dea"
+                  width="100%"
+                  height="520"
+                  frameBorder="0"
+                  title="Contact Us"
+                  className="rounded-xl"
+                />
+              </div>
             </div>
 
             {/* Info */}
