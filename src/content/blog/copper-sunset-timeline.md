@@ -5,6 +5,7 @@ category: "Compliance & Regulation"
 description: "Major carriers are accelerating copper decommissioning. Here's the timeline, the affected services, and your migration roadmap."
 author: "Carter Dewey"
 readTime: "8 min read"
+image: "/blog-images/copper-sunset-timeline.png"
 ---
 
 ## The Copper Sunset Is Not a Distant Event — It's Underway

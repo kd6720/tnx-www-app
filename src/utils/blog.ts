@@ -10,6 +10,7 @@ export interface BlogPost {
   readTime: string;
   content: string;
   excerpt: string;
+  image?: string;
 }
 
 /**
@@ -52,6 +53,7 @@ export function getAllPosts(): BlogPost[] {
         description: data.description || '',
         author: data.author || 'Carter Dewey',
         readTime: data.readTime || '5 min read',
+        image: data.image || undefined,
         content,
         excerpt: content
           .replace(/^#{1,6}\s.*$/gm, '')

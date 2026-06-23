@@ -5,6 +5,7 @@ category: "Industry Spotlights"
 description: "NFPA 72, emergency phones, nurse call systems — a practical guide to staying compliant while reducing costs."
 author: "Carter Dewey"
 readTime: "7 min read"
+image: "/blog-images/senior-living-telecom-compliance-guide.png"
 ---
 
 ## Telecom in Senior Living Isn't Just About Phones — It's About Life Safety

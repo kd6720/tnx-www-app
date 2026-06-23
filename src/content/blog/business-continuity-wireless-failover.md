@@ -5,6 +5,7 @@ category: "Telecom Modernization"
 description: "When your primary connection goes down, wireless failover keeps your business running. Here's how to build a resilient connectivity strategy."
 author: "Carter Dewey"
 readTime: "5 min read"
+image: "/blog-images/business-continuity-wireless-failover.png"
 ---
 
 ## Single-Carrier Connectivity Is a Single Point of Failure

@@ -5,6 +5,7 @@ category: "AI for Business"
 description: "Not theory — real workflow patterns that telecom companies are deploying today with measurable results."
 author: "Carter Dewey"
 readTime: "8 min read"
+image: "/blog-images/ai-workflows-that-work-patterns-for-telecom.png"
 ---
 
 ## AI Isn't Magic — It's Workflows

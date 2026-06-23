@@ -5,6 +5,7 @@ category: "Telecom Modernization"
 description: "The copper network is retiring. Here's what it means for your business and why waiting isn't an option."
 author: "Carter Dewey"
 readTime: "6 min read"
+image: "/blog-images/why-pots-replacement-matters-now.png"
 ---
 
 ## The Copper Network Is Ending — And It's Happening Faster Than You Think

@@ -88,6 +88,18 @@ const Blog = () => {
                   to={`/blog/${post.slug}`}
                   className="group relative flex flex-col rounded-2xl bg-white p-7 border border-navy-100 shadow-card transition-all duration-300 ease-out-expo hover:-translate-y-1.5 hover:shadow-card-hover hover:border-brand-200"
                 >
+                  {/* Featured Image */}
+                  {post.image && (
+                    <div className="relative -mx-7 -mt-7 mb-5 h-48 overflow-hidden rounded-t-2xl">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/30 to-transparent" />
+                    </div>
+                  )}
+
                   {/* Category Badge */}
                   <span
                     className={`inline-flex self-start rounded-full px-3 py-1 text-xs font-semibold ${

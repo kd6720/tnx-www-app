@@ -5,6 +5,7 @@ category: "AI for Business"
 description: "A practical, no-nonsense checklist to evaluate whether your organization is prepared for AI adoption — and what to fix if it isn't."
 author: "Carter Dewey"
 readTime: "6 min read"
+image: "/blog-images/ai-readiness-checklist-for-midsize-organizations.png"
 ---
 
 ## You Don't Need to Be a Tech Company to Benefit from AI

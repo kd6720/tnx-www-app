@@ -5,6 +5,7 @@ category: "AI for Business"
 description: "From AI-powered customer service to intelligent network monitoring — practical AI applications that are delivering real results in telecom today."
 author: "Carter Dewey"
 readTime: "5 min read"
+image: "/blog-images/ai-is-reshaping-telecom.png"
 ---
 
 ## Beyond the Hype: AI That Actually Works in Telecom

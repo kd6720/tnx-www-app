@@ -95,6 +95,17 @@ const BlogPost = () => {
           {/* Divider */}
           <hr className="mt-8 border-navy-200" />
 
+          {/* Featured Image */}
+          {post.image && (
+            <div className="mt-8 rounded-2xl overflow-hidden shadow-card">
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-auto object-cover max-h-96"
+              />
+            </div>
+          )}
+
           {/* Content */}
           <div className="mt-8 prose prose-lg max-w-none">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>

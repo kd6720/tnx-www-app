@@ -5,6 +5,7 @@ category: "AI for Business"
 description: "Practical numbers on what AI agents and automation actually deliver — from cost savings to revenue growth."
 author: "Carter Dewey"
 readTime: "7 min read"
+image: "/blog-images/real-roi-of-ai-in-telecom.png"
 ---
 
 ## Most AI Conversations Are Wrong — in Both Directions
