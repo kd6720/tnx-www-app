@@ -39,9 +39,16 @@ const services = [
     gradient: 'from-amber-500 to-orange-600',
   },
   {
-    to: '/ip-pbx',
-    title: 'IP PBX',
-    description: 'Advanced business phone systems',
+    to: '/ai-workforce',
+    title: 'AI Workforce for Modern Telecom',
+    description: 'AI agents that sell, support, and monitor — 24/7, telecom-native',
+    icon: Bot,
+    gradient: 'from-brand-500 to-accent-600',
+  },
+  {
+    to: '/voice-solutions',
+    title: 'Voice Solutions & IP PBX',
+    description: 'Cloud phone systems and unified communications',
     icon: PhoneCall,
     gradient: 'from-pink-500 to-rose-600',
   },
@@ -51,13 +58,6 @@ const services = [
     description: 'Enterprise mobility management and solutions',
     icon: Smartphone,
     gradient: 'from-blue-500 to-indigo-600',
-  },
-  {
-    to: '/voice-solutions',
-    title: 'Voice Solutions',
-    description: 'Advanced voice communication systems',
-    icon: Mic,
-    gradient: 'from-cyan-500 to-sky-600',
   },
 ];
 

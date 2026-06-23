@@ -17,7 +17,6 @@ const solutions = [
   { to: '/pots-replacement', label: 'POTS Replacement', desc: 'Modern landline alternatives', icon: Phone },
   { to: '/ai-consulting', label: 'AI Consulting & Solutions', desc: 'Practical AI automation', icon: Bot },
   { to: '/internet-connectivity', label: 'Internet Connectivity', desc: 'Enterprise-grade access', icon: Wifi },
-  { to: '/ip-pbx', label: 'IP PBX', desc: 'Cloud business phone systems', icon: PhoneCall },
   { to: '/mobility-solutions', label: 'Mobility Solutions', desc: 'Manage your mobile fleet', icon: Smartphone },
   { to: '/voice-solutions', label: 'Voice Solutions', desc: 'Unified voice communications', icon: Mic },
 ];

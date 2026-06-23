@@ -9,6 +9,7 @@ import PotsReplacement from './pages/PotsReplacement';
 import AiConsulting from './pages/AiConsulting';
 import InternetConnectivity from './pages/InternetConnectivity';
 import IpPbx from './pages/IpPbx';
+import { Navigate } from 'react-router-dom';
 import MobilitySolutions from './pages/MobilitySolutions';
 import VoiceSolutions from './pages/VoiceSolutions';
 import AiWorkforce from './pages/AiWorkforce';
@@ -31,7 +32,7 @@ function App() {
               <Route path="/ai-consulting" element={<AiConsulting />} />
               <Route path="/fleet-management" element={<AiConsulting />} />
               <Route path="/internet-connectivity" element={<InternetConnectivity />} />
-              <Route path="/ip-pbx" element={<IpPbx />} />
+              <Route path="/ip-pbx" element={<Navigate to="/voice-solutions" replace />} />
               <Route path="/mobility-solutions" element={<MobilitySolutions />} />
               <Route path="/voice-solutions" element={<VoiceSolutions />} />
               <Route path="/ai-workforce" element={<AiWorkforce />} />
