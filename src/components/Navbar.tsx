@@ -10,6 +10,9 @@ import {
   PhoneCall,
   Smartphone,
   Mic,
+  Calculator,
+  AlertTriangle,
+  Shield,
 } from 'lucide-react';
 
 const solutions = [
@@ -116,7 +119,46 @@ const Navbar = () => {
                   ))}
                 </div>
               )}
+
+              {/* Tools section in dropdown */}
+              {isDropdownOpen && (
+                <div className="mt-3 pt-3 border-t border-white/10">
+                  <p className="px-3 text-xs font-semibold uppercase tracking-widest text-navy-400">
+                    Free Assessment Tools
+                  </p>
+                  <div className="mt-2 flex gap-1.5 px-1.5">
+                    <Link
+                      to="/tools/pots-roi-calculator"
+                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-navy-300 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      <Calculator size={14} className="text-brand-300" />
+                      ROI Calculator
+                    </Link>
+                    <Link
+                      to="/tools/copper-sunset-risk"
+                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-navy-300 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      <AlertTriangle size={14} className="text-amber-400" />
+                      Sunset Risk
+                    </Link>
+                    <Link
+                      to="/tools/failover-readiness"
+                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-navy-300 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      <Shield size={14} className="text-brand-300" />
+                      Failover Check
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
+
+            <NavLink to="/blog" className={linkClass}>
+              Blog
+            </NavLink>
+            <NavLink to="/tools" className={linkClass}>
+              Tools
+            </NavLink>
 
             <NavLink to="/about" className={linkClass}>
               About
@@ -170,6 +212,12 @@ const Navbar = () => {
               className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-white/10 mt-1"
             >
               About
+            </Link>
+            <Link to="/blog" className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-white/10">
+              Blog
+            </Link>
+            <Link to="/tools" className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-white/10">
+              Free Tools
             </Link>
             <Link to="/contact" className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-white/10">
               Contact

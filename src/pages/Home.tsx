@@ -15,6 +15,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import Seo from '../components/Seo';
+import MultiStepForm from '../components/MultiStepForm';
 
 const services = [
   {
@@ -342,13 +343,9 @@ const Home = () => {
             </p>
           </div>
           <div className="rounded-2xl bg-white border border-navy-100 shadow-card overflow-hidden">
-            <iframe
-              src="https://enhancedlines.com/embed/f042309a-4268-4d51-986d-c1a827af9dea"
-              width="100%"
-              height="520"
-              frameBorder="0"
-              title="Get Started"
-            />
+            <div className="p-8 sm:p-10">
+              <MultiStepForm />
+            </div>
           </div>
         </div>
       </section>

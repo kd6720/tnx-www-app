@@ -14,8 +14,16 @@ import MobilitySolutions from './pages/MobilitySolutions';
 import VoiceSolutions from './pages/VoiceSolutions';
 import AiWorkforce from './pages/AiWorkforce';
 import Contact from './pages/Contact';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
+import Tools from './pages/Tools';
+import PotsRoiCalculator from './pages/tools/PotsRoiCalculator';
+import CopperSunsetRisk from './pages/tools/CopperSunsetRisk';
+import FailoverReadiness from './pages/tools/FailoverReadiness';
 
 import ChatWidget from './components/ChatWidget';
+import StickyCTA from './components/StickyCTA';
+import ExitIntentPopup from './components/ExitIntentPopup';
 
 function App() {
   return (
@@ -37,10 +45,18 @@ function App() {
               <Route path="/voice-solutions" element={<VoiceSolutions />} />
               <Route path="/ai-workforce" element={<AiWorkforce />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/tools" element={<Tools />} />
+              <Route path="/tools/pots-roi-calculator" element={<PotsRoiCalculator />} />
+              <Route path="/tools/copper-sunset-risk" element={<CopperSunsetRisk />} />
+              <Route path="/tools/failover-readiness" element={<FailoverReadiness />} />
             </Routes>
           </main>
           <Footer />
           <ChatWidget />
+          <StickyCTA />
+          <ExitIntentPopup />
         </div>
       </Router>
     </HelmetProvider>

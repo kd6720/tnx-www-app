@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone, Clock, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
+import MultiStepForm from '../components/MultiStepForm';
 
 const Contact = () => {
   return (
@@ -47,14 +48,7 @@ const Contact = () => {
               <p className="mt-2 text-navy-500">Fill out the form below and we'll get back to you shortly.</p>
 
               <div className="mt-8">
-                <iframe
-                  src="https://enhancedlines.com/embed/f042309a-4268-4d51-986d-c1a827af9dea"
-                  width="100%"
-                  height="520"
-                  frameBorder="0"
-                  title="Contact Us"
-                  className="rounded-xl"
-                />
+                <MultiStepForm />
               </div>
             </div>
 
