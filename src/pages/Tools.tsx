@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Calculator, AlertTriangle, Shield, ArrowRight } from 'lucide-react';
+import { Calculator, AlertTriangle, Shield, ArrowRight, TrendingUp, Brain } from 'lucide-react';
 import Seo from '../components/Seo';
 
 const tools = [
@@ -23,6 +23,20 @@ const tools = [
     description: 'How prepared is your organization for a connectivity outage?',
     icon: Shield,
     gradient: 'from-violet-500 to-purple-600',
+  },
+  {
+    to: '/tools/ai-roi-calculator',
+    title: 'AI Solutions ROI Calculator',
+    description: 'Estimate the return on investment from deploying AI agents across your organization.',
+    icon: TrendingUp,
+    gradient: 'from-blue-500 to-cyan-600',
+  },
+  {
+    to: '/tools/ai-readiness',
+    title: 'AI Readiness Assessment',
+    description: 'Evaluate how prepared your organization is for AI adoption.',
+    icon: Brain,
+    gradient: 'from-brand-500 to-accent-600',
   },
 ];
 

@@ -13,6 +13,8 @@ import {
   Calculator,
   AlertTriangle,
   Shield,
+  TrendingUp,
+  Brain,
 } from 'lucide-react';
 
 const solutions = [
@@ -147,6 +149,20 @@ const Navbar = () => {
                     >
                       <Shield size={14} className="text-brand-300" />
                       Failover Check
+                    </Link>
+                    <Link
+                      to="/tools/ai-roi-calculator"
+                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-navy-300 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      <TrendingUp size={14} className="text-cyan-400" />
+                      AI ROI Calculator
+                    </Link>
+                    <Link
+                      to="/tools/ai-readiness"
+                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-navy-300 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      <Brain size={14} className="text-accent-400" />
+                      AI Readiness
                     </Link>
                   </div>
                 </div>

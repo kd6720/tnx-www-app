@@ -20,6 +20,8 @@ import Tools from './pages/Tools';
 import PotsRoiCalculator from './pages/tools/PotsRoiCalculator';
 import CopperSunsetRisk from './pages/tools/CopperSunsetRisk';
 import FailoverReadiness from './pages/tools/FailoverReadiness';
+import AiRoiCalculator from './pages/tools/AiRoiCalculator';
+import AiReadinessAssessment from './pages/tools/AiReadinessAssessment';
 
 import ChatWidget from './components/ChatWidget';
 import StickyCTA from './components/StickyCTA';
@@ -51,6 +53,8 @@ function App() {
               <Route path="/tools/pots-roi-calculator" element={<PotsRoiCalculator />} />
               <Route path="/tools/copper-sunset-risk" element={<CopperSunsetRisk />} />
               <Route path="/tools/failover-readiness" element={<FailoverReadiness />} />
+              <Route path="/tools/ai-roi-calculator" element={<AiRoiCalculator />} />
+              <Route path="/tools/ai-readiness" element={<AiReadinessAssessment />} />
             </Routes>
           </main>
           <Footer />
