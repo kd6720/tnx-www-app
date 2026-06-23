@@ -18,11 +18,11 @@ import Seo from '../components/Seo';
 
 const services = [
   {
-    to: '/pots-replacement',
-    title: 'POTS Replacement',
-    description: 'Modern alternatives to traditional phone lines',
-    icon: Phone,
-    gradient: 'from-violet-500 to-purple-600',
+    to: '/ai-workforce',
+    title: 'AI Workforce for Modern Telecom',
+    description: 'AI agents that sell, support, and monitor — 24/7, telecom-native',
+    icon: Bot,
+    gradient: 'from-brand-500 to-accent-600',
   },
   {
     to: '/ai-consulting',
@@ -39,11 +39,11 @@ const services = [
     gradient: 'from-amber-500 to-orange-600',
   },
   {
-    to: '/ai-workforce',
-    title: 'AI Workforce for Modern Telecom',
-    description: 'AI agents that sell, support, and monitor — 24/7, telecom-native',
-    icon: Bot,
-    gradient: 'from-brand-500 to-accent-600',
+    to: '/pots-replacement',
+    title: 'POTS Replacement',
+    description: 'Modern alternatives to traditional phone lines',
+    icon: Phone,
+    gradient: 'from-violet-500 to-purple-600',
   },
   {
     to: '/voice-solutions',
