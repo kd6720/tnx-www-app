@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 
 const solutions = [
+  { to: '/ai-workforce', label: 'AI Workforce', desc: 'AI agents for telecom', icon: Bot },
   { to: '/pots-replacement', label: 'POTS Replacement', desc: 'Modern landline alternatives', icon: Phone },
   { to: '/ai-consulting', label: 'AI Consulting & Solutions', desc: 'Practical AI automation', icon: Bot },
   { to: '/internet-connectivity', label: 'Internet Connectivity', desc: 'Enterprise-grade access', icon: Wifi },

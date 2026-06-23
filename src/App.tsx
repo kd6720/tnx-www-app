@@ -11,7 +11,10 @@ import InternetConnectivity from './pages/InternetConnectivity';
 import IpPbx from './pages/IpPbx';
 import MobilitySolutions from './pages/MobilitySolutions';
 import VoiceSolutions from './pages/VoiceSolutions';
+import AiWorkforce from './pages/AiWorkforce';
 import Contact from './pages/Contact';
+
+import ChatWidget from './components/ChatWidget';
 
 function App() {
   return (
@@ -31,10 +34,12 @@ function App() {
               <Route path="/ip-pbx" element={<IpPbx />} />
               <Route path="/mobility-solutions" element={<MobilitySolutions />} />
               <Route path="/voice-solutions" element={<VoiceSolutions />} />
+              <Route path="/ai-workforce" element={<AiWorkforce />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </main>
           <Footer />
+          <ChatWidget />
         </div>
       </Router>
     </HelmetProvider>
