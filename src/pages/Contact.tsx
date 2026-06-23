@@ -58,7 +58,7 @@ const Contact = () => {
                 <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-600/30 blur-3xl" />
                 <h3 className="relative text-xl font-bold">Contact Information</h3>
                 <div className="relative mt-6 space-y-5">
-                  <a href="tel:13054987530" className="flex items-center gap-4 text-navy-200 transition-colors hover:text-white">
+                  <a href="tel:+13054987530" className="flex items-center gap-4 text-navy-200 transition-colors hover:text-white">
                     <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
                       <Phone className="h-5 w-5 text-brand-300" />
                     </span>

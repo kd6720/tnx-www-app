@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Phone } from 'lucide-react';
 
 export interface StickyCTAProps {
-  /** Phone number override (defaults to (844) 415-6505) */
+  /** Phone number override (defaults to (305) 498-7530) */
   phoneNumber?: string;
   /** Link path for "Get a Quote" button (defaults to /contact) */
   quotePath?: string;
 }
 
 const StickyCTA = ({
-  phoneNumber = '(844) 415-6505',
+  phoneNumber = '(305) 498-7530',
   quotePath = '/contact',
 }: StickyCTAProps) => {
   const telHref = `tel:${phoneNumber.replace(/[^+\d]/g, '')}`;
