@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>TrustedNetworx Blog</title>
+  <link>https://trustednetworx.com/blog</link>
+  <description>Practical insights on telecom modernization, AI for business, compliance, and connectivity.</description>
+  <language>en-us</language>
+  <atom:link href="https://trustednetworx.com/rss.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>5G and LTE: The New Last Mile for Business Connectivity</title>
+    <link>https://trustednetworx.com/blog/5g-lte-last-mile-business-connectivity</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/5g-lte-last-mile-business-connectivity</guid>
+    <pubDate>Fri, 19 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Cellular isn't just a backup anymore — 5G and LTE are becoming the primary connection for businesses that need speed, flexibility, and reliability without the wait.</description>
+    <category>Telecom Modernization</category>
+    <enclosure url="https://trustednetworx.com/blog-images/5g-lte-last-mile.png" type="image/png"/>
+  </item>
+  <item>
+    <title>The Real ROI of AI in Telecom: Beyond the Hype</title>
+    <link>https://trustednetworx.com/blog/real-roi-of-ai-in-telecom</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/real-roi-of-ai-in-telecom</guid>
+    <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Practical numbers on what AI agents and automation actually deliver — from cost savings to revenue growth.</description>
+    <category>AI for Business</category>
+    <enclosure url="https://trustednetworx.com/blog-images/real-roi-of-ai-in-telecom.png" type="image/png"/>
+  </item>
+  <item>
+    <title>Why POTS Replacement Matters Now More Than Ever</title>
+    <link>https://trustednetworx.com/blog/why-pots-replacement-matters-now</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/why-pots-replacement-matters-now</guid>
+    <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
+    <description>The copper network is retiring. Here's what it means for your business and why waiting isn't an option.</description>
+    <category>Telecom Modernization</category>
+    <enclosure url="https://trustednetworx.com/blog-images/why-pots-replacement-matters-now.png" type="image/png"/>
+  </item>
+  <item>
+    <title>AI Workflows That Actually Work: 5 Patterns for Telecom</title>
+    <link>https://trustednetworx.com/blog/ai-workflows-that-work-patterns-for-telecom</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/ai-workflows-that-work-patterns-for-telecom</guid>
+    <pubDate>Tue, 16 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Not theory — real workflow patterns that telecom companies are deploying today with measurable results.</description>
+    <category>AI for Business</category>
+    <enclosure url="https://trustednetworx.com/blog-images/ai-workflows-that-work-patterns-for-telecom.png" type="image/png"/>
+  </item>
+  <item>
+    <title>AI Is Reshaping Telecom — Here's What It Means for Your Business</title>
+    <link>https://trustednetworx.com/blog/ai-is-reshaping-telecom</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/ai-is-reshaping-telecom</guid>
+    <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
+    <description>From AI-powered customer service to intelligent network monitoring — practical AI applications that are delivering real results in telecom today.</description>
+    <category>AI for Business</category>
+    <enclosure url="https://trustednetworx.com/blog-images/ai-is-reshaping-telecom.png" type="image/png"/>
+  </item>
+  <item>
+    <title>AI Readiness Checklist: Is Your Organization Ready for AI Agents?</title>
+    <link>https://trustednetworx.com/blog/ai-readiness-checklist-for-midsize-organizations</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/ai-readiness-checklist-for-midsize-organizations</guid>
+    <pubDate>Fri, 12 Jun 2026 00:00:00 GMT</pubDate>
+    <description>A practical, no-nonsense checklist to evaluate whether your organization is prepared for AI adoption — and what to fix if it isn't.</description>
+    <category>AI for Business</category>
+    <enclosure url="https://trustednetworx.com/blog-images/ai-readiness-checklist-for-midsize-organizations.png" type="image/png"/>
+  </item>
+  <item>
+    <title>Senior Living Telecom Compliance: What Every Operator Needs to Know</title>
+    <link>https://trustednetworx.com/blog/senior-living-telecom-compliance-guide</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/senior-living-telecom-compliance-guide</guid>
+    <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
+    <description>NFPA 72, emergency phones, nurse call systems — a practical guide to staying compliant while reducing costs.</description>
+    <category>Industry Spotlights</category>
+    <enclosure url="https://trustednetworx.com/blog-images/senior-living-telecom-compliance-guide.png" type="image/png"/>
+  </item>
+  <item>
+    <title>Business Continuity Starts with Connectivity: A Practical Guide to Wireless Failover</title>
+    <link>https://trustednetworx.com/blog/business-continuity-wireless-failover</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/business-continuity-wireless-failover</guid>
+    <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
+    <description>When your primary connection goes down, wireless failover keeps your business running. Here's how to build a resilient connectivity strategy.</description>
+    <category>Telecom Modernization</category>
+    <enclosure url="https://trustednetworx.com/blog-images/business-continuity-wireless-failover.png" type="image/png"/>
+  </item>
+  <item>
+    <title>The Copper Sunset Timeline: Key Dates and What You Should Do Now</title>
+    <link>https://trustednetworx.com/blog/copper-sunset-timeline</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/copper-sunset-timeline</guid>
+    <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Major carriers are accelerating copper decommissioning. Here's the timeline, the affected services, and your migration roadmap.</description>
+    <category>Compliance &amp; Regulation</category>
+    <enclosure url="https://trustednetworx.com/blog-images/copper-sunset-timeline.png" type="image/png"/>
+  </item>
+</channel>
+</rss>
