@@ -24,28 +24,45 @@ export function getPostSlug(filePath: string): string {
  * Load all blog posts, parse frontmatter, and return sorted by date descending.
  */
 export function getAllPosts(): BlogPost[] {
+  // Vite 5 import.meta.glob with eager:true and ?raw returns Record<string, { default: string }>
   const modules = import.meta.glob(
     '/src/content/blog/*.md',
-    { query: '?raw', import: 'default', eager: true },
-  );
+    { query: '?raw', eager: true },
+  ) as Record<string, { default: string }>;
 
   const posts: BlogPost[] = [];
 
-  for (const [filePath, raw] of Object.entries(modules)) {
-    const slug = getPostSlug(filePath);
-    const { data, content } = matter(raw as string);
+  for (const [filePath, mod] of Object.entries(modules)) {
+    try {
+      const slug = getPostSlug(filePath);
+      const raw = mod.default;
 
-    posts.push({
-      slug,
-      title: data.title || '',
-      date: data.date || '',
-      category: data.category || '',
-      description: data.description || '',
-      author: data.author || '',
-      readTime: data.readTime || '',
-      content,
-      excerpt: content.replace(/^#{1,6}\s.*$/gm, '').replace(/[#*_>`\[\]()]/g, '').replace(/\n+/g, ' ').trim().slice(0, 150) + '...',
-    });
+      if (!raw || typeof raw !== 'string') {
+        console.warn(`Blog post ${filePath} returned non-string content:`, typeof raw);
+        continue;
+      }
+
+      const { data, content } = matter(raw);
+
+      posts.push({
+        slug,
+        title: data.title || slug,
+        date: data.date || '',
+        category: data.category || 'Uncategorized',
+        description: data.description || '',
+        author: data.author || 'Carter Dewey',
+        readTime: data.readTime || '5 min read',
+        content,
+        excerpt: content
+          .replace(/^#{1,6}\s.*$/gm, '')
+          .replace(/[#*_>`\[\]()]/g, '')
+          .replace(/\n+/g, ' ')
+          .trim()
+          .slice(0, 150) + '...',
+      });
+    } catch (err) {
+      console.error(`Failed to parse blog post ${filePath}:`, err);
+    }
   }
 
   return posts.sort(
