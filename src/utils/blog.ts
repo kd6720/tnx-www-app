@@ -8,6 +8,7 @@ import copperSunsetTimeline from '../content/blog/copper-sunset-timeline.md?raw'
 import realRoiOfAi from '../content/blog/real-roi-of-ai-in-telecom.md?raw';
 import seniorLivingTelecom from '../content/blog/senior-living-telecom-compliance-guide.md?raw';
 import whyPotsReplacement from '../content/blog/why-pots-replacement-matters-now.md?raw';
+import endOfT1Lines from '../content/blog/end-of-t1-lines-migration-strategies.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -58,6 +59,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['end-of-t1-lines-migration-strategies', endOfT1Lines],
   ['5g-lte-last-mile-business-connectivity', _5gLteLastMile],
   ['ai-is-reshaping-telecom', aiIsReshapingTelecom],
   ['ai-readiness-checklist-for-midsize-organizations', aiReadinessChecklist],
