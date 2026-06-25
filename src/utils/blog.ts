@@ -9,6 +9,7 @@ import realRoiOfAi from '../content/blog/real-roi-of-ai-in-telecom.md?raw';
 import seniorLivingTelecom from '../content/blog/senior-living-telecom-compliance-guide.md?raw';
 import whyPotsReplacement from '../content/blog/why-pots-replacement-matters-now.md?raw';
 import endOfT1Lines from '../content/blog/end-of-t1-lines-migration-strategies.md?raw';
+import multiSiteTelecomConsolidation from '../content/blog/multi-site-telecom-consolidation-one-vendor-vs-many.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -69,6 +70,7 @@ const RAW_POSTS: [string, string][] = [
   ['real-roi-of-ai-in-telecom', realRoiOfAi],
   ['senior-living-telecom-compliance-guide', seniorLivingTelecom],
   ['why-pots-replacement-matters-now', whyPotsReplacement],
+  ['multi-site-telecom-consolidation-one-vendor-vs-many', multiSiteTelecomConsolidation],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
