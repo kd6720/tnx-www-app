@@ -10,6 +10,7 @@ import seniorLivingTelecom from '../content/blog/senior-living-telecom-complianc
 import whyPotsReplacement from '../content/blog/why-pots-replacement-matters-now.md?raw';
 import endOfT1Lines from '../content/blog/end-of-t1-lines-migration-strategies.md?raw';
 import multiSiteTelecomConsolidation from '../content/blog/multi-site-telecom-consolidation-one-vendor-vs-many.md?raw';
+import carrierDisconnectionNotice from '../content/blog/what-happens-when-carrier-sends-disconnection-notice.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -71,6 +72,7 @@ const RAW_POSTS: [string, string][] = [
   ['senior-living-telecom-compliance-guide', seniorLivingTelecom],
   ['why-pots-replacement-matters-now', whyPotsReplacement],
   ['multi-site-telecom-consolidation-one-vendor-vs-many', multiSiteTelecomConsolidation],
+  ['what-happens-when-carrier-sends-disconnection-notice', carrierDisconnectionNotice],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
