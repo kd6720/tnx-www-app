@@ -12,6 +12,7 @@ import endOfT1Lines from '../content/blog/end-of-t1-lines-migration-strategies.m
 import multiSiteTelecomConsolidation from '../content/blog/multi-site-telecom-consolidation-one-vendor-vs-many.md?raw';
 import carrierDisconnectionNotice from '../content/blog/what-happens-when-carrier-sends-disconnection-notice.md?raw';
 import fixedWirelessVsFiberVsCable from '../content/blog/fixed-wireless-vs-fiber-vs-cable-primary-connection.md?raw';
+import hiddenCostsLegacyPhoneSystems from '../content/blog/hidden-costs-legacy-phone-systems-2026.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -75,6 +76,7 @@ const RAW_POSTS: [string, string][] = [
   ['multi-site-telecom-consolidation-one-vendor-vs-many', multiSiteTelecomConsolidation],
   ['what-happens-when-carrier-sends-disconnection-notice', carrierDisconnectionNotice],
   ['fixed-wireless-vs-fiber-vs-cable-primary-connection', fixedWirelessVsFiberVsCable],
+  ['hidden-costs-legacy-phone-systems-2026', hiddenCostsLegacyPhoneSystems],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
