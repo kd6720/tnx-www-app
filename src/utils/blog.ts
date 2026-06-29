@@ -13,6 +13,7 @@ import multiSiteTelecomConsolidation from '../content/blog/multi-site-telecom-co
 import carrierDisconnectionNotice from '../content/blog/what-happens-when-carrier-sends-disconnection-notice.md?raw';
 import fixedWirelessVsFiberVsCable from '../content/blog/fixed-wireless-vs-fiber-vs-cable-primary-connection.md?raw';
 import hiddenCostsLegacyPhoneSystems from '../content/blog/hidden-costs-legacy-phone-systems-2026.md?raw';
+import howPropertyManagersCuttingTelecomCosts from '../content/blog/how-property-managers-cutting-telecom-costs.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -77,6 +78,7 @@ const RAW_POSTS: [string, string][] = [
   ['what-happens-when-carrier-sends-disconnection-notice', carrierDisconnectionNotice],
   ['fixed-wireless-vs-fiber-vs-cable-primary-connection', fixedWirelessVsFiberVsCable],
   ['hidden-costs-legacy-phone-systems-2026', hiddenCostsLegacyPhoneSystems],
+  ['how-property-managers-cutting-telecom-costs', howPropertyManagersCuttingTelecomCosts],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
