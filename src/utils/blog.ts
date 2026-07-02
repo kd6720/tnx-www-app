@@ -16,6 +16,7 @@ import hiddenCostsLegacyPhoneSystems from '../content/blog/hidden-costs-legacy-p
 import howPropertyManagersCuttingTelecomCosts from '../content/blog/how-property-managers-cutting-telecom-costs.md?raw';
 import telecomAuditsOverpaying from '../content/blog/telecom-audits-what-youre-probably-overpaying-for.md?raw';
 import aiEmailTriage from '../content/blog/ai-email-triage-stop-drowning-in-inbox.md?raw';
+import sdWanExplained from '../content/blog/sd-wan-explained-for-business-leaders.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -83,6 +84,7 @@ const RAW_POSTS: [string, string][] = [
   ['how-property-managers-cutting-telecom-costs', howPropertyManagersCuttingTelecomCosts],
   ['telecom-audits-what-youre-probably-overpaying-for', telecomAuditsOverpaying],
   ['ai-email-triage-stop-drowning-in-inbox', aiEmailTriage],
+  ['sd-wan-explained-for-business-leaders', sdWanExplained],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
