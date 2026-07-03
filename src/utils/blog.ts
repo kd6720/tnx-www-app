@@ -18,6 +18,7 @@ import telecomAuditsOverpaying from '../content/blog/telecom-audits-what-youre-p
 import aiEmailTriage from '../content/blog/ai-email-triage-stop-drowning-in-inbox.md?raw';
 import sdWanExplained from '../content/blog/sd-wan-explained-for-business-leaders.md?raw';
 import whenAiSalesAgentsOutperformHumans from '../content/blog/when-ai-sales-agents-outperform-humans.md?raw';
+import thirtyDayAiPilot from '../content/blog/30-day-ai-pilot-how-to-test-ai.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -87,6 +88,7 @@ const RAW_POSTS: [string, string][] = [
   ['ai-email-triage-stop-drowning-in-inbox', aiEmailTriage],
   ['sd-wan-explained-for-business-leaders', sdWanExplained],
   ['when-ai-sales-agents-outperform-humans', whenAiSalesAgentsOutperformHumans],
+  ['30-day-ai-pilot-how-to-test-ai', thirtyDayAiPilot],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
