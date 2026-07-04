@@ -19,6 +19,7 @@ import aiEmailTriage from '../content/blog/ai-email-triage-stop-drowning-in-inbo
 import sdWanExplained from '../content/blog/sd-wan-explained-for-business-leaders.md?raw';
 import whenAiSalesAgentsOutperformHumans from '../content/blog/when-ai-sales-agents-outperform-humans.md?raw';
 import thirtyDayAiPilot from '../content/blog/30-day-ai-pilot-how-to-test-ai.md?raw';
+import aiPoweredCustomerService from '../content/blog/ai-powered-customer-service-24-7-support.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -89,6 +90,7 @@ const RAW_POSTS: [string, string][] = [
   ['sd-wan-explained-for-business-leaders', sdWanExplained],
   ['when-ai-sales-agents-outperform-humans', whenAiSalesAgentsOutperformHumans],
   ['30-day-ai-pilot-how-to-test-ai', thirtyDayAiPilot],
+  ['ai-powered-customer-service-24-7-support', aiPoweredCustomerService],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
