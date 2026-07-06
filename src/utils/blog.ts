@@ -21,6 +21,7 @@ import whenAiSalesAgentsOutperformHumans from '../content/blog/when-ai-sales-age
 import thirtyDayAiPilot from '../content/blog/30-day-ai-pilot-how-to-test-ai.md?raw';
 import aiPoweredCustomerService from '../content/blog/ai-powered-customer-service-24-7-support.md?raw';
 import hotelConnectivityWhatGuestsExpect2026 from '../content/blog/hotel-connectivity-what-guests-expect-2026.md?raw';
+import leadQualificationAtScale from '../content/blog/lead-qualification-at-scale-ai-finds-needle-in-haystack.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -93,6 +94,7 @@ const RAW_POSTS: [string, string][] = [
   ['when-ai-sales-agents-outperform-humans', whenAiSalesAgentsOutperformHumans],
   ['30-day-ai-pilot-how-to-test-ai', thirtyDayAiPilot],
   ['ai-powered-customer-service-24-7-support', aiPoweredCustomerService],
+  ['lead-qualification-at-scale-ai-finds-needle-in-haystack', leadQualificationAtScale],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
