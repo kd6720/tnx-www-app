@@ -22,6 +22,7 @@ import thirtyDayAiPilot from '../content/blog/30-day-ai-pilot-how-to-test-ai.md?
 import aiPoweredCustomerService from '../content/blog/ai-powered-customer-service-24-7-support.md?raw';
 import hotelConnectivityWhatGuestsExpect2026 from '../content/blog/hotel-connectivity-what-guests-expect-2026.md?raw';
 import leadQualificationAtScale from '../content/blog/lead-qualification-at-scale-ai-finds-needle-in-haystack.md?raw';
+import nfpa72ComplianceFireAlarm from '../content/blog/nfpa-72-compliance-fire-alarm-communications-practical-guide.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -72,6 +73,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['nfpa-72-compliance-fire-alarm-communications-practical-guide', nfpa72ComplianceFireAlarm],
   ['hotel-connectivity-what-guests-expect-2026', hotelConnectivityWhatGuestsExpect2026],
   ['end-of-t1-lines-migration-strategies', endOfT1Lines],
   ['5g-lte-last-mile-business-connectivity', _5gLteLastMile],
