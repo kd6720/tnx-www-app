@@ -181,7 +181,7 @@ const InternetConnectivity = () => {
                                     </div>
                                     <p className="mt-4 text-gray-600">
                                         As an authorized reseller of <a href="https://www.starlink.com"
-                                                                        target="_blank"><b>Starlink</b></a> services and
+                                                                        target="_blank" rel="noopener noreferrer"><b>Starlink</b></a> services and
                                         equipment, we provide
                                         high-speed,
                                         low-latency broadband internet access, even in remote locations. This ensures

@@ -170,6 +170,7 @@ const PotsReplacement = () => {
                                         <a
                                             href="https://dataremote.com/pots-line-replacement/"
                                             target="_blank"
+                                            rel="noopener noreferrer"
                                             className="text-blue-600 hover:text-blue-800 font-semibold"
                                             title="DataRemote POTS IN A BOX®"
                                         >

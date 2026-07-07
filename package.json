@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "generate:seo": "node scripts/generate-rss.cjs && node scripts/generate-sitemap.cjs",
+    "prebuild": "npm run generate:seo",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

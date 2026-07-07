@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { ArrowLeft, Calendar, Clock, User } from 'lucide-react';
 import { getPostBySlug } from '../utils/blog';
-import Seo from '../components/Seo';
+import Seo, { SITE_URL } from '../components/Seo';
 
 const categoryColors: Record<string, string> = {
   'Telecom Modernization': 'bg-blue-100 text-blue-700',
@@ -38,9 +38,43 @@ const BlogPost = () => {
     );
   }
 
+  const canonicalPath = `/blog/${post.slug}`;
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    ...(post.image ? { image: `${SITE_URL}${post.image}` } : {}),
+    datePublished: post.date,
+    dateModified: post.date,
+    articleSection: post.category,
+    author: { '@type': 'Person', name: post.author },
+    publisher: {
+      '@type': 'Organization',
+      name: 'TrustedNetworx',
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.svg` },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}${canonicalPath}` },
+  };
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `${SITE_URL}${canonicalPath}` },
+    ],
+  };
+
   return (
     <div className="bg-navy-50">
-      <Seo title={`${post.title} | TrustedNetworx Blog`} description={post.description} />
+      <Seo
+        title={`${post.title} | TrustedNetworx Blog`}
+        description={post.description}
+        type="article"
+        image={post.image}
+        jsonLd={[articleJsonLd, breadcrumbJsonLd]}
+      />
 
       {/* Back Link */}
       <div className="bg-white border-b border-navy-100">
