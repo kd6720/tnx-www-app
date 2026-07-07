@@ -3,13 +3,44 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://trustednetworx.com",
   "scripts": {
     "dev": "vite",
     "generate:seo": "node scripts/generate-rss.cjs && node scripts/generate-sitemap.cjs",
     "prebuild": "npm run generate:seo",
     "build": "vite build",
+    "postbuild": "react-snap",
     "lint": "eslint .",
     "preview": "vite preview"
+  },
+  "reactSnap": {
+    "source": "dist",
+    "include": [
+      "/",
+      "/about",
+      "/pots-replacement",
+      "/ai-consulting",
+      "/internet-connectivity",
+      "/mobility-solutions",
+      "/voice-solutions",
+      "/ai-workforce",
+      "/contact",
+      "/blog",
+      "/tools",
+      "/tools/pots-roi-calculator",
+      "/tools/copper-sunset-risk",
+      "/tools/failover-readiness",
+      "/tools/ai-roi-calculator",
+      "/tools/ai-readiness"
+    ],
+    "skipThirdPartyRequests": false,
+    "inlineCss": false,
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
+    "puppeteerExecutablePath": "/snap/bin/chromium",
+    "minifyHtml": {
+      "collapseWhitespace": false,
+      "removeComments": false
+    }
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
@@ -31,6 +62,7 @@
     "eslint-plugin-react-refresh": "^0.4.11",
     "globals": "^15.9.0",
     "postcss": "^8.4.35",
+    "react-snap": "^1.23.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
