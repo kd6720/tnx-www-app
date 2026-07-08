@@ -22,6 +22,7 @@ import thirtyDayAiPilot from '../content/blog/30-day-ai-pilot-how-to-test-ai.md?
 import aiPoweredCustomerService from '../content/blog/ai-powered-customer-service-24-7-support.md?raw';
 import hotelConnectivityWhatGuestsExpect2026 from '../content/blog/hotel-connectivity-what-guests-expect-2026.md?raw';
 import leadQualificationAtScale from '../content/blog/lead-qualification-at-scale-ai-finds-needle-in-haystack.md?raw';
+import mostAiProjectsFail from '../content/blog/why-most-ai-projects-fail-and-how-to-succeed.md?raw';
 import nfpa72ComplianceFireAlarm from '../content/blog/nfpa-72-compliance-fire-alarm-communications-practical-guide.md?raw';
 
 export interface BlogPost {
@@ -97,6 +98,7 @@ const RAW_POSTS: [string, string][] = [
   ['30-day-ai-pilot-how-to-test-ai', thirtyDayAiPilot],
   ['ai-powered-customer-service-24-7-support', aiPoweredCustomerService],
   ['lead-qualification-at-scale-ai-finds-needle-in-haystack', leadQualificationAtScale],
+  ['why-most-ai-projects-fail-and-how-to-succeed', mostAiProjectsFail],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
