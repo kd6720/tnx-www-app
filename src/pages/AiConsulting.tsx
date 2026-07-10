@@ -391,7 +391,7 @@ const AiConsulting = () => {
                 Schedule a Call
                 <ArrowRight size={18} />
               </Link>
-              <a href="mailto:info@trustednetworx.com" className="btn-outline">
+              <a href="mailto:sales@trustednetworx.com" className="btn-outline">
                 Send Us a Message
               </a>
             </div>

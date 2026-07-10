@@ -65,13 +65,13 @@ const Contact = () => {
                     305-498-7530
                   </a>
                   <a
-                    href="mailto:carter@trustednetworx.com"
+                    href="mailto:sales@trustednetworx.com"
                     className="flex items-center gap-4 text-navy-200 transition-colors hover:text-white"
                   >
                     <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
                       <Mail className="h-5 w-5 text-brand-300" />
                     </span>
-                    carter@trustednetworx.com
+                    sales@trustednetworx.com
                   </a>
                   <div className="flex items-center gap-4 text-navy-200">
                     <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-white/10">
