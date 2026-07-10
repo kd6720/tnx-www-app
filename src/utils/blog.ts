@@ -25,6 +25,7 @@ import leadQualificationAtScale from '../content/blog/lead-qualification-at-scal
 import mostAiProjectsFail from '../content/blog/why-most-ai-projects-fail-and-how-to-succeed.md?raw';
 import nfpa72ComplianceFireAlarm from '../content/blog/nfpa-72-compliance-fire-alarm-communications-practical-guide.md?raw';
 import aiForScheduling from '../content/blog/ai-for-scheduling-reclaim-5-plus-hours-per-week.md?raw';
+import voiceAiInBusiness from '../content/blog/voice-ai-in-business-beyond-the-robot-operator.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -101,6 +102,7 @@ const RAW_POSTS: [string, string][] = [
   ['lead-qualification-at-scale-ai-finds-needle-in-haystack', leadQualificationAtScale],
   ['why-most-ai-projects-fail-and-how-to-succeed', mostAiProjectsFail],
   ['ai-for-scheduling-reclaim-5-plus-hours-per-week', aiForScheduling],
+  ['voice-ai-in-business-beyond-the-robot-operator', voiceAiInBusiness],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
