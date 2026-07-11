@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 export const SITE_URL = 'https://trustednetworx.com';
@@ -40,6 +41,22 @@ const Seo = ({
       : `${SITE_URL}${image}`
     : DEFAULT_OG_IMAGE;
   const blocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const state = window as Window & { snapSaveState?: () => Promise<void> };
+    state.snapSaveState = () =>
+      new Promise<void>((resolve) => {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => resolve());
+        });
+      });
+
+    return () => {
+      delete state.snapSaveState;
+    };
+  }, [title, description, canonical, ogImage, blocks.length]);
 
   return (
     <Helmet>

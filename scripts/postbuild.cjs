@@ -45,7 +45,21 @@ async function main() {
   });
 
   if (typeof result.status === 'number') {
-    process.exit(result.status);
+    if (result.status !== 0) {
+      process.exit(result.status);
+    }
+
+    const patchResult = spawnSync(process.execPath, [require.resolve('./patch-prerendered-seo.cjs')], {
+      stdio: 'inherit',
+      env: process.env,
+    });
+
+    if (typeof patchResult.status === 'number') {
+      process.exit(patchResult.status);
+    }
+
+    console.error('[postbuild] SEO patch script did not return an exit code.');
+    process.exit(1);
   }
 
   console.error('[postbuild] react-snap did not return an exit code.');
