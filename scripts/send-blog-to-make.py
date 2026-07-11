@@ -109,7 +109,7 @@ def build_caption(channel: str, title: str, category: str, description: str, exc
     return caption, hashtags
 
 
-def build_payload(slug: str, channel: str) -> dict[str, str]:
+def build_payload(slug: str, channel: str) -> dict[str, object]:
     md_path = Path('/root/trustednetworx/src/content/blog') / f'{slug}.md'
     if not md_path.exists():
         raise FileNotFoundError(f"Blog post not found: {md_path}")
@@ -132,7 +132,15 @@ def build_payload(slug: str, channel: str) -> dict[str, str]:
         'description': description,
         'excerpt': excerpt,
         'blog_url': blog_url,
+        'post_url': blog_url,
+        'url': blog_url,
         'image_url': image_url,
+        'image': image_url,
+        'imageUrl': image_url,
+        'featured_image_url': image_url,
+        'media_url': image_url,
+        'thumbnail_url': image_url,
+        'image_urls': [image_url],
         'caption': caption,
         'hashtags': hashtags,
         'source': 'trustednetworx-blog-cron',
@@ -145,7 +153,7 @@ def append_log(entry: dict) -> None:
         f.write(json.dumps(entry) + '\n')
 
 
-def post_payload(webhook_url: str, payload: dict[str, str]) -> dict:
+def post_payload(webhook_url: str, payload: dict[str, object]) -> dict:
     data = json.dumps(payload).encode('utf-8')
     req = urllib.request.Request(
         webhook_url,
