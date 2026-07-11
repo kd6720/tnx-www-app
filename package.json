@@ -15,6 +15,7 @@
   },
   "reactSnap": {
     "source": "dist",
+    "port": 45789,
     "include": [
       "/",
       "/about",
@@ -35,8 +36,10 @@
     ],
     "skipThirdPartyRequests": false,
     "inlineCss": false,
-    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
-    "puppeteerExecutablePath": "/snap/bin/chromium",
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ],
     "minifyHtml": {
       "collapseWhitespace": false,
       "removeComments": false
@@ -62,6 +65,7 @@
     "eslint-plugin-react-refresh": "^0.4.11",
     "globals": "^15.9.0",
     "postcss": "^8.4.35",
+    "puppeteer": "25.3.0",
     "react-snap": "^1.23.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.3",
