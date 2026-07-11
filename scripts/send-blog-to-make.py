@@ -9,7 +9,10 @@ from pathlib import Path
 SITE_URL = "https://trustednetworx.com"
 DEFAULT_ENV_PATH = Path.home() / ".hermes" / ".env"
 LOG_PATH = Path.home() / ".hermes" / "cron" / "blog-webhook-log.jsonl"
-
+ENV_KEYS = {
+    'facebook': 'MAKE_FACEBOOK_WEBHOOK_URL',
+    'linkedin': 'MAKE_LINKEDIN_WEBHOOK_URL',
+}
 CATEGORY_HASHTAGS = {
     "Telecom Modernization": ["#Telecom", "#Connectivity", "#DigitalTransformation"],
     "AI for Business": ["#AI", "#BusinessAutomation", "#Productivity"],
@@ -54,7 +57,39 @@ def truncate(text: str, limit: int) -> str:
     return compact[: limit - 1].rsplit(' ', 1)[0].rstrip(' ,;:') + '…'
 
 
-def build_caption(title: str, category: str, description: str, excerpt: str, blog_url: str) -> tuple[str, str]:
+def build_hashtags(category: str, channel: str) -> str:
+    base = CATEGORY_HASHTAGS.get(category, ["#BusinessTechnology", "#TrustedNetworx"])
+    if channel == 'linkedin':
+        tags = base[:2] + ["#TrustedNetworx"]
+    else:
+        tags = base + ["#TrustedNetworx"]
+    deduped = []
+    for tag in tags:
+        if tag not in deduped:
+            deduped.append(tag)
+    return ' '.join(deduped)
+
+
+def build_caption(channel: str, title: str, category: str, description: str, excerpt: str, blog_url: str) -> tuple[str, str]:
+    if channel == 'linkedin':
+        lead_map = {
+            "Telecom Modernization": "A lot of telecom decisions get delayed until they become expensive.",
+            "AI for Business": "The best AI projects solve a real operational problem, not just a novelty problem.",
+            "Industry Spotlights": "Every industry has different connectivity pressure points.",
+            "Compliance & Regulation": "Compliance usually gets harder and more expensive when teams wait too long.",
+        }
+        lead = lead_map.get(category, "New from TrustedNetworx.")
+        body = truncate(description or excerpt, 260)
+        hashtags = build_hashtags(category, channel)
+        caption = (
+            f"{title}\n\n"
+            f"{lead}\n"
+            f"{body}\n\n"
+            f"We put together the full breakdown here: {blog_url}\n\n"
+            f"{hashtags}"
+        )
+        return caption, hashtags
+
     lead_map = {
         "Telecom Modernization": "Still dealing with legacy telecom decisions?",
         "AI for Business": "Looking for practical AI use cases that actually help the business?",
@@ -63,19 +98,18 @@ def build_caption(title: str, category: str, description: str, excerpt: str, blo
     }
     lead = lead_map.get(category, "New on the TrustedNetworx blog.")
     body = truncate(description or excerpt, 220)
-    hashtags = CATEGORY_HASHTAGS.get(category, ["#TrustedNetworx", "#BusinessTechnology"])
-    hashtag_line = ' '.join(hashtags + ["#TrustedNetworx"])
+    hashtags = build_hashtags(category, channel)
     caption = (
         f"{title}\n\n"
         f"{lead}\n"
         f"{body}\n\n"
         f"Read the full post: {blog_url}\n\n"
-        f"{hashtag_line}"
+        f"{hashtags}"
     )
-    return caption, hashtag_line
+    return caption, hashtags
 
 
-def build_payload(slug: str) -> dict[str, str]:
+def build_payload(slug: str, channel: str) -> dict[str, str]:
     md_path = Path('/root/trustednetworx/src/content/blog') / f'{slug}.md'
     if not md_path.exists():
         raise FileNotFoundError(f"Blog post not found: {md_path}")
@@ -87,8 +121,9 @@ def build_payload(slug: str) -> dict[str, str]:
     blog_url = f"{SITE_URL}/blog/{slug}"
     image_url = f"{SITE_URL}{image_path}" if image_path.startswith('/') else image_path
     excerpt = truncate(body, 280)
-    caption, hashtags = build_caption(title, category, description, excerpt, blog_url)
+    caption, hashtags = build_caption(channel, title, category, description, excerpt, blog_url)
     return {
+        'channel': channel,
         'title': title,
         'slug': slug,
         'category': category,
@@ -129,53 +164,83 @@ def post_payload(webhook_url: str, payload: dict[str, str]) -> dict:
         }
 
 
-def main() -> int:
-    if len(sys.argv) < 2:
-        print('Usage: send-blog-to-make.py <slug> [--dry-run]', file=sys.stderr)
-        return 2
-    slug = sys.argv[1].strip()
-    dry_run = '--dry-run' in sys.argv[2:]
-
-    payload = build_payload(slug)
-    webhook_url = load_env_value('MAKE_FACEBOOK_WEBHOOK_URL')
+def send_for_channel(slug: str, channel: str, dry_run: bool) -> dict:
+    env_key = ENV_KEYS[channel]
+    webhook_url = load_env_value(env_key)
+    payload = build_payload(slug, channel)
 
     if dry_run:
-        print(json.dumps({'webhook_configured': bool(webhook_url), 'payload': payload}, indent=2))
-        return 0
+        return {
+            'channel': channel,
+            'env_key': env_key,
+            'webhook_configured': bool(webhook_url),
+            'payload': payload,
+        }
 
     if not webhook_url:
-        print('MAKE_FACEBOOK_WEBHOOK_URL not configured in environment or ~/.hermes/.env', file=sys.stderr)
-        append_log({
+        entry = {
             'timestamp': datetime.now(timezone.utc).isoformat(),
             'slug': slug,
+            'channel': channel,
             'ok': False,
             'status': None,
-            'error': 'MAKE_FACEBOOK_WEBHOOK_URL not configured',
-        })
-        return 1
+            'error': f'{env_key} not configured',
+        }
+        append_log(entry)
+        return {'channel': channel, 'ok': False, 'skipped': True, 'reason': f'{env_key} not configured'}
 
     try:
         result = post_payload(webhook_url, payload)
-        log_entry = {
+        entry = {
             'timestamp': datetime.now(timezone.utc).isoformat(),
             'slug': slug,
+            'channel': channel,
             'ok': True,
             'status': result['status'],
             'response': result['body'],
         }
-        append_log(log_entry)
-        print(json.dumps({'ok': True, 'status': result['status'], 'response': result['body']}, indent=2))
-        return 0
+        append_log(entry)
+        return {'channel': channel, 'ok': True, 'status': result['status'], 'response': result['body']}
     except Exception as exc:
-        append_log({
+        entry = {
             'timestamp': datetime.now(timezone.utc).isoformat(),
             'slug': slug,
+            'channel': channel,
             'ok': False,
             'status': getattr(exc, 'code', None),
             'error': str(exc),
-        })
-        print(f'Make/Facebook webhook failed for slug {slug}: {exc}', file=sys.stderr)
-        return 1
+        }
+        append_log(entry)
+        return {'channel': channel, 'ok': False, 'status': getattr(exc, 'code', None), 'error': str(exc)}
+
+
+def main() -> int:
+    if len(sys.argv) < 2:
+        print('Usage: send-blog-to-make.py <slug> [facebook|linkedin|all] [--dry-run]', file=sys.stderr)
+        return 2
+
+    slug = sys.argv[1].strip()
+    target = 'facebook'
+    dry_run = False
+    for arg in sys.argv[2:]:
+        if arg == '--dry-run':
+            dry_run = True
+        elif arg in ('facebook', 'linkedin', 'all'):
+            target = arg
+        else:
+            print(f'Unknown argument: {arg}', file=sys.stderr)
+            return 2
+
+    channels = list(ENV_KEYS) if target == 'all' else [target]
+    results = [send_for_channel(slug, channel, dry_run) for channel in channels]
+
+    if dry_run:
+        print(json.dumps({'slug': slug, 'target': target, 'results': results}, indent=2))
+        return 0
+
+    failures = [r for r in results if r.get('ok') is False and not r.get('skipped')]
+    print(json.dumps({'slug': slug, 'target': target, 'results': results}, indent=2))
+    return 1 if failures else 0
 
 
 if __name__ == '__main__':
