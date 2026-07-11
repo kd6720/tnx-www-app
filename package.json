@@ -9,7 +9,7 @@
     "generate:seo": "node scripts/generate-rss.cjs && node scripts/generate-sitemap.cjs",
     "prebuild": "npm run generate:seo",
     "build": "vite build",
-    "postbuild": "react-snap",
+    "postbuild": "node scripts/postbuild.cjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
