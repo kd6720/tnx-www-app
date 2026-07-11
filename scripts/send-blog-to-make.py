@@ -3,10 +3,19 @@ import json
 import os
 import sys
 import urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
 
 SITE_URL = "https://trustednetworx.com"
 DEFAULT_ENV_PATH = Path.home() / ".hermes" / ".env"
+LOG_PATH = Path.home() / ".hermes" / "cron" / "blog-webhook-log.jsonl"
+
+CATEGORY_HASHTAGS = {
+    "Telecom Modernization": ["#Telecom", "#Connectivity", "#DigitalTransformation"],
+    "AI for Business": ["#AI", "#BusinessAutomation", "#Productivity"],
+    "Industry Spotlights": ["#Connectivity", "#BusinessTechnology", "#Infrastructure"],
+    "Compliance & Regulation": ["#Compliance", "#BusinessContinuity", "#Telecom"],
+}
 
 
 def load_env_value(key: str) -> str | None:
@@ -38,26 +47,51 @@ def parse_frontmatter(md_path: Path) -> tuple[dict[str, str], str]:
     return data, body
 
 
+def truncate(text: str, limit: int) -> str:
+    compact = ' '.join(text.split())
+    if len(compact) <= limit:
+        return compact
+    return compact[: limit - 1].rsplit(' ', 1)[0].rstrip(' ,;:') + '…'
+
+
+def build_caption(title: str, category: str, description: str, excerpt: str, blog_url: str) -> tuple[str, str]:
+    lead_map = {
+        "Telecom Modernization": "Still dealing with legacy telecom decisions?",
+        "AI for Business": "Looking for practical AI use cases that actually help the business?",
+        "Industry Spotlights": "Different industries hit connectivity problems in different ways.",
+        "Compliance & Regulation": "Compliance issues get expensive when they’re handled too late.",
+    }
+    lead = lead_map.get(category, "New on the TrustedNetworx blog.")
+    body = truncate(description or excerpt, 220)
+    hashtags = CATEGORY_HASHTAGS.get(category, ["#TrustedNetworx", "#BusinessTechnology"])
+    hashtag_line = ' '.join(hashtags + ["#TrustedNetworx"])
+    caption = (
+        f"{title}\n\n"
+        f"{lead}\n"
+        f"{body}\n\n"
+        f"Read the full post: {blog_url}\n\n"
+        f"{hashtag_line}"
+    )
+    return caption, hashtag_line
+
+
 def build_payload(slug: str) -> dict[str, str]:
     md_path = Path('/root/trustednetworx/src/content/blog') / f'{slug}.md'
     if not md_path.exists():
         raise FileNotFoundError(f"Blog post not found: {md_path}")
     frontmatter, body = parse_frontmatter(md_path)
     title = frontmatter.get('title', slug.replace('-', ' ').title())
+    category = frontmatter.get('category', '')
     description = frontmatter.get('description', '')
     image_path = frontmatter.get('image', '')
     blog_url = f"{SITE_URL}/blog/{slug}"
     image_url = f"{SITE_URL}{image_path}" if image_path.startswith('/') else image_path
-    excerpt = ' '.join(body.split())[:280].strip()
-    caption = (
-        f"{title}\n\n"
-        f"{description or excerpt}\n\n"
-        f"Read more: {blog_url}"
-    )
+    excerpt = truncate(body, 280)
+    caption, hashtags = build_caption(title, category, description, excerpt, blog_url)
     return {
         'title': title,
         'slug': slug,
-        'category': frontmatter.get('category', ''),
+        'category': category,
         'date': frontmatter.get('date', ''),
         'author': frontmatter.get('author', ''),
         'description': description,
@@ -65,8 +99,15 @@ def build_payload(slug: str) -> dict[str, str]:
         'blog_url': blog_url,
         'image_url': image_url,
         'caption': caption,
+        'hashtags': hashtags,
         'source': 'trustednetworx-blog-cron',
     }
+
+
+def append_log(entry: dict) -> None:
+    LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with LOG_PATH.open('a') as f:
+        f.write(json.dumps(entry) + '\n')
 
 
 def post_payload(webhook_url: str, payload: dict[str, str]) -> dict:
@@ -104,11 +145,37 @@ def main() -> int:
 
     if not webhook_url:
         print('MAKE_FACEBOOK_WEBHOOK_URL not configured in environment or ~/.hermes/.env', file=sys.stderr)
+        append_log({
+            'timestamp': datetime.now(timezone.utc).isoformat(),
+            'slug': slug,
+            'ok': False,
+            'status': None,
+            'error': 'MAKE_FACEBOOK_WEBHOOK_URL not configured',
+        })
         return 1
 
-    result = post_payload(webhook_url, payload)
-    print(json.dumps({'ok': True, 'status': result['status'], 'response': result['body']}, indent=2))
-    return 0
+    try:
+        result = post_payload(webhook_url, payload)
+        log_entry = {
+            'timestamp': datetime.now(timezone.utc).isoformat(),
+            'slug': slug,
+            'ok': True,
+            'status': result['status'],
+            'response': result['body'],
+        }
+        append_log(log_entry)
+        print(json.dumps({'ok': True, 'status': result['status'], 'response': result['body']}, indent=2))
+        return 0
+    except Exception as exc:
+        append_log({
+            'timestamp': datetime.now(timezone.utc).isoformat(),
+            'slug': slug,
+            'ok': False,
+            'status': getattr(exc, 'code', None),
+            'error': str(exc),
+        })
+        print(f'Make/Facebook webhook failed for slug {slug}: {exc}', file=sys.stderr)
+        return 1
 
 
 if __name__ == '__main__':
