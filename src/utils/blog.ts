@@ -23,6 +23,7 @@ import aiPoweredCustomerService from '../content/blog/ai-powered-customer-servic
 import hotelConnectivityWhatGuestsExpect2026 from '../content/blog/hotel-connectivity-what-guests-expect-2026.md?raw';
 import healthcareTelecomHipaaCompliance from '../content/blog/healthcare-telecom-balancing-hipaa-compliance-modernization.md?raw';
 import connectedConstructionSiteConnectivity from '../content/blog/connected-construction-site-connectivity-jobsite-operations.md?raw';
+import retailConnectivityPosUptime from '../content/blog/retail-connectivity-keeping-pos-systems-running-across-hundreds-of-locations.md?raw';
 import leadQualificationAtScale from '../content/blog/lead-qualification-at-scale-ai-finds-needle-in-haystack.md?raw';
 import mostAiProjectsFail from '../content/blog/why-most-ai-projects-fail-and-how-to-succeed.md?raw';
 import nfpa72ComplianceFireAlarm from '../content/blog/nfpa-72-compliance-fire-alarm-communications-practical-guide.md?raw';
@@ -78,6 +79,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['retail-connectivity-keeping-pos-systems-running-across-hundreds-of-locations', retailConnectivityPosUptime],
   ['nfpa-72-compliance-fire-alarm-communications-practical-guide', nfpa72ComplianceFireAlarm],
   ['healthcare-telecom-balancing-hipaa-compliance-modernization', healthcareTelecomHipaaCompliance],
   ['connected-construction-site-connectivity-jobsite-operations', connectedConstructionSiteConnectivity],
