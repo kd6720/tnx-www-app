@@ -95,7 +95,7 @@ def build_prompt(title: str, subject_brief: str, attempt: int) -> str:
         "Represent the actual topic visually instead of using a generic telecom or AI background. "
         "Show a concrete scene, environment, equipment, and business context that match the article subject. "
         "Style: modern enterprise, realistic but slightly stylized, trustworthy, premium, clean navy/blue/cyan palette where appropriate, "
-        "subtle lighting, professional composition, suitable for website hero and social sharing, absolutely no visible text, letters, numbers, labels, logos, or watermark anywhere in the image."
+        "subtle lighting, professional composition, suitable for website hero and social sharing, and absolutely no visible text, letters, numbers, labels, logos, signs, posters, UI labels, title overlays, or watermark anywhere in the image."
     )
     if attempt == 1:
         return base
@@ -103,7 +103,8 @@ def build_prompt(title: str, subject_brief: str, attempt: int) -> str:
         base
         + " Previous attempt was too visually similar to recent blog images. "
         + "Use a distinctly different primary subject, scene composition, camera angle, setting, and visual motif. "
-        + "Avoid generic glowing network maps, abstract circuit-board backdrops, or repeated server-room scenes unless the article explicitly requires them."
+        + "Avoid generic glowing network maps, abstract circuit-board backdrops, or repeated server-room scenes unless the article explicitly requires them. "
+        + "Avoid all readable text, signage, overlays, labels, and UI screens with words or numbers."
     )
 
 
