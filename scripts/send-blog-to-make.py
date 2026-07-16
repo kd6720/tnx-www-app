@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+import hashlib
 import json
 import os
 import sys
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -55,6 +57,15 @@ def truncate(text: str, limit: int) -> str:
     if len(compact) <= limit:
         return compact
     return compact[: limit - 1].rsplit(' ', 1)[0].rstrip(' ,;:') + '…'
+
+
+def file_sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def with_cache_buster(url: str, version: str) -> str:
+    sep = '&' if '?' in url else '?'
+    return f"{url}{sep}v={urllib.parse.quote(version)}"
 
 
 def build_hashtags(category: str, channel: str) -> str:
@@ -120,6 +131,10 @@ def build_payload(slug: str, channel: str) -> dict[str, object]:
     image_path = frontmatter.get('image', '')
     blog_url = f"{SITE_URL}/blog/{slug}"
     image_url = f"{SITE_URL}{image_path}" if image_path.startswith('/') else image_path
+    image_file_path = Path('/root/trustednetworx/public') / image_path.lstrip('/') if image_path.startswith('/') else None
+    image_sha = file_sha256(image_file_path) if image_file_path and image_file_path.exists() else ''
+    image_version = image_sha[:12] if image_sha else datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')
+    image_url_versioned = with_cache_buster(image_url, image_version) if image_url else ''
     excerpt = truncate(body, 280)
     caption, hashtags = build_caption(channel, title, category, description, excerpt, blog_url)
     return {
@@ -132,15 +147,27 @@ def build_payload(slug: str, channel: str) -> dict[str, object]:
         'description': description,
         'excerpt': excerpt,
         'blog_url': blog_url,
+        'link_url': blog_url,
         'post_url': blog_url,
         'url': blog_url,
-        'image_url': image_url,
-        'image': image_url,
-        'imageUrl': image_url,
-        'featured_image_url': image_url,
-        'media_url': image_url,
-        'thumbnail_url': image_url,
-        'image_urls': [image_url],
+        'image_path': image_path,
+        'image_sha256': image_sha,
+        'image_version': image_version,
+        'image_url': image_url_versioned or image_url,
+        'image_url_raw': image_url,
+        'image_url_cache_busted': image_url_versioned or image_url,
+        'image': image_url_versioned or image_url,
+        'imageUrl': image_url_versioned or image_url,
+        'featured_image_url': image_url_versioned or image_url,
+        'media_url': image_url_versioned or image_url,
+        'thumbnail_url': image_url_versioned or image_url,
+        'image_urls': [image_url_versioned or image_url],
+        'facebook_image_url': image_url_versioned or image_url,
+        'facebook_media_url': image_url_versioned or image_url,
+        'facebook_link_url': blog_url,
+        'facebook_image_sha256': image_sha,
+        'linkedin_image_url': image_url_versioned or image_url,
+        'linkedin_link_url': blog_url,
         'caption': caption,
         'hashtags': hashtags,
         'source': 'trustednetworx-blog-cron',

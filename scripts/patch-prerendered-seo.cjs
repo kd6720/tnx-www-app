@@ -37,19 +37,23 @@ function replaceTag(html, regex, replacement) {
 }
 
 function upsertMeta(html, attr, name, content) {
-  const regex = new RegExp(`<meta ${attr}="${name}" content="[^"]*">`);
+  const regex = new RegExp(`\\s*<meta[^>]*${attr}="${name}"[^>]*>`, 'gi');
   const tag = `<meta ${attr}="${name}" content="${escapeAttr(content)}">`;
-  return replaceTag(html, regex, tag);
+  html = html.replace(regex, '');
+  return html.replace('</head>', `${tag}\n</head>`);
 }
 
 function upsertLink(html, rel, href) {
-  const regex = new RegExp(`<link rel="${rel}" href="[^"]*">`);
+  const regex = new RegExp(`\\s*<link[^>]*rel="${rel}"[^>]*>`, 'gi');
   const tag = `<link rel="${rel}" href="${escapeAttr(href)}">`;
-  return replaceTag(html, regex, tag);
+  html = html.replace(regex, '');
+  return html.replace('</head>', `${tag}\n</head>`);
 }
 
 function upsertTitle(html, title) {
-  return replaceTag(html, /<title>.*?<\/title>/, `<title>${escapeAttr(title)}</title>`);
+  const regex = /\s*<title>[\s\S]*?<\/title>/i;
+  html = html.replace(regex, '');
+  return html.replace('</head>', `<title>${escapeAttr(title)}</title>\n</head>`);
 }
 
 function stripStructuredData(html, type) {
@@ -93,9 +97,15 @@ function patchPage(filePath, seo) {
   fs.writeFileSync(filePath, html, 'utf8');
 }
 
+function ensureHtmlShell(filePath, fallbackHtmlPath) {
+  if (fs.existsSync(filePath)) return;
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.copyFileSync(fallbackHtmlPath, filePath);
+}
+
 function patchBlogIndex(distDir) {
   const filePath = path.join(distDir, 'blog', 'index.html');
-  if (!fs.existsSync(filePath)) return;
+  ensureHtmlShell(filePath, path.join(distDir, 'index.html'));
   patchPage(filePath, {
     title: 'TrustedNetworx Blog | Telecom, AI & Connectivity Insights',
     description: 'Practical insights on telecom modernization, AI for business, compliance, and connectivity from TrustedNetworx.',
@@ -113,7 +123,7 @@ function patchBlogPosts(distDir, srcBlogDir) {
     const raw = fs.readFileSync(path.join(srcBlogDir, file), 'utf8');
     const { data } = parseFrontmatter(raw);
     const htmlPath = path.join(distDir, 'blog', slug, 'index.html');
-    if (!fs.existsSync(htmlPath)) continue;
+    ensureHtmlShell(htmlPath, path.join(distDir, 'index.html'));
 
     const title = data.title || slug;
     const description = data.description || DEFAULT_DESCRIPTION;

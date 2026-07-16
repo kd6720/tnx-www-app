@@ -90,10 +90,10 @@ def compare_against_recent(path: Path, references: Iterable[Path]) -> dict:
 def build_prompt(title: str, subject_brief: str, attempt: int) -> str:
     base = (
         "Create a polished editorial-style B2B technology blog hero image. "
-        f"Article title: {title}. "
-        f"Subject focus: {subject_brief}. "
+        f"Topic: {subject_brief}. "
         "Represent the actual topic visually instead of using a generic telecom or AI background. "
         "Show a concrete scene, environment, equipment, and business context that match the article subject. "
+        "Do not render the blog title or any written headline in the image. "
         "Style: modern enterprise, realistic but slightly stylized, trustworthy, premium, clean navy/blue/cyan palette where appropriate, "
         "subtle lighting, professional composition, suitable for website hero and social sharing, and absolutely no visible text, letters, numbers, labels, logos, signs, posters, UI labels, title overlays, or watermark anywhere in the image."
     )

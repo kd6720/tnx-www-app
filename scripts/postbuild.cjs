@@ -24,8 +24,16 @@ async function main() {
   const shouldRun = process.env.NETLIFY === 'true' || process.env.ENABLE_REACT_SNAP === '1';
 
   if (!shouldRun) {
-    console.log('[postbuild] Skipping react-snap by default. Set ENABLE_REACT_SNAP=1 to enable local pre-rendering.');
-    process.exit(0);
+    console.log('[postbuild] Skipping react-snap. Creating static blog route shells and patching SEO metadata.');
+    const patchResult = spawnSync(process.execPath, [require.resolve('./patch-prerendered-seo.cjs')], {
+      stdio: 'inherit',
+      env: process.env,
+    });
+    if (typeof patchResult.status === 'number') {
+      process.exit(patchResult.status);
+    }
+    console.error('[postbuild] SEO patch script did not return an exit code.');
+    process.exit(1);
   }
 
   const chromiumPath = await resolveChromiumPath();
