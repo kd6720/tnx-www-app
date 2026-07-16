@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const SITE_URL = 'https://trustednetworx.com';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/TrustedNetworx-Hero-Image.jpg`;
@@ -72,6 +73,14 @@ function appendStructuredData(html, blocks) {
   return html.replace('</head>', `${snippet}</head>`);
 }
 
+function versionedImageUrl(rootDir, imagePath) {
+  if (!imagePath || !imagePath.startsWith('/')) return imagePath || DEFAULT_OG_IMAGE;
+  const localPath = path.join(rootDir, 'public', imagePath.replace(/^\//, ''));
+  if (!fs.existsSync(localPath)) return `${SITE_URL}${imagePath}`;
+  const sha = crypto.createHash('sha256').update(fs.readFileSync(localPath)).digest('hex').slice(0, 12);
+  return `${SITE_URL}${imagePath}?v=${sha}`;
+}
+
 function patchPage(filePath, seo) {
   let html = fs.readFileSync(filePath, 'utf8');
   html = upsertTitle(html, seo.title);
@@ -116,7 +125,7 @@ function patchBlogIndex(distDir) {
   });
 }
 
-function patchBlogPosts(distDir, srcBlogDir) {
+function patchBlogPosts(distDir, srcBlogDir, rootDir) {
   const files = fs.readdirSync(srcBlogDir).filter((file) => file.endsWith('.md'));
   for (const file of files) {
     const slug = file.replace(/\.md$/, '');
@@ -128,7 +137,7 @@ function patchBlogPosts(distDir, srcBlogDir) {
     const title = data.title || slug;
     const description = data.description || DEFAULT_DESCRIPTION;
     const canonical = `${SITE_URL}/blog/${slug}`;
-    const image = data.image ? `${SITE_URL}${data.image}` : DEFAULT_OG_IMAGE;
+    const image = versionedImageUrl(rootDir, data.image);
     const articleJsonLd = {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
@@ -173,7 +182,7 @@ function main() {
   const srcBlogDir = path.join(root, 'src', 'content', 'blog');
 
   patchBlogIndex(distDir);
-  patchBlogPosts(distDir, srcBlogDir);
+  patchBlogPosts(distDir, srcBlogDir, root);
   console.log('[postbuild] Patched prerendered blog SEO metadata.');
 }
 
