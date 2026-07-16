@@ -2,6 +2,18 @@
 const { existsSync } = require('fs');
 const { spawnSync } = require('child_process');
 
+function runSeoPatch() {
+  const patchResult = spawnSync(process.execPath, [require.resolve('./patch-prerendered-seo.cjs')], {
+    stdio: 'inherit',
+    env: process.env,
+  });
+  if (typeof patchResult.status === 'number') {
+    process.exit(patchResult.status);
+  }
+  console.error('[postbuild] SEO patch script did not return an exit code.');
+  process.exit(1);
+}
+
 async function resolveChromiumPath() {
   const envChromium = process.env.PUPPETEER_EXECUTABLE_PATH || process.env.CHROME_BIN;
   if (envChromium && existsSync(envChromium)) return envChromium;
@@ -25,21 +37,15 @@ async function main() {
 
   if (!shouldRun) {
     console.log('[postbuild] Skipping react-snap. Creating static blog route shells and patching SEO metadata.');
-    const patchResult = spawnSync(process.execPath, [require.resolve('./patch-prerendered-seo.cjs')], {
-      stdio: 'inherit',
-      env: process.env,
-    });
-    if (typeof patchResult.status === 'number') {
-      process.exit(patchResult.status);
-    }
-    console.error('[postbuild] SEO patch script did not return an exit code.');
-    process.exit(1);
+    runSeoPatch();
+    return;
   }
 
   const chromiumPath = await resolveChromiumPath();
   if (!chromiumPath) {
-    console.log('[postbuild] react-snap requested, but no Chromium executable is available.');
-    process.exit(1);
+    console.log('[postbuild] No Chromium executable available; skipping react-snap and patching SEO metadata directly.');
+    runSeoPatch();
+    return;
   }
 
   console.log(`[postbuild] Running react-snap with Chromium at: ${chromiumPath}`);
@@ -56,18 +62,8 @@ async function main() {
     if (result.status !== 0) {
       process.exit(result.status);
     }
-
-    const patchResult = spawnSync(process.execPath, [require.resolve('./patch-prerendered-seo.cjs')], {
-      stdio: 'inherit',
-      env: process.env,
-    });
-
-    if (typeof patchResult.status === 'number') {
-      process.exit(patchResult.status);
-    }
-
-    console.error('[postbuild] SEO patch script did not return an exit code.');
-    process.exit(1);
+    runSeoPatch();
+    return;
   }
 
   console.error('[postbuild] react-snap did not return an exit code.');
