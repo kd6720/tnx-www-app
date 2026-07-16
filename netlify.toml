@@ -11,11 +11,17 @@
   status = 301
   force = true
 
-# Ensure blog detail URLs resolve to their directory index pages before SPA fallback.
+# Ensure blog detail URLs resolve to their generated static HTML before SPA fallback.
 [[redirects]]
   from = "/blog/:slug"
-  to = "/blog/:slug/"
-  status = 301
+  to = "/blog/:slug/index.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/blog/:slug/"
+  to = "/blog/:slug/index.html"
+  status = 200
   force = false
 
 # SPA fallback — every other path serves the React app.
