@@ -12,6 +12,7 @@ import ExitIntentPopup from './components/ExitIntentPopup';
 // initial load only pulls in what the landing route needs.
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
+const Team = lazy(() => import('./pages/Team'));
 const PotsReplacement = lazy(() => import('./pages/PotsReplacement'));
 const AiConsulting = lazy(() => import('./pages/AiConsulting'));
 const InternetConnectivity = lazy(() => import('./pages/InternetConnectivity'));
@@ -48,6 +49,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/about/team" element={<Team />} />
                 <Route path="/pots-replacement" element={<PotsReplacement />} />
                 <Route path="/ai-consulting" element={<AiConsulting />} />
                 <Route path="/fleet-management" element={<AiConsulting />} />

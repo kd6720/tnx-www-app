@@ -27,6 +27,7 @@ const STATIC_ROUTES = [
   { path: '/tools/ai-readiness', priority: '0.7', changefreq: 'monthly' },
   { path: '/blog', priority: '0.8', changefreq: 'daily' },
   { path: '/about', priority: '0.6', changefreq: 'yearly' },
+  { path: '/about/team', priority: '0.7', changefreq: 'monthly' },
   { path: '/contact', priority: '0.7', changefreq: 'yearly' },
 ];
 

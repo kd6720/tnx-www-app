@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Shield, Award, Zap, Handshake, Video, Camera, Palette, Network, TrendingUp
+    Shield, Award, Zap, Handshake
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
@@ -161,124 +161,21 @@ const About = () => {
                     </div>
                 </div>
 
-                {/* Meet the Team Section */}
+                {/* Meet the Team CTA */}
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                    <div className="glass-morphism rounded-2xl p-8">
-                        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4 text-center">
-                            Meet the Team
+                    <div className="glass-morphism rounded-2xl p-8 text-center">
+                        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4">
+                            Meet Our Team
                         </h2>
-                        <p className="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-10">
-                            The people behind TrustedNetworx bring together deep telecom expertise and creative vision to help our clients succeed.
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+                            Get to know the leadership and partners behind TrustedNetworx — bringing together decades of telecom expertise, AI-driven strategy, and creative vision.
                         </p>
-                        <div className="grid grid-cols-1 gap-10 max-w-3xl mx-auto">
-                            {/* Carter Dewey */}
-                            <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden ring-2 ring-brand-200">
-                                <div className="grid grid-cols-1 md:grid-cols-3">
-                                    <div className="bg-gradient-to-br from-navy-900 to-brand-900 flex items-center justify-center p-6">
-                                        <img
-                                            src="/team/carter-dewey.jpg"
-                                            alt="Carter Dewey"
-                                            className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-brand-400/40 shadow-xl"
-                                        />
-                                    </div>
-                                    <div className="md:col-span-2 p-6 md:p-8">
-                                        <h3 className="text-2xl font-bold text-gray-900 mb-1">Carter Dewey</h3>
-                                        <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">
-                                            CEO &amp; Founder
-                                        </p>
-                                        <p className="text-gray-600 leading-relaxed mb-4">
-                                            Carter Dewey is the CEO and Founder of TrustedNetworx, a leading solution provider of IoT, AI-driven, and managed telecommunications technology. He is responsible for overall company leadership, business development, sales strategy and forecasting, and coordination with key stakeholders and partners. Under his direction, TrustedNetworx helps businesses modernize their communications infrastructure — applying AI-powered solutioning to network monitoring, business continuity, and operational automation so customers can reduce risk, cut costs, and scale with confidence.
-                                        </p>
-                                        <p className="text-gray-600 leading-relaxed mb-4">
-                                            A seasoned sales executive, Carter previously served as Senior Vice President of Global Sales for DataRemote, Inc., a leading IoT technology provider, where he led business development and global sales operations beginning in April 2016. His earlier experience includes 12 years with AT&amp;T, where he advanced into a leadership role as Signature Client Director, leading a team responsible for AT&amp;T's entire portfolio of products and services across enterprise accounts.
-                                        </p>
-                                        <div className="flex gap-3 mt-5">
-                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                                <TrendingUp size={14} /> Business Development
-                                            </span>
-                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                                <Handshake size={14} /> Strategic Partnerships
-                                            </span>
-                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                                <Zap size={14} /> AI &amp; IoT Solutions
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Angel Garcia */}
-                            <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
-                                <div className="grid grid-cols-1 md:grid-cols-3">
-                                    <div className="bg-gradient-to-br from-brand-800 to-brand-950 flex items-center justify-center p-6">
-                                        <img
-                                            src="/team/angel-garcia.jpg"
-                                            alt="Angel Garcia"
-                                            className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-brand-400/30 shadow-xl"
-                                        />
-                                    </div>
-                                    <div className="md:col-span-2 p-6 md:p-8">
-                                        <h3 className="text-2xl font-bold text-gray-900 mb-1">Angel Garcia</h3>
-                                        <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">
-                                            Enterprise Architect AI Solutions
-                                        </p>
-                                        <p className="text-gray-600 leading-relaxed mb-4">
-                                            Angel is a Dallas-based enterprise seller with 8+ years helping CIOs, CISOs, and IT leaders turn their hardest moments — M&amp;A integrations, ERP migrations, aging infrastructure — into measurable network, security, cloud, and infrastructure wins.
-                                        </p>
-                                        <p className="text-gray-600 leading-relaxed">
-                                            A TrustedNetworx partner for over a year, Angel is known for relentless preparation, using AI-driven research and deal intelligence to have the homework done before the conversation starts. Competitive by nature and a lifelong athlete, he brings the same standard to every engagement: do the reps, compound small wins, and never leave anything unfinished.
-                                        </p>
-                                        <div className="flex gap-3 mt-5">
-                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                                <Network size={14} /> Enterprise Sales
-                                            </span>
-                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                                <Shield size={14} /> Security &amp; Cloud
-                                            </span>
-                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                                <TrendingUp size={14} /> AI-Driven Research
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Deeno Perez */}
-                            <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
-                                <div className="grid grid-cols-1 md:grid-cols-3">
-                                    <div className="bg-gradient-to-br from-navy-800 to-navy-950 flex items-center justify-center p-6">
-                                        <img
-                                            src="/team/deeno-perez.jpg"
-                                            alt="Deeno Perez"
-                                            className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-brand-400/30 shadow-xl"
-                                        />
-                                    </div>
-                                    <div className="md:col-span-2 p-6 md:p-8">
-                                        <h3 className="text-2xl font-bold text-gray-900 mb-1">Deeno Perez</h3>
-                                        <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">
-                                            Multimedia Specialist &amp; Business Content Creator
-                                        </p>
-                                        <p className="text-gray-600 leading-relaxed mb-4">
-                                            Deeno is a Miami-based multimedia specialist and business content creator who helps brands, businesses, and professionals bring their stories to life through polished visual content. His work spans promotional videos, interview-style content, brand storytelling, social media visuals, product highlights, and project showcases.
-                                        </p>
-                                        <p className="text-gray-600 leading-relaxed">
-                                            With a strong background in technology, operations, logistics, and visual production, Deeno brings both creative direction and business-minded precision to every project. He creates content that feels clean, professional, and purposeful — helping businesses present themselves in a way that feels credible, modern, and market-ready.
-                                        </p>
-                                        <div className="flex gap-3 mt-5">
-                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                                <Video size={14} /> Video Production
-                                            </span>
-                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                                <Camera size={14} /> Brand Storytelling
-                                            </span>
-                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                                <Palette size={14} /> Visual Content
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <Link
+                            to="/about/team"
+                            className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brand-600 hover:bg-brand-700 md:py-4 md:text-lg md:px-10 transition-colors duration-300 shadow-lg"
+                        >
+                            Meet the Team
+                        </Link>
                     </div>
                 </div>
 
