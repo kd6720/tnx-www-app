@@ -171,6 +171,42 @@ const About = () => {
                             The people behind TrustedNetworx bring together deep telecom expertise and creative vision to help our clients succeed.
                         </p>
                         <div className="grid grid-cols-1 gap-10 max-w-3xl mx-auto">
+                            {/* Carter Dewey */}
+                            <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden ring-2 ring-brand-200">
+                                <div className="grid grid-cols-1 md:grid-cols-3">
+                                    <div className="bg-gradient-to-br from-navy-900 to-brand-900 flex items-center justify-center p-6">
+                                        <img
+                                            src="/team/carter-dewey.jpg"
+                                            alt="Carter Dewey"
+                                            className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-brand-400/40 shadow-xl"
+                                        />
+                                    </div>
+                                    <div className="md:col-span-2 p-6 md:p-8">
+                                        <h3 className="text-2xl font-bold text-gray-900 mb-1">Carter Dewey</h3>
+                                        <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">
+                                            CEO &amp; Founder
+                                        </p>
+                                        <p className="text-gray-600 leading-relaxed mb-4">
+                                            Carter Dewey is the CEO and Founder of TrustedNetworx, a leading solution provider of IoT, AI-driven, and managed telecommunications technology. He is responsible for overall company leadership, business development, sales strategy and forecasting, and coordination with key stakeholders and partners. Under his direction, TrustedNetworx helps businesses modernize their communications infrastructure — applying AI-powered solutioning to network monitoring, business continuity, and operational automation so customers can reduce risk, cut costs, and scale with confidence.
+                                        </p>
+                                        <p className="text-gray-600 leading-relaxed mb-4">
+                                            A seasoned sales executive, Carter previously served as Senior Vice President of Global Sales for DataRemote, Inc., a leading IoT technology provider, where he led business development and global sales operations beginning in April 2016. His earlier experience includes 12 years with AT&amp;T, where he advanced into a leadership role as Signature Client Director, leading a team responsible for AT&amp;T's entire portfolio of products and services across enterprise accounts.
+                                        </p>
+                                        <div className="flex gap-3 mt-5">
+                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
+                                                <TrendingUp size={14} /> Business Development
+                                            </span>
+                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
+                                                <Handshake size={14} /> Strategic Partnerships
+                                            </span>
+                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
+                                                <Zap size={14} /> AI &amp; IoT Solutions
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             {/* Angel Garcia */}
                             <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
                                 <div className="grid grid-cols-1 md:grid-cols-3">
