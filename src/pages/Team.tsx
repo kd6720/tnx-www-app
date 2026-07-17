@@ -59,7 +59,7 @@ const Team = () => {
                                     <img
                                         src="/team/carter-dewey.jpg"
                                         alt="Carter Dewey"
-                                        className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover object-[50%_28%] border-4 border-brand-400/40 shadow-xl"
+                                        className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover object-[35%_28%] border-4 border-brand-400/40 shadow-xl"
                                     />
                                 </div>
                                 <div className="md:col-span-2 p-6 md:p-8">
