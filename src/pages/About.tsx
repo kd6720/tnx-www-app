@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Shield, Award, Zap, Handshake, Video, Camera, Palette
+    Shield, Award, Zap, Handshake, Video, Camera, Palette, Network, TrendingUp
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
@@ -171,6 +171,42 @@ const About = () => {
                             The people behind TrustedNetworx bring together deep telecom expertise and creative vision to help our clients succeed.
                         </p>
                         <div className="grid grid-cols-1 gap-10 max-w-3xl mx-auto">
+                            {/* Angel Garcia */}
+                            <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                                <div className="grid grid-cols-1 md:grid-cols-3">
+                                    <div className="bg-gradient-to-br from-brand-800 to-brand-950 flex items-center justify-center p-6">
+                                        <img
+                                            src="/team/angel-garcia.jpg"
+                                            alt="Angel Garcia"
+                                            className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-brand-400/30 shadow-xl"
+                                        />
+                                    </div>
+                                    <div className="md:col-span-2 p-6 md:p-8">
+                                        <h3 className="text-2xl font-bold text-gray-900 mb-1">Angel Garcia</h3>
+                                        <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">
+                                            Enterprise Seller
+                                        </p>
+                                        <p className="text-gray-600 leading-relaxed mb-4">
+                                            Angel is a Dallas-based enterprise seller with 8+ years helping CIOs, CISOs, and IT leaders turn their hardest moments — M&amp;A integrations, ERP migrations, aging infrastructure — into measurable network, security, cloud, and infrastructure wins.
+                                        </p>
+                                        <p className="text-gray-600 leading-relaxed">
+                                            A TrustedNetworx partner for over a year, Angel is known for relentless preparation, using AI-driven research and deal intelligence to have the homework done before the conversation starts. Competitive by nature and a lifelong athlete, he brings the same standard to every engagement: do the reps, compound small wins, and never leave anything unfinished.
+                                        </p>
+                                        <div className="flex gap-3 mt-5">
+                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
+                                                <Network size={14} /> Enterprise Sales
+                                            </span>
+                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
+                                                <Shield size={14} /> Security &amp; Cloud
+                                            </span>
+                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
+                                                <TrendingUp size={14} /> AI-Driven Research
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             {/* Deeno Perez */}
                             <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
                                 <div className="grid grid-cols-1 md:grid-cols-3">
