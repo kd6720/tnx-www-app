@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Shield, Award, Zap, Handshake
+    Shield, Award, Zap, Handshake, Video, Camera, Palette
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
@@ -157,6 +157,55 @@ const About = () => {
                                     <p className="text-gray-600 text-center">{description}</p>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Meet the Team Section */}
+                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                    <div className="glass-morphism rounded-2xl p-8">
+                        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4 text-center">
+                            Meet the Team
+                        </h2>
+                        <p className="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-10">
+                            The people behind TrustedNetworx bring together deep telecom expertise and creative vision to help our clients succeed.
+                        </p>
+                        <div className="grid grid-cols-1 gap-10 max-w-3xl mx-auto">
+                            {/* Deeno Perez */}
+                            <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                                <div className="grid grid-cols-1 md:grid-cols-3">
+                                    <div className="bg-gradient-to-br from-navy-800 to-navy-950 flex items-center justify-center p-6">
+                                        <img
+                                            src="/team/deeno-perez.jpg"
+                                            alt="Deeno Perez"
+                                            className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-brand-400/30 shadow-xl"
+                                        />
+                                    </div>
+                                    <div className="md:col-span-2 p-6 md:p-8">
+                                        <h3 className="text-2xl font-bold text-gray-900 mb-1">Deeno Perez</h3>
+                                        <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">
+                                            Multimedia Specialist &amp; Business Content Creator
+                                        </p>
+                                        <p className="text-gray-600 leading-relaxed mb-4">
+                                            Deeno is a Miami-based multimedia specialist and business content creator who helps brands, businesses, and professionals bring their stories to life through polished visual content. His work spans promotional videos, interview-style content, brand storytelling, social media visuals, product highlights, and project showcases.
+                                        </p>
+                                        <p className="text-gray-600 leading-relaxed">
+                                            With a strong background in technology, operations, logistics, and visual production, Deeno brings both creative direction and business-minded precision to every project. He creates content that feels clean, professional, and purposeful — helping businesses present themselves in a way that feels credible, modern, and market-ready.
+                                        </p>
+                                        <div className="flex gap-3 mt-5">
+                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
+                                                <Video size={14} /> Video Production
+                                            </span>
+                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
+                                                <Camera size={14} /> Brand Storytelling
+                                            </span>
+                                            <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
+                                                <Palette size={14} /> Visual Content
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
