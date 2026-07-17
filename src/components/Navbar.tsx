@@ -15,6 +15,8 @@ import {
   Shield,
   TrendingUp,
   Brain,
+  Users,
+  Building2,
 } from 'lucide-react';
 
 const solutions = [
@@ -29,8 +31,10 @@ const solutions = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const aboutCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -44,6 +48,7 @@ const Navbar = () => {
   useEffect(() => {
     setIsOpen(false);
     setIsDropdownOpen(false);
+    setIsAboutDropdownOpen(false);
   }, [location.pathname]);
 
   const openDropdown = () => {
@@ -53,6 +58,15 @@ const Navbar = () => {
   const scheduleClose = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     closeTimer.current = setTimeout(() => setIsDropdownOpen(false), 140);
+  };
+
+  const openAboutDropdown = () => {
+    if (aboutCloseTimer.current) clearTimeout(aboutCloseTimer.current);
+    setIsAboutDropdownOpen(true);
+  };
+  const scheduleAboutClose = () => {
+    if (aboutCloseTimer.current) clearTimeout(aboutCloseTimer.current);
+    aboutCloseTimer.current = setTimeout(() => setIsAboutDropdownOpen(false), 140);
   };
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
@@ -176,9 +190,51 @@ const Navbar = () => {
               Tools
             </NavLink>
 
-            <NavLink to="/about" className={linkClass}>
-              About
-            </NavLink>
+            <div className="relative" onMouseEnter={openAboutDropdown} onMouseLeave={scheduleAboutClose}>
+              <button
+                type="button"
+                className="flex items-center gap-1 text-sm font-medium text-navy-200 hover:text-white transition-colors"
+                onClick={() => setIsAboutDropdownOpen((v) => !v)}
+                aria-expanded={isAboutDropdownOpen}
+              >
+                About
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-300 ${isAboutDropdownOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
+
+              {isAboutDropdownOpen && (
+                <div
+                  className="absolute left-1/2 -translate-x-1/2 mt-4 w-56 rounded-2xl p-2 bg-navy-900/95 backdrop-blur-xl border border-white/10 shadow-2xl shadow-navy-950/50 animate-fadeIn"
+                >
+                  <Link
+                    to="/about"
+                    className="flex items-center gap-3 rounded-xl p-3 transition-colors hover:bg-white/5 group"
+                  >
+                    <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-brand-500/15 text-brand-300 group-hover:bg-brand-500/25 transition-colors">
+                      <Building2 size={18} />
+                    </span>
+                    <span>
+                      <span className="block text-sm font-semibold text-white">Our Story</span>
+                      <span className="block text-xs text-navy-300">Who we are &amp; what we do</span>
+                    </span>
+                  </Link>
+                  <Link
+                    to="/about/team"
+                    className="flex items-center gap-3 rounded-xl p-3 transition-colors hover:bg-white/5 group"
+                  >
+                    <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-brand-500/15 text-brand-300 group-hover:bg-brand-500/25 transition-colors">
+                      <Users size={18} />
+                    </span>
+                    <span>
+                      <span className="block text-sm font-semibold text-white">Partners</span>
+                      <span className="block text-xs text-navy-300">Meet our team &amp; partners</span>
+                    </span>
+                  </Link>
+                </div>
+              )}
+            </div>
             <NavLink to="/contact" className={linkClass}>
               Contact
             </NavLink>
@@ -228,6 +284,13 @@ const Navbar = () => {
               className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-white/10 mt-1"
             >
               About
+            </Link>
+            <Link
+              to="/about/team"
+              className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-navy-100 hover:bg-white/10 ml-4"
+            >
+              <Users size={18} className="text-brand-300" />
+              Partners
             </Link>
             <Link to="/blog" className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-white/10">
               Blog
