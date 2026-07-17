@@ -184,7 +184,7 @@ const About = () => {
                                     <div className="md:col-span-2 p-6 md:p-8">
                                         <h3 className="text-2xl font-bold text-gray-900 mb-1">Angel Garcia</h3>
                                         <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">
-                                            Enterprise Seller
+                                            Enterprise Architect AI Solutions
                                         </p>
                                         <p className="text-gray-600 leading-relaxed mb-4">
                                             Angel is a Dallas-based enterprise seller with 8+ years helping CIOs, CISOs, and IT leaders turn their hardest moments — M&amp;A integrations, ERP migrations, aging infrastructure — into measurable network, security, cloud, and infrastructure wins.
