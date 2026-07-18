@@ -56,6 +56,13 @@
     <title>TrustedNetworx — Managed Telecom Solutions</title>
   </head>
   <body>
+    <!-- Skip-to-content for keyboard / screen reader users -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-sm focus:text-white focus:outline-none"
+    >
+      Skip to main content
+    </a>
     <!--
       Hidden static form so Netlify's build-time bots can detect the contact form.
       The live React form (src/pages/Contact.tsx) posts to this same form name.
@@ -69,6 +76,8 @@
       <textarea name="message"></textarea>
     </form>
     <div id="root"></div>
+    <!-- Pipedrive CRM webforms — connects contact form to Pipedrive leads -->
+    <script src="https://webforms.pipedrive.com/f/loader"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

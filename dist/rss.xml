@@ -7,6 +7,33 @@
   <language>en-us</language>
   <atom:link href="https://trustednetworx.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>Retail Connectivity: Keeping POS Systems Running Across Hundreds of Locations</title>
+    <link>https://trustednetworx.com/blog/retail-connectivity-keeping-pos-systems-running-across-hundreds-of-locations</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/retail-connectivity-keeping-pos-systems-running-across-hundreds-of-locations</guid>
+    <pubDate>Thu, 16 Jul 2026 00:00:00 GMT</pubDate>
+    <description>Retail networks need resilient design, failover, and support so POS, inventory, guest Wi-Fi, and security stay online at every location.</description>
+    <category>Industry Spotlights</category>
+    <enclosure url="https://trustednetworx.com/blog-images/retail-connectivity-keeping-pos-systems-running-across-hundreds-of-locations.png" type="image/png"/>
+  </item>
+  <item>
+    <title>The Connected Construction Site: Connectivity for Jobsite Operations</title>
+    <link>https://trustednetworx.com/blog/connected-construction-site-connectivity-jobsite-operations</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/connected-construction-site-connectivity-jobsite-operations</guid>
+    <pubDate>Sun, 12 Jul 2026 00:00:00 GMT</pubDate>
+    <description>Construction sites need reliable connectivity for trailers, cameras, crews, and cloud workflows without waiting months for permanent circuits.</description>
+    <category>Industry Spotlights</category>
+    <enclosure url="https://trustednetworx.com/blog-images/connected-construction-site-connectivity-jobsite-operations.png" type="image/png"/>
+  </item>
+  <item>
+    <title>Healthcare Telecom: Balancing HIPAA Compliance with Modernization</title>
+    <link>https://trustednetworx.com/blog/healthcare-telecom-balancing-hipaa-compliance-modernization</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/healthcare-telecom-balancing-hipaa-compliance-modernization</guid>
+    <pubDate>Sat, 11 Jul 2026 00:00:00 GMT</pubDate>
+    <description>Healthcare teams can modernize voice and connectivity without creating HIPAA gaps if security, redundancy, and vendor controls are built in from day one.</description>
+    <category>Industry Spotlights</category>
+    <enclosure url="https://trustednetworx.com/blog-images/healthcare-telecom-balancing-hipaa-compliance-modernization.png" type="image/png"/>
+  </item>
+  <item>
     <title>Voice AI in Business: Beyond the Robot Operator</title>
     <link>https://trustednetworx.com/blog/voice-ai-in-business-beyond-the-robot-operator</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/voice-ai-in-business-beyond-the-robot-operator</guid>

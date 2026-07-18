@@ -76,9 +76,32 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://trustednetworx.com/about/team</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://trustednetworx.com/contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://trustednetworx.com/blog/retail-connectivity-keeping-pos-systems-running-across-hundreds-of-locations</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://trustednetworx.com/blog/connected-construction-site-connectivity-jobsite-operations</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://trustednetworx.com/blog/healthcare-telecom-balancing-hipaa-compliance-modernization</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://trustednetworx.com/blog/voice-ai-in-business-beyond-the-robot-operator</loc>

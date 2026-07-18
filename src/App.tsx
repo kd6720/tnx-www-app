@@ -44,7 +44,7 @@ function App() {
         <div className="min-h-screen bg-navy-50 text-navy-900 antialiased">
           <ScrollToTop />
           <Navbar />
-          <main>
+          <main id="main-content" tabIndex={-1}>
             <Suspense fallback={<PageFallback />}>
               <Routes>
                 <Route path="/" element={<Home />} />
