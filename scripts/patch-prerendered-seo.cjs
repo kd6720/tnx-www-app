@@ -176,6 +176,113 @@ function patchBlogPosts(distDir, srcBlogDir, rootDir) {
   }
 }
 
+// --- Static route pages (non-blog) ---
+// These pages get unique HTML shells with proper SEO meta so search engines
+// see correct titles/descriptions without needing to execute JavaScript.
+const ROUTE_PAGES = [
+  {
+    route: 'about',
+    title: 'About Us | TrustedNetworx',
+    description: 'With 25+ years in telecom and IoT, TrustedNetworx delivers advanced connectivity, voice, and managed solutions for enterprise and multi-site organizations.',
+  },
+  {
+    route: 'about/team',
+    title: 'Our Team | TrustedNetworx',
+    description: 'Meet the leadership and partners behind TrustedNetworx — telecom experts, enterprise architects, and creative professionals driving connectivity forward.',
+  },
+  {
+    route: 'pots-replacement',
+    title: 'POTS Replacement | TrustedNetworx',
+    description: 'Modern, cost-saving alternatives to legacy POTS lines. Migrate analog systems to reliable IP and cellular networks with TrustedNetworx.',
+  },
+  {
+    route: 'ai-consulting',
+    title: 'AI Consulting & Solutions | TrustedNetworx',
+    description: 'Practical AI consulting and implementation for telecom operators, channel partners, and multi-site businesses — automation, customer engagement, and strategy with measurable ROI.',
+  },
+  {
+    route: 'ai-workforce',
+    title: 'AI Workforce — AI Agents for Telecom | TrustedNetworx',
+    description: 'Deploy AI sales, service, and operations agents built for telecom. Lead qualification, scheduling, email triage, infrastructure monitoring — 24/7, telecom-native.',
+  },
+  {
+    route: 'fleet-management',
+    title: 'Fleet Management & Connectivity | TrustedNetworx',
+    description: 'Scalable fleet management and mobile connectivity solutions — IoT SIMs, 5G/LTE failover, and unified device tracking for transportation, logistics, and field services.',
+  },
+  {
+    route: 'internet-connectivity',
+    title: 'Internet Connectivity | TrustedNetworx',
+    description: 'Enterprise-grade internet connectivity — managed SD-WAN, Starlink satellite broadband, and global IoT SIM solutions to keep your business securely online.',
+  },
+  {
+    route: 'voice-solutions',
+    title: 'Voice Solutions — IP PBX & Unified Communications | TrustedNetworx',
+    description: 'Enterprise voice communications from TrustedNetworx — cloud-based IP PBX, HD voice, unified communications, voice analytics, and scalable cloud calling for modern business.',
+  },
+  {
+    route: 'mobility-solutions',
+    title: 'Mobility Solutions | TrustedNetworx',
+    description: 'Enterprise mobility management from TrustedNetworx — MDaaS, IoT connectivity, and unified endpoint management to keep your mobile workforce secure and productive.',
+  },
+  {
+    route: 'tools',
+    title: 'Free Telecom Assessment Tools | TrustedNetworx',
+    description: 'Interactive tools to evaluate your telecom infrastructure: POTS replacement ROI, copper sunset risk, and business continuity readiness.',
+  },
+  {
+    route: 'tools/pots-roi-calculator',
+    title: 'POTS Replacement ROI Calculator | TrustedNetworx',
+    description: 'Calculate the cost savings of replacing legacy POTS lines with IP/cellular alternatives. See estimated ROI, break-even timeline, and total cost of ownership.',
+  },
+  {
+    route: 'tools/copper-sunset-risk',
+    title: 'Copper Sunset Risk Assessment | TrustedNetworx',
+    description: 'Assess your organization\'s exposure to the copper network shutdown. Identify at-risk phone lines, elevator lines, alarm panels, and fax machines.',
+  },
+  {
+    route: 'tools/failover-readiness',
+    title: 'Failover Readiness Check | TrustedNetworx',
+    description: 'Check how prepared your business is for an internet outage. Score your network resilience and get recommendations for LTE/5G wireless failover.',
+  },
+  {
+    route: 'tools/ai-roi-calculator',
+    title: 'AI Implementation ROI Calculator | TrustedNetworx',
+    description: 'Estimate the return on investment for AI automation in your business. Compare manual vs. AI-powered workflows across sales, service, and operations.',
+  },
+  {
+    route: 'tools/ai-readiness',
+    title: 'AI Readiness Assessment | TrustedNetworx',
+    description: 'Evaluate your organization\'s readiness for AI adoption. Score data maturity, operational readiness, and workforce alignment for successful AI deployment.',
+  },
+  {
+    route: 'contact',
+    title: 'Contact Us | TrustedNetworx',
+    description: 'Get in touch with the TrustedNetworx team to discuss your managed telecom, connectivity, voice, and AI needs.',
+  },
+];
+
+function patchRoutePages(distDir) {
+  const fallbackHtmlPath = path.join(distDir, 'index.html');
+  let count = 0;
+
+  for (const { route, title, description } of ROUTE_PAGES) {
+    const filePath = path.join(distDir, route, 'index.html');
+    ensureHtmlShell(filePath, fallbackHtmlPath);
+    patchPage(filePath, {
+      title,
+      description,
+      canonical: `${SITE_URL}/${route}`,
+      image: DEFAULT_OG_IMAGE,
+      type: 'website',
+      jsonLd: [],
+    });
+    count++;
+  }
+
+  console.log(`[postbuild] Patched ${count} route page SEO shells.`);
+}
+
 function main() {
   const root = path.join(__dirname, '..');
   const distDir = path.join(root, 'dist');
@@ -183,6 +290,7 @@ function main() {
 
   patchBlogIndex(distDir);
   patchBlogPosts(distDir, srcBlogDir, root);
+  patchRoutePages(distDir);
   console.log('[postbuild] Patched prerendered blog SEO metadata.');
 }
 
