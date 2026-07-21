@@ -11,6 +11,9 @@ from pathlib import Path
 SITE_URL = "https://trustednetworx.com"
 DEFAULT_ENV_PATH = Path.home() / ".hermes" / ".env"
 LOG_PATH = Path.home() / ".hermes" / "cron" / "blog-webhook-log.jsonl"
+LINKED_API_URL = "https://api.linkedapi.io/workflows"
+LINKED_API_TOKEN = "linked_mrkvufzt22e923641edf4e8e6b03863896b036e16ed094d5a6e4ab4b"
+LINKEDIN_IDENT_TOKEN = "id_mrkxeagya0de1d000626c17e2e74390cd74e0d353e3415c234c477a0"
 ENV_KEYS = {
     'facebook': 'MAKE_FACEBOOK_WEBHOOK_URL',
     'linkedin': 'MAKE_LINKEDIN_WEBHOOK_URL',
@@ -208,7 +211,84 @@ def post_payload(webhook_url: str, payload: dict[str, object]) -> dict:
         }
 
 
+def post_to_linkedin(slug: str) -> dict:
+    """Post directly to LinkedIn via Linked API with image support."""
+    payload = build_payload(slug, 'linkedin')
+    image_url = payload.get('image_url', '')
+    caption = payload.get('caption', '')
+
+    if not caption:
+        return {'channel': 'linkedin', 'ok': False, 'error': 'No caption generated'}
+
+    attachments = []
+    if image_url:
+        attachments.append({'url': image_url, 'type': 'image'})
+
+    workflow = {
+        'actionType': 'st.createPost',
+        'label': f'blog-{slug}',
+        'text': caption,
+        'attachments': attachments,
+    }
+
+    data = json.dumps(workflow).encode('utf-8')
+    req = urllib.request.Request(
+        LINKED_API_URL,
+        data=data,
+        headers={
+            'Content-Type': 'application/json',
+            'linked-api-token': LINKED_API_TOKEN,
+            'identification-token': LINKEDIN_IDENT_TOKEN,
+        },
+        method='POST',
+    )
+
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            body = resp.read().decode('utf-8', errors='replace')
+            return {
+                'channel': 'linkedin',
+                'ok': resp.status in (200, 201),
+                'status': resp.status,
+                'response': body[:1000],
+                'has_image': len(attachments) > 0,
+            }
+    except Exception as exc:
+        return {
+            'channel': 'linkedin',
+            'ok': False,
+            'error': str(exc),
+            'has_image': len(attachments) > 0,
+        }
+
+
 def send_for_channel(slug: str, channel: str, dry_run: bool) -> dict:
+    # LinkedIn uses Linked API directly (with image support)
+    if channel == 'linkedin' and not dry_run:
+        try:
+            result = post_to_linkedin(slug)
+            entry = {
+                'timestamp': datetime.now(timezone.utc).isoformat(),
+                'slug': slug,
+                'channel': 'linkedin',
+                'ok': result['ok'],
+                'status': result.get('status'),
+                'response': result.get('response', result.get('error', '')),
+                'has_image': result.get('has_image', False),
+            }
+            append_log(entry)
+            return result
+        except Exception as exc:
+            entry = {
+                'timestamp': datetime.now(timezone.utc).isoformat(),
+                'slug': slug,
+                'channel': 'linkedin',
+                'ok': False,
+                'error': str(exc),
+            }
+            append_log(entry)
+            return {'channel': 'linkedin', 'ok': False, 'error': str(exc)}
+
     env_key = ENV_KEYS[channel]
     webhook_url = load_env_value(env_key)
     payload = build_payload(slug, channel)
