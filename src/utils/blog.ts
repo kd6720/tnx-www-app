@@ -28,7 +28,8 @@ import leadQualificationAtScale from '../content/blog/lead-qualification-at-scal
 import mostAiProjectsFail from '../content/blog/why-most-ai-projects-fail-and-how-to-succeed.md?raw';
 import nfpa72ComplianceFireAlarm from '../content/blog/nfpa-72-compliance-fire-alarm-communications-practical-guide.md?raw';
 import aiForScheduling from '../content/blog/ai-for-scheduling-reclaim-5-plus-hours-per-week.md?raw';
-import voiceAiInBusiness from '../content/blog/voice-ai-in-business-beyond-the-robot-operator.md?raw';
+import voiceAiInBusiness from '../content/blog/voice-ai-in-business-beyond-the-robot-operator.md?raw'
+import govTelecomModernization from '../content/blog/government-telecom-modernization-navigating-procurement-compliance.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -79,6 +80,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['government-telecom-modernization-navigating-procurement-compliance', govTelecomModernization],
   ['retail-connectivity-keeping-pos-systems-running-across-hundreds-of-locations', retailConnectivityPosUptime],
   ['nfpa-72-compliance-fire-alarm-communications-practical-guide', nfpa72ComplianceFireAlarm],
   ['healthcare-telecom-balancing-hipaa-compliance-modernization', healthcareTelecomHipaaCompliance],
