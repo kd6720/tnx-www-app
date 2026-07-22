@@ -30,6 +30,7 @@ import nfpa72ComplianceFireAlarm from '../content/blog/nfpa-72-compliance-fire-a
 import aiForScheduling from '../content/blog/ai-for-scheduling-reclaim-5-plus-hours-per-week.md?raw';
 import voiceAiInBusiness from '../content/blog/voice-ai-in-business-beyond-the-robot-operator.md?raw'
 import govTelecomModernization from '../content/blog/government-telecom-modernization-navigating-procurement-compliance.md?raw';
+import autoDealershipConnectivity from '../content/blog/auto-dealership-connectivity-showroom-to-service-bay.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -111,6 +112,7 @@ const RAW_POSTS: [string, string][] = [
   ['why-most-ai-projects-fail-and-how-to-succeed', mostAiProjectsFail],
   ['ai-for-scheduling-reclaim-5-plus-hours-per-week', aiForScheduling],
   ['voice-ai-in-business-beyond-the-robot-operator', voiceAiInBusiness],
+  ['auto-dealership-connectivity-showroom-to-service-bay', autoDealershipConnectivity],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
