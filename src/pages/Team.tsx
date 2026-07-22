@@ -88,37 +88,41 @@ const Team = () => {
                             </div>
                         </div>
 
-                        {/* Angel Garcia */}
+                        {/* Angele Castro */}
                         <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
                             <div className="grid grid-cols-1 md:grid-cols-3">
                                 <div className="bg-gradient-to-br from-brand-800 to-brand-950 flex items-center justify-center p-6">
                                     <img
-                                        src="/team/angel-garcia.jpg"
-                                        alt="Angel Garcia"
+                                        src="/team/angele-castro.jpg"
+                                        alt="Angele Castro"
                                         className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-brand-400/30 shadow-xl"
                                     />
                                 </div>
                                 <div className="md:col-span-2 p-6 md:p-8">
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-1">Angel Garcia</h3>
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-1">Angele Castro</h3>
                                     <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">
-                                        Enterprise Architect AI Solutions
+                                        Enterprise Solutions Partner
                                     </p>
                                     <p className="text-gray-600 leading-relaxed mb-4">
-                                        Angel is a Dallas-based enterprise seller with 8+ years helping CIOs, CISOs, and IT leaders turn their hardest moments — M&amp;A integrations, ERP migrations, aging infrastructure — into measurable network, security, cloud, and infrastructure wins.
+                                        Angele brings deep expertise in enterprise technology solutions, helping organizations navigate complex infrastructure challenges with practical, results-driven strategies.
                                     </p>
                                     <p className="text-gray-600 leading-relaxed">
-                                        A TrustedNetworx partner for over a year, Angel is known for relentless preparation, using AI-driven research and deal intelligence to have the homework done before the conversation starts. Competitive by nature and a lifelong athlete, he brings the same standard to every engagement: do the reps, compound small wins, and never leave anything unfinished.
+                                        As a TrustedNetworx partner, Angele focuses on building lasting client relationships through preparation, market intelligence, and a commitment to measurable outcomes.
                                     </p>
                                     <div className="flex gap-3 mt-5">
                                         <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <Network size={14} /> Enterprise Sales
+                                            <Network size={14} /> Enterprise Solutions
                                         </span>
                                         <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <Shield size={14} /> Security &amp; Cloud
+                                            <Shield size={14} /> Infrastructure
                                         </span>
                                         <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <TrendingUp size={14} /> AI-Driven Research
+                                            <TrendingUp size={14} /> Strategic Growth
                                         </span>
+                                        <a href="https://www.linkedin.com/in/angelecastro/" target="_blank" rel="noopener noreferrer"
+                                           className="inline-flex items-center gap-1.5 text-xs text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded-full transition-colors">
+                                            🔗 LinkedIn
+                                        </a>
                                     </div>
                                 </div>
                             </div>
