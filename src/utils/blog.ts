@@ -31,6 +31,7 @@ import aiForScheduling from '../content/blog/ai-for-scheduling-reclaim-5-plus-ho
 import voiceAiInBusiness from '../content/blog/voice-ai-in-business-beyond-the-robot-operator.md?raw'
 import govTelecomModernization from '../content/blog/government-telecom-modernization-navigating-procurement-compliance.md?raw';
 import autoDealershipConnectivity from '../content/blog/auto-dealership-connectivity-showroom-to-service-bay.md?raw';
+import multiFamilyPropertyTelecom from '../content/blog/multi-family-property-telecom-amenities-attract-tenants.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -113,6 +114,7 @@ const RAW_POSTS: [string, string][] = [
   ['ai-for-scheduling-reclaim-5-plus-hours-per-week', aiForScheduling],
   ['voice-ai-in-business-beyond-the-robot-operator', voiceAiInBusiness],
   ['auto-dealership-connectivity-showroom-to-service-bay', autoDealershipConnectivity],
+  ['multi-family-property-telecom-amenities-attract-tenants', multiFamilyPropertyTelecom],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
