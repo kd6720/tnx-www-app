@@ -32,6 +32,7 @@ import voiceAiInBusiness from '../content/blog/voice-ai-in-business-beyond-the-r
 import govTelecomModernization from '../content/blog/government-telecom-modernization-navigating-procurement-compliance.md?raw';
 import autoDealershipConnectivity from '../content/blog/auto-dealership-connectivity-showroom-to-service-bay.md?raw';
 import multiFamilyPropertyTelecom from '../content/blog/multi-family-property-telecom-amenities-attract-tenants.md?raw';
+import elevatorPhoneRequirements from '../content/blog/elevator-phone-requirements-what-codes-actually-say.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -115,6 +116,7 @@ const RAW_POSTS: [string, string][] = [
   ['voice-ai-in-business-beyond-the-robot-operator', voiceAiInBusiness],
   ['auto-dealership-connectivity-showroom-to-service-bay', autoDealershipConnectivity],
   ['multi-family-property-telecom-amenities-attract-tenants', multiFamilyPropertyTelecom],
+  ['elevator-phone-requirements-what-codes-actually-say', elevatorPhoneRequirements],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
