@@ -33,6 +33,7 @@ import govTelecomModernization from '../content/blog/government-telecom-moderniz
 import autoDealershipConnectivity from '../content/blog/auto-dealership-connectivity-showroom-to-service-bay.md?raw';
 import multiFamilyPropertyTelecom from '../content/blog/multi-family-property-telecom-amenities-attract-tenants.md?raw';
 import elevatorPhoneRequirements from '../content/blog/elevator-phone-requirements-what-codes-actually-say.md?raw';
+import educationConnectivitySchoolDay from '../content/blog/education-connectivity-networks-that-survive-school-day.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -117,6 +118,7 @@ const RAW_POSTS: [string, string][] = [
   ['auto-dealership-connectivity-showroom-to-service-bay', autoDealershipConnectivity],
   ['multi-family-property-telecom-amenities-attract-tenants', multiFamilyPropertyTelecom],
   ['elevator-phone-requirements-what-codes-actually-say', elevatorPhoneRequirements],
+  ['education-connectivity-networks-that-survive-school-day', educationConnectivitySchoolDay],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
