@@ -34,6 +34,7 @@ import autoDealershipConnectivity from '../content/blog/auto-dealership-connecti
 import multiFamilyPropertyTelecom from '../content/blog/multi-family-property-telecom-amenities-attract-tenants.md?raw';
 import elevatorPhoneRequirements from '../content/blog/elevator-phone-requirements-what-codes-actually-say.md?raw';
 import educationConnectivitySchoolDay from '../content/blog/education-connectivity-networks-that-survive-school-day.md?raw';
+import fccPotsForbearance from '../content/blog/fcc-pots-forbearance-what-changed-and-what-it-means.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -119,6 +120,7 @@ const RAW_POSTS: [string, string][] = [
   ['multi-family-property-telecom-amenities-attract-tenants', multiFamilyPropertyTelecom],
   ['elevator-phone-requirements-what-codes-actually-say', elevatorPhoneRequirements],
   ['education-connectivity-networks-that-survive-school-day', educationConnectivitySchoolDay],
+  ['fcc-pots-forbearance-what-changed-and-what-it-means', fccPotsForbearance],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
