@@ -7,6 +7,51 @@
   <language>en-us</language>
   <atom:link href="https://trustednetworx.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>UL 864 and Fire Alarm Monitoring: Staying Compliant During Migration</title>
+    <link>https://trustednetworx.com/blog/ul-864-fire-alarm-monitoring-compliance-migration</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/ul-864-fire-alarm-monitoring-compliance-migration</guid>
+    <pubDate>Wed, 29 Jul 2026 00:00:00 GMT</pubDate>
+    <description>Migrating fire alarm communications away from POTS doesn't have to trigger a compliance headache — here's what UL 864 actually requires and how to stay fully compliant.</description>
+    <category>Compliance &amp; Regulation</category>
+    <enclosure url="https://trustednetworx.com/blog-images/ul-864-fire-alarm-monitoring-compliance-migration.png" type="image/png"/>
+  </item>
+  <item>
+    <title>FCC POTS Forbearance: What Changed and What It Means</title>
+    <link>https://trustednetworx.com/blog/fcc-pots-forbearance-what-changed-and-what-it-means</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/fcc-pots-forbearance-what-changed-and-what-it-means</guid>
+    <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
+    <description>The FCC's POTS forbearance is reshaping telecom regulation. Here's what actually changed, who it affects, and what to do next.</description>
+    <category>Compliance &amp; Regulation</category>
+    <enclosure url="https://trustednetworx.com/blog-images/fcc-pots-forbearance-what-changed-and-what-it-means.png" type="image/png"/>
+  </item>
+  <item>
+    <title>Education Connectivity: Building Networks That Survive the School Day</title>
+    <link>https://trustednetworx.com/blog/education-connectivity-networks-that-survive-school-day</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/education-connectivity-networks-that-survive-school-day</guid>
+    <pubDate>Mon, 27 Jul 2026 00:00:00 GMT</pubDate>
+    <description>Why K-12 and higher-ed networks crash during peak usage — and how smart connectivity design keeps students online all day.</description>
+    <category>Industry Spotlights</category>
+    <enclosure url="https://trustednetworx.com/blog-images/education-connectivity-networks-that-survive-school-day.png" type="image/png"/>
+  </item>
+  <item>
+    <title>Elevator Phone Requirements: What the Codes Actually Say</title>
+    <link>https://trustednetworx.com/blog/elevator-phone-requirements-what-codes-actually-say</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/elevator-phone-requirements-what-codes-actually-say</guid>
+    <pubDate>Fri, 24 Jul 2026 00:00:00 GMT</pubDate>
+    <description>Elevator emergency phones aren't optional — ASME A17.1, IBC, and ADA all require them. Here's what facility managers need to know to stay compliant.</description>
+    <category>Compliance &amp; Regulation</category>
+    <enclosure url="https://trustednetworx.com/blog-images/elevator-phone-requirements-what-codes-actually-say.png" type="image/png"/>
+  </item>
+  <item>
+    <title>Multi-Family Property Telecom: Amenities That Attract Tenants</title>
+    <link>https://trustednetworx.com/blog/multi-family-property-telecom-amenities-attract-tenants</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/multi-family-property-telecom-amenities-attract-tenants</guid>
+    <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
+    <description>The telecom amenities that actually move the needle on lease conversions — and the ones tenants stopped caring about five years ago.</description>
+    <category>Industry Spotlights</category>
+    <enclosure url="https://trustednetworx.com/blog-images/multi-family-property-telecom-amenities-attract-tenants.png" type="image/png"/>
+  </item>
+  <item>
     <title>Auto Dealership Connectivity: From Showroom to Service Bay</title>
     <link>https://trustednetworx.com/blog/auto-dealership-connectivity-showroom-to-service-bay</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/auto-dealership-connectivity-showroom-to-service-bay</guid>
