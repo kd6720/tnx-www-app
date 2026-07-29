@@ -12,8 +12,11 @@ SITE_URL = "https://trustednetworx.com"
 DEFAULT_ENV_PATH = Path.home() / ".hermes" / ".env"
 LOG_PATH = Path.home() / ".hermes" / "cron" / "blog-webhook-log.jsonl"
 LINKED_API_URL = "https://api.linkedapi.io/workflows"
-LINKED_API_TOKEN = "linked_mrkvufzt22e923641edf4e8e6b03863896b036e16ed094d5a6e4ab4b"
-LINKEDIN_IDENT_TOKEN = "id_mrkxeagya0de1d000626c17e2e74390cd74e0d353e3415c234c477a0"
+# SECURITY: credentials come from ~/.hermes/.env (or the environment) — never hardcode.
+# Add to ~/.hermes/.env on the host that runs this cron job:
+#   LINKED_API_TOKEN=<new token from linkedapi.io>
+#   LINKEDIN_IDENT_TOKEN=<new identification token from linkedapi.io>
+# (loaded lazily in post_to_linkedin() via load_env_value())
 ENV_KEYS = {
     'facebook': 'MAKE_FACEBOOK_WEBHOOK_URL',
     'linkedin': 'MAKE_LINKEDIN_WEBHOOK_URL',
@@ -213,6 +216,15 @@ def post_payload(webhook_url: str, payload: dict[str, object]) -> dict:
 
 def post_to_linkedin(slug: str) -> dict:
     """Post directly to LinkedIn via Linked API with image support."""
+    api_token = load_env_value('LINKED_API_TOKEN')
+    ident_token = load_env_value('LINKEDIN_IDENT_TOKEN')
+    if not api_token or not ident_token:
+        return {
+            'channel': 'linkedin',
+            'ok': False,
+            'error': 'LINKED_API_TOKEN / LINKEDIN_IDENT_TOKEN not set in environment or ~/.hermes/.env',
+        }
+
     payload = build_payload(slug, 'linkedin')
     image_url = payload.get('image_url', '')
     caption = payload.get('caption', '')
@@ -237,8 +249,8 @@ def post_to_linkedin(slug: str) -> dict:
         data=data,
         headers={
             'Content-Type': 'application/json',
-            'linked-api-token': LINKED_API_TOKEN,
-            'identification-token': LINKEDIN_IDENT_TOKEN,
+            'linked-api-token': api_token,
+            'identification-token': ident_token,
         },
         method='POST',
     )
