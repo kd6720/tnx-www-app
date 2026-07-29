@@ -7,6 +7,15 @@
   <language>en-us</language>
   <atom:link href="https://trustednetworx.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>UL 864 and Fire Alarm Monitoring: Staying Compliant During Migration</title>
+    <link>https://trustednetworx.com/blog/ul-864-fire-alarm-monitoring-compliance-migration</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/ul-864-fire-alarm-monitoring-compliance-migration</guid>
+    <pubDate>Wed, 29 Jul 2026 00:00:00 GMT</pubDate>
+    <description>Migrating fire alarm communications away from POTS doesn't have to trigger a compliance headache — here's what UL 864 actually requires and how to stay fully compliant.</description>
+    <category>Compliance &amp; Regulation</category>
+    <enclosure url="https://trustednetworx.com/blog-images/ul-864-fire-alarm-monitoring-compliance-migration.png" type="image/png"/>
+  </item>
+  <item>
     <title>FCC POTS Forbearance: What Changed and What It Means</title>
     <link>https://trustednetworx.com/blog/fcc-pots-forbearance-what-changed-and-what-it-means</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/fcc-pots-forbearance-what-changed-and-what-it-means</guid>
