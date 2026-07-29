@@ -104,10 +104,10 @@ const Team = () => {
                                         Enterprise Solutions Partner
                                     </p>
                                     <p className="text-gray-600 leading-relaxed mb-4">
-                                        Angele brings deep expertise in enterprise technology solutions, helping organizations navigate complex infrastructure challenges with practical, results-driven strategies.
+                                        Angel has spent 12 years building marketing technology. Five years running SEO programs, three years leading a marketing agency as managing partner, then two years at Amazon managing $50M+ in annual sponsored ads spend and building internal tooling for campaign analysis.
                                     </p>
                                     <p className="text-gray-600 leading-relaxed">
-                                        As a TrustedNetworx partner, Angele focuses on building lasting client relationships through preparation, market intelligence, and a commitment to measurable outcomes.
+                                        Having been on both sides — the operator drowning in reporting and the engineer who automates it away — Angel brings a rare combination of hands-on execution and systems thinking to every client engagement.
                                     </p>
                                     <div className="flex gap-3 mt-5">
                                         <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
