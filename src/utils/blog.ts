@@ -36,6 +36,7 @@ import elevatorPhoneRequirements from '../content/blog/elevator-phone-requiremen
 import educationConnectivitySchoolDay from '../content/blog/education-connectivity-networks-that-survive-school-day.md?raw';
 import fccPotsForbearance from '../content/blog/fcc-pots-forbearance-what-changed-and-what-it-means.md?raw';
 import ul864FireAlarmMonitoring from '../content/blog/ul-864-fire-alarm-monitoring-compliance-migration.md?raw';
+import securitySystemCommsPotsIpCellular from '../content/blog/security-system-communications-pots-to-ip-cellular.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -123,6 +124,7 @@ const RAW_POSTS: [string, string][] = [
   ['education-connectivity-networks-that-survive-school-day', educationConnectivitySchoolDay],
   ['fcc-pots-forbearance-what-changed-and-what-it-means', fccPotsForbearance],
   ['ul-864-fire-alarm-monitoring-compliance-migration', ul864FireAlarmMonitoring],
+  ['security-system-communications-pots-to-ip-cellular', securitySystemCommsPotsIpCellular],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS

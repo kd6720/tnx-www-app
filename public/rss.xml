@@ -7,6 +7,15 @@
   <language>en-us</language>
   <atom:link href="https://trustednetworx.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>Security System Communications: From POTS to IP to Cellular</title>
+    <link>https://trustednetworx.com/blog/security-system-communications-pots-to-ip-cellular</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/security-system-communications-pots-to-ip-cellular</guid>
+    <pubDate>Thu, 30 Jul 2026 00:00:00 GMT</pubDate>
+    <description>Security systems still running on POTS lines are a liability. Here's how to migrate alarm communications to IP and cellular without triggering false alarms or compliance gaps.</description>
+    <category>Compliance &amp; Regulation</category>
+    <enclosure url="https://trustednetworx.com/blog-images/security-system-communications-pots-to-ip-cellular.png" type="image/png"/>
+  </item>
+  <item>
     <title>UL 864 and Fire Alarm Monitoring: Staying Compliant During Migration</title>
     <link>https://trustednetworx.com/blog/ul-864-fire-alarm-monitoring-compliance-migration</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/ul-864-fire-alarm-monitoring-compliance-migration</guid>
