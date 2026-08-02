@@ -38,6 +38,7 @@ import educationConnectivitySchoolDay from '../content/blog/education-connectivi
 import fccPotsForbearance from '../content/blog/fcc-pots-forbearance-what-changed-and-what-it-means.md?raw';
 import ul864FireAlarmMonitoring from '../content/blog/ul-864-fire-alarm-monitoring-compliance-migration.md?raw';
 import securitySystemCommsPotsIpCellular from '../content/blog/security-system-communications-pots-to-ip-cellular.md?raw';
+import emergencyCommsSeniorLiving from '../content/blog/emergency-communication-requirements-senior-living-facilities.md?raw';
 import complianceAuditChecklistFacilityManager from '../content/blog/compliance-audit-checklist-facility-manager.md?raw';
 
 export interface BlogPost {
@@ -89,6 +90,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['emergency-communication-requirements-senior-living-facilities', emergencyCommsSeniorLiving],
   ['compliance-audit-checklist-facility-manager', complianceAuditChecklistFacilityManager],
   ['government-telecom-modernization-navigating-procurement-compliance', govTelecomModernization],
   ['retail-connectivity-keeping-pos-systems-running-across-hundreds-of-locations', retailConnectivityPosUptime],
