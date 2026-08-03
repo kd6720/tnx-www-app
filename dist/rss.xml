@@ -7,6 +7,42 @@
   <language>en-us</language>
   <atom:link href="https://trustednetworx.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>Emergency Communication Requirements for Senior Living Facilities</title>
+    <link>https://trustednetworx.com/blog/emergency-communication-requirements-senior-living-facilities</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/emergency-communication-requirements-senior-living-facilities</guid>
+    <pubDate>Sun, 02 Aug 2026 00:00:00 GMT</pubDate>
+    <description>A practical breakdown of emergency call, fire alarm, and elevator phone requirements for senior living operators — and how to stay compliant without overspending.</description>
+    <category>Compliance &amp; Regulation</category>
+    <enclosure url="https://trustednetworx.com/blog-images/emergency-communication-requirements-senior-living-facilities.png" type="image/png"/>
+  </item>
+  <item>
+    <title>The Compliance Audit Checklist Every Facility Manager Needs</title>
+    <link>https://trustednetworx.com/blog/compliance-audit-checklist-facility-manager</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/compliance-audit-checklist-facility-manager</guid>
+    <pubDate>Sat, 01 Aug 2026 00:00:00 GMT</pubDate>
+    <description>A practical telecom compliance audit checklist for facility managers covering fire alarms, elevator phones, emergency comms, and POTS replacement deadlines.</description>
+    <category>Compliance &amp; Regulation</category>
+    <enclosure url="https://trustednetworx.com/blog-images/compliance-audit-checklist-facility-manager.png" type="image/png"/>
+  </item>
+  <item>
+    <title>When Compliance Drives Innovation (Instead of Blocking It)</title>
+    <link>https://trustednetworx.com/blog/when-compliance-drives-innovation-instead-of-blocking-it</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/when-compliance-drives-innovation-instead-of-blocking-it</guid>
+    <pubDate>Fri, 31 Jul 2026 00:00:00 GMT</pubDate>
+    <description>Compliance doesn't have to kill progress. Here's how smart telecom upgrades turn regulatory requirements into catalysts for better infrastructure.</description>
+    <category>Compliance &amp; Regulation</category>
+    <enclosure url="https://trustednetworx.com/blog-images/when-compliance-drives-innovation-instead-of-blocking-it.png" type="image/png"/>
+  </item>
+  <item>
+    <title>Security System Communications: From POTS to IP to Cellular</title>
+    <link>https://trustednetworx.com/blog/security-system-communications-pots-to-ip-cellular</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/security-system-communications-pots-to-ip-cellular</guid>
+    <pubDate>Thu, 30 Jul 2026 00:00:00 GMT</pubDate>
+    <description>Security systems still running on POTS lines are a liability. Here's how to migrate alarm communications to IP and cellular without triggering false alarms or compliance gaps.</description>
+    <category>Compliance &amp; Regulation</category>
+    <enclosure url="https://trustednetworx.com/blog-images/security-system-communications-pots-to-ip-cellular.png" type="image/png"/>
+  </item>
+  <item>
     <title>UL 864 and Fire Alarm Monitoring: Staying Compliant During Migration</title>
     <link>https://trustednetworx.com/blog/ul-864-fire-alarm-monitoring-compliance-migration</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/ul-864-fire-alarm-monitoring-compliance-migration</guid>

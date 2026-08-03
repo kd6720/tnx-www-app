@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Shield, Award, Zap, Handshake, Video, Camera, Palette, Network, TrendingUp
+    Shield, Award, Zap, Handshake, Video, Camera, Palette, Network, TrendingUp, Code, Database, Cpu
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
@@ -88,36 +88,39 @@ const Team = () => {
                             </div>
                         </div>
 
-                        {/* Angele Castro */}
+                        {/* Angel Castro */}
                         <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
                             <div className="grid grid-cols-1 md:grid-cols-3">
                                 <div className="bg-gradient-to-br from-brand-800 to-brand-950 flex items-center justify-center p-6">
                                     <img
                                         src="/team/angele-castro.jpg"
-                                        alt="Angele Castro"
+                                        alt="Angel Castro"
                                         className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-brand-400/30 shadow-xl"
                                     />
                                 </div>
                                 <div className="md:col-span-2 p-6 md:p-8">
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-1">Angele Castro</h3>
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-1">Angel Castro</h3>
                                     <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">
-                                        Enterprise Solutions Partner
+                                        AI Developer & Automation Engineer
                                     </p>
                                     <p className="text-gray-600 leading-relaxed mb-4">
-                                        Angel has spent 12 years building marketing technology. Five years running SEO programs, three years leading a marketing agency as managing partner, then two years at Amazon managing $50M+ in annual sponsored ads spend and building internal tooling for campaign analysis.
+                                        Angel is a San Francisco-based AI developer who builds Claude-powered agents, automation pipelines, and full-stack systems for B2B teams across EMEA and LatAm. His work spans agent orchestration, RAG and embedding pipelines, and internal tooling built with TypeScript, Next.js, Python, and Supabase — shipped end-to-end, from architecture to production.
                                     </p>
-                                    <p className="text-gray-600 leading-relaxed">
-                                        Having been on both sides — the operator drowning in reporting and the engineer who automates it away — Angel brings a rare combination of hands-on execution and systems thinking to every client engagement.
+                                    <p className="text-gray-600 leading-relaxed mb-4">
+                                        A daily Claude Code and Claude API user, Angel built Kyra, a white-label AI workforce platform, from scratch — 70+ AI worker roles, a 21-template library, and a working partner integration layer. He also built a Claude-powered knowledge base that scrapes, chunks, and embeds 700+ documentation sources into a queryable Q&A app. He brings engineering precision to every build: clean architecture, real infrastructure, and systems that run in production, not just in a demo.
                                     </p>
-                                    <div className="flex gap-3 mt-5">
+                                    <div className="flex flex-wrap gap-3 mt-5">
                                         <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <Network size={14} /> Enterprise Solutions
+                                            <Zap size={14} /> Agent Orchestration
                                         </span>
                                         <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <Shield size={14} /> Infrastructure
+                                            <Code size={14} /> Full-Stack Development
                                         </span>
                                         <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <TrendingUp size={14} /> Strategic Growth
+                                            <Database size={14} /> RAG & Embeddings
+                                        </span>
+                                        <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
+                                            <Cpu size={14} /> AI Infrastructure
                                         </span>
                                         <a href="https://www.linkedin.com/in/angelecastro/" target="_blank" rel="noopener noreferrer"
                                            className="inline-flex items-center gap-1.5 text-xs text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded-full transition-colors">
