@@ -40,6 +40,7 @@ import ul864FireAlarmMonitoring from '../content/blog/ul-864-fire-alarm-monitori
 import securitySystemCommsPotsIpCellular from '../content/blog/security-system-communications-pots-to-ip-cellular.md?raw';
 import emergencyCommsSeniorLiving from '../content/blog/emergency-communication-requirements-senior-living-facilities.md?raw';
 import complianceAuditChecklistFacilityManager from '../content/blog/compliance-audit-checklist-facility-manager.md?raw';
+import managedConnectivityOutsourcingNetwork from '../content/blog/managed-connectivity-outsourcing-network.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -90,6 +91,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['managed-connectivity-outsourcing-network', managedConnectivityOutsourcingNetwork],
   ['emergency-communication-requirements-senior-living-facilities', emergencyCommsSeniorLiving],
   ['compliance-audit-checklist-facility-manager', complianceAuditChecklistFacilityManager],
   ['government-telecom-modernization-navigating-procurement-compliance', govTelecomModernization],
