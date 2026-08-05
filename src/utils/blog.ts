@@ -41,6 +41,8 @@ import securitySystemCommsPotsIpCellular from '../content/blog/security-system-c
 import emergencyCommsSeniorLiving from '../content/blog/emergency-communication-requirements-senior-living-facilities.md?raw';
 import complianceAuditChecklistFacilityManager from '../content/blog/compliance-audit-checklist-facility-manager.md?raw';
 import managedConnectivityOutsourcingNetwork from '../content/blog/managed-connectivity-outsourcing-network.md?raw';
+import _5SignsOutgrownTelecom from '../content/blog/5-signs-business-outgrown-telecom-setup.md?raw';
+
 
 export interface BlogPost {
   slug: string;
@@ -91,6 +93,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['5-signs-business-outgrown-telecom-setup', _5SignsOutgrownTelecom],
   ['managed-connectivity-outsourcing-network', managedConnectivityOutsourcingNetwork],
   ['emergency-communication-requirements-senior-living-facilities', emergencyCommsSeniorLiving],
   ['compliance-audit-checklist-facility-manager', complianceAuditChecklistFacilityManager],
