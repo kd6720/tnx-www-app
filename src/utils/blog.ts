@@ -42,6 +42,7 @@ import emergencyCommsSeniorLiving from '../content/blog/emergency-communication-
 import complianceAuditChecklistFacilityManager from '../content/blog/compliance-audit-checklist-facility-manager.md?raw';
 import managedConnectivityOutsourcingNetwork from '../content/blog/managed-connectivity-outsourcing-network.md?raw';
 import _5SignsOutgrownTelecom from '../content/blog/5-signs-business-outgrown-telecom-setup.md?raw';
+import bandwidthPlanning2026BusinessNeeds from '../content/blog/bandwidth-planning-2026-business-needs.md?raw';
 
 
 export interface BlogPost {
@@ -93,6 +94,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['bandwidth-planning-2026-business-needs', bandwidthPlanning2026BusinessNeeds],
   ['5-signs-business-outgrown-telecom-setup', _5SignsOutgrownTelecom],
   ['managed-connectivity-outsourcing-network', managedConnectivityOutsourcingNetwork],
   ['emergency-communication-requirements-senior-living-facilities', emergencyCommsSeniorLiving],
