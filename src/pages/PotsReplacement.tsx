@@ -153,68 +153,99 @@ const PotsReplacement = () => {
                     </div>
                 </div>
 
-                {/* All In One Solution Section */}
+                {/* POTS IN A BOX Product Line Section */}
                 <div className="relative py-16 ">
                     <div className="absolute inset-0 z-0 bg-blue-100/50" style={{filter: 'blur(10px)'}}/>
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="glass-morphism rounded-2xl py-16 px-8">
-                            <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-8">
+                            <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-4">
                                 An All-In-One POTS Replacement Solution
                             </h2>
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-                                <div className="prose prose-lg">
-                                    <h3 className="text-3xl font-bold text-left">
-                                        POTS IN A BOX® 90x2 (CDS-9010)
-                                    </h3>
-                                    <p className="mt-4 text-lg text-gray-600">
-                                        <a
-                                            href="https://dataremote.com/pots-in-a-box/90x2"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-blue-600 hover:text-blue-800 font-semibold"
-                                            title="DataRemote POTS IN A BOX® 90x2"
-                                        >
-                                            POTS IN A BOX®
-                                        </a>{' '}
-                                        is the industry's first multi-carrier, multi-path POTS replacement solution — 
-                                        connecting 2 analog lines over LTE, Wi-Fi, and Ethernet with battery backup. 
-                                        It enables seamless migration of legacy PSTN-based analog systems to modern IP 
-                                        and cellular data networks, supporting voice, fax, alarm signals, and emergency 
-                                        communications.
-                                    </p>
+                            <p className="text-center text-gray-600 max-w-2xl mx-auto mb-10">
+                                The DataRemote POTS IN A BOX® family is the industry's first multi-carrier, 
+                                multi-path POTS replacement solution — connecting analog lines over LTE, Wi-Fi, 
+                                and Ethernet with battery backup. Three models cover every deployment from single 
+                                lines to multi-line enterprise sites.
+                            </p>
 
-                                    {/* Certifications */}
-                                    <div className="mt-6 space-y-2">
-                                        <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Certifications & Compliance</h4>
-                                        <div className="grid grid-cols-2 gap-2">
-                                            <span className="inline-flex items-center gap-1.5 text-sm bg-green-50 text-green-700 px-3 py-1.5 rounded-lg border border-green-200">
-                                                <Shield size={14} /> UL 62368-1 Listed
-                                            </span>
-                                            <span className="inline-flex items-center gap-1.5 text-sm bg-green-50 text-green-700 px-3 py-1.5 rounded-lg border border-green-200">
-                                                <Shield size={14} /> UL 864 Listed
-                                            </span>
-                                            <span className="inline-flex items-center gap-1.5 text-sm bg-green-50 text-green-700 px-3 py-1.5 rounded-lg border border-green-200">
-                                                <Shield size={14} /> CAL FIRE Listed
-                                            </span>
-                                            <span className="inline-flex items-center gap-1.5 text-sm bg-green-50 text-green-700 px-3 py-1.5 rounded-lg border border-green-200">
-                                                <Shield size={14} /> FDNY Accepted
-                                            </span>
-                                        </div>
-                                        <ul className="text-xs text-gray-500 mt-2 space-y-0.5">
-                                            <li>• UL 62368-1 — Audio/Video &amp; IT Equipment Safety</li>
-                                            <li>• UL 864 — Control Units for Fire Alarm Systems (NFPA 72 compliant)</li>
-                                            <li>• Listed by the California Department of Forestry and Fire Protection</li>
-                                            <li>• Accepted by the New York City Fire Department (FDNY)</li>
-                                        </ul>
-                                    </div>
+                            {/* Product Comparison Table */}
+                            <div className="overflow-x-auto mb-10">
+                                <table className="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr className="border-b-2 border-gray-200">
+                                            <th className="py-3 px-4 text-sm font-semibold text-gray-500 uppercase tracking-wider">Model</th>
+                                            <th className="py-3 px-4 text-sm font-semibold text-gray-500 uppercase tracking-wider">POTS Lines</th>
+                                            <th className="py-3 px-4 text-sm font-semibold text-gray-500 uppercase tracking-wider">Connectivity</th>
+                                            <th className="py-3 px-4 text-sm font-semibold text-gray-500 uppercase tracking-wider">Best For</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-gray-100">
+                                        <tr className="hover:bg-blue-50/50 transition-colors">
+                                            <td className="py-4 px-4">
+                                                <span className="font-bold text-gray-900 text-lg">90X1</span>
+                                                <span className="text-xs text-gray-400 ml-2">CDS-9001</span>
+                                            </td>
+                                            <td className="py-4 px-4">
+                                                <span className="inline-flex items-center gap-1 text-sm font-medium text-gray-700">
+                                                    1 line
+                                                </span>
+                                            </td>
+                                            <td className="py-4 px-4 text-sm text-gray-600">LTE + Wi-Fi + Ethernet</td>
+                                            <td className="py-4 px-4 text-sm text-gray-600">Single-device sites, elevators, gate access</td>
+                                        </tr>
+                                        <tr className="hover:bg-blue-50/50 transition-colors">
+                                            <td className="py-4 px-4">
+                                                <span className="font-bold text-gray-900 text-lg">90X2</span>
+                                                <span className="text-xs text-gray-400 ml-2">CDS-9010</span>
+                                            </td>
+                                            <td className="py-4 px-4">
+                                                <span className="inline-flex items-center gap-1 text-sm font-medium text-gray-700">
+                                                    2 lines
+                                                </span>
+                                            </td>
+                                            <td className="py-4 px-4 text-sm text-gray-600">LTE + Wi-Fi + Ethernet</td>
+                                            <td className="py-4 px-4 text-sm text-gray-600">Fire alarm + elevator, small offices</td>
+                                        </tr>
+                                        <tr className="hover:bg-blue-50/50 transition-colors">
+                                            <td className="py-4 px-4">
+                                                <span className="font-bold text-gray-900 text-lg">90X5</span>
+                                                <span className="text-xs text-gray-400 ml-2">CDS-9005</span>
+                                            </td>
+                                            <td className="py-4 px-4">
+                                                <span className="inline-flex items-center gap-1 text-sm font-medium text-gray-700">
+                                                    5 lines
+                                                </span>
+                                            </td>
+                                            <td className="py-4 px-4 text-sm text-gray-600">LTE + Wi-Fi + Ethernet</td>
+                                            <td className="py-4 px-4 text-sm text-gray-600">Multi-line sites, campus deployments</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            {/* Certifications */}
+                            <div className="space-y-2 max-w-2xl mx-auto">
+                                <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider text-center">Certifications & Compliance</h4>
+                                <div className="flex flex-wrap justify-center gap-2">
+                                    <span className="inline-flex items-center gap-1.5 text-sm bg-green-50 text-green-700 px-3 py-1.5 rounded-lg border border-green-200">
+                                        <Shield size={14} /> UL 62368-1 Listed
+                                    </span>
+                                    <span className="inline-flex items-center gap-1.5 text-sm bg-green-50 text-green-700 px-3 py-1.5 rounded-lg border border-green-200">
+                                        <Shield size={14} /> UL 864 Listed
+                                    </span>
+                                    <span className="inline-flex items-center gap-1.5 text-sm bg-green-50 text-green-700 px-3 py-1.5 rounded-lg border border-green-200">
+                                        <Shield size={14} /> CAL FIRE Listed
+                                    </span>
+                                    <span className="inline-flex items-center gap-1.5 text-sm bg-green-50 text-green-700 px-3 py-1.5 rounded-lg border border-green-200">
+                                        <Shield size={14} /> FDNY Accepted
+                                    </span>
                                 </div>
-                                <div className="flex justify-center rounded-2xl">
-                                    <img
-                                        src="/DataRemote-90X1-All-In-One-POTS-Replacement.png"
-                                        alt="POTS IN A BOX Solution Diagram"
-                                        className="max-w-full h-auto rounded-lg"
-                                    />
-                                </div>
+                                <ul className="text-xs text-gray-500 mt-2 space-y-0.5 text-center">
+                                    <li>UL 62368-1 — Audio/Video &amp; IT Equipment Safety</li>
+                                    <li>UL 864 — Control Units for Fire Alarm Systems (NFPA 72 compliant)</li>
+                                    <li>Listed by the California Department of Forestry and Fire Protection</li>
+                                    <li>Accepted by the New York City Fire Department (FDNY)</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
