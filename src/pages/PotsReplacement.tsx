@@ -164,24 +164,49 @@ const PotsReplacement = () => {
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
                                 <div className="prose prose-lg">
                                     <h3 className="text-3xl font-bold text-left">
-                                        POTS IN A BOX®
+                                        POTS IN A BOX® 90x2 (CDS-9010)
                                     </h3>
                                     <p className="mt-4 text-lg text-gray-600">
                                         <a
-                                            href="https://dataremote.com/pots-line-replacement/"
+                                            href="https://dataremote.com/pots-in-a-box/90x2"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-blue-600 hover:text-blue-800 font-semibold"
-                                            title="DataRemote POTS IN A BOX®"
+                                            title="DataRemote POTS IN A BOX® 90x2"
                                         >
                                             POTS IN A BOX®
                                         </a>{' '}
-                                        is a cutting-edge POTS line replacement solution that enables seamless migration
-                                        of legacy PSTN-based analog systems to modern IP and cellular data networks,
-                                        supporting voice, fax, alarm signals, and emergency communications. Featuring
-                                        cost-effective, plug-and-play cellular routers, it delivers versatile business
-                                        continuity and reliable telecommunications for today's evolving industry.
+                                        is the industry's first multi-carrier, multi-path POTS replacement solution — 
+                                        connecting 2 analog lines over LTE, Wi-Fi, and Ethernet with battery backup. 
+                                        It enables seamless migration of legacy PSTN-based analog systems to modern IP 
+                                        and cellular data networks, supporting voice, fax, alarm signals, and emergency 
+                                        communications.
                                     </p>
+
+                                    {/* Certifications */}
+                                    <div className="mt-6 space-y-2">
+                                        <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Certifications & Compliance</h4>
+                                        <div className="grid grid-cols-2 gap-2">
+                                            <span className="inline-flex items-center gap-1.5 text-sm bg-green-50 text-green-700 px-3 py-1.5 rounded-lg border border-green-200">
+                                                <Shield size={14} /> UL 62368-1 Listed
+                                            </span>
+                                            <span className="inline-flex items-center gap-1.5 text-sm bg-green-50 text-green-700 px-3 py-1.5 rounded-lg border border-green-200">
+                                                <Shield size={14} /> UL 864 Listed
+                                            </span>
+                                            <span className="inline-flex items-center gap-1.5 text-sm bg-green-50 text-green-700 px-3 py-1.5 rounded-lg border border-green-200">
+                                                <Shield size={14} /> CAL FIRE Listed
+                                            </span>
+                                            <span className="inline-flex items-center gap-1.5 text-sm bg-green-50 text-green-700 px-3 py-1.5 rounded-lg border border-green-200">
+                                                <Shield size={14} /> FDNY Accepted
+                                            </span>
+                                        </div>
+                                        <ul className="text-xs text-gray-500 mt-2 space-y-0.5">
+                                            <li>• UL 62368-1 — Audio/Video &amp; IT Equipment Safety</li>
+                                            <li>• UL 864 — Control Units for Fire Alarm Systems (NFPA 72 compliant)</li>
+                                            <li>• Listed by the California Department of Forestry and Fire Protection</li>
+                                            <li>• Accepted by the New York City Fire Department (FDNY)</li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div className="flex justify-center rounded-2xl">
                                     <img
