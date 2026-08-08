@@ -58,12 +58,24 @@ function upsertTitle(html, title) {
 }
 
 function stripStructuredData(html, type) {
-  const patterns = [
-    new RegExp(`<script type="application/ld\\+json">[\\s\\S]*?"@type":"${type}"[\\s\\S]*?<\\/script>`, 'g'),
-    new RegExp(`<script type="application/ld\\+json">[\\s\\S]*?"@type": "${type}"[\\s\\S]*?<\\/script>`, 'g'),
-  ];
-  for (const pattern of patterns) html = html.replace(pattern, '');
-  return html;
+  // Match each ld+json script individually (tolerating attributes like
+  // react-helmet's data-rh="true"), parse it, and drop blocks of the given
+  // @type. Non-greedy per-block matching avoids spanning across script tags.
+  return html.replace(
+    /<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g,
+    (match, body) => {
+      try {
+        const data = JSON.parse(body);
+        const types = Array.isArray(data)
+          ? data.map((d) => d && d['@type'])
+          : [data && data['@type']];
+        if (types.includes(type)) return '';
+      } catch {
+        // Unparseable block — leave it alone.
+      }
+      return match;
+    }
+  );
 }
 
 function appendStructuredData(html, blocks) {
@@ -205,11 +217,9 @@ const ROUTE_PAGES = [
     title: 'AI Workforce — AI Agents for Telecom | TrustedNetworx',
     description: 'Deploy AI sales, service, and operations agents built for telecom. Lead qualification, scheduling, email triage, infrastructure monitoring — 24/7, telecom-native.',
   },
-  {
-    route: 'fleet-management',
-    title: 'Fleet Management & Connectivity | TrustedNetworx',
-    description: 'Scalable fleet management and mobile connectivity solutions — IoT SIMs, 5G/LTE failover, and unified device tracking for transportation, logistics, and field services.',
-  },
+  // NOTE: /fleet-management intentionally removed — it 301s to /ai-consulting in
+  // netlify.toml (no dedicated page exists; a patched shell here would create a
+  // duplicate-content page with mismatched meta).
   {
     route: 'internet-connectivity',
     title: 'Internet Connectivity | TrustedNetworx',

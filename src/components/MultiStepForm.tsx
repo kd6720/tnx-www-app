@@ -24,6 +24,8 @@ export interface MultiStepFormData {
 export interface MultiStepFormProps {
   /** Called after a successful submission with the form data */
   onSuccess?: (data: MultiStepFormData) => void;
+  /** Pre-select a pain point (used by solution pages to seed context) */
+  defaultPainPoint?: string;
 }
 
 // ── Constants ──────────────────────────────────────────────────────────────────
@@ -38,13 +40,7 @@ const INDUSTRIES = [
   'Hospitality',
   'Property Management',
   'Healthcare',
-  'Auto Dealerships',
-  'Retail',
-  'Financial Services',
-  'Construction',
-  'Industrial',
-  'Education',
-  'Government',
+  'Retail & Multi-Site',
   'Other',
 ];
 
@@ -63,7 +59,7 @@ const PAIN_POINTS = [
 
 // ── Component ──────────────────────────────────────────────────────────────────
 
-const MultiStepForm = ({ onSuccess }: MultiStepFormProps) => {
+const MultiStepForm = ({ onSuccess, defaultPainPoint }: MultiStepFormProps) => {
   const [step, setStep] = useState(0);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -72,7 +68,7 @@ const MultiStepForm = ({ onSuccess }: MultiStepFormProps) => {
   const [form, setForm] = useState<MultiStepFormData>({
     industry: '',
     company_size: '',
-    pain_points: [],
+    pain_points: defaultPainPoint ? [defaultPainPoint] : [],
     company_name: '',
     contact_name: '',
     email: '',
@@ -366,7 +362,8 @@ const MultiStepForm = ({ onSuccess }: MultiStepFormProps) => {
             How can we reach you?
           </h3>
           <p className="mt-1 text-sm text-navy-400 text-center">
-            We'll follow up within one business day
+            Reviewed personally by our team — no automated sales sequences. We'll follow up
+            within one business day.
           </p>
 
           <div className="mt-7 space-y-5">

@@ -29,6 +29,11 @@ const HeroVideo = ({ name, overlayClassName }: HeroVideoProps) => (
       playsInline
       preload="metadata"
       poster={`/media/${name}-poster.jpg`}
+      // React doesn't serialize `muted` into static HTML, so set it
+      // imperatively too — keeps autoplay legal in the pre-hydration window.
+      ref={(el) => {
+        if (el) el.muted = true;
+      }}
     >
       <source src={`/media/${name}.mp4`} type="video/mp4" />
     </video>

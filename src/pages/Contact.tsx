@@ -55,7 +55,6 @@ const Contact = () => {
             {/* Info */}
             <div className="lg:col-span-2 space-y-6">
               <div className="rounded-2xl bg-navy-950 p-8 text-white relative overflow-hidden">
-                <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-600/30 blur-3xl" />
                 <h3 className="relative text-xl font-bold">Contact Information</h3>
                 <div className="relative mt-6 space-y-5">
                   <a href="tel:+13054987530" className="flex items-center gap-4 text-navy-200 transition-colors hover:text-white">
@@ -91,10 +90,23 @@ const Contact = () => {
               <div className="rounded-2xl bg-white p-8 border border-navy-100 shadow-card">
                 <h3 className="text-xl font-bold text-navy-900">About Us</h3>
                 <p className="mt-3 text-navy-600 leading-relaxed">
-                  TrustedNetworx is your partner in telecommunications solutions. We specialize in providing
-                  cutting-edge technology solutions that help businesses stay connected, efficient, and
-                  competitive in today's digital world.
+                  TrustedNetworx is a Miami-based managed telecom provider. We replace legacy copper
+                  lines, run cloud voice and connectivity for multi-site operators, and keep
+                  compliance-critical lines — fire alarms, elevators, emergency phones — monitored
+                  and inspection-ready.
                 </p>
+                <div className="mt-5 flex items-center gap-3 rounded-xl bg-navy-50 p-4">
+                  <img
+                    src="/team/carter-dewey.jpg"
+                    alt="Carter Dewey"
+                    className="h-12 w-12 rounded-full object-cover object-[65%_28%]"
+                    loading="lazy"
+                  />
+                  <p className="text-sm text-navy-600">
+                    <span className="font-semibold text-navy-900">You'll talk to Carter Dewey</span>, our
+                    CEO — not a call queue.
+                  </p>
+                </div>
                 <Link to="/about" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-700">
                   Learn more about us
                   <ArrowRight size={16} />

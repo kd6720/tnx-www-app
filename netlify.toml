@@ -11,6 +11,14 @@
   status = 301
   force = true
 
+# Fleet management consolidated into AI Consulting (route had no dedicated page;
+# prerendered shell was a duplicate of the homepage with mismatched meta).
+[[redirects]]
+  from = "/fleet-management"
+  to = "/ai-consulting"
+  status = 301
+  force = true
+
 # Ensure blog detail URLs resolve to their generated static HTML before SPA fallback.
 [[redirects]]
   from = "/blog/:slug"
@@ -39,10 +47,31 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://webforms.pipedrive.com https://cdn.pipedriveassets.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:; frame-src 'self' https://webforms.pipedrive.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://webforms.pipedrive.com https://cdn.pipedriveassets.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:; frame-src 'self' https://webforms.pipedrive.com https://enhancedlines.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
 
 # --- Long-lived caching for fingerprinted build assets ---
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# --- Medium-lived caching for un-fingerprinted media (hero videos, posters, images) ---
+[[headers]]
+  for = "/media/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/partners/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/blog-images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/team/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"

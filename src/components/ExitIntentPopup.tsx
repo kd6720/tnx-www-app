@@ -1,5 +1,17 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 import { X, CheckCircle2, Loader2, Send } from 'lucide-react';
+
+/** Routes where the popup is allowed to arm — blog + solution pages only. */
+const ARMED_ROUTES = [
+  '/blog',
+  '/pots-replacement',
+  '/voice-solutions',
+  '/internet-connectivity',
+  '/mobility-solutions',
+  '/ai-consulting',
+  '/ai-workforce',
+];
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -33,16 +45,32 @@ const STORAGE_KEY = 'trustednetworx_exit_intent_dismissed';
 
 const ExitIntentPopup = ({
   headline = 'Before you go...',
-  subtext = 'Get our free POTS Replacement Checklist — see how much your organization could save.',
-  buttonLabel = 'Send Me the Checklist',
+  subtext = 'See exactly what your legacy lines are costing you — run the free POTS Replacement ROI Calculator. Two minutes, no sales call.',
+  buttonLabel = 'Email Me the Calculator Link',
   dismissLabel = 'No thanks',
-  thankYouHeadline = 'Checklist on the way!',
-  thankYouBody = 'Check your inbox. We\'ve also included a quick telecom savings calculator — no strings attached.',
+  thankYouHeadline = 'On its way!',
+  thankYouBody = 'Check your inbox for the calculator link — or run it now at trustednetworx.com/tools/pots-roi-calculator.',
   endpoint = DEFAULT_ENDPOINT,
   source = 'exit_intent',
 }: ExitIntentPopupProps) => {
   const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState('');
+  const location = useLocation();
+  const scrolledEnoughRef = useRef(false);
+
+  // Track scroll depth — only arm after the visitor has seen ~50% of the page.
+  useEffect(() => {
+    scrolledEnoughRef.current = false;
+    const onScroll = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollable <= 0 || window.scrollY / scrollable >= 0.5) {
+        scrolledEnoughRef.current = true;
+        window.removeEventListener('scroll', onScroll);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [location.pathname]);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -83,6 +111,11 @@ const ExitIntentPopup = ({
 
     // Skip on touch devices
     if (isTouchDevice.current) return;
+
+    // Only on blog + solution pages, and only once the visitor has actually
+    // engaged (scrolled at least half the page).
+    if (!ARMED_ROUTES.some((r) => window.location.pathname.startsWith(r))) return;
+    if (!scrolledEnoughRef.current) return;
 
     firedRef.current = true;
     setVisible(true);

@@ -117,8 +117,6 @@ const PotsRoiCalculator = () => {
       <section className="relative flex min-h-[480px] items-center overflow-hidden">
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-navy-950 via-navy-900 to-brand-900" />
         <div className="absolute inset-0 z-0 bg-grid-dark bg-grid opacity-40" />
-        <div className="pointer-events-none absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-accent-500/10 blur-3xl" />
-        <div className="pointer-events-none absolute -left-20 top-1/4 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl animate-float" />
 
         <div className="relative z-10 w-full pt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -129,7 +127,7 @@ const PotsRoiCalculator = () => {
               </span>
               <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
                 POTS Replacement{' '}
-                <span className="bg-gradient-to-r from-brand-300 via-accent-300 to-brand-200 bg-clip-text text-transparent">
+                <span className="text-brand-300">
                   ROI Calculator
                 </span>
               </h1>
@@ -402,7 +400,6 @@ const PotsRoiCalculator = () => {
       {/* Bottom CTA banner */}
       <section className="relative overflow-hidden bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600">
         <div className="absolute inset-0 bg-grid-dark bg-grid opacity-20" />
-        <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
         <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 lg:flex lg:items-center lg:justify-between">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             <span className="block">Ready to start saving?</span>
