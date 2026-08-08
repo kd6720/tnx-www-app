@@ -43,6 +43,7 @@ import complianceAuditChecklistFacilityManager from '../content/blog/compliance-
 import managedConnectivityOutsourcingNetwork from '../content/blog/managed-connectivity-outsourcing-network.md?raw';
 import _5SignsOutgrownTelecom from '../content/blog/5-signs-business-outgrown-telecom-setup.md?raw';
 import bandwidthPlanning2026BusinessNeeds from '../content/blog/bandwidth-planning-2026-business-needs.md?raw';
+import potsReplacementRoiRealCostOfWaiting from '../content/blog/pots-replacement-roi-real-cost-of-waiting.md?raw';
 
 
 export interface BlogPost {
@@ -94,6 +95,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['pots-replacement-roi-real-cost-of-waiting', potsReplacementRoiRealCostOfWaiting],
   ['bandwidth-planning-2026-business-needs', bandwidthPlanning2026BusinessNeeds],
   ['5-signs-business-outgrown-telecom-setup', _5SignsOutgrownTelecom],
   ['managed-connectivity-outsourcing-network', managedConnectivityOutsourcingNetwork],
