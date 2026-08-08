@@ -2,6 +2,7 @@ import React from 'react';
 import {Wifi, Shield, Zap, DollarSign, Globe, Network, Signal, Router, Headphones} from 'lucide-react';
 import {Link} from 'react-router-dom';
 import Seo from '../components/Seo';
+import HeroVideo from '../components/HeroVideo';
 
 const InternetConnectivity = () => {
     return (
@@ -12,29 +13,23 @@ const InternetConnectivity = () => {
             />
             {/* Hero Section */}
             <div className="relative min-h-[460px] flex items-center overflow-hidden">
-                {/* Background Image */}
-                <div className="absolute inset-0 z-0" style={{
-                    backgroundImage: 'url(/Internet-Connectivity.jpg)',
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat'
-                }}>
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"/>
-                    <div className="absolute inset-0 bg-grid-dark bg-grid opacity-40"/>
-                </div>
+                {/* Background Video */}
+                <HeroVideo
+                    name="hero-connectivity"
+                    overlayClassName="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"
+                />
+                <div className="absolute inset-0 z-0 bg-grid-dark bg-grid opacity-40"/>
 
                 <div className="relative z-10 w-full">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center">
                             <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl tracking-tight">
-                                Internet Connectivity Solutions
+                                Connectivity your locations can&apos;t afford to lose.
                             </h1>
                             <p
                                 className="mt-3 max-w-md mx-auto text-base text-white sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                                Ensure your business remains agile, efficient, and securely connected with our
-                                comprehensive
-                                Internet Connectivity solutions
+                                High-speed primary circuits with LTE/5G wireless failover, managed and monitored
+                                across every site. One vendor, one SLA, no finger-pointing between carriers.
                             </p>
                             <div className="mt-8">
                                 <Link to="/contact" className="btn-light">

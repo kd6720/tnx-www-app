@@ -15,6 +15,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import Seo from '../components/Seo';
+import HeroVideo from '../components/HeroVideo';
 import MultiStepForm from '../components/MultiStepForm';
 
 const services = [
@@ -130,17 +131,10 @@ const Home = () => {
 
       {/* Hero */}
       <section className="relative flex min-h-[88vh] items-center overflow-hidden">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: 'url(/TrustedNetworx-Hero-Image.jpg)',
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60" />
-        </div>
+        <HeroVideo
+          name="hero-home"
+          overlayClassName="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"
+        />
         <div className="absolute inset-0 z-0 bg-grid-dark bg-grid opacity-40" />
         <div className="absolute inset-0 z-0 bg-hero-glow" />
         {/* floating orbs */}
@@ -155,18 +149,20 @@ const Home = () => {
                 Managed Solution Provider
               </span>
               <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.05] animate-fadeInUp">
-                Modern Solutions for{' '}
+                Replace failing copper.{' '}
                 <span className="bg-gradient-to-r from-brand-300 via-accent-300 to-brand-200 bg-clip-text text-transparent">
-                  Modern Business
-                </span>
+                  Cut line costs in half.
+                </span>{' '}
+                Stay compliant.
               </h1>
               <p className="mt-6 max-w-xl text-lg sm:text-xl text-navy-200 animate-fadeInUp">
-                TrustedNetworx is your managed telecom partner — delivering reliable, future-proof
-                connectivity, voice, and AI solutions for enterprise and multi-site organizations.
+                TrustedNetworx modernizes POTS lines, voice, connectivity, and mobility for
+                multi-site organizations — senior living, hospitality, property management, and
+                healthcare — without downtime and without the carrier runaround.
               </p>
               <div className="mt-9 flex flex-col sm:flex-row gap-4 animate-fadeInUp">
                 <Link to="/contact" className="btn-light">
-                  Get Started
+                  Get a Free Line Audit
                   <ArrowRight size={18} />
                 </Link>
                 <a href="#services" className="btn-outline">
@@ -175,13 +171,19 @@ const Home = () => {
               </div>
               <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-navy-300 animate-fadeInUp">
                 <span className="inline-flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-accent-400" /> Enterprise-grade reliability
+                  <CheckCircle2 size={16} className="text-accent-400" /> NFPA 72-compliant alarm
+                  communications
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-accent-400" /> Trusted nationwide
+                  <CheckCircle2 size={16} className="text-accent-400" /> UL 864-listed hardware
+                  deployments
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-accent-400" /> No-bloat engagements
+                  <CheckCircle2 size={16} className="text-accent-400" /> E911 / Kari&apos;s Law
+                  ready
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-accent-400" /> 24/7 monitored lines
                 </span>
               </div>
             </div>

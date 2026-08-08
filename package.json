@@ -19,6 +19,7 @@
     "include": [
       "/",
       "/about",
+      "/about/team",
       "/pots-replacement",
       "/ai-consulting",
       "/internet-connectivity",
@@ -34,7 +35,7 @@
       "/tools/ai-roi-calculator",
       "/tools/ai-readiness"
     ],
-    "skipThirdPartyRequests": false,
+    "skipThirdPartyRequests": true,
     "inlineCss": false,
     "puppeteerArgs": [
       "--no-sandbox",

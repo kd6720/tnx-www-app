@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
+import HeroVideo from '../components/HeroVideo';
 
 const serviceCards = [
   {
@@ -182,18 +183,11 @@ const AiConsulting = () => {
       />
       {/* Hero Section */}
       <div className="relative min-h-[560px] flex items-center overflow-hidden">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1920&q=80')",
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60" />
-          <div className="absolute inset-0 bg-grid-dark bg-grid opacity-40" />
-        </div>
+        <HeroVideo
+          name="hero-ai-consulting"
+          overlayClassName="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"
+        />
+        <div className="absolute inset-0 z-0 bg-grid-dark bg-grid opacity-40" />
 
         <div className="relative z-10 w-full pt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -203,15 +197,16 @@ const AiConsulting = () => {
                 AI Consulting & Solutions
               </span>
               <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.05]">
-                Practical AI for{' '}
+                Practical AI.{' '}
                 <span className="bg-gradient-to-r from-brand-300 via-accent-300 to-brand-200 bg-clip-text text-transparent">
-                  Modern Operations
+                  Deployed, not decked.
                 </span>
               </h1>
               <p className="mt-6 text-lg sm:text-xl text-navy-200 max-w-2xl">
-                Practical AI implementation for telecom operators, channel partners, and multi-site businesses. We cut
-                through the hype and deploy AI that reduces operational overhead, speeds up sales cycles, and creates
-                measurable ROI — without requiring a data science team.
+                We map your operations, find the automation wins with real ROI, and build them into
+                production — workflow automation, intelligent routing, and AI-assisted operations
+                for telecom operators, channel partners, and multi-site businesses. No data science
+                team required.
               </p>
               <div className="mt-9 flex flex-col sm:flex-row gap-4">
                 <Link to="/contact" className="btn-light">

@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
+import HeroVideo from '../components/HeroVideo';
 
 const MobilitySolutions = () => {
   return (
@@ -21,26 +22,23 @@ const MobilitySolutions = () => {
         />
         {/* Hero Section */}
         <div className="relative min-h-[460px] flex items-center overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0" style={{
-            backgroundImage: 'url(/Mobility-Solutions.jpg)',
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat'
-          }}>
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"/>
-            <div className="absolute inset-0 bg-grid-dark bg-grid opacity-40"/>
-          </div>
+          {/* Background Video */}
+          <HeroVideo
+            name="hero-mobility"
+            overlayClassName="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"
+          />
+          <div className="absolute inset-0 z-0 bg-grid-dark bg-grid opacity-40"/>
 
           <div className="relative z-10 w-full">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center">
                 <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl tracking-tight">
-                  Mobility Solutions
+                  Your workforce moves. Your network should keep up.
                 </h1>
                 <p className="mt-3 max-w-md mx-auto text-base text-white sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                  Empower Your Business with TrustedNetworx Enterprise Mobility Solutions
+                  Enterprise mobility management, pooled data plans, and LTE/5G deployments —
+                  provisioned, secured, and supported so your IT team doesn&apos;t carry the pager
+                  for it.
                 </p>
                 <div className="mt-8">
                   <Link to="/contact" className="btn-light">

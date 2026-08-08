@@ -2,6 +2,7 @@ import React from 'react';
 import { PhoneCall, Mic, MessageSquare, Settings, Expand, AudioLines, BarChart, DollarSign, Users, Headphones, Network, Globe, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
+import HeroVideo from '../components/HeroVideo';
 
 const VoiceSolutions = () => {
     return (
@@ -12,16 +13,11 @@ const VoiceSolutions = () => {
             />
             {/* Hero Section */}
             <div className="relative min-h-[460px] flex items-center overflow-hidden">
-                {/* Background Image */}
-                <div className="absolute inset-0 z-0" style={{
-                    backgroundImage: 'url(/Voice-Solutions.jpg)',
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat'
-                }}>
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-navy-950/95 to-navy-900/50"/>
-                </div>
+                {/* Background Video */}
+                <HeroVideo
+                    name="hero-voice"
+                    overlayClassName="absolute inset-0 bg-gradient-to-r from-navy-950/95 to-navy-900/50"
+                />
 
                 <div className="relative z-10 w-full">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,10 +26,17 @@ const VoiceSolutions = () => {
                                 Unified Voice & IP PBX
                             </span>
                             <h1 className="mt-5 text-4xl font-extrabold text-white sm:text-5xl md:text-6xl tracking-tight">
-                                Voice Solutions
+                                One phone system. Every location. Zero on-prem headaches.
                             </h1>
                             <p className="mt-3 max-w-md mx-auto text-base text-navy-200 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                                Cloud-based IP PBX, HD voice, and unified communications for modern business
+                                Cloud voice and unified communications that scale from a single office to
+                                hundreds of sites — with the compliance, call routing, and analog integrations
+                                enterprise operators actually need.
+                            </p>
+                            <p className="mt-4 max-w-md mx-auto text-sm text-navy-300 sm:text-base md:max-w-3xl">
+                                Multi-site E911 done right: dispatchable location per station, Kari&apos;s Law
+                                direct dialing, and on-site notification — configured per location, not bolted
+                                on after.
                             </p>
                             <div className="mt-8">
                                 <Link to="/contact" className="btn-light">

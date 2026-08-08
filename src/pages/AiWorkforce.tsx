@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
+import HeroVideo from '../components/HeroVideo';
 
 const agentCards = [
   {
@@ -118,17 +119,10 @@ const AiWorkforce = () => {
 
       {/* Hero */}
       <section className="relative flex min-h-[520px] items-center overflow-hidden">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: 'url(/AI-Workforce-Hero.jpg)',
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60" />
-        </div>
+        <HeroVideo
+          name="hero-ai-workforce"
+          overlayClassName="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"
+        />
         <div className="absolute inset-0 z-0 bg-grid-dark bg-grid opacity-40" />
         <div className="pointer-events-none absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-accent-500/10 blur-3xl" />
 
@@ -140,14 +134,16 @@ const AiWorkforce = () => {
                 AI + Telecom Infrastructure
               </span>
               <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
-                AI Workforce for{' '}
+                AI agents that{' '}
                 <span className="bg-gradient-to-r from-brand-300 via-accent-300 to-brand-200 bg-clip-text text-transparent">
-                  Modern Telecom
-                </span>
+                  answer, sell, and support
+                </span>{' '}
+                — 24/7.
               </h1>
               <p className="mt-6 max-w-xl text-lg sm:text-xl text-navy-200">
-                Deploy AI agents that sell, support, schedule, and monitor — built specifically for telecom
-                service providers, MSPs, and enterprise infrastructure teams.
+                Telecom-native AI voice and chat agents that qualify leads, book appointments,
+                handle tier-1 support, and monitor your services around the clock — built for
+                telecom service providers, MSPs, and enterprise infrastructure teams.
               </p>
               <div className="mt-9 flex flex-col sm:flex-row gap-4">
                 <Link to="/contact" className="btn-light">

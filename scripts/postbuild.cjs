@@ -33,10 +33,14 @@ async function resolveChromiumPath() {
 }
 
 async function main() {
-  const shouldRun = process.env.NETLIFY === 'true' || process.env.ENABLE_REACT_SNAP === '1';
+  // Run react-snap by default in every environment that has a Chromium
+  // available (falls back gracefully below when one isn't). Pre-rendered
+  // HTML is what makes the site visible to non-JS crawlers and AI engines —
+  // opt OUT with DISABLE_REACT_SNAP=1 rather than opting in.
+  const shouldRun = process.env.DISABLE_REACT_SNAP !== '1';
 
   if (!shouldRun) {
-    console.log('[postbuild] Skipping react-snap. Creating static blog route shells and patching SEO metadata.');
+    console.log('[postbuild] react-snap disabled via DISABLE_REACT_SNAP=1. Creating static blog route shells and patching SEO metadata.');
     runSeoPatch();
     return;
   }

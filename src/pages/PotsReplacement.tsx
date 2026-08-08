@@ -20,10 +20,12 @@ import {
     Radio,
     Store,
     Ambulance,
-    GraduationCap, Cog
+    GraduationCap, Cog,
+    CheckCircle2
 } from 'lucide-react';
 import {Link} from 'react-router-dom';
 import Seo from '../components/Seo';
+import HeroVideo from '../components/HeroVideo';
 
 const PotsReplacement = () => {
     const usesCases = [
@@ -54,17 +56,12 @@ const PotsReplacement = () => {
             />
             {/* Hero Section */}
             <div className="relative min-h-[460px] flex items-center overflow-hidden">
-                {/* Background Image */}
-                <div className="absolute inset-0 z-0" style={{
-                    backgroundImage: 'url(/POTS-Line-Replacement-Banner.jpg)',
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat'
-                }}>
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"/>
-                    <div className="absolute inset-0 bg-grid-dark bg-grid opacity-40"/>
-                </div>
+                {/* Background Video */}
+                <HeroVideo
+                    name="hero-pots"
+                    overlayClassName="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"
+                />
+                <div className="absolute inset-0 z-0 bg-grid-dark bg-grid opacity-40"/>
 
                 <div className="relative z-10 w-full">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,20 +72,84 @@ const PotsReplacement = () => {
                                 alt="DataRemote POTS IN A BOX">
                             </img>
                             <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl tracking-tight">
-                                POTS Replacement Solutions
+                                The copper shutdown isn&apos;t coming. It&apos;s here.
                             </h1>
                             <p className="mt-3 max-w-md mx-auto text-base text-white sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                                Modern alternatives to traditional phone lines for your business
+                                Carriers are retiring analog lines and raising rates on what&apos;s left. We
+                                migrate fire alarms, elevators, emergency phones, and fax lines to managed
+                                wireless and SIP solutions — code-compliant, monitored 24/7, typically at half
+                                the cost.
                             </p>
                             <div className="mt-8">
                                 <Link to="/contact" className="btn-light">
-                                    Learn More
+                                    Audit My Lines
                                 </Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Compliance Section */}
+            <section className="relative bg-navy-950 py-16 sm:py-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+                                Compliance isn&apos;t a feature. It&apos;s the whole point.
+                            </h2>
+                            <p className="mt-6 text-lg text-navy-200">
+                                Fire alarm panels, elevator phones, and emergency call boxes can&apos;t ride on a
+                                consumer-grade cellular adapter and pass inspection. Our POTS replacement
+                                deployments use UL 864-listed communicators configured to NFPA 72 requirements —
+                                supervised connections, battery backup meeting code-mandated runtimes, and
+                                dual-path signaling where the AHJ requires it. Voice lines carry E911 with
+                                dispatchable location data per Kari&apos;s Law and RAY BAUM&apos;S Act, so a call
+                                from Room 214 tells the PSAP it came from Room 214.
+                            </p>
+                            <p className="mt-4 text-lg text-navy-200">
+                                We coordinate with your fire alarm vendor, elevator contractor, and local AHJ
+                                before cutover — because a line that saves money but fails inspection isn&apos;t a
+                                solution.
+                            </p>
+                            <div className="mt-8">
+                                <Link to="/contact" className="btn-light">
+                                    Get a Compliance-Checked Line Audit
+                                </Link>
+                            </div>
+                        </div>
+                        <div className="space-y-4">
+                            {[
+                                {
+                                    title: 'NFPA 72',
+                                    text: 'Supervised alarm transmission, code-compliant backup power runtimes',
+                                },
+                                {
+                                    title: 'UL 864',
+                                    text: 'Listed communicator hardware for fire alarm signaling paths',
+                                },
+                                {
+                                    title: "Kari's Law / E911",
+                                    text: 'Direct 911 dialing with on-site notification, no prefix required',
+                                },
+                                {
+                                    title: "RAY BAUM'S Act",
+                                    text: 'Dispatchable location (building, floor, room) delivered to the PSAP',
+                                },
+                            ].map(({title, text}) => (
+                                <div key={title}
+                                     className="flex items-start gap-4 rounded-xl border border-navy-800 bg-navy-900/60 p-5">
+                                    <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-accent-400"/>
+                                    <div>
+                                        <h3 className="font-bold text-white">{title}</h3>
+                                        <p className="mt-1 text-navy-300">{text}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <div className="relative">
                 {/* Background decorative elements */}
