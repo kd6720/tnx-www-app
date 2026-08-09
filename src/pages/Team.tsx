@@ -45,8 +45,6 @@ const Team = () => {
             <div className="relative">
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"/>
-                    <div className="absolute -left-32 top-24 h-96 w-96 rounded-full bg-brand-200/40 blur-3xl"/>
-                    <div className="absolute -right-24 top-1/3 h-96 w-96 rounded-full bg-accent-200/30 blur-3xl"/>
                 </div>
 
                 {/* Team Cards */}

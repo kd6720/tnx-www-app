@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
+import HeroVideo from '../components/HeroVideo';
 
 const agentCards = [
   {
@@ -24,7 +25,6 @@ const agentCards = [
     description:
       'Intelligent agents that qualify inbound leads, nurture pipeline opportunities, draft proposals, and surface the highest-value accounts for your sales team — 24/7, no coffee breaks.',
     icon: TrendingUp,
-    gradient: 'from-blue-500 to-indigo-600',
     items: ['Lead qualification & scoring', 'Pipeline nurturing sequences', 'Proposal drafting assistance'],
   },
   {
@@ -32,7 +32,6 @@ const agentCards = [
     description:
       'Resolve common support issues, triage tickets, and escalate complex cases to the right team member. Your customers get instant answers — your team focuses on what matters.',
     icon: Headphones,
-    gradient: 'from-emerald-500 to-teal-600',
     items: ['Ticket triage & routing', 'Knowledge base Q&A', '24/7 chat & voice support'],
   },
   {
@@ -40,7 +39,6 @@ const agentCards = [
     description:
       'Stop wasting time on tire-kickers. AI agents score every inbound lead against your ideal customer profile, book meetings for hot leads, and nurture the rest automatically.',
     icon: UsersRound,
-    gradient: 'from-purple-500 to-violet-600',
     items: ['Ideal customer scoring', 'Automated meeting booking', 'Lead enrichment & research'],
   },
   {
@@ -48,7 +46,6 @@ const agentCards = [
     description:
       'Eliminate the back-and-forth. AI scheduling agents find mutual availability, send calendar invites, handle reschedules, and send reminders — across any calendar platform.',
     icon: Calendar,
-    gradient: 'from-amber-500 to-orange-600',
     items: ['Multi-calendar coordination', 'Automated reminders', 'Reschedule & cancellation handling'],
   },
   {
@@ -56,7 +53,6 @@ const agentCards = [
     description:
       'Never lose a deal to a missed follow-up. AI agents track every conversation, trigger personalized follow-ups at the right moment, and keep your pipeline moving.',
     icon: Clock,
-    gradient: 'from-pink-500 to-rose-600',
     items: ['Multi-channel sequences', 'Smart timing optimization', 'Personalized messaging'],
   },
   {
@@ -64,7 +60,6 @@ const agentCards = [
     description:
       'Your inbox, managed. AI triages incoming email, flags priorities, drafts responses, and routes action items to the right person — so you focus on decisions, not digging.',
     icon: Mail,
-    gradient: 'from-cyan-500 to-sky-600',
     items: ['Priority inbox routing', 'Auto-draft responses', 'Action item extraction'],
   },
   {
@@ -72,7 +67,6 @@ const agentCards = [
     description:
       'First-line support that never sleeps. AI agents handle password resets, status checks, FAQ lookups, and common troubleshooting — freeing your NOC and help desk for complex issues.',
     icon: MessageSquareText,
-    gradient: 'from-red-500 to-orange-600',
     items: ['Self-service troubleshooting', 'Status & outage checks', 'Knowledge base integration'],
   },
   {
@@ -80,7 +74,6 @@ const agentCards = [
     description:
       'AI-powered monitoring and advisory for your telecom infrastructure. Detect anomalies, predict capacity issues, and get proactive recommendations before problems impact customers.',
     icon: Network,
-    gradient: 'from-indigo-500 to-blue-600',
     items: ['Network health monitoring', 'Capacity forecasting', 'Proactive alerting'],
   },
 ];
@@ -118,19 +111,11 @@ const AiWorkforce = () => {
 
       {/* Hero */}
       <section className="relative flex min-h-[520px] items-center overflow-hidden">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: 'url(/AI-Workforce-Hero.jpg)',
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60" />
-        </div>
+        <HeroVideo
+          name="hero-ai-workforce"
+          overlayClassName="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"
+        />
         <div className="absolute inset-0 z-0 bg-grid-dark bg-grid opacity-40" />
-        <div className="pointer-events-none absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-accent-500/10 blur-3xl" />
 
         <div className="relative z-10 w-full pt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -140,18 +125,20 @@ const AiWorkforce = () => {
                 AI + Telecom Infrastructure
               </span>
               <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
-                AI Workforce for{' '}
-                <span className="bg-gradient-to-r from-brand-300 via-accent-300 to-brand-200 bg-clip-text text-transparent">
-                  Modern Telecom
-                </span>
+                AI agents that{' '}
+                <span className="text-brand-300">
+                  answer, sell, and support
+                </span>{' '}
+                — 24/7.
               </h1>
               <p className="mt-6 max-w-xl text-lg sm:text-xl text-navy-200">
-                Deploy AI agents that sell, support, schedule, and monitor — built specifically for telecom
-                service providers, MSPs, and enterprise infrastructure teams.
+                Telecom-native AI voice and chat agents that qualify leads, book appointments,
+                handle tier-1 support, and monitor your services around the clock — built for
+                telecom service providers, MSPs, and enterprise infrastructure teams.
               </p>
               <div className="mt-9 flex flex-col sm:flex-row gap-4">
                 <Link to="/contact" className="btn-light">
-                  Get a Consultation
+                  Get a Quote
                   <ArrowRight size={18} />
                 </Link>
                 <a href="#agents" className="btn-outline">
@@ -177,14 +164,12 @@ const AiWorkforce = () => {
           </div>
 
           <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {agentCards.map(({ title, description, icon: Icon, gradient, items }) => (
+            {agentCards.map(({ title, description, icon: Icon, items }) => (
               <div
                 key={title}
                 className="group relative flex flex-col rounded-2xl bg-white p-7 border border-navy-100 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover hover:border-brand-200"
               >
-                <span
-                  className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${gradient} text-white shadow-lg transition-transform duration-300 group-hover:scale-110`}
-                >
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-700 transition-colors duration-300 group-hover:bg-brand-100">
                   <Icon className="h-6 w-6" />
                 </span>
                 <h3 className="mt-5 text-lg font-bold text-navy-900">{title}</h3>
@@ -206,7 +191,6 @@ const AiWorkforce = () => {
       {/* Why TrustedNetworx AI */}
       <section className="relative overflow-hidden bg-navy-950 py-20 sm:py-28">
         <div className="absolute inset-0 bg-grid-dark bg-grid opacity-30" />
-        <div className="pointer-events-none absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-brand-600/20 blur-3xl" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <span className="eyebrow border border-brand-400/30 bg-brand-500/10 text-brand-200">
@@ -284,7 +268,6 @@ const AiWorkforce = () => {
       {/* CTA */}
       <section className="relative overflow-hidden bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600">
         <div className="absolute inset-0 bg-grid-dark bg-grid opacity-20" />
-        <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
         <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 lg:flex lg:items-center lg:justify-between">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             <span className="block">Ready to deploy your AI workforce?</span>
@@ -292,7 +275,7 @@ const AiWorkforce = () => {
           </h2>
           <div className="mt-8 lg:mt-0 lg:flex-shrink-0">
             <Link to="/contact" className="btn-light">
-              Start the Conversation
+              Get a Quote
               <ArrowRight size={18} />
             </Link>
           </div>

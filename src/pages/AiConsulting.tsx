@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
+import HeroVideo from '../components/HeroVideo';
 
 const serviceCards = [
   {
@@ -28,8 +29,8 @@ const serviceCards = [
     description:
       'Eliminate repetitive manual processes - from order entry and provisioning coordination to billing reconciliation and ticket routing. We map your workflows, identify automation targets, and deploy AI agents that run continuously without human handholding.',
     icon: Bot,
-    iconClassName: 'bg-blue-100 text-blue-600',
-    checkClassName: 'text-blue-500',
+    iconClassName: 'bg-brand-50 text-brand-700',
+    checkClassName: 'text-brand-500',
     items: ['CRM data entry & enrichment', 'Provisioning & order workflows', 'Invoice processing & reconciliation'],
   },
   {
@@ -37,8 +38,8 @@ const serviceCards = [
     description:
       'Deploy intelligent chat, voice, and messaging agents that handle inbound inquiries, qualify leads, schedule appointments, and answer product questions - 24/7, across your customer-facing channels.',
     icon: MessageSquareText,
-    iconClassName: 'bg-purple-100 text-purple-600',
-    checkClassName: 'text-purple-500',
+    iconClassName: 'bg-brand-50 text-brand-700',
+    checkClassName: 'text-brand-500',
     items: ['Inbound lead qualification bots', 'Appointment & callback scheduling', 'SMS & web chat automation'],
   },
   {
@@ -46,8 +47,8 @@ const serviceCards = [
     description:
       'Not sure where to start? We assess your current tools, data, and workflows, then deliver a prioritized AI roadmap with clear ROI projections - no vendor bias, no bloated consulting engagements. Just a practical plan you can act on.',
     icon: BrainCircuit,
-    iconClassName: 'bg-green-100 text-green-600',
-    checkClassName: 'text-green-500',
+    iconClassName: 'bg-brand-50 text-brand-700',
+    checkClassName: 'text-brand-500',
     items: ['Operations & workflow audit', 'Tool & vendor evaluation', 'Prioritized implementation plan'],
   },
   {
@@ -55,8 +56,8 @@ const serviceCards = [
     description:
       'Equip your sales team and channel partners with AI tools that surface the right opportunities, automate follow-up sequences, generate proposals faster, and keep your pipeline clean - without adding headcount.',
     icon: TrendingUp,
-    iconClassName: 'bg-orange-100 text-orange-600',
-    checkClassName: 'text-orange-500',
+    iconClassName: 'bg-brand-50 text-brand-700',
+    checkClassName: 'text-brand-500',
     items: ['Automated outreach & follow-up', 'AI-assisted proposal generation', 'Pipeline hygiene & deal scoring'],
   },
   {
@@ -64,8 +65,8 @@ const serviceCards = [
     description:
       'Bridge your telecom infrastructure with AI-driven operations. We integrate AI capabilities into hosted voice, POTS replacement deployments, and multi-site communication stacks - enabling smarter call routing, anomaly detection, and usage analytics.',
     icon: Network,
-    iconClassName: 'bg-pink-100 text-pink-600',
-    checkClassName: 'text-pink-500',
+    iconClassName: 'bg-brand-50 text-brand-700',
+    checkClassName: 'text-brand-500',
     items: ['AI-enhanced call routing', 'Usage anomaly detection', 'Multi-site operations dashboards'],
   },
   {
@@ -73,8 +74,8 @@ const serviceCards = [
     description:
       'Help your MSP, VAR, and agent partners adopt AI tools that accelerate their sales motion and improve customer retention. We build white-label-ready AI programs that strengthen your channel without creating support overhead.',
     icon: UsersRound,
-    iconClassName: 'bg-indigo-100 text-indigo-600',
-    checkClassName: 'text-indigo-500',
+    iconClassName: 'bg-brand-50 text-brand-700',
+    checkClassName: 'text-brand-500',
     items: ['Partner AI onboarding programs', 'White-label AI tool stack', 'Agent productivity playbooks'],
   },
 ];
@@ -85,42 +86,42 @@ const industryCards = [
     description:
       'Automate quote generation, contract renewals, and customer onboarding. Use AI to identify at-risk accounts before churn happens and surface upsell opportunities across your book of business.',
     icon: Building2,
-    iconClassName: 'bg-blue-100 text-blue-600',
+    iconClassName: 'bg-brand-50 text-brand-700',
   },
   {
     title: 'Healthcare & Senior Living',
     description:
       'Streamline resident communications, automate compliance documentation, and integrate AI-assisted call handling for facilities where response time and accuracy matter. Designed for HIPAA-aware environments.',
     icon: HeartPulse,
-    iconClassName: 'bg-purple-100 text-purple-600',
+    iconClassName: 'bg-brand-50 text-brand-700',
   },
   {
     title: 'Hospitality',
     description:
       'Deploy guest-facing AI communication tools, automate maintenance and service request workflows, and reduce front desk call volume with intelligent self-service options across properties.',
     icon: Hotel,
-    iconClassName: 'bg-yellow-100 text-yellow-600',
+    iconClassName: 'bg-brand-50 text-brand-700',
   },
   {
     title: 'Property Management',
     description:
       'Automate tenant communication, lease renewal outreach, maintenance dispatch, and vendor coordination across multi-site portfolios. Reduce property manager workload without sacrificing tenant experience.',
     icon: Home,
-    iconClassName: 'bg-green-100 text-green-600',
+    iconClassName: 'bg-brand-50 text-brand-700',
   },
   {
     title: 'Multi-Site Enterprises',
     description:
       'Centralize operations intelligence across locations with AI-powered reporting, anomaly alerts, and workflow automation that keeps distributed teams aligned without requiring constant management overhead.',
     icon: Landmark,
-    iconClassName: 'bg-red-100 text-red-600',
+    iconClassName: 'bg-brand-50 text-brand-700',
   },
   {
     title: 'Field Services & Logistics',
     description:
       'Intelligent dispatch, route optimization recommendations, automated job documentation, and AI-assisted technician scheduling - reducing downtime and improving first-call resolution rates.',
     icon: Truck,
-    iconClassName: 'bg-indigo-100 text-indigo-600',
+    iconClassName: 'bg-brand-50 text-brand-700',
   },
 ];
 
@@ -182,18 +183,11 @@ const AiConsulting = () => {
       />
       {/* Hero Section */}
       <div className="relative min-h-[560px] flex items-center overflow-hidden">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1920&q=80')",
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60" />
-          <div className="absolute inset-0 bg-grid-dark bg-grid opacity-40" />
-        </div>
+        <HeroVideo
+          name="hero-ai-consulting"
+          overlayClassName="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"
+        />
+        <div className="absolute inset-0 z-0 bg-grid-dark bg-grid opacity-40" />
 
         <div className="relative z-10 w-full pt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -203,19 +197,20 @@ const AiConsulting = () => {
                 AI Consulting & Solutions
               </span>
               <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.05]">
-                Practical AI for{' '}
-                <span className="bg-gradient-to-r from-brand-300 via-accent-300 to-brand-200 bg-clip-text text-transparent">
-                  Modern Operations
+                Practical AI.{' '}
+                <span className="text-brand-300">
+                  Deployed, not decked.
                 </span>
               </h1>
               <p className="mt-6 text-lg sm:text-xl text-navy-200 max-w-2xl">
-                Practical AI implementation for telecom operators, channel partners, and multi-site businesses. We cut
-                through the hype and deploy AI that reduces operational overhead, speeds up sales cycles, and creates
-                measurable ROI — without requiring a data science team.
+                We map your operations, find the automation wins with real ROI, and build them into
+                production — workflow automation, intelligent routing, and AI-assisted operations
+                for telecom operators, channel partners, and multi-site businesses. No data science
+                team required.
               </p>
               <div className="mt-9 flex flex-col sm:flex-row gap-4">
                 <Link to="/contact" className="btn-light">
-                  Schedule a Consultation
+                  Get a Quote
                   <ArrowRight size={18} />
                 </Link>
                 <a href="#services" className="btn-outline">
@@ -239,7 +234,7 @@ const AiConsulting = () => {
                 { value: 'Weeks', label: 'Not months — to first deployment' },
               ].map(({ value, label }) => (
                 <div key={label}>
-                  <p className="text-3xl md:text-4xl font-extrabold bg-gradient-to-br from-brand-600 to-accent-600 bg-clip-text text-transparent">
+                  <p className="text-3xl md:text-4xl font-extrabold text-brand-700">
                     {value}
                   </p>
                   <p className="mt-1 text-sm text-navy-500">{label}</p>
@@ -254,8 +249,6 @@ const AiConsulting = () => {
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
-          <div className="absolute -left-32 top-24 h-96 w-96 rounded-full bg-brand-200/40 blur-3xl" />
-          <div className="absolute -right-24 top-1/3 h-96 w-96 rounded-full bg-accent-200/30 blur-3xl" />
         </div>
 
         <div id="services" className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -273,7 +266,7 @@ const AiConsulting = () => {
                   key={title}
                   className="glass-morphism p-6 rounded-xl shadow-lg border border-gray-100 hover:bg-white hover:shadow-xl transition-all h-full flex flex-col"
                 >
-                  <div className={`w-14 h-14 flex items-center justify-center rounded-full mb-4 ${iconClassName}`}>
+                  <div className={`w-14 h-14 flex items-center justify-center rounded-2xl mb-4 ${iconClassName}`}>
                     <Icon className="h-7 w-7" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900">{title}</h3>
@@ -372,7 +365,6 @@ const AiConsulting = () => {
 
         <div className="relative overflow-hidden bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600">
           <div className="absolute inset-0 bg-grid-dark bg-grid opacity-20" />
-          <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
           <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 lg:flex lg:items-center lg:justify-between">
             <div>
               <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">

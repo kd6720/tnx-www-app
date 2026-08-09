@@ -52,7 +52,7 @@ function App() {
                 <Route path="/about/team" element={<Team />} />
                 <Route path="/pots-replacement" element={<PotsReplacement />} />
                 <Route path="/ai-consulting" element={<AiConsulting />} />
-                <Route path="/fleet-management" element={<AiConsulting />} />
+                <Route path="/fleet-management" element={<Navigate to="/ai-consulting" replace />} />
                 <Route path="/internet-connectivity" element={<InternetConnectivity />} />
                 <Route path="/ip-pbx" element={<Navigate to="/voice-solutions" replace />} />
                 <Route path="/mobility-solutions" element={<MobilitySolutions />} />

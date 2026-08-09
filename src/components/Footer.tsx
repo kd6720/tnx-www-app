@@ -5,7 +5,7 @@ const solutionLinks = [
   { to: '/pots-replacement', label: 'POTS Replacement' },
   { to: '/ai-consulting', label: 'AI Consulting & Solutions' },
   { to: '/internet-connectivity', label: 'Internet Connectivity' },
-  { to: '/ip-pbx', label: 'IP PBX' },
+  { to: '/voice-solutions', label: 'IP PBX' },
   { to: '/mobility-solutions', label: 'Mobility Solutions' },
   { to: '/voice-solutions', label: 'Voice Solutions' },
 ];
@@ -20,7 +20,6 @@ const Footer = () => {
   return (
     <footer className="relative bg-navy-950 text-navy-200 overflow-hidden">
       {/* Ambient glow */}
-      <div className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-64 w-[40rem] rounded-full bg-brand-600/20 blur-3xl" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

@@ -5,15 +5,16 @@ import { getAllPosts, getCategories, BlogPost } from '../utils/blog';
 import Seo from '../components/Seo';
 
 const categoryColors: Record<string, string> = {
-  'Telecom Modernization': 'bg-blue-100 text-blue-700',
-  'AI for Business': 'bg-emerald-100 text-emerald-700',
-  'Industry Spotlights': 'bg-violet-100 text-violet-700',
-  'Compliance & Regulation': 'bg-amber-100 text-amber-700',
-  'Channel Growth': 'bg-rose-100 text-rose-700',
+  'Telecom Modernization': 'bg-brand-50 text-brand-700',
+  'AI for Business': 'bg-brand-50 text-brand-700',
+  'Industry Spotlights': 'bg-brand-50 text-brand-700',
+  'Compliance & Regulation': 'bg-brand-50 text-brand-700',
+  'Channel Growth': 'bg-brand-50 text-brand-700',
 };
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [visibleCount, setVisibleCount] = useState(12);
 
   const posts = useMemo(() => getAllPosts(), []);
   const categories = useMemo(() => getCategories(), []);
@@ -22,6 +23,10 @@ const Blog = () => {
     if (activeCategory === 'All') return posts;
     return posts.filter((p) => p.category === activeCategory);
   }, [posts, activeCategory]);
+
+  const featured = activeCategory === 'All' ? filteredPosts[0] : null;
+  const gridPosts = featured ? filteredPosts.slice(1) : filteredPosts;
+  const visiblePosts = gridPosts.slice(0, visibleCount);
 
   return (
     <div className="bg-navy-50">
@@ -33,8 +38,6 @@ const Blog = () => {
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-navy-950 via-navy-900 to-brand-900 py-20 sm:py-28">
         <div className="absolute inset-0 bg-grid-dark bg-grid opacity-30" />
-        <div className="pointer-events-none absolute -right-10 bottom-10 h-80 w-80 rounded-full bg-accent-500/10 blur-3xl" />
-        <div className="pointer-events-none absolute -left-20 top-10 h-72 w-72 rounded-full bg-brand-500/15 blur-3xl" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="eyebrow border border-brand-400/30 bg-brand-500/10 text-brand-200">
             <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
@@ -42,7 +45,7 @@ const Blog = () => {
           </span>
           <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
             TrustedNetworx{' '}
-            <span className="bg-gradient-to-r from-brand-300 via-accent-300 to-brand-200 bg-clip-text text-transparent">
+            <span className="text-brand-300">
               Blog
             </span>
           </h1>
@@ -81,8 +84,38 @@ const Blog = () => {
               <p className="text-lg text-navy-500">No posts in this category yet.</p>
             </div>
           ) : (
+            <>
+            {featured && (
+              <Link
+                to={`/blog/${featured.slug}`}
+                className="group mb-10 grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-2xl bg-white border border-navy-100 shadow-card transition-all duration-300 hover:shadow-card-hover hover:border-brand-200"
+              >
+                {featured.image && (
+                  <div className="relative h-64 lg:h-auto overflow-hidden">
+                    <img
+                      src={featured.image}
+                      alt={featured.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                )}
+                <div className="flex flex-col p-8 lg:p-10">
+                  <span className="inline-flex self-start rounded-full px-3 py-1 text-xs font-semibold bg-brand-50 text-brand-700">
+                    Latest — {featured.category}
+                  </span>
+                  <h2 className="mt-4 text-2xl lg:text-3xl font-bold text-navy-900 leading-snug group-hover:text-brand-700 transition-colors">
+                    {featured.title}
+                  </h2>
+                  <p className="mt-3 flex-grow text-navy-500 leading-relaxed">{featured.description}</p>
+                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-600">
+                    Read article
+                    <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                </div>
+              </Link>
+            )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {filteredPosts.map((post: BlogPost) => (
+              {visiblePosts.map((post: BlogPost) => (
                 <Link
                   key={post.slug}
                   to={`/blog/${post.slug}`}
@@ -143,6 +176,29 @@ const Blog = () => {
                 </Link>
               ))}
             </div>
+
+            {visibleCount < gridPosts.length && (
+              <div className="mt-12 text-center">
+                <button
+                  onClick={() => setVisibleCount((c) => c + 12)}
+                  className="inline-flex items-center gap-2 rounded-xl border border-navy-200 bg-white px-8 py-3 text-sm font-semibold text-navy-700 shadow-card transition-all hover:border-brand-300 hover:text-brand-700"
+                >
+                  Show more articles ({gridPosts.length - visibleCount} remaining)
+                </button>
+              </div>
+            )}
+
+            {/* Full article index — keeps every post crawlable regardless of pagination */}
+            <nav aria-label="All articles" className="sr-only">
+              <ul>
+                {posts.map((post: BlogPost) => (
+                  <li key={post.slug}>
+                    <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            </>
           )}
         </div>
       </section>
@@ -150,7 +206,6 @@ const Blog = () => {
       {/* CTA */}
       <section className="relative overflow-hidden bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600">
         <div className="absolute inset-0 bg-grid-dark bg-grid opacity-20" />
-        <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
         <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 lg:flex lg:items-center lg:justify-between">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             <span className="block">Ready to modernize your telecom?</span>
@@ -158,7 +213,7 @@ const Blog = () => {
           </h2>
           <div className="mt-8 lg:mt-0 lg:flex-shrink-0">
             <Link to="/contact" className="btn-light">
-              Schedule a Consultation
+              Get a Quote
               <ArrowRight size={18} />
             </Link>
           </div>

@@ -171,7 +171,6 @@ const BlogPost = () => {
       {/* CTA */}
       <section className="relative overflow-hidden bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600">
         <div className="absolute inset-0 bg-grid-dark bg-grid opacity-20" />
-        <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
         <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 lg:flex lg:items-center lg:justify-between">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             <span className="block">Have a question about this topic?</span>
@@ -179,7 +178,7 @@ const BlogPost = () => {
           </h2>
           <div className="mt-8 lg:mt-0 lg:flex-shrink-0">
             <Link to="/contact" className="btn-light">
-              Schedule a Consultation
+              Get a Quote
               <ArrowLeft size={18} className="rotate-180" />
             </Link>
           </div>

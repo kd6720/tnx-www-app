@@ -9,7 +9,7 @@ const ChatWidget = () => {
       {/* Floating button */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-brand-600 text-white shadow-lg shadow-brand-600/30 transition-all duration-300 hover:bg-brand-500 hover:scale-110 hover:shadow-xl"
+        className="fixed bottom-6 right-6 z-50 hidden h-14 w-14 items-center justify-center rounded-full bg-brand-600 text-white shadow-lg shadow-brand-600/30 transition-all duration-300 hover:bg-brand-500 hover:shadow-xl md:flex"
         aria-label={open ? 'Close chat' : 'Open chat'}
       >
         {open ? <X size={24} /> : <MessageCircle size={24} />}
@@ -24,8 +24,8 @@ const ChatWidget = () => {
               TN
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold text-white">TrustedNetworx AI</p>
-              <p className="text-xs text-brand-200">We typically reply in under 5 minutes</p>
+              <p className="text-sm font-semibold text-white">Message TrustedNetworx</p>
+              <p className="text-xs text-brand-200">We reply within one business day</p>
             </div>
             <button
               onClick={() => setOpen(false)}

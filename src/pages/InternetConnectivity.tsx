@@ -1,7 +1,8 @@
 import React from 'react';
-import {Wifi, Shield, Zap, DollarSign, Globe, Network, Signal, Router, Headphones} from 'lucide-react';
-import {Link} from 'react-router-dom';
+import {Wifi, Shield, DollarSign, Gauge, Globe, Network, Signal, Router, Headphones} from 'lucide-react';
 import Seo from '../components/Seo';
+import HeroVideo from '../components/HeroVideo';
+import MultiStepForm from '../components/MultiStepForm';
 
 const InternetConnectivity = () => {
     return (
@@ -12,34 +13,28 @@ const InternetConnectivity = () => {
             />
             {/* Hero Section */}
             <div className="relative min-h-[460px] flex items-center overflow-hidden">
-                {/* Background Image */}
-                <div className="absolute inset-0 z-0" style={{
-                    backgroundImage: 'url(/Internet-Connectivity.jpg)',
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat'
-                }}>
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"/>
-                    <div className="absolute inset-0 bg-grid-dark bg-grid opacity-40"/>
-                </div>
+                {/* Background Video */}
+                <HeroVideo
+                    name="hero-connectivity"
+                    overlayClassName="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"
+                />
+                <div className="absolute inset-0 z-0 bg-grid-dark bg-grid opacity-40"/>
 
-                <div className="relative z-10 w-full">
+                <div className="relative z-10 w-full pt-24">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center">
                             <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl tracking-tight">
-                                Internet Connectivity Solutions
+                                Connectivity your locations can&apos;t afford to lose.
                             </h1>
                             <p
                                 className="mt-3 max-w-md mx-auto text-base text-white sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                                Ensure your business remains agile, efficient, and securely connected with our
-                                comprehensive
-                                Internet Connectivity solutions
+                                High-speed primary circuits with LTE/5G wireless failover, managed and monitored
+                                across every site. One vendor, one SLA, no finger-pointing between carriers.
                             </p>
                             <div className="mt-8">
-                                <Link to="/contact" className="btn-light">
-                                    Learn More
-                                </Link>
+                                <a href="#quote" className="btn-light">
+                                    Get a Quote
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -50,10 +45,8 @@ const InternetConnectivity = () => {
                 {/* Background decorative elements */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     <div
-                        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent">
+                        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-navy-100 to-transparent">
                     </div>
-                    <div className="absolute -left-32 top-24 h-96 w-96 rounded-full bg-brand-200/40 blur-3xl"></div>
-                    <div className="absolute -right-24 top-1/3 h-96 w-96 rounded-full bg-accent-200/30 blur-3xl"></div>
                 </div>
 
                 {/* Available Solutions Section */}
@@ -61,15 +54,14 @@ const InternetConnectivity = () => {
                     <div className="space-y-16">
                         <div className="glass-morphism rounded-2xl p-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
                             <div>
-                                <h2 className="text-3xl font-extrabold text-gray-900">Enterprise-Grade Connectivity</h2>
-                                <p className="mt-4 text-lg text-gray-600">
-                                    In today's digital world, reliable internet connectivity is crucial for business
-                                    success.
-                                    Our
-                                    solutions provide the speed, reliability, and security your business needs to stay
-                                    competitive.
+                                <h2 className="text-3xl font-extrabold text-navy-900">Enterprise-Grade Connectivity</h2>
+                                <p className="mt-4 text-lg text-navy-600">
+                                    When a location loses internet, it loses phones, payments, and access control
+                                    with it. We build connectivity that doesn't go down: primary circuits sized to
+                                    the site, LTE/5G failover that kicks in automatically, and monitoring that
+                                    catches problems before your staff does.
                                 </p>
-                                <p className="mt-4 text-lg text-gray-600">
+                                <p className="mt-4 text-lg text-navy-600">
                                     From dedicated internet access to SD-WAN solutions, we offer a comprehensive suite
                                     of
                                     connectivity
@@ -78,19 +70,10 @@ const InternetConnectivity = () => {
                                 </p>
                                 <div className="mt-8 space-y-6">
                                     <div className="flex items-start">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                             viewBox="0 0 24 24"
-                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                             stroke-linejoin="round"
-                                             className="lucide lucide-wifi h-6 w-6 text-blue-600 flex-shrink-0 mt-1">
-                                            <path d="M12 20h.01"></path>
-                                            <path d="M2 8.82a15 15 0 0 1 20 0"></path>
-                                            <path d="M5 12.859a10 10 0 0 1 14 0"></path>
-                                            <path d="M8.5 16.429a5 5 0 0 1 7 0"></path>
-                                        </svg>
+                                        <Wifi className="h-6 w-6 text-brand-600 flex-shrink-0 mt-1" />
                                         <div className="ml-4">
-                                            <h3 className="text-lg font-medium text-gray-900">Reliability</h3>
-                                            <p className="mt-2 text-gray-600">
+                                            <h3 className="text-lg font-medium text-navy-900">Reliability</h3>
+                                            <p className="mt-2 text-navy-600">
                                                 Experience high-quality, uninterrupted connectivity backed by our robust
                                                 infrastructure
                                                 and support.
@@ -98,35 +81,20 @@ const InternetConnectivity = () => {
                                         </div>
                                     </div>
                                     <div className="flex items-start">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                             viewBox="0 0 24 24"
-                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                             stroke-linejoin="round"
-                                             className="lucide lucide-gauge h-6 w-6 text-blue-600 flex-shrink-0 mt-1">
-                                            <path d="m12 14 4-4"></path>
-                                            <path d="M3.34 19a10 10 0 1 1 17.32 0"></path>
-                                        </svg>
+                                        <Gauge className="h-6 w-6 text-brand-600 flex-shrink-0 mt-1" />
                                         <div className="ml-4">
-                                            <h3 className="text-lg font-medium text-gray-900">Scalability</h3>
-                                            <p className="mt-2 text-gray-600">
+                                            <h3 className="text-lg font-medium text-navy-900">Scalability</h3>
+                                            <p className="mt-2 text-navy-600">
                                                 Easily adjust services to align with your business growth and evolving
                                                 needs.
                                             </p>
                                         </div>
                                     </div>
                                     <div className="flex items-start">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                             viewBox="0 0 24 24"
-                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                             stroke-linejoin="round"
-                                             className="lucide lucide-shield h-6 w-6 text-blue-600 flex-shrink-0 mt-1">
-                                            <path
-                                                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z">
-                                            </path>
-                                        </svg>
+                                        <Shield className="h-6 w-6 text-brand-600 flex-shrink-0 mt-1" />
                                         <div className="ml-4">
-                                            <h3 className="text-lg font-medium text-gray-900">Security</h3>
-                                            <p className="mt-2 text-gray-600">
+                                            <h3 className="text-lg font-medium text-navy-900">Security</h3>
+                                            <p className="mt-2 text-navy-600">
                                                 Protect your data and communications with our advanced security measures
                                                 and
                                                 monitoring.
@@ -134,17 +102,10 @@ const InternetConnectivity = () => {
                                         </div>
                                     </div>
                                     <div className="flex items-start">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                             viewBox="0 0 24 24"
-                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                             stroke-linejoin="round"
-                                             className="lucide lucide-dollar-sign h-6 w-6 text-blue-600 flex-shrink-0 mt-1">
-                                            <line x1="12" x2="12" y1="2" y2="22"></line>
-                                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                                        </svg>
+                                        <DollarSign className="h-6 w-6 text-brand-600 flex-shrink-0 mt-1" />
                                         <div className="ml-4">
-                                            <h3 className="text-lg font-medium text-gray-900">Cost Efficiency</h3>
-                                            <p className="mt-2 text-gray-600">
+                                            <h3 className="text-lg font-medium text-navy-900">Cost Efficiency</h3>
+                                            <p className="mt-2 text-navy-600">
                                                 Optimize your IT investments with solutions designed to provide maximum
                                                 value
                                                 and
@@ -156,16 +117,16 @@ const InternetConnectivity = () => {
                             </div>
 
                             <div className="space-y-6">
-                                <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-8">
+                                <h2 className="text-3xl font-extrabold text-navy-900 text-center mb-8">
                                     Available Solutions
                                 </h2>
-                                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                                <div className="bg-white p-6 rounded-xl shadow-card border border-navy-100">
                                     <div className="flex items-center">
-                                        <Router className="h-8 w-8 text-blue-600 flex-shrink-0"/>
-                                        <h3 className="text-xl font-bold text-gray-900 ml-4">Managed SD-WAN
+                                        <Router className="h-8 w-8 text-brand-600 flex-shrink-0"/>
+                                        <h3 className="text-xl font-bold text-navy-900 ml-4">Managed SD-WAN
                                             Services</h3>
                                     </div>
-                                    <p className="mt-4 text-gray-600">
+                                    <p className="mt-4 text-navy-600">
                                         Our award-winning SD-WAN combines MPLS, broadband internet circuits, and 4G-LTE
                                         to
                                         deliver a
@@ -174,12 +135,12 @@ const InternetConnectivity = () => {
                                         resources, offering improved performance, reliability, and security.
                                     </p>
                                 </div>
-                                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                                <div className="bg-white p-6 rounded-xl shadow-card border border-navy-100">
                                     <div className="flex items-center">
-                                        <Globe className="h-8 w-8 text-blue-600 flex-shrink-0"/>
-                                        <h3 className="text-xl font-bold text-gray-900 ml-4">Satellite Broadband</h3>
+                                        <Globe className="h-8 w-8 text-brand-600 flex-shrink-0"/>
+                                        <h3 className="text-xl font-bold text-navy-900 ml-4">Satellite Broadband</h3>
                                     </div>
-                                    <p className="mt-4 text-gray-600">
+                                    <p className="mt-4 text-navy-600">
                                         As an authorized reseller of <a href="https://www.starlink.com"
                                                                         target="_blank" rel="noopener noreferrer"><b>Starlink</b></a> services and
                                         equipment, we provide
@@ -190,12 +151,12 @@ const InternetConnectivity = () => {
                                         remains connected, regardless of geography.
                                     </p>
                                 </div>
-                                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                                <div className="bg-white p-6 rounded-xl shadow-card border border-navy-100">
                                     <div className="flex items-center">
-                                        <Signal className="h-8 w-8 text-blue-600 flex-shrink-0"/>
-                                        <h3 className="text-xl font-bold text-gray-900 ml-4">IoT Single SIM</h3>
+                                        <Signal className="h-8 w-8 text-brand-600 flex-shrink-0"/>
+                                        <h3 className="text-xl font-bold text-navy-900 ml-4">IoT Single SIM</h3>
                                     </div>
-                                    <p className="mt-4 text-gray-600">
+                                    <p className="mt-4 text-navy-600">
                                         Our IoT Single SIM card ensures your devices maintain connectivity at all times
                                         by
                                         intelligently roaming to find the strongest mobile signal, regardless of
@@ -213,22 +174,22 @@ const InternetConnectivity = () => {
                 </div>
 
                 {/* Why Choose Us Section */}
-                <div className="w-full bg-blue-50">
+                <div className="w-full bg-brand-50">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                         <div className="space-y-16">
                             <div className="glass-morphism rounded-2xl p-8 text-center">
-                                <h2 className="text-3xl font-extrabold text-gray-900 mb-8">
+                                <h2 className="text-3xl font-extrabold text-navy-900 mb-8">
                                     Why Choose TrustedNetworx Solutions
                                 </h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                    <div className="glass-morphism p-6 rounded-xl shadow-lg border border-gray-100">
-                                        <div className="text-blue-600 mb-4 flex justify-center">
+                                    <div className="glass-morphism p-6 rounded-xl shadow-card border border-navy-100">
+                                        <div className="text-brand-600 mb-4 flex justify-center">
                                             <Network size={32}/>
                                         </div>
-                                        <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">Customized
+                                        <h3 className="text-xl font-bold text-navy-900 mb-3 text-center">Customized
                                             IT Solutions
                                         </h3>
-                                        <p className="text-gray-600">
+                                        <p className="text-navy-600">
                                             Our team expertly monitors and maintains your IT infrastructure,
                                             allowing you to focus
                                             on your core business operations without interruption. We provide fully
@@ -238,14 +199,14 @@ const InternetConnectivity = () => {
                                             and up-to-date.
                                         </p>
                                     </div>
-                                    <div className="glass-morphism p-6 rounded-xl shadow-lg border border-gray-100"
+                                    <div className="glass-morphism p-6 rounded-xl shadow-card border border-navy-100"
                                          style={{background: 'rgba(255, 255, 255, 0.1)'}}>
-                                        <div className="text-blue-600 mb-4 flex justify-center">
+                                        <div className="text-brand-600 mb-4 flex justify-center">
                                             <Headphones size={32}/>
                                         </div>
-                                        <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">Comprehensive
+                                        <h3 className="text-xl font-bold text-navy-900 mb-3 text-center">Comprehensive
                                             Support</h3>
-                                        <p className="text-gray-600">
+                                        <p className="text-navy-600">
                                             As a client, you'll have direct access to dedicated account managers,
                                             project managers,
                                             engineers, service technicians, and a customer care team to assist with
@@ -259,76 +220,43 @@ const InternetConnectivity = () => {
                     </div>
                 </div>
 
-                {/* Benefits Section */}
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                    <div className="space-y-16">
-                        <div className="glass-morphism rounded-2xl p-8">
-                            <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-8">
-                                Benefits
-                            </h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                                    <div className="text-blue-600 mb-4 flex justify-center">
-                                        <Wifi size={32}/>
-                                    </div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2 text-center">Reliability</h3>
-                                    <p className="text-gray-600 text-center text-sm">
-                                        Experience uninterrupted connectivity backed by robust infrastructure.
-                                    </p>
-                                </div>
-                                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                                    <div className="text-blue-600 mb-4 flex justify-center">
-                                        <Zap size={32}/>
-                                    </div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2 text-center">Scalability</h3>
-                                    <p className="text-gray-600 text-center text-sm">
-                                        Easily adjust services as your business grows.
-                                    </p>
-                                </div>
-                                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                                    <div className="text-blue-600 mb-4 flex justify-center">
-                                        <Shield size={32}/>
-                                    </div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2 text-center">Security</h3>
-                                    <p className="text-gray-600 text-center text-sm">
-                                        Advanced security measures protect your data.
-                                    </p>
-                                </div>
-                                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                                    <div className="text-blue-600 mb-4 flex justify-center">
-                                        <DollarSign size={32}/>
-                                    </div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2 text-center">Cost
-                                        Efficiency</h3>
-                                    <p className="text-gray-600 text-center text-sm">
-                                        Optimize IT investments for maximum value.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 {/* CTA Section */}
                 <div className="relative max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto pb-16">
                     <div className="space-y-16">
                         <div
-                            className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-8 shadow-xl border border-gray-200">
+                            className="bg-gradient-to-r from-brand-700 to-brand-600 rounded-xl p-8 shadow-xl border border-navy-100">
                             <div className="text-center">
                                 <h3 className="text-2xl font-bold text-white mb-4">Ready to Transform Your
                                     Connectivity?</h3>
-                                <p className="text-lg text-blue-100 mb-8">Partner with us to transform your
+                                <p className="text-lg text-brand-100 mb-8">Partner with us to transform your
                                     communication
                                     infrastructure, ensuring your business stays connected and competitive in today's
                                     fast-paced
                                     environment.</p><a
-                                className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 md:py-4 md:text-lg md:px-10 transition-colors duration-300"
-                                href="/contact">Get Started</a>
+                                className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-brand-600 bg-white hover:bg-brand-50 md:py-4 md:text-lg md:px-10 transition-colors duration-300"
+                                href="#quote">Get a Quote</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {/* Lead Capture Form */}
+            <section id="quote" className="relative py-16 sm:py-20 bg-navy-50">
+                <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-10">
+                        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-navy-900">
+                            Get a multi-site quote
+                        </h2>
+                        <p className="mt-3 text-lg text-navy-500">
+                            Tell us about your sites and we'll come back with a plan and pricing within one
+                            business day.
+                        </p>
+                    </div>
+                    <MultiStepForm defaultPainPoint="Improving internet reliability" />
+                </div>
+            </section>
+
         </div>
     );
 };

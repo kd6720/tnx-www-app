@@ -1,3 +1,9 @@
 node_modules
 dist
 .vite
+
+# TypeScript incremental build artifacts
+*.tsbuildinfo
+
+# Downloaded browser cache (postbuild Chromium) — never commit
+node_modules/.cache/

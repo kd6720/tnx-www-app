@@ -52,7 +52,6 @@ const Tools = () => {
       <section className="relative flex min-h-[400px] items-center overflow-hidden">
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-navy-950 via-navy-900 to-brand-900" />
         <div className="absolute inset-0 z-0 bg-grid-dark bg-grid opacity-40" />
-        <div className="pointer-events-none absolute -left-20 top-1/4 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl" />
         <div className="absolute inset-0 z-0 bg-hero-glow" />
         <div className="relative z-10 w-full pt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -102,7 +101,7 @@ const Tools = () => {
               to="/contact"
               className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-base font-semibold text-white shadow-glow transition-all duration-300 hover:bg-brand-500 hover:-translate-y-0.5"
             >
-              Schedule a Consultation
+              Get a Quote
               <ArrowRight size={18} className="ml-2" />
             </Link>
           </div>

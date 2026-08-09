@@ -23,7 +23,7 @@ const StickyCTA = ({
           className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl my-1.5 border border-brand-300 bg-white text-sm font-semibold text-brand-700 transition-colors hover:bg-brand-50 active:bg-brand-100"
         >
           <Phone size={16} />
-          Call {phoneNumber}
+          Call Us
         </a>
 
         {/* Quote button */}
