@@ -44,6 +44,7 @@ import managedConnectivityOutsourcingNetwork from '../content/blog/managed-conne
 import _5SignsOutgrownTelecom from '../content/blog/5-signs-business-outgrown-telecom-setup.md?raw';
 import bandwidthPlanning2026BusinessNeeds from '../content/blog/bandwidth-planning-2026-business-needs.md?raw';
 import potsReplacementRoiRealCostOfWaiting from '../content/blog/pots-replacement-roi-real-cost-of-waiting.md?raw';
+import t1MigrationStrategies2026 from '../content/blog/t1-migration-strategies-2026.md?raw';
 
 
 export interface BlogPost {
@@ -95,6 +96,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['t1-migration-strategies-2026', t1MigrationStrategies2026],
   ['pots-replacement-roi-real-cost-of-waiting', potsReplacementRoiRealCostOfWaiting],
   ['bandwidth-planning-2026-business-needs', bandwidthPlanning2026BusinessNeeds],
   ['5-signs-business-outgrown-telecom-setup', _5SignsOutgrownTelecom],
