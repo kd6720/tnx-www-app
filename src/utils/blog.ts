@@ -16,6 +16,7 @@ import hiddenCostsLegacyPhoneSystems from '../content/blog/hidden-costs-legacy-p
 import howPropertyManagersCuttingTelecomCosts from '../content/blog/how-property-managers-cutting-telecom-costs.md?raw';
 import telecomAuditsOverpaying from '../content/blog/telecom-audits-what-youre-probably-overpaying-for.md?raw';
 import aiEmailTriage from '../content/blog/ai-email-triage-stop-drowning-in-inbox.md?raw';
+import aiEmailTriage2026 from '../content/blog/ai-email-triage-2026.md?raw';
 import sdWanExplained from '../content/blog/sd-wan-explained-for-business-leaders.md?raw';
 import whenAiSalesAgentsOutperformHumans from '../content/blog/when-ai-sales-agents-outperform-humans.md?raw';
 import whenComplianceDrivesInnovation from '../content/blog/when-compliance-drives-innovation-instead-of-blocking-it.md?raw';
@@ -96,6 +97,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['ai-email-triage-2026', aiEmailTriage2026],
   ['t1-migration-strategies-2026', t1MigrationStrategies2026],
   ['pots-replacement-roi-real-cost-of-waiting', potsReplacementRoiRealCostOfWaiting],
   ['bandwidth-planning-2026-business-needs', bandwidthPlanning2026BusinessNeeds],
