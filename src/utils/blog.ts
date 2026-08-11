@@ -20,6 +20,7 @@ import aiEmailTriage2026 from '../content/blog/ai-email-triage-2026.md?raw';
 import sdWanExplained from '../content/blog/sd-wan-explained-for-business-leaders.md?raw';
 import whenAiSalesAgentsOutperformHumans from '../content/blog/when-ai-sales-agents-outperform-humans.md?raw';
 import whenComplianceDrivesInnovation from '../content/blog/when-compliance-drives-innovation-instead-of-blocking-it.md?raw';
+import migratingToVoipBusinessLeaders from '../content/blog/migrating-to-voip-what-business-leaders-get-wrong.md?raw';
 import thirtyDayAiPilot from '../content/blog/30-day-ai-pilot-how-to-test-ai.md?raw';
 import aiPoweredCustomerService from '../content/blog/ai-powered-customer-service-24-7-support.md?raw';
 import hotelConnectivityWhatGuestsExpect2026 from '../content/blog/hotel-connectivity-what-guests-expect-2026.md?raw';
@@ -97,6 +98,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['migrating-to-voip-what-business-leaders-get-wrong', migratingToVoipBusinessLeaders],
   ['ai-email-triage-2026', aiEmailTriage2026],
   ['t1-migration-strategies-2026', t1MigrationStrategies2026],
   ['pots-replacement-roi-real-cost-of-waiting', potsReplacementRoiRealCostOfWaiting],
