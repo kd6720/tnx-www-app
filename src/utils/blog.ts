@@ -47,6 +47,7 @@ import _5SignsOutgrownTelecom from '../content/blog/5-signs-business-outgrown-te
 import bandwidthPlanning2026BusinessNeeds from '../content/blog/bandwidth-planning-2026-business-needs.md?raw';
 import potsReplacementRoiRealCostOfWaiting from '../content/blog/pots-replacement-roi-real-cost-of-waiting.md?raw';
 import t1MigrationStrategies2026 from '../content/blog/t1-migration-strategies-2026.md?raw';
+import hotelGuestConnectivityExpectations2026 from '../content/blog/hotel-guest-connectivity-expectations-2026.md?raw';
 
 
 export interface BlogPost {
@@ -98,6 +99,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['hotel-guest-connectivity-expectations-2026', hotelGuestConnectivityExpectations2026],
   ['migrating-to-voip-what-business-leaders-get-wrong', migratingToVoipBusinessLeaders],
   ['ai-email-triage-2026', aiEmailTriage2026],
   ['t1-migration-strategies-2026', t1MigrationStrategies2026],
