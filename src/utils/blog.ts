@@ -48,6 +48,7 @@ import bandwidthPlanning2026BusinessNeeds from '../content/blog/bandwidth-planni
 import potsReplacementRoiRealCostOfWaiting from '../content/blog/pots-replacement-roi-real-cost-of-waiting.md?raw';
 import t1MigrationStrategies2026 from '../content/blog/t1-migration-strategies-2026.md?raw';
 import hotelGuestConnectivityExpectations2026 from '../content/blog/hotel-guest-connectivity-expectations-2026.md?raw';
+import nfpa72FireAlarmTestingSupervision2026 from '../content/blog/nfpa-72-fire-alarm-testing-supervision-2026.md?raw';
 
 
 export interface BlogPost {
@@ -99,6 +100,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['nfpa-72-fire-alarm-testing-supervision-2026', nfpa72FireAlarmTestingSupervision2026],
   ['hotel-guest-connectivity-expectations-2026', hotelGuestConnectivityExpectations2026],
   ['migrating-to-voip-what-business-leaders-get-wrong', migratingToVoipBusinessLeaders],
   ['ai-email-triage-2026', aiEmailTriage2026],
