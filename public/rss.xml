@@ -7,6 +7,15 @@
   <language>en-us</language>
   <atom:link href="https://trustednetworx.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>Multi-Site Telecom Consolidation: One Vendor vs Many</title>
+    <link>https://trustednetworx.com/blog/multi-site-telecom-consolidation-2026</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/multi-site-telecom-consolidation-2026</guid>
+    <pubDate>Fri, 14 Aug 2026 00:00:00 GMT</pubDate>
+    <description>Consolidating telecom across locations isn't just a vendor decision — it's operational. Here's how to sequence it without a single point of failure.</description>
+    <category>Telecom Modernization</category>
+    <enclosure url="https://trustednetworx.com/blog-images/multi-site-telecom-consolidation-2026.png" type="image/png"/>
+  </item>
+  <item>
     <title>Fire Alarm Supervision and Testing: The NFPA 72 Rules Most Facilities Overlook</title>
     <link>https://trustednetworx.com/blog/nfpa-72-fire-alarm-testing-supervision-2026</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/nfpa-72-fire-alarm-testing-supervision-2026</guid>
