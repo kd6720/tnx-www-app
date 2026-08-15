@@ -50,6 +50,7 @@ import t1MigrationStrategies2026 from '../content/blog/t1-migration-strategies-2
 import hotelGuestConnectivityExpectations2026 from '../content/blog/hotel-guest-connectivity-expectations-2026.md?raw';
 import nfpa72FireAlarmTestingSupervision2026 from '../content/blog/nfpa-72-fire-alarm-testing-supervision-2026.md?raw';
 import multiSiteTelecomConsolidation2026 from '../content/blog/multi-site-telecom-consolidation-2026.md?raw';
+import carrierDisconnectionNotice2026 from '../content/blog/carrier-disconnection-notice-2026.md?raw';
 
 
 export interface BlogPost {
@@ -101,6 +102,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['carrier-disconnection-notice-2026', carrierDisconnectionNotice2026],
   ['multi-site-telecom-consolidation-2026', multiSiteTelecomConsolidation2026],
   ['nfpa-72-fire-alarm-testing-supervision-2026', nfpa72FireAlarmTestingSupervision2026],
   ['hotel-guest-connectivity-expectations-2026', hotelGuestConnectivityExpectations2026],

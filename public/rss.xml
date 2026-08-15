@@ -7,6 +7,15 @@
   <language>en-us</language>
   <atom:link href="https://trustednetworx.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>What Actually Happens When a Carrier Sends a Disconnection Notice</title>
+    <link>https://trustednetworx.com/blog/carrier-disconnection-notice-2026</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/carrier-disconnection-notice-2026</guid>
+    <pubDate>Sat, 15 Aug 2026 00:00:00 GMT</pubDate>
+    <description>A carrier disconnection notice starts a 45-day clock. Here's the week-by-week plan to migrate without an outage, a compliance gap, or a panic buy.</description>
+    <category>Telecom Modernization</category>
+    <enclosure url="https://trustednetworx.com/blog-images/carrier-disconnection-notice-2026.png" type="image/png"/>
+  </item>
+  <item>
     <title>Multi-Site Telecom Consolidation: One Vendor vs Many</title>
     <link>https://trustednetworx.com/blog/multi-site-telecom-consolidation-2026</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/multi-site-telecom-consolidation-2026</guid>
