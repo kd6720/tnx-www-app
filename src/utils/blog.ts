@@ -51,6 +51,7 @@ import hotelGuestConnectivityExpectations2026 from '../content/blog/hotel-guest-
 import nfpa72FireAlarmTestingSupervision2026 from '../content/blog/nfpa-72-fire-alarm-testing-supervision-2026.md?raw';
 import multiSiteTelecomConsolidation2026 from '../content/blog/multi-site-telecom-consolidation-2026.md?raw';
 import carrierDisconnectionNotice2026 from '../content/blog/carrier-disconnection-notice-2026.md?raw';
+import fixedWirelessFiberCablePerSitePlaybook from '../content/blog/fixed-wireless-fiber-cable-per-site-playbook.md?raw';
 
 
 export interface BlogPost {
@@ -102,6 +103,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['fixed-wireless-fiber-cable-per-site-playbook', fixedWirelessFiberCablePerSitePlaybook],
   ['carrier-disconnection-notice-2026', carrierDisconnectionNotice2026],
   ['multi-site-telecom-consolidation-2026', multiSiteTelecomConsolidation2026],
   ['nfpa-72-fire-alarm-testing-supervision-2026', nfpa72FireAlarmTestingSupervision2026],
