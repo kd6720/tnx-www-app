@@ -52,6 +52,7 @@ import nfpa72FireAlarmTestingSupervision2026 from '../content/blog/nfpa-72-fire-
 import multiSiteTelecomConsolidation2026 from '../content/blog/multi-site-telecom-consolidation-2026.md?raw';
 import carrierDisconnectionNotice2026 from '../content/blog/carrier-disconnection-notice-2026.md?raw';
 import fixedWirelessFiberCablePerSitePlaybook from '../content/blog/fixed-wireless-fiber-cable-per-site-playbook.md?raw';
+import legacyPhoneSystemCostPerLine2026 from '../content/blog/legacy-phone-system-cost-per-line-2026.md?raw';
 
 
 export interface BlogPost {
@@ -103,6 +104,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['legacy-phone-system-cost-per-line-2026', legacyPhoneSystemCostPerLine2026],
   ['fixed-wireless-fiber-cable-per-site-playbook', fixedWirelessFiberCablePerSitePlaybook],
   ['carrier-disconnection-notice-2026', carrierDisconnectionNotice2026],
   ['multi-site-telecom-consolidation-2026', multiSiteTelecomConsolidation2026],
