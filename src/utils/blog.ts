@@ -53,6 +53,7 @@ import multiSiteTelecomConsolidation2026 from '../content/blog/multi-site-teleco
 import carrierDisconnectionNotice2026 from '../content/blog/carrier-disconnection-notice-2026.md?raw';
 import fixedWirelessFiberCablePerSitePlaybook from '../content/blog/fixed-wireless-fiber-cable-per-site-playbook.md?raw';
 import legacyPhoneSystemCostPerLine2026 from '../content/blog/legacy-phone-system-cost-per-line-2026.md?raw';
+import sipTrunkingVsHostedVoip from '../content/blog/sip-trunking-vs-hosted-voip.md?raw';
 
 
 export interface BlogPost {
@@ -104,6 +105,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['sip-trunking-vs-hosted-voip', sipTrunkingVsHostedVoip],
   ['legacy-phone-system-cost-per-line-2026', legacyPhoneSystemCostPerLine2026],
   ['fixed-wireless-fiber-cable-per-site-playbook', fixedWirelessFiberCablePerSitePlaybook],
   ['carrier-disconnection-notice-2026', carrierDisconnectionNotice2026],
