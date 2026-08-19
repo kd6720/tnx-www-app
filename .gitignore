@@ -7,3 +7,4 @@ dist
 
 # Downloaded browser cache (postbuild Chromium) — never commit
 node_modules/.cache/
+__pycache__/

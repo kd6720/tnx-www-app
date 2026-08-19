@@ -20,17 +20,19 @@
   force = true
 
 # Ensure blog detail URLs resolve to their generated static HTML before SPA fallback.
+# force = true so /blog/:slug is served DIRECTLY (200, no 301 to the trailing-slash
+# form) — matching the canonical/og:url tags, which Facebook/LinkedIn scrapers key on.
 [[redirects]]
   from = "/blog/:slug"
   to = "/blog/:slug/index.html"
   status = 200
-  force = false
+  force = true
 
 [[redirects]]
   from = "/blog/:slug/"
   to = "/blog/:slug/index.html"
   status = 200
-  force = false
+  force = true
 
 # SPA fallback — every other path serves the React app.
 [[redirects]]
