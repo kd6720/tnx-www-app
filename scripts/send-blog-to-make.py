@@ -217,8 +217,11 @@ def post_payload(webhook_url: str, payload: dict[str, object]) -> dict:
         }
 
 
-def post_to_linkedin(slug: str) -> dict:
-    """Post directly to LinkedIn via Linked API with image support."""
+def post_to_linkedin(slug: str, company_url: str | None = None) -> dict:
+    """Post directly to LinkedIn via Linked API with image support.
+    When company_url is set, the post is published ON BEHALF of that company
+    page (requires content-admin access to the page) and the personal
+    contact CTA is swapped for a company-appropriate 'Read more' link."""
     api_token = load_env_value('LINKED_API_TOKEN')
     ident_token = load_env_value('LINKEDIN_IDENT_TOKEN')
     if not api_token or not ident_token:
@@ -238,16 +241,23 @@ def post_to_linkedin(slug: str) -> dict:
     if not caption:
         return {'channel': 'linkedin', 'ok': False, 'error': 'No caption generated'}
 
+    if company_url:
+        # Company-page caption: drop Carter's personal contact CTA.
+        caption = caption.replace("We put together the full breakdown here:", "Read more:")
+        caption = caption.replace(f"Questions? Let's talk: {CONTACT_URL}\n\n", "")
+
     attachments = []
     if image_url:
         attachments.append({'url': image_url, 'type': 'image'})
 
     workflow = {
         'actionType': 'st.createPost',
-        'label': f'blog-{slug}',
+        'label': f'blog-{slug}' + ('-company' if company_url else ''),
         'text': caption,
         'attachments': attachments,
     }
+    if company_url:
+        workflow['companyUrl'] = company_url
 
     data = json.dumps(workflow).encode('utf-8')
     req = urllib.request.Request(
