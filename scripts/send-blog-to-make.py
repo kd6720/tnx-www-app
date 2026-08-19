@@ -10,6 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 SITE_URL = "https://trustednetworx.com"
+CONTACT_URL = "https://mixnetworks.com/contact-us-carter-dewey/"
 DEFAULT_ENV_PATH = Path.home() / ".hermes" / ".env"
 LOG_PATH = Path.home() / ".hermes" / "cron" / "blog-webhook-log.jsonl"
 LINKED_API_URL = "https://api.linkedapi.io/workflows"
@@ -104,6 +105,7 @@ def build_caption(channel: str, title: str, category: str, description: str, exc
             f"{lead}\n"
             f"{body}\n\n"
             f"We put together the full breakdown here: {blog_url}\n\n"
+            f"Questions? Let's talk: {CONTACT_URL}\n\n"
             f"{hashtags}"
         )
         return caption, hashtags
