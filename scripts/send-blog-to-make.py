@@ -3,6 +3,7 @@ import hashlib
 import json
 import os
 import sys
+import time
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -226,7 +227,10 @@ def post_to_linkedin(slug: str) -> dict:
         }
 
     payload = build_payload(slug, 'linkedin')
-    image_url = payload.get('image_url', '')
+    # Use the CLEAN URL (image_url_raw), NOT the cache-busted one: Linked API's
+    # server-side MIME sniffing rejects query-string params as an unsupported
+    # MIME type (every post failed for a month with "unsupportedMimeType").
+    image_url = payload.get('image_url_raw', '') or payload.get('image_url', '')
     caption = payload.get('caption', '')
 
     if not caption:
@@ -272,6 +276,42 @@ def post_to_linkedin(slug: str) -> dict:
             'error': str(exc),
             'has_image': len(attachments) > 0,
         }
+
+
+def verify_linkedin_workflow(workflow_id: str, timeout_seconds: int = 300) -> dict:
+    """Poll a queued Linked API workflow until it completes, returning its ACTUAL
+    outcome. A '201 queued' at POST time is NOT success — the async workflow can
+    (and did, for a month) fail later with an error like 'unsupportedMimeType'.
+    This is the monitoring backstop so a silent LinkedIn failure can't recur."""
+    api_token = load_env_value('LINKED_API_TOKEN')
+    ident_token = load_env_value('LINKEDIN_IDENT_TOKEN')
+    if not api_token or not ident_token:
+        return {'ok': False, 'status': 'error', 'error': 'missing Linked API credentials'}
+    deadline = time.time() + timeout_seconds
+    last = None
+    while time.time() < deadline:
+        try:
+            req = urllib.request.Request(
+                f'{LINKED_API_URL}/{workflow_id}',
+                headers={'linked-api-token': api_token, 'identification-token': ident_token, 'Accept': 'application/json'},
+                method='GET',
+            )
+            body = json.loads(urllib.request.urlopen(req, timeout=30).read().decode())
+            result = body.get('result', {})
+            last = result
+            if result.get('workflowStatus') == 'completed':
+                completion = result.get('completion', {})
+                post_url = (completion.get('data') or {}).get('postUrl') if isinstance(completion.get('data'), dict) else None
+                return {
+                    'ok': bool(completion.get('success')),
+                    'status': 'completed',
+                    'postUrl': post_url,
+                    'error': completion.get('error'),
+                }
+        except Exception as exc:
+            last = {'error': str(exc)}
+        time.sleep(15)
+    return {'ok': False, 'status': 'timeout', 'error': 'verification timed out', 'last': last}
 
 
 def send_for_channel(slug: str, channel: str, dry_run: bool) -> dict:
