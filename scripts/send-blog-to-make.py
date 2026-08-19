@@ -319,13 +319,30 @@ def send_for_channel(slug: str, channel: str, dry_run: bool) -> dict:
     if channel == 'linkedin' and not dry_run:
         try:
             result = post_to_linkedin(slug)
+            # A '201 queued' is NOT success — poll the async workflow and report
+            # its ACTUAL outcome (success + postUrl, or the real error). This is
+            # what closes the month-long silent-failure gap.
+            workflow_id = None
+            try:
+                workflow_id = json.loads(result.get("response", "{}")).get("result", {}).get("workflowId")
+            except Exception:
+                workflow_id = None
+            if result.get("ok") and workflow_id:
+                ver = verify_linkedin_workflow(workflow_id)
+                result["ok"] = bool(ver.get("ok"))
+                result["postUrl"] = ver.get("postUrl")
+                result["verified"] = True
+                if not ver.get("ok"):
+                    result["error"] = ver.get("error")
             entry = {
                 'timestamp': datetime.now(timezone.utc).isoformat(),
                 'slug': slug,
                 'channel': 'linkedin',
                 'ok': result['ok'],
                 'status': result.get('status'),
-                'response': result.get('response', result.get('error', '')),
+                'postUrl': result.get('postUrl'),
+                'error': result.get('error'),
+                'response': result.get('response', ''),
                 'has_image': result.get('has_image', False),
             }
             append_log(entry)
