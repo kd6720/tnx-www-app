@@ -54,6 +54,7 @@ import carrierDisconnectionNotice2026 from '../content/blog/carrier-disconnectio
 import fixedWirelessFiberCablePerSitePlaybook from '../content/blog/fixed-wireless-fiber-cable-per-site-playbook.md?raw';
 import legacyPhoneSystemCostPerLine2026 from '../content/blog/legacy-phone-system-cost-per-line-2026.md?raw';
 import sipTrunkingVsHostedVoip from '../content/blog/sip-trunking-vs-hosted-voip.md?raw';
+import propertyManagersCuttingTelecomCosts2026 from '../content/blog/property-managers-cutting-telecom-costs-2026.md?raw';
 
 
 export interface BlogPost {
@@ -105,6 +106,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['property-managers-cutting-telecom-costs-2026', propertyManagersCuttingTelecomCosts2026],
   ['sip-trunking-vs-hosted-voip', sipTrunkingVsHostedVoip],
   ['legacy-phone-system-cost-per-line-2026', legacyPhoneSystemCostPerLine2026],
   ['fixed-wireless-fiber-cable-per-site-playbook', fixedWirelessFiberCablePerSitePlaybook],
