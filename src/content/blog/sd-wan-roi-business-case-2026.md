@@ -5,7 +5,7 @@ category: "Telecom Modernization"
 description: "SD-WAN isn't a buzzword anymore — it's a line item with real ROI. Here's the math, the mistakes that kill the savings, and how to know if you're ready."
 author: "Carter Dewey"
 readTime: "6 min read"
-image: "/blog-images/sd-wan-roi-business-case-2026.png"
+image: "/blog-images/sd-wan-roi-business-case-2026-hero.png"
 ---
 
 Five years ago, "should we do SD-WAN?" was a legitimate question. In 2026, for any business running more than a handful of locations, it's closer to "why haven't we already?" The acronym got demystified long ago. What still stalls the decision is the same thing that stalls every decision: nobody's built a clear ROI case, so it sits in the "nice to have" column while MPLS invoices keep landing.

@@ -183,10 +183,12 @@ def generate_blog_image(title, output_path):
     # Bottom accent bar
     draw.rectangle([0, HEIGHT - 4, WIDTH, HEIGHT], fill=BRAND_BLUE)
 
-    # Save
+    # Save (downscale to 1024x576: Linked API rejects the 1200x630 fallback with
+    # "unsupportedMimeType", while FAL's 1024x576 PNGs are accepted — verified 2026-08-20)
     os.makedirs(os.path.dirname(output_path) if os.path.dirname(output_path) else '.', exist_ok=True)
     img_rgb = Image.new('RGB', (WIDTH, HEIGHT), NAVY_DARK)
     img_rgb.paste(img, mask=img.split()[3])
+    img_rgb = img_rgb.resize((1024, 576), Image.LANCZOS)
     img_rgb.save(output_path, 'PNG', optimize=True)
     print(f"Generated: {output_path}")
 
