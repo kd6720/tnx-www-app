@@ -56,6 +56,7 @@ import legacyPhoneSystemCostPerLine2026 from '../content/blog/legacy-phone-syste
 import sipTrunkingVsHostedVoip from '../content/blog/sip-trunking-vs-hosted-voip.md?raw';
 import propertyManagersCuttingTelecomCosts2026 from '../content/blog/property-managers-cutting-telecom-costs-2026.md?raw';
 import telecomAuditLineItems2026 from '../content/blog/telecom-audit-line-items-2026.md?raw';
+import sdWanRoiBusinessCase2026 from '../content/blog/sd-wan-roi-business-case-2026.md?raw';
 
 
 export interface BlogPost {
@@ -107,6 +108,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['sd-wan-roi-business-case-2026', sdWanRoiBusinessCase2026],
   ['telecom-audit-line-items-2026', telecomAuditLineItems2026],
   ['property-managers-cutting-telecom-costs-2026', propertyManagersCuttingTelecomCosts2026],
   ['sip-trunking-vs-hosted-voip', sipTrunkingVsHostedVoip],
