@@ -57,6 +57,7 @@ import sipTrunkingVsHostedVoip from '../content/blog/sip-trunking-vs-hosted-voip
 import propertyManagersCuttingTelecomCosts2026 from '../content/blog/property-managers-cutting-telecom-costs-2026.md?raw';
 import telecomAuditLineItems2026 from '../content/blog/telecom-audit-line-items-2026.md?raw';
 import sdWanRoiBusinessCase2026 from '../content/blog/sd-wan-roi-business-case-2026.md?raw';
+import aiSalesAgentsVsHumans2026 from '../content/blog/ai-sales-agents-vs-humans-2026.md?raw';
 
 
 export interface BlogPost {
@@ -108,6 +109,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['ai-sales-agents-vs-humans-2026', aiSalesAgentsVsHumans2026],
   ['sd-wan-roi-business-case-2026', sdWanRoiBusinessCase2026],
   ['telecom-audit-line-items-2026', telecomAuditLineItems2026],
   ['property-managers-cutting-telecom-costs-2026', propertyManagersCuttingTelecomCosts2026],
