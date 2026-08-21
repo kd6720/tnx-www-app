@@ -58,6 +58,7 @@ import propertyManagersCuttingTelecomCosts2026 from '../content/blog/property-ma
 import telecomAuditLineItems2026 from '../content/blog/telecom-audit-line-items-2026.md?raw';
 import sdWanRoiBusinessCase2026 from '../content/blog/sd-wan-roi-business-case-2026.md?raw';
 import aiSalesAgentsVsHumans2026 from '../content/blog/ai-sales-agents-vs-humans-2026.md?raw';
+import thirtyDayAiPilotDecisionFirst2026 from '../content/blog/30-day-ai-pilot-decision-first-2026.md?raw';
 
 
 export interface BlogPost {
@@ -109,6 +110,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['30-day-ai-pilot-decision-first-2026', thirtyDayAiPilotDecisionFirst2026],
   ['ai-sales-agents-vs-humans-2026', aiSalesAgentsVsHumans2026],
   ['sd-wan-roi-business-case-2026', sdWanRoiBusinessCase2026],
   ['telecom-audit-line-items-2026', telecomAuditLineItems2026],
