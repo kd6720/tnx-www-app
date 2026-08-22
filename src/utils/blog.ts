@@ -61,6 +61,7 @@ import aiSalesAgentsVsHumans2026 from '../content/blog/ai-sales-agents-vs-humans
 import thirtyDayAiPilotDecisionFirst2026 from '../content/blog/30-day-ai-pilot-decision-first-2026.md?raw';
 import aiCustomerServiceResolutionRate2026 from '../content/blog/ai-customer-service-resolution-rate-2026.md?raw';
 import leadQualificationAiScoringSignals2026 from '../content/blog/lead-qualification-ai-scoring-signals-2026.md?raw';
+import whyAiProjectsFailThreeFixes2026 from '../content/blog/why-ai-projects-fail-three-fixes-2026.md?raw';
 
 
 export interface BlogPost {
@@ -112,6 +113,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['why-ai-projects-fail-three-fixes-2026', whyAiProjectsFailThreeFixes2026],
   ['lead-qualification-ai-scoring-signals-2026', leadQualificationAiScoringSignals2026],
   ['ai-customer-service-resolution-rate-2026', aiCustomerServiceResolutionRate2026],
   ['30-day-ai-pilot-decision-first-2026', thirtyDayAiPilotDecisionFirst2026],
