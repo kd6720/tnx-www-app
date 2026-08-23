@@ -63,6 +63,7 @@ import aiCustomerServiceResolutionRate2026 from '../content/blog/ai-customer-ser
 import leadQualificationAiScoringSignals2026 from '../content/blog/lead-qualification-ai-scoring-signals-2026.md?raw';
 import whyAiProjectsFailThreeFixes2026 from '../content/blog/why-ai-projects-fail-three-fixes-2026.md?raw';
 import aiForSchedulingLetsFindATime2026 from '../content/blog/ai-for-scheduling-lets-find-a-time-2026.md?raw';
+import voiceAiCallsToAutomate2026 from '../content/blog/voice-ai-calls-to-automate-2026.md?raw';
 
 
 export interface BlogPost {
@@ -114,6 +115,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['voice-ai-calls-to-automate-2026', voiceAiCallsToAutomate2026],
   ['ai-for-scheduling-lets-find-a-time-2026', aiForSchedulingLetsFindATime2026],
   ['why-ai-projects-fail-three-fixes-2026', whyAiProjectsFailThreeFixes2026],
   ['lead-qualification-ai-scoring-signals-2026', leadQualificationAiScoringSignals2026],
