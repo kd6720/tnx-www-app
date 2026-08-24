@@ -7,6 +7,15 @@
   <language>en-us</language>
   <atom:link href="https://trustednetworx.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>The HIPAA-Safe Healthcare Telecom Migration Playbook</title>
+    <link>https://trustednetworx.com/blog/healthcare-telecom-hipaa-safe-migration-playbook-2026</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/healthcare-telecom-hipaa-safe-migration-playbook-2026</guid>
+    <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
+    <description>A step-by-step playbook for migrating healthcare voice and connectivity off copper without opening a HIPAA gap — sequencing, controls, and vendor requirements.</description>
+    <category>Industry Spotlights</category>
+    <enclosure url="https://trustednetworx.com/blog-images/healthcare-telecom-hipaa-safe-migration-playbook-2026.png" type="image/png"/>
+  </item>
+  <item>
     <title>AI for Scheduling: The Hours You Lose to 'Let's Find a Time'</title>
     <link>https://trustednetworx.com/blog/ai-for-scheduling-lets-find-a-time-2026</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/ai-for-scheduling-lets-find-a-time-2026</guid>

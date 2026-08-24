@@ -64,6 +64,7 @@ import leadQualificationAiScoringSignals2026 from '../content/blog/lead-qualific
 import whyAiProjectsFailThreeFixes2026 from '../content/blog/why-ai-projects-fail-three-fixes-2026.md?raw';
 import aiForSchedulingLetsFindATime2026 from '../content/blog/ai-for-scheduling-lets-find-a-time-2026.md?raw';
 import voiceAiCallsToAutomate2026 from '../content/blog/voice-ai-calls-to-automate-2026.md?raw';
+import healthcareTelecomHipaaSafeMigrationPlaybook2026 from '../content/blog/healthcare-telecom-hipaa-safe-migration-playbook-2026.md?raw';
 
 
 export interface BlogPost {
@@ -115,6 +116,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['healthcare-telecom-hipaa-safe-migration-playbook-2026', healthcareTelecomHipaaSafeMigrationPlaybook2026],
   ['voice-ai-calls-to-automate-2026', voiceAiCallsToAutomate2026],
   ['ai-for-scheduling-lets-find-a-time-2026', aiForSchedulingLetsFindATime2026],
   ['why-ai-projects-fail-three-fixes-2026', whyAiProjectsFailThreeFixes2026],
