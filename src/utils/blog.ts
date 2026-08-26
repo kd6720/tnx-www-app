@@ -68,6 +68,7 @@ import healthcareTelecomHipaaSafeMigrationPlaybook2026 from '../content/blog/hea
 import jobsiteConnectivityDayOneToHandoff2026 from '../content/blog/jobsite-connectivity-day-one-to-handoff-2026.md?raw';
 import retailPosDowntimeCost2026 from '../content/blog/retail-pos-downtime-cost-2026.md?raw';
 import govTelecomModernizationFunding2026 from '../content/blog/government-telecom-modernization-funding-2026.md?raw';
+import autoDealershipDowntimeCost2026 from '../content/blog/auto-dealership-downtime-cost-2026.md?raw';
 
 
 export interface BlogPost {
@@ -119,6 +120,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['auto-dealership-downtime-cost-2026', autoDealershipDowntimeCost2026],
   ['government-telecom-modernization-funding-2026', govTelecomModernizationFunding2026],
   ['retail-pos-downtime-cost-2026', retailPosDowntimeCost2026],
   ['jobsite-connectivity-day-one-to-handoff-2026', jobsiteConnectivityDayOneToHandoff2026],
