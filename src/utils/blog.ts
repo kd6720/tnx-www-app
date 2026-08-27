@@ -71,6 +71,7 @@ import govTelecomModernizationFunding2026 from '../content/blog/government-telec
 import autoDealershipDowntimeCost2026 from '../content/blog/auto-dealership-downtime-cost-2026.md?raw';
 import multiFamilyConnectivityRetentionNoi2026 from '../content/blog/multi-family-connectivity-retention-noi-2026.md?raw';
 import elevatorPhoneCopperSunset2026 from '../content/blog/elevator-phone-copper-sunset-2026.md?raw';
+import backToSchoolBandwidthSchoolNetworks2026 from '../content/blog/back-to-school-bandwidth-school-networks-2026.md?raw';
 
 
 export interface BlogPost {
@@ -122,6 +123,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['back-to-school-bandwidth-school-networks-2026', backToSchoolBandwidthSchoolNetworks2026],
   ['elevator-phone-copper-sunset-2026', elevatorPhoneCopperSunset2026],
   ['multi-family-connectivity-retention-noi-2026', multiFamilyConnectivityRetentionNoi2026],
   ['auto-dealership-downtime-cost-2026', autoDealershipDowntimeCost2026],
