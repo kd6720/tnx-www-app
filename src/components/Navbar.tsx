@@ -31,24 +31,31 @@ const platforms = [
   { to: '/platforms/crm', label: 'TNX CRM', desc: 'Opportunity management', icon: BarChart3 },
 ];
 
-const telecom = [
-  { to: '/pots-replacement', label: 'POTS Replacement', desc: 'Modern landline alternatives', icon: Phone },
-  { to: '/voice-solutions', label: 'Voice & IP PBX', desc: 'Unified voice communications', icon: Mic },
-  { to: '/internet-connectivity', label: 'Internet Connectivity', desc: 'Enterprise-grade access', icon: Wifi },
-  { to: '/mobility-solutions', label: 'Mobility Solutions', desc: 'Manage your mobile fleet', icon: Smartphone },
-];
-
 /**
- * The DataRemote hardware pages sit under /pots-replacement. They go in the
- * Telecom dropdown's footer rather than the main item list: eight full-height
- * rows overflows the 26rem panel, and these are spec sheets a visitor reaches
- * from the hub, not top-level destinations.
+ * The four DataRemote hardware pages live under /pots-replacement, so they
+ * render as CHILDREN of that entry rather than as a flat block at the end of
+ * the Telecom group — where they read as belonging to whatever item happened
+ * to be last (Mobility Solutions). They stay compact so eight full-height rows
+ * never overflow the 26rem desktop panel.
  */
 const potsProducts = [
   { to: '/pots-replacement/90x1', label: '90X1', desc: '8 lines · 5G' },
   { to: '/pots-replacement/90x2', label: '90X2', desc: '8 lines · LTE' },
   { to: '/pots-replacement/90x5', label: '90X5', desc: 'Modular · pre-order' },
   { to: '/pots-replacement/ara', label: 'Ara', desc: 'Device management' },
+];
+
+const telecom = [
+  {
+    to: '/pots-replacement',
+    label: 'POTS Replacement',
+    desc: 'Modern landline alternatives',
+    icon: Phone,
+    children: potsProducts,
+  },
+  { to: '/voice-solutions', label: 'Voice & IP PBX', desc: 'Unified voice communications', icon: Mic },
+  { to: '/internet-connectivity', label: 'Internet Connectivity', desc: 'Enterprise-grade access', icon: Wifi },
+  { to: '/mobility-solutions', label: 'Mobility Solutions', desc: 'Manage your mobile fleet', icon: Smartphone },
 ];
 
 const resources = [
@@ -63,26 +70,6 @@ const company = [
   { to: '/partners', label: 'Partners', desc: 'MSP & reseller program', icon: Users },
 ];
 
-const telecomFooter = (
-  <div>
-    <p className="px-3 pb-1 pt-1 font-mono text-[0.65rem] uppercase tracking-widest text-navy-400">
-      POTS IN A BOX hardware
-    </p>
-    <div className="grid grid-cols-2 gap-1">
-      {potsProducts.map(({ to, label, desc }) => (
-        <Link
-          key={to}
-          to={to}
-          className="rounded-lg px-3 py-2 transition-colors hover:bg-white/5"
-        >
-          <span className="block text-sm font-semibold text-brand-300">{label}</span>
-          <span className="block text-xs text-navy-300">{desc}</span>
-        </Link>
-      ))}
-    </div>
-  </div>
-);
-
 const platformsFooter = (
   <div className="space-y-1">
     <a href="https://tnxpartnerhub.com" target="_blank" rel="noopener noreferrer" className="block rounded-lg px-3 py-2 text-sm font-semibold text-brand-300 hover:bg-white/5 hover:text-brand-200 transition-colors">
@@ -94,11 +81,19 @@ const platformsFooter = (
   </div>
 );
 
+interface SubMenuItem {
+  to: string;
+  label: string;
+  desc: string;
+}
+
 interface MenuItem {
   to: string;
   label: string;
   desc: string;
   icon: typeof Bot;
+  /** Rendered indented directly beneath this item, on desktop and mobile. */
+  children?: SubMenuItem[];
 }
 
 const Navbar = () => {
@@ -161,20 +156,38 @@ const Navbar = () => {
       {openMenu === name && (
         <div className="absolute left-1/2 -translate-x-1/2 mt-4 w-[26rem] rounded-2xl p-3 bg-navy-900/95 backdrop-blur-xl border border-white/10 shadow-2xl shadow-navy-950/50 animate-fadeIn">
           <div className="grid grid-cols-1 gap-1.5">
-            {items.map(({ to, label, desc, icon: Icon }) => (
-              <Link
-                key={to}
-                to={to}
-                className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-white/5 group"
-              >
-                <span className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-brand-500/15 text-brand-300 group-hover:bg-brand-500/25 transition-colors">
-                  <Icon size={18} />
-                </span>
-                <span>
-                  <span className="block text-sm font-semibold text-white">{label}</span>
-                  <span className="block text-xs text-navy-300">{desc}</span>
-                </span>
-              </Link>
+            {items.map(({ to, label, desc, icon: Icon, children }) => (
+              <div key={to}>
+                <Link
+                  to={to}
+                  className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-white/5 group"
+                >
+                  <span className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-brand-500/15 text-brand-300 group-hover:bg-brand-500/25 transition-colors">
+                    <Icon size={18} />
+                  </span>
+                  <span>
+                    <span className="block text-sm font-semibold text-white">{label}</span>
+                    <span className="block text-xs text-navy-300">{desc}</span>
+                  </span>
+                </Link>
+
+                {children && (
+                  <div className="ml-[1.85rem] mt-0.5 grid grid-cols-2 gap-0.5 border-l border-white/10 pl-3">
+                    {children.map((child) => (
+                      <Link
+                        key={child.to}
+                        to={child.to}
+                        className="rounded-lg px-2.5 py-1.5 transition-colors hover:bg-white/5"
+                      >
+                        <span className="block text-sm font-semibold text-brand-300">
+                          {child.label}
+                        </span>
+                        <span className="block text-xs text-navy-300">{child.desc}</span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
           {footer && <div className="mt-2 border-t border-white/10 pt-2">{footer}</div>}
@@ -205,7 +218,7 @@ const Navbar = () => {
           <div className="hidden md:flex md:items-center md:gap-6">
             {renderDropdown('AI Solutions', aiSolutions)}
             {renderDropdown('Platforms', platforms, platformsFooter)}
-            {renderDropdown('Telecom', telecom, telecomFooter)}
+            {renderDropdown('Telecom', telecom)}
             {renderDropdown('Resources', resources)}
             {renderDropdown('Company', company)}
             <Link
@@ -247,20 +260,28 @@ const Navbar = () => {
               </Link>
             ))}
             <p className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-widest text-navy-400">Telecom</p>
-            {telecom.map(({ to, label, icon: Icon }) => (
-              <Link key={to} to={to} className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-navy-100 hover:bg-white/10">
-                <Icon size={18} className="text-brand-300" />
-                {label}
-              </Link>
-            ))}
-            <div className="ml-4 border-l border-white/10 pl-3">
-              {potsProducts.map(({ to, label, desc }) => (
-                <Link key={to} to={to} className="flex items-baseline gap-2 rounded-lg px-3 py-2 text-sm text-navy-200 hover:bg-white/10">
-                  <span className="font-semibold text-brand-300">{label}</span>
-                  <span className="text-xs text-navy-400">{desc}</span>
+            {telecom.map(({ to, label, icon: Icon, children }) => (
+              <div key={to}>
+                <Link to={to} className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-navy-100 hover:bg-white/10">
+                  <Icon size={18} className="text-brand-300" />
+                  {label}
                 </Link>
-              ))}
-            </div>
+                {children && (
+                  <div className="ml-[1.85rem] border-l border-white/10 pl-3">
+                    {children.map((child) => (
+                      <Link
+                        key={child.to}
+                        to={child.to}
+                        className="flex items-baseline gap-2 rounded-lg px-3 py-2 text-sm text-navy-200 hover:bg-white/10"
+                      >
+                        <span className="font-semibold text-brand-300">{child.label}</span>
+                        <span className="text-xs text-navy-400">{child.desc}</span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
             <p className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-widest text-navy-400">Resources</p>
             {resources.map(({ to, label, icon: Icon }) => (
               <Link key={to} to={to} className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-navy-100 hover:bg-white/10">
