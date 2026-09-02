@@ -314,7 +314,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'pots-replacement',
-    heroPoster: '/media/hero-pots-poster.jpg',
+    heroPoster: '/media/hero-pots-poster.v2.jpg',
     title: 'POTS Replacement | TrustedNetworx',
     description: 'Modern, cost-saving alternatives to legacy POTS lines. Migrate analog systems to reliable IP and cellular networks with TrustedNetworx.',
     jsonLd: [
@@ -329,7 +329,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'ai-consulting',
-    heroPoster: '/media/hero-ai-consulting-poster.jpg',
+    heroPoster: '/media/hero-ai-consulting-poster.v2.jpg',
     title: 'AI Consulting & Solutions | TrustedNetworx',
     description: 'Practical AI consulting and implementation for telecom operators, channel partners, and multi-site businesses — automation, customer engagement, and strategy with measurable ROI.',
     jsonLd: [
@@ -344,7 +344,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'ai-workforce',
-    heroPoster: '/media/hero-ai-workforce-poster.jpg',
+    heroPoster: '/media/hero-ai-workforce-poster.v2.jpg',
     title: 'AI Workforce — AI Agents for Telecom | TrustedNetworx',
     description: 'Deploy AI sales, service, and operations agents built for telecom. Lead qualification, scheduling, email triage, infrastructure monitoring — 24/7, telecom-native.',
     jsonLd: [
@@ -362,7 +362,7 @@ const ROUTE_PAGES = [
   // duplicate-content page with mismatched meta).
   {
     route: 'internet-connectivity',
-    heroPoster: '/media/hero-connectivity-poster.jpg',
+    heroPoster: '/media/hero-connectivity-poster.v2.jpg',
     title: 'Internet Connectivity | TrustedNetworx',
     description: 'Enterprise-grade internet connectivity — managed SD-WAN, Starlink satellite broadband, and global IoT SIM solutions to keep your business securely online.',
     jsonLd: [
@@ -377,7 +377,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'voice-solutions',
-    heroPoster: '/media/hero-voice-poster.jpg',
+    heroPoster: '/media/hero-voice-poster.v2.jpg',
     title: 'Voice Solutions — IP PBX & Unified Communications | TrustedNetworx',
     description: 'Enterprise voice communications from TrustedNetworx — cloud-based IP PBX, HD voice, unified communications, voice analytics, and scalable cloud calling for modern business.',
     jsonLd: [
@@ -392,7 +392,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'mobility-solutions',
-    heroPoster: '/media/hero-mobility-poster.jpg',
+    heroPoster: '/media/hero-mobility-poster.v2.jpg',
     title: 'Mobility Solutions | TrustedNetworx',
     description: 'Enterprise mobility management from TrustedNetworx — MDaaS, IoT connectivity, and unified endpoint management to keep your mobile workforce secure and productive.',
     jsonLd: [
@@ -556,7 +556,7 @@ function main() {
   indexHtml = stripHeroVideoSrc(indexHtml);
   indexHtml = indexHtml.replace(
     '</head>',
-    '<link rel="preload" as="image" href="/media/hero-home-poster.jpg" fetchpriority="high">\n</head>'
+    '<link rel="preload" as="image" href="/media/hero-home-poster.v2.jpg" fetchpriority="high">\n</head>'
   );
   fs.writeFileSync(indexPath, indexHtml, 'utf8');
 
