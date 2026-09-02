@@ -25,8 +25,17 @@ import { useEffect, useRef } from 'react';
  */
 const WEBM_AVAILABLE = new Set(['hero-home']);
 
+/**
+ * Version stamped into every hero media filename. Public assets are copied
+ * verbatim (Vite hashes /src imports only), and Cloudflare caches /public
+ * bytes by filename for 604800s — so re-encoding a hero under the same name
+ * leaves stale bytes at the edge. Bump this + `git mv` the files whenever a
+ * hero asset is re-encoded; the new name forces a fresh fetch.
+ */
+const ASSET_VERSION = 'v2';
+
 interface HeroVideoProps {
-  /** Base name under /media, e.g. "hero-home" → /media/hero-home.mp4 + poster. */
+  /** Base name under /media, e.g. "hero-home" → /media/hero-home.v2.mp4 + poster. */
   name: string;
   /** Extra classes for the overlay gradient, if a page needs a different scrim. */
   overlayClassName?: string;
@@ -65,7 +74,7 @@ const HeroVideo = ({
     const start = () => {
       if (cancelled || !el.isConnected) return;
       const small = hasMobileVariant && window.innerWidth < 768;
-      const base = `/media/${name}${small ? '-720' : ''}`;
+      const base = `/media/${name}${small ? '-720' : ''}.${ASSET_VERSION}`;
 
       const play = (src: string) => {
         el.src = src;
@@ -109,7 +118,7 @@ const HeroVideo = ({
         {/* Poster layer (behind the video): instant paint + reduced-motion fallback */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(/media/${name}-poster.jpg)` }}
+          style={{ backgroundImage: `url(/media/${name}-poster.${ASSET_VERSION}.jpg)` }}
           suppressHydrationWarning
         />
         <video
@@ -119,7 +128,7 @@ const HeroVideo = ({
           loop
           playsInline
           preload="none"
-          poster={`/media/${name}-poster.jpg`}
+          poster={`/media/${name}-poster.${ASSET_VERSION}.jpg`}
         />
       </div>
       <div
