@@ -72,9 +72,9 @@ export default function NodeField({ className = '' }: { className?: string }) {
           y1={NODES[a].y}
           x2={NODES[b].x}
           y2={NODES[b].y}
-          stroke="#243f70"
+          stroke="#5a84c2"
           strokeWidth="1"
-          opacity="0.5"
+          opacity="0.7"
         />
       ))}
 
@@ -86,8 +86,8 @@ export default function NodeField({ className = '' }: { className?: string }) {
             cx={n.x}
             cy={n.y}
             r={n.r}
-            fill="#5a84c2"
-            opacity="0.55"
+            fill="#8eaed8"
+            opacity="0.9"
           />
         )
       )}
