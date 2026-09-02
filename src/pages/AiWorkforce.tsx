@@ -18,6 +18,7 @@ import {
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
+import MultiStepForm from '../components/MultiStepForm';
 
 const agentCards = [
   {
@@ -273,11 +274,8 @@ const AiWorkforce = () => {
             <span className="block">Ready to deploy your AI workforce?</span>
             <span className="block text-brand-100">Let's build the agents your business needs.</span>
           </h2>
-          <div className="mt-8 lg:mt-0 lg:flex-shrink-0">
-            <Link to="/contact" className="btn-light">
-              Get a Quote
-              <ArrowRight size={18} />
-            </Link>
+          <div className="mt-8 lg:mt-0 lg:flex-shrink-0 lg:w-full lg:max-w-md">
+            <MultiStepForm preset="ai" />
           </div>
         </div>
       </section>

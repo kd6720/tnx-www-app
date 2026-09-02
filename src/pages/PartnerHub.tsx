@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Bot, Wallet, Eye, UserCheck, Layers } from 'lucide-react';
 import Seo from '../components/Seo';
+import MultiStepForm from '../components/MultiStepForm';
 
 const capabilities = [
   {
@@ -80,7 +81,6 @@ const PartnerHub = () => {
             operatingSystem: 'Web',
             description:
               'AI agent management platform for MSPs and channel partners: deploy, budget, monitor, and govern AI agents from one multi-tenant hub.',
-            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', description: 'Talk to us for pricing' },
           },
           faqJsonLd,
         ]}
@@ -190,7 +190,7 @@ const PartnerHub = () => {
           <div className="max-w-2xl">
             <span className="eyebrow bg-brand-50 text-brand-700">Pricing</span>
             <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-navy-900">
-              Flat monthly, per client workspace.
+              Simple pricing — talk to us.
             </h2>
             <p className="mt-4 text-lg text-navy-500">
               Small deployments and multi-tenant / white-label plans are quoted based on your
@@ -222,11 +222,8 @@ const PartnerHub = () => {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">See it with your own agents.</h2>
           <p className="mt-4 text-lg text-navy-200">Request a demo and we'll walk you through a tenant set up for your clients.</p>
-          <div className="mt-8">
-            <Link to="/contact" className="btn-light">
-              Request a demo
-              <ArrowRight size={18} />
-            </Link>
+          <div className="mt-8 text-left">
+            <MultiStepForm preset="partner-hub" />
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, GitMerge, Database, FileText, Bot, BarChart3 } from 'lucide-react';
 import Seo from '../components/Seo';
+import MultiStepForm from '../components/MultiStepForm';
 
 const capabilities = [
   {
@@ -76,7 +77,6 @@ const Crm = () => {
             operatingSystem: 'Web',
             description:
               'Opportunity management for telecom, MSP and channel sales: direct, agent, and reseller pipelines with telecom-native fields.',
-            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', description: 'Talk to us for pricing' },
           },
           faqJsonLd,
         ]}
@@ -184,7 +184,7 @@ const Crm = () => {
           <div className="max-w-2xl">
             <span className="eyebrow bg-brand-50 text-brand-700">Pricing</span>
             <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-navy-900">
-              Flat monthly, unlimited users up to a cap.
+              Simple pricing — talk to us.
             </h2>
             <p className="mt-4 text-lg text-navy-500">
               No per-seat surprises. <strong>Talk to us</strong> and we'll match a plan to your
@@ -216,11 +216,8 @@ const Crm = () => {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Try it on your own pipeline.</h2>
           <p className="mt-4 text-lg text-navy-200">Start a trial and import a CSV — we'll map your fields.</p>
-          <div className="mt-8">
-            <Link to="/contact" className="btn-light">
-              Start a trial
-              <ArrowRight size={18} />
-            </Link>
+          <div className="mt-8 text-left">
+            <MultiStepForm preset="crm" />
           </div>
         </div>
       </section>

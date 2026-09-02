@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ArrowRight, Handshake, Percent, Layers, Users } from 'lucide-react';
 import Seo from '../components/Seo';
 import MultiStepForm from '../components/MultiStepForm';
@@ -88,10 +89,10 @@ const Partners = () => (
         </a>
         .
       </p>
-      <a href="/platforms/partner-hub" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-300 hover:text-brand-200">
+      <Link to="/platforms/partner-hub" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-300 hover:text-brand-200">
         Explore TNX Partner Hub
         <ArrowRight size={16} />
-      </a>
+      </Link>
     </section>
   </div>
 );

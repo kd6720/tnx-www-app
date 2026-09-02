@@ -118,8 +118,8 @@ const Home = () => {
   return (
     <div className="bg-navy-50">
       <Seo
-        title="TrustedNetworx — Managed Telecom Solutions"
-        description="Modern managed telecom solutions for enterprise and multi-site businesses: POTS replacement, AI consulting, internet connectivity, IP PBX, mobility, and voice."
+        title="TrustedNetworx — AI Agents & Managed Telecom for Multi-Site Operators"
+        description="AI agents and managed telecom for multi-site operators: POTS replacement, voice, connectivity, and mobility — with the AI workforce to sell, support, and monitor 24/7."
       />
 
       {/* Hero */}
@@ -167,7 +167,7 @@ const Home = () => {
                   <CheckCircle2 size={16} className="text-accent-400" /> Built on your data, tenant-isolated
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-accent-400" /> No token surprises — flat monthly
+                  <CheckCircle2 size={16} className="text-accent-400" /> Simple pricing — talk to us
                 </span>
               </div>
             </div>
@@ -290,6 +290,20 @@ const Home = () => {
                   <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Compliance badges — POTS / telecom */}
+      <section className="py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-navy-500">
+            {['NFPA 72-compliant alarm communications', 'UL 864 fire alarm monitoring', "E911 & Kari's Law ready", '24/7 monitoring & support'].map((badge) => (
+              <span key={badge} className="inline-flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-brand-500" />
+                {badge}
+              </span>
             ))}
           </div>
         </div>

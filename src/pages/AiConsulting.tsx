@@ -22,6 +22,7 @@ import {
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
+import MultiStepForm from '../components/MultiStepForm';
 
 const serviceCards = [
   {
@@ -378,14 +379,8 @@ const AiConsulting = () => {
                 help — and how fast.
               </p>
             </div>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 lg:mt-0 lg:flex-shrink-0">
-              <Link to="/contact" className="btn-light">
-                Schedule a Call
-                <ArrowRight size={18} />
-              </Link>
-              <a href="mailto:sales@trustednetworx.com" className="btn-outline">
-                Send Us a Message
-              </a>
+            <div className="mt-8 lg:mt-0 lg:flex-shrink-0 lg:w-full lg:max-w-md">
+              <MultiStepForm preset="ai" />
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   Menu,
@@ -23,6 +23,7 @@ const aiSolutions = [
   { to: '/ai-consulting', label: 'AI Consulting', desc: 'Practical AI automation', icon: Bot },
   { to: '/tools/ai-readiness', label: 'AI Readiness', desc: 'Free AI readiness assessment', icon: Wrench },
   { to: '/tools/ai-roi-calculator', label: 'AI ROI Calculator', desc: 'Estimate your AI payback', icon: Wrench },
+  { to: '/ai', label: 'AI Overview', desc: 'All AI resources in one place', icon: Bot },
 ];
 
 const platforms = [
@@ -46,7 +47,19 @@ const company = [
   { to: '/about', label: 'About', desc: 'Who we are & what we do', icon: Building2 },
   { to: '/about/team', label: 'Team', desc: 'Meet our team & partners', icon: Users },
   { to: '/contact', label: 'Contact', desc: 'Get in touch', icon: PhoneCall },
+  { to: '/partners', label: 'Partners', desc: 'MSP & reseller program', icon: Users },
 ];
+
+const platformsFooter = (
+  <div className="space-y-1">
+    <a href="https://tnxpartnerhub.com" target="_blank" rel="noopener noreferrer" className="block rounded-lg px-3 py-2 text-sm font-semibold text-brand-300 hover:bg-white/5 hover:text-brand-200 transition-colors">
+      Log in to Partner Hub
+    </a>
+    <a href="https://tnxcrm.com" target="_blank" rel="noopener noreferrer" className="block rounded-lg px-3 py-2 text-sm font-semibold text-brand-300 hover:bg-white/5 hover:text-brand-200 transition-colors">
+      Log in to TNX CRM
+    </a>
+  </div>
+);
 
 interface MenuItem {
   to: string;
@@ -97,7 +110,7 @@ const Navbar = () => {
     closeTimer.current = setTimeout(() => setOpenMenu(null), 140);
   };
 
-  const renderDropdown = (name: string, items: MenuItem[]) => (
+  const renderDropdown = (name: string, items: MenuItem[], footer?: ReactNode) => (
     <div className="relative" onMouseEnter={() => open(name)} onMouseLeave={scheduleClose}>
       <button
         type="button"
@@ -131,6 +144,7 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
+          {footer && <div className="mt-2 border-t border-white/10 pt-2">{footer}</div>}
         </div>
       )}
     </div>
@@ -157,12 +171,12 @@ const Navbar = () => {
 
           <div className="hidden md:flex md:items-center md:gap-6">
             {renderDropdown('AI Solutions', aiSolutions)}
-            {renderDropdown('Platforms', platforms)}
+            {renderDropdown('Platforms', platforms, platformsFooter)}
             {renderDropdown('Telecom', telecom)}
             {renderDropdown('Resources', resources)}
             {renderDropdown('Company', company)}
             <Link
-              to="/contact"
+              to="/tools/ai-readiness"
               className="inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-glow transition-all duration-300 hover:bg-brand-500 hover:-translate-y-0.5"
             >
               Book a Review
@@ -221,7 +235,7 @@ const Navbar = () => {
               </Link>
             ))}
             <Link
-              to="/contact"
+              to="/tools/ai-readiness"
               className="mt-3 flex items-center justify-center rounded-xl bg-brand-600 px-5 py-3 text-base font-semibold text-white shadow-glow"
             >
               Book a Review
