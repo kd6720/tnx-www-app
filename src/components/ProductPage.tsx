@@ -55,11 +55,7 @@ const ProductPage = ({ slug }: ProductPageProps) => {
 
       {/* Hero — navy band */}
       <section className="relative flex min-h-[62vh] items-center overflow-hidden bg-navy-950">
-        <HeroVideo
-          name="hero-pots"
-          mediaClassName="opacity-[0.22]"
-          overlayClassName="absolute inset-0 bg-[linear-gradient(90deg,#0a1428_34%,rgba(10,20,40,0.6)_72%,rgba(10,20,40,0.4)_100%)]"
-        />
+        <HeroVideo name="hero-pots" />
         <div className="relative z-10 mx-auto w-full max-w-site px-6 py-24 md:px-gutter">
           <nav aria-label="Breadcrumb" className="mb-8">
             <Link
@@ -121,7 +117,7 @@ const ProductPage = ({ slug }: ProductPageProps) => {
                 {isAra ? 'What Ara does.' : 'At a glance.'}
               </h2>
               <p className="mt-5 max-w-md text-lg leading-relaxed text-body">{p.positioning}</p>
-              <p className="mt-5 max-w-md border-l-2 border-hairline pl-4 text-base leading-relaxed text-body">
+              <p className="mt-5 max-w-md border-l-2 border-hairline pl-4 text-base leading-relaxed text-muted-text">
                 <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
                   Best fit
                 </span>
@@ -132,7 +128,7 @@ const ProductPage = ({ slug }: ProductPageProps) => {
             <div className="col-span-12 lg:col-span-7">
               {p.specGroups.map(({ heading, rows }) => (
                 <div key={heading} className="mb-10 last:mb-0">
-                  <p className="font-mono text-xs uppercase tracking-mono-label text-body">
+                  <p className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
                     {heading}
                   </p>
                   <dl className="mt-3 divide-y divide-hairline border-t border-hairline">
