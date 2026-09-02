@@ -71,9 +71,9 @@ const Ai = () => (
                   >
                     <span className="font-mono text-sm text-accent-500">{n}</span>
                     <span>
-                      <span className="block font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
+                      <h3 className="font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
                         {title}
-                      </span>
+                      </h3>
                       <span className="mt-1 block text-base leading-relaxed text-body">{desc}</span>
                     </span>
                     <ArrowRight
@@ -114,9 +114,9 @@ const Ai = () => (
                   >
                     <span className="font-mono text-sm text-accent-500">{n}</span>
                     <span>
-                      <span className="block font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
+                      <h3 className="font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
                         {title}
-                      </span>
+                      </h3>
                       <span className="mt-1 block text-base leading-relaxed text-body">{desc}</span>
                     </span>
                     <ArrowRight
@@ -152,9 +152,9 @@ const Ai = () => (
                     to={`/blog/${p.slug}`}
                     className="group flex items-baseline justify-between gap-4 py-4"
                   >
-                    <span className="font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
+                    <h3 className="font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
                       {p.title}
-                    </span>
+                    </h3>
                     <ArrowRight size={18} className="shrink-0 text-muted transition-transform group-hover:translate-x-1" />
                   </Link>
                 </li>

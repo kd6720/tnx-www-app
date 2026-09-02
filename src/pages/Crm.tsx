@@ -95,7 +95,7 @@ const Crm = () => {
                   <li key={n} className="grid grid-cols-[3rem_1fr] gap-4 py-5">
                     <span className="font-mono text-sm text-accent-500">{n}</span>
                     <span>
-                      <span className="block font-display text-display-h3 font-semibold text-ink">{title}</span>
+                      <h3 className="font-display text-display-h3 font-semibold text-ink">{title}</h3>
                       <span className="mt-1 block text-base leading-relaxed text-body">{body}</span>
                     </span>
                   </li>
