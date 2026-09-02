@@ -1,5 +1,6 @@
 ---
 title: "Hotel Connectivity: What Guests Expect in 2026"
+redirect: /blog/hotel-connectivity-what-guests-expect-2026
 date: "2026-08-12"
 category: "Industry Spotlights"
 description: "Hotel guest expectations for connectivity have shifted from 'fast WiFi' to always-on, zero-friction digital experiences — and properties that lag are losing revenue."

@@ -9,6 +9,23 @@ const Contact = () => {
       <Seo
         title="Contact Us | TrustedNetworx"
         description="Get in touch with the TrustedNetworx team to discuss your managed telecom, connectivity, voice, and AI needs."
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'LocalBusiness',
+          name: 'TrustedNetworx',
+          telephone: '+1-305-498-7530',
+          email: 'sales@trustednetworx.com',
+          url: 'https://trustednetworx.com',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '18001 Old Cutler Rd',
+            addressLocality: 'Miami',
+            addressRegion: 'FL',
+            postalCode: '33157',
+            addressCountry: 'US',
+          },
+          openingHours: 'Mo-Su 00:00-24:00',
+        }}
       />
 
       {/* Hero */}

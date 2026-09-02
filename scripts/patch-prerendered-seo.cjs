@@ -108,7 +108,7 @@ function patchPage(filePath, seo) {
   html = upsertMeta(html, 'name', 'twitter:description', seo.description);
   html = upsertMeta(html, 'name', 'twitter:image', seo.image);
 
-  for (const type of ['BlogPosting', 'BreadcrumbList']) {
+  for (const type of ['BlogPosting']) {
     html = stripStructuredData(html, type);
   }
   if (seo.jsonLd && seo.jsonLd.length) {
@@ -269,6 +269,25 @@ const ROUTE_PAGES = [
     route: 'contact',
     title: 'Contact Us | TrustedNetworx',
     description: 'Get in touch with the TrustedNetworx team to discuss your managed telecom, connectivity, voice, and AI needs.',
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: 'TrustedNetworx',
+        telephone: '+1-305-498-7530',
+        email: 'sales@trustednetworx.com',
+        url: 'https://trustednetworx.com',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: '18001 Old Cutler Rd',
+          addressLocality: 'Miami',
+          addressRegion: 'FL',
+          postalCode: '33157',
+          addressCountry: 'US',
+        },
+        openingHours: 'Mo-Su 00:00-24:00',
+      },
+    ],
   },
 ];
 
@@ -276,7 +295,7 @@ function patchRoutePages(distDir) {
   const fallbackHtmlPath = path.join(distDir, 'index.html');
   let count = 0;
 
-  for (const { route, title, description } of ROUTE_PAGES) {
+  for (const { route, title, description, jsonLd } of ROUTE_PAGES) {
     const filePath = path.join(distDir, route, 'index.html');
     ensureHtmlShell(filePath, fallbackHtmlPath);
     patchPage(filePath, {
@@ -285,7 +304,7 @@ function patchRoutePages(distDir) {
       canonical: `${SITE_URL}/${route}`,
       image: DEFAULT_OG_IMAGE,
       type: 'website',
-      jsonLd: [],
+      jsonLd: jsonLd || [],
     });
     count++;
   }

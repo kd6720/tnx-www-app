@@ -1,5 +1,6 @@
 ---
 title: "Healthcare Telecom: Balancing HIPAA Compliance with Modernization"
+redirect: /blog/healthcare-telecom-hipaa-safe-migration-playbook-2026
 date: "2026-07-11"
 category: "Industry Spotlights"
 description: "Healthcare teams can modernize voice and connectivity without creating HIPAA gaps if security, redundancy, and vendor controls are built in from day one."

@@ -18,6 +18,43 @@ interface SeoProps {
   jsonLd?: object | object[];
 }
 
+/** Intermediate path segments that map to a real page (linked in breadcrumbs). */
+const SECTION_ROUTES: Record<string, string> = {
+  tools: '/tools',
+  blog: '/blog',
+  about: '/about',
+  'about/team': '/about/team',
+};
+
+/** Build a BreadcrumbList from the pathname (Home > Segment > Segment). */
+
+function buildBreadcrumbs(pathname: string) {
+  const segments = pathname.split('/').filter(Boolean);
+  if (segments.length === 0) return null;
+  const items: { '@type': string; position: number; name: string; item: string }[] = [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+  ];
+  let acc = '';
+  segments.forEach((seg, i) => {
+    acc += `/${seg}`;
+    const isLeaf = i === segments.length - 1;
+    // Only link intermediate segments that resolve to a real page; otherwise
+    // drop them (e.g. /platforms/* has no single /platforms page).
+    if (!isLeaf && !SECTION_ROUTES[acc.slice(1)]) return;
+    items.push({
+      '@type': 'ListItem',
+      position: items.length + 1,
+      name: seg.replace(/-/g, ' ').replace(/\b\w/g, (ch) => ch.toUpperCase()),
+      item: `${SITE_URL}${acc}`,
+    });
+  });
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items,
+  };
+}
+
 /**
  * Per-page document head: title, meta description, canonical URL,
  * Open Graph + Twitter cards, and optional JSON-LD structured data.
@@ -40,7 +77,15 @@ const Seo = ({
       ? image
       : `${SITE_URL}${image}`
     : DEFAULT_OG_IMAGE;
-  const blocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+  const callerJsonLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+  const callerHasBreadcrumb = callerJsonLd.some(
+    (block) => block && (block['@type'] === 'BreadcrumbList' || (Array.isArray(block) && block.some((b) => b && b['@type'] === 'BreadcrumbList'))),
+  );
+  const breadcrumbs = callerHasBreadcrumb ? null : buildBreadcrumbs(pathname);
+  const blocks = [
+    ...(breadcrumbs ? [breadcrumbs] : []),
+    ...callerJsonLd,
+  ];
 
   useEffect(() => {
     if (typeof window === 'undefined') return;

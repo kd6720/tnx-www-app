@@ -377,11 +377,15 @@ const Home = () => {
               Our Trusted Partners
             </h2>
           </div>
-          <div className="w-full">
-            <picture>
-              <source media="(min-width: 768px)" srcSet="/partners/Partners-Banner-Desktop.png" />
-              <img src="/partners/Partners-Banner-Mobile.png" alt="Our Trusted Partners" className="w-full" loading="lazy" />
-            </picture>
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+            {/* AT&T, Verizon, T-Mobile = text fallback until their individual logo files are supplied */}
+            <span className="text-lg font-bold tracking-tight text-navy-400">AT&T</span>
+            <img src="/partners/mettel-logo.png" alt="MetTel" className="h-8 w-auto opacity-80" loading="lazy" />
+            <span className="text-lg font-bold tracking-tight text-navy-400">Verizon</span>
+            <span className="text-lg font-bold tracking-tight text-navy-400">T-Mobile</span>
+            <img src="/partners/velocity-logo.png" alt="Velocity" className="h-8 w-auto opacity-80" loading="lazy" />
+            <img src="/partners/dataremote-logo.png" alt="DataRemote" className="h-8 w-auto opacity-80" loading="lazy" />
+            <img src="/partners/mix-networks-logo.png" alt="MIX Networks" className="h-8 w-auto opacity-80" loading="lazy" />
           </div>
         </div>
       </section>

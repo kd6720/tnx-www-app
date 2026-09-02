@@ -1,5 +1,6 @@
 ---
 title: "The Copper Sunset Timeline: Key Dates and What You Should Do Now"
+redirect: /blog/elevator-phone-copper-sunset-2026
 date: "2026-06-01"
 category: "Compliance & Regulation"
 description: "Major carriers are accelerating copper decommissioning. Here's the timeline, the affected services, and your migration roadmap."

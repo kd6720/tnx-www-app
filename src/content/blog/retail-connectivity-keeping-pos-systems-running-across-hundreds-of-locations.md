@@ -1,5 +1,6 @@
 ---
 title: "Retail Connectivity: Keeping POS Systems Running Across Hundreds of Locations"
+redirect: /blog/retail-pos-downtime-cost-2026
 date: "2026-07-16"
 category: "Industry Spotlights"
 description: "Retail networks need resilient design, failover, and support so POS, inventory, guest Wi-Fi, and security stay online at every location."

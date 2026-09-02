@@ -1,5 +1,6 @@
 ---
 title: "The 30-Day AI Pilot: How to Test AI Without Betting the Farm"
+redirect: /blog/30-day-ai-pilot-decision-first-2026
 date: "2026-07-03"
 category: "AI for Business"
 description: "A practical framework for running a low-risk 30-day AI pilot that proves value without a massive upfront investment."
