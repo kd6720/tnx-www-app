@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Bot, Calculator, Brain, Layers } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 
-const tools = [
-  { to: '/tools/ai-readiness', title: 'AI Readiness Assessment', desc: 'Score your organization against the signals that predict a successful AI rollout.', icon: Brain },
-  { to: '/tools/ai-roi-calculator', title: 'AI ROI Calculator', desc: 'Estimate the payback of putting AI agents on your quoting, support, and scheduling.', icon: Calculator },
+const sections = [
+  { n: '01', to: '/ai-workforce', title: 'AI Workforce', desc: 'AI agents that sell, support, and monitor — 24/7, telecom-native, tenant-isolated.' },
+  { n: '02', to: '/ai-consulting', title: 'AI Consulting', desc: 'Find the one workflow worth automating first, then deploy it end-to-end.' },
+  { n: '03', to: '/platforms/partner-hub', title: 'TNX Partner Hub', desc: 'The control plane for running a fleet of agents — budgets, approvals, kill switches.' },
 ];
 
-const sections = [
-  { to: '/ai-workforce', title: 'AI Workforce', desc: 'AI agents that sell, support, and monitor — 24/7, telecom-native.', icon: Bot },
-  { to: '/ai-consulting', title: 'AI Consulting', desc: 'Practical AI automation, strategy, and implementation.', icon: Brain },
-  { to: '/platforms/partner-hub', title: 'TNX Partner Hub', desc: 'The command center for running a fleet of AI agents.', icon: Layers },
+const tools = [
+  { n: '01', to: '/tools/ai-readiness', title: 'AI Readiness Assessment', desc: 'Score your organization against the signals that predict a successful AI rollout.' },
+  { n: '02', to: '/tools/ai-roi-calculator', title: 'AI ROI Calculator', desc: 'Estimate the payback of putting AI agents on your quoting, support, and scheduling.' },
 ];
 
 const posts = [
@@ -23,80 +23,153 @@ const posts = [
 ];
 
 const Ai = () => (
-  <div className="bg-navy-50">
+  <div className="bg-canvas text-body antialiased">
     <Seo
       title="AI for Telecom & Multi-Site Operators | TrustedNetworx"
       description="AI agents and consulting for telecom and multi-site operators. Explore the AI workforce, run a readiness assessment, and read the latest on AI in telecom."
     />
 
+    {/* Hero — navy band (interior hub, no video) */}
     <section className="relative overflow-hidden bg-navy-950 pt-32 pb-20">
-      <div className="absolute inset-0 bg-grid-dark bg-grid opacity-30" />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-site px-6 md:px-gutter">
         <div className="max-w-3xl">
-          <span className="eyebrow border border-brand-400/30 bg-brand-500/10 text-brand-200">AI Solutions</span>
-          <h1 className="mt-6 text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+          <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">AI</span>
+          <h1 className="mt-6 font-display text-[44px] leading-[1.05] tracking-[-0.02em] font-semibold text-white md:text-[56px] md:leading-[1.05] lg:text-[72px] lg:leading-[1.0]">
             AI agents and modern telecom, working together.
           </h1>
           <p className="mt-6 max-w-xl text-lg text-navy-200">
-            Every AI resource TrustedNetworx publishes — the workforce, the tools, and the playbooks —
+            The workforce, the tools, and the playbooks — everything TrustedNetworx publishes on AI,
             in one place.
           </p>
         </div>
       </div>
     </section>
 
-    <section className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {sections.map(({ to, title, desc, icon: Icon }) => (
-            <Link key={to} to={to} className="group rounded-2xl bg-white p-7 border border-navy-100 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
-                <Icon size={24} />
-              </span>
-              <h2 className="mt-5 text-lg font-bold text-navy-900">{title}</h2>
-              <p className="mt-2 text-sm text-navy-500">{desc}</p>
-              <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-600">
-                Explore <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-              </span>
-            </Link>
-          ))}
+    {/* 01 — The AI stack (numbered hairline list) */}
+    <section className="border-b border-hairline">
+      <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
+        <div className="grid grid-cols-12 gap-8">
+          <div className="col-span-12 lg:col-span-5">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+              01 — The AI stack
+            </span>
+            <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
+              Start where the payoff is.
+            </h2>
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-body">
+              Three ways in — from agents that run your operations to the platform that governs
+              them.
+            </p>
+          </div>
+          <div className="col-span-12 lg:col-span-7">
+            <ul className="divide-y divide-hairline border-t border-hairline">
+              {sections.map(({ n, to, title, desc }) => (
+                <li key={n}>
+                  <Link
+                    to={to}
+                    className="group grid grid-cols-[3rem_1fr_auto] items-baseline gap-4 py-5"
+                  >
+                    <span className="font-mono text-sm text-accent-500">{n}</span>
+                    <span>
+                      <span className="block font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
+                        {title}
+                      </span>
+                      <span className="mt-1 block text-base leading-relaxed text-body">{desc}</span>
+                    </span>
+                    <ArrowRight
+                      size={18}
+                      className="translate-y-1 text-muted transition-transform group-hover:translate-x-1 group-hover:text-brand-600"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <section className="py-16 bg-white border-y border-navy-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-extrabold text-navy-900">Free AI tools</h2>
-        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-          {tools.map(({ to, title, desc, icon: Icon }) => (
-            <Link key={to} to={to} className="group flex items-start gap-4 rounded-2xl bg-navy-50 p-6 border border-navy-100 hover:border-brand-200 transition-colors">
-              <span className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
-                <Icon size={22} />
-              </span>
-              <span>
-                <span className="block font-semibold text-navy-900">{title}</span>
-                <span className="block mt-1 text-sm text-navy-500">{desc}</span>
-              </span>
-            </Link>
-          ))}
+    {/* 02 — Free tools (numbered hairline list) */}
+    <section className="border-b border-hairline bg-white">
+      <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
+        <div className="grid grid-cols-12 gap-8">
+          <div className="col-span-12 lg:col-span-5">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+              02 — Free tools
+            </span>
+            <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
+              Measure before you build.
+            </h2>
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-body">
+              Two self-serve assessments — no sales call required.
+            </p>
+          </div>
+          <div className="col-span-12 lg:col-span-7">
+            <ul className="divide-y divide-hairline border-t border-hairline">
+              {tools.map(({ n, to, title, desc }) => (
+                <li key={n}>
+                  <Link
+                    to={to}
+                    className="group grid grid-cols-[3rem_1fr_auto] items-baseline gap-4 py-5"
+                  >
+                    <span className="font-mono text-sm text-accent-500">{n}</span>
+                    <span>
+                      <span className="block font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
+                        {title}
+                      </span>
+                      <span className="mt-1 block text-base leading-relaxed text-body">{desc}</span>
+                    </span>
+                    <ArrowRight
+                      size={18}
+                      className="translate-y-1 text-muted transition-transform group-hover:translate-x-1 group-hover:text-brand-600"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <section className="py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-extrabold text-navy-900">Latest AI thinking</h2>
-        <div className="mt-8 space-y-3">
-          {posts.map((p) => (
-            <Link key={p.slug} to={`/blog/${p.slug}`} className="block rounded-xl bg-white p-5 border border-navy-100 shadow-card hover:border-brand-200 transition-colors">
-              <span className="font-semibold text-navy-900 hover:text-brand-700">{p.title}</span>
-            </Link>
-          ))}
-        </div>
-        <div className="mt-8">
-          <Link to="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-600">
-            All posts <ArrowRight size={16} />
-          </Link>
+    {/* 03 — Latest thinking (hairline list) */}
+    <section className="border-b border-hairline">
+      <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
+        <div className="grid grid-cols-12 gap-8">
+          <div className="col-span-12 lg:col-span-5">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+              03 — Latest thinking
+            </span>
+            <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
+              Notes from the build.
+            </h2>
+          </div>
+          <div className="col-span-12 lg:col-span-7">
+            <ul className="divide-y divide-hairline border-t border-hairline">
+              {posts.map((p) => (
+                <li key={p.slug}>
+                  <Link
+                    to={`/blog/${p.slug}`}
+                    className="group flex items-baseline justify-between gap-4 py-4"
+                  >
+                    <span className="font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
+                      {p.title}
+                    </span>
+                    <ArrowRight size={18} className="shrink-0 text-muted transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8">
+              <Link
+                to="/blog"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-700"
+              >
+                All posts
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>
