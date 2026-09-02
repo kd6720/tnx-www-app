@@ -84,6 +84,5 @@ ${urls}
 </urlset>
 `;
 
-const out = path.join(__dirname, '..', 'public', 'sitemap.xml');
-fs.writeFileSync(out, xml);
-console.log(`[sitemap] ${STATIC_ROUTES.length} static + ${posts.length} posts -> ${out}`);
+fs.writeFileSync(path.join(__dirname, '..', 'public', 'sitemap.xml'), xml, 'utf8');
+console.log(`Sitemap: ${STATIC_ROUTES.length} routes + ${posts.length} posts → public/sitemap.xml`);
