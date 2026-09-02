@@ -12,36 +12,45 @@ interface HeroVideoProps {
   name: string;
   /** Extra classes for the overlay gradient, if a page needs a different scrim. */
   overlayClassName?: string;
-  /** Extra classes for the <video> itself (e.g. opacity to darken the backplate). */
+  /** Extra classes for the <video> itself. */
   videoClassName?: string;
+  /**
+   * Extra classes for the poster + video layer as a unit (e.g. an opacity to
+   * darken the backplate). Darken HERE, never on the video alone: a translucent
+   * moving video composited over the opaque static poster double-exposes and
+   * reads as blur.
+   */
+  mediaClassName?: string;
 }
 
-const HeroVideo = ({ name, overlayClassName, videoClassName }: HeroVideoProps) => (
+const HeroVideo = ({ name, overlayClassName, videoClassName, mediaClassName }: HeroVideoProps) => (
   <div className="absolute inset-0 z-0" aria-hidden="true">
-    {/* Poster layer (behind the video): instant paint + reduced-motion fallback */}
-    <div
-      className="absolute inset-0 bg-cover bg-center"
-      style={{ backgroundImage: `url(/media/${name}-poster.jpg)` }}
-    />
-    <video
-      className={`hero-video absolute inset-0 h-full w-full object-cover ${videoClassName ?? ''}`}
-      autoPlay
-      defaultMuted
-      loop
-      playsInline
-      preload="none"
-      poster={`/media/${name}-poster.jpg`}
-      // `defaultMuted` writes the muted attribute so the prerendered HTML and
-      // hydration agree (the controlled `muted` prop is set as a property and
-      // isn't serialized). Keep the imperative set too so autoplay stays legal
-      // in the pre-hydration window.
-      ref={(el) => {
-        if (el) el.muted = true;
-      }}
-    >
-      <source src={`/media/${name}.webm`} type="video/webm" />
-      <source src={`/media/${name}.mp4`} type="video/mp4" />
-    </video>
+    <div className={`absolute inset-0 ${mediaClassName ?? ''}`}>
+      {/* Poster layer (behind the video): instant paint + reduced-motion fallback */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(/media/${name}-poster.jpg)` }}
+      />
+      <video
+        className={`hero-video absolute inset-0 h-full w-full object-cover ${videoClassName ?? ''}`}
+        autoPlay
+        defaultMuted
+        loop
+        playsInline
+        preload="none"
+        poster={`/media/${name}-poster.jpg`}
+        // `defaultMuted` writes the muted attribute so the prerendered HTML and
+        // hydration agree (the controlled `muted` prop is set as a property and
+        // isn't serialized). Keep the imperative set too so autoplay stays legal
+        // in the pre-hydration window.
+        ref={(el) => {
+          if (el) el.muted = true;
+        }}
+      >
+        <source src={`/media/${name}.webm`} type="video/webm" />
+        <source src={`/media/${name}.mp4`} type="video/mp4" />
+      </video>
+    </div>
     <div
       className={
         overlayClassName ??
