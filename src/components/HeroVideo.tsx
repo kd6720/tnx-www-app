@@ -75,15 +75,16 @@ const HeroVideo = ({
 
   return (
     <div className="absolute inset-0 z-0" aria-hidden="true">
-      <div className={`absolute inset-0 ${mediaClassName ?? ''}`}>
+      <div className={`absolute inset-0${mediaClassName ? ` ${mediaClassName}` : ''}`}>
         {/* Poster layer (behind the video): instant paint + reduced-motion fallback */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(/media/${name}-poster.jpg)` }}
+          suppressHydrationWarning
         />
         <video
           ref={videoRef}
-          className={`hero-video absolute inset-0 h-full w-full object-cover ${videoClassName ?? ''}`}
+          className={`hero-video absolute inset-0 h-full w-full object-cover${videoClassName ? ` ${videoClassName}` : ''}`}
           defaultMuted
           loop
           playsInline

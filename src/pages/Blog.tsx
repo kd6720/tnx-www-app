@@ -50,7 +50,7 @@ const Blog = () => {
                 className={`rounded-full border px-4 py-1.5 font-mono text-xs uppercase tracking-mono-label transition-colors ${
                   activeCategory === cat
                     ? 'border-ink bg-ink text-white'
-                    : 'border-hairline text-muted hover:border-ink hover:text-ink'
+                    : 'border-hairline text-muted-text hover:border-ink hover:text-ink'
                 }`}
               >
                 {cat}
@@ -70,7 +70,7 @@ const Blog = () => {
               {filteredPosts.map((post: BlogPost) => (
                 <li key={post.slug}>
                   <Link to={`/blog/${post.slug}`} className="group block py-5">
-                    <p className="font-mono text-xs uppercase tracking-mono-label text-muted">
+                    <p className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
                       {post.category}
                       <span className="mx-2 text-hairline">·</span>
                       {new Date(post.date).toLocaleDateString('en-US', {

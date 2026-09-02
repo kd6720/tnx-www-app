@@ -56,6 +56,7 @@ const Team = () => (
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
         }}
+        suppressHydrationWarning
       >
         <div className="absolute inset-0 bg-navy-950/85" />
       </div>
@@ -92,13 +93,13 @@ const Team = () => (
               </div>
               <div className="col-span-12 md:col-span-9">
                 <h2 className="font-display text-display-h2 font-semibold text-ink">{name}</h2>
-                <p className="mt-1 font-mono text-xs uppercase tracking-mono-label text-accent-500">{role}</p>
+                <p className="mt-1 font-mono text-xs uppercase tracking-mono-label text-accent-text">{role}</p>
                 {bio.map((p) => (
                   <p key={p.slice(0, 24)} className="mt-4 max-w-[68ch] leading-relaxed text-body">{p}</p>
                 ))}
                 <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
                   {skills.map((s) => (
-                    <li key={s} className="font-mono text-xs uppercase tracking-mono-label text-muted">{s}</li>
+                    <li key={s} className="font-mono text-xs uppercase tracking-mono-label text-muted-text">{s}</li>
                   ))}
                   {linkedin && (
                     <li>

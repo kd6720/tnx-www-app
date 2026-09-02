@@ -121,7 +121,7 @@ const Navbar = () => {
         {name}
         <ChevronDown
           size={16}
-          className={`transition-transform duration-300 ${openMenu === name ? 'rotate-180' : ''}`}
+          className={`transition-transform duration-300${openMenu === name ? ' rotate-180' : ''}`}
         />
       </button>
 

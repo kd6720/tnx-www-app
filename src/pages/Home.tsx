@@ -134,7 +134,7 @@ const Home = () => {
               {stats.map(({ value, label }, i) => (
                 <div
                   key={label}
-                  className={`py-8 ${i > 0 ? 'border-l border-white/10 pl-8' : ''} ${i % 2 === 1 ? 'max-md:border-l max-md:border-white/10 max-md:pl-8' : ''}`}
+                  className={`py-8${i > 0 ? ' border-l border-white/10 pl-8' : ''}${i % 2 === 1 ? ' max-md:border-l max-md:border-white/10 max-md:pl-8' : ''}`}
                 >
                   <p className="font-display text-stat font-semibold text-white">
                     <StatValue value={value} />
@@ -154,7 +154,7 @@ const Home = () => {
         <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
           <div className="grid grid-cols-12 gap-8">
             <div className="col-span-12 lg:col-span-5">
-              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
                 01 — AI Solutions
               </span>
               <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -173,7 +173,7 @@ const Home = () => {
                       to={to}
                       className="group grid grid-cols-[3rem_1fr_auto] items-baseline gap-4 py-5"
                     >
-                      <span className="font-mono text-sm text-accent-500">{n}</span>
+                      <span className="font-mono text-sm text-accent-text">{n}</span>
                       <span>
                         <span className="block font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
                           {title}
@@ -182,7 +182,7 @@ const Home = () => {
                       </span>
                       <ArrowRight
                         size={18}
-                        className="translate-y-1 text-muted transition-transform group-hover:translate-x-1 group-hover:text-brand-600"
+                        className="translate-y-1 text-muted-text transition-transform group-hover:translate-x-1 group-hover:text-brand-600"
                       />
                     </Link>
                   </li>
@@ -198,7 +198,7 @@ const Home = () => {
         <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
           <div className="grid grid-cols-12 gap-8">
             <div className="col-span-12 lg:col-span-5">
-              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
                 02 — Platforms
               </span>
               <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -222,7 +222,7 @@ const Home = () => {
                   <span className="font-mono text-xs uppercase tracking-mono-label text-ink">
                     TNX Partner Hub
                   </span>
-                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
+                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
                     AI agent management
                   </span>
                 </div>
@@ -236,7 +236,7 @@ const Home = () => {
                       className="w-full rounded border border-hairline"
                       loading="lazy"
                     />
-                    <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-mono-label text-muted">
+                    <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-mono-label text-muted-text">
                       01 Dashboard
                     </figcaption>
                   </figure>
@@ -249,7 +249,7 @@ const Home = () => {
                       className="w-full rounded border border-hairline"
                       loading="lazy"
                     />
-                    <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-mono-label text-muted">
+                    <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-mono-label text-muted-text">
                       02 Controls
                     </figcaption>
                   </figure>
@@ -262,7 +262,7 @@ const Home = () => {
                       className="w-full rounded border border-hairline"
                       loading="lazy"
                     />
-                    <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-mono-label text-muted">
+                    <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-mono-label text-muted-text">
                       03 Activity
                     </figcaption>
                   </figure>
@@ -279,12 +279,12 @@ const Home = () => {
                   <span className="font-mono text-xs uppercase tracking-mono-label text-ink">
                     TNX CRM
                   </span>
-                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
+                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
                     Opportunity management
                   </span>
                 </div>
                 <div className="mt-4 flex aspect-[8/5] items-center justify-center rounded border border-dashed border-hairline bg-canvas">
-                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
+                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
                     [ASSET] — product screenshot
                   </span>
                 </div>
@@ -301,17 +301,17 @@ const Home = () => {
       {/* ── Stack module ──────────────────────────────────────────────── */}
       <section className="border-b border-hairline">
         <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
-          <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+          <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
             The stack
           </span>
           <div className="mt-6 rounded-lg border border-hairline">
             {stackRows.map(({ label, title, desc }, i) => (
               <div
                 key={label}
-                className={`grid grid-cols-12 gap-6 px-6 py-8 ${i > 0 ? 'border-t border-hairline' : ''}`}
+                className={`grid grid-cols-12 gap-6 px-6 py-8${i > 0 ? ' border-t border-hairline' : ''}`}
               >
                 <div className="col-span-12 md:col-span-3">
-                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
+                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
                     {label}
                   </span>
                 </div>
@@ -330,7 +330,7 @@ const Home = () => {
         <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
           <div className="grid grid-cols-12 gap-8">
             <div className="col-span-12 lg:col-span-5">
-              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
                 03 — Telecom foundation
               </span>
               <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -348,7 +348,7 @@ const Home = () => {
                       className="group flex items-center justify-between border-b border-hairline py-3 font-display text-display-h3 font-semibold text-ink"
                     >
                       {label}
-                      <ArrowRight size={18} className="text-muted transition-transform group-hover:translate-x-1 group-hover:text-brand-600" />
+                      <ArrowRight size={18} className="text-muted-text transition-transform group-hover:translate-x-1 group-hover:text-brand-600" />
                     </Link>
                   </li>
                 ))}
@@ -357,14 +357,14 @@ const Home = () => {
             <div className="col-span-12 lg:col-span-7">
               {/* [ASSET] photo frame */}
               <div className="flex aspect-[4/3] items-center justify-center rounded-lg border border-dashed border-hairline bg-white">
-                <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
+                <span className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
                   [ASSET] — install photo
                 </span>
               </div>
               <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
                 {compliance.map((c) => (
-                  <span key={c} className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-mono-label text-muted">
-                    <span className="h-1 w-1 rounded-full bg-accent-500" /> {c}
+                  <span key={c} className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-mono-label text-muted-text">
+                    <span className="h-1 w-1 rounded-full bg-accent-500" />{` ${c}`}
                   </span>
                 ))}
               </div>
@@ -421,14 +421,14 @@ const Home = () => {
       <section className="border-b border-hairline bg-white">
         <div className="mx-auto w-full max-w-site px-6 py-16 md:px-gutter">
           <div className="flex flex-wrap items-center justify-between gap-x-10 gap-y-4">
-            <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
               Network partners
             </span>
             <div className="flex flex-wrap items-center gap-x-10 gap-y-4 grayscale">
-              <span className="font-mono text-[13px] text-muted">AT&amp;T</span>
+              <span className="font-mono text-[13px] text-muted-text">AT&amp;T</span>
               <img src="/partners/mettel-logo.png" alt="MetTel" className="h-[18px] w-auto" loading="lazy" />
-              <span className="font-mono text-[13px] text-muted">Verizon</span>
-              <span className="font-mono text-[13px] text-muted">T-Mobile</span>
+              <span className="font-mono text-[13px] text-muted-text">Verizon</span>
+              <span className="font-mono text-[13px] text-muted-text">T-Mobile</span>
               <img src="/partners/velocity-logo.png" alt="Velocity" className="h-[18px] w-auto" loading="lazy" />
               <img src="/partners/dataremote-logo.png" alt="DataRemote" className="h-[18px] w-auto" loading="lazy" />
               <img src="/partners/mix-networks-logo.png" alt="MIX Networks" className="h-[18px] w-auto" loading="lazy" />
@@ -442,7 +442,7 @@ const Home = () => {
         <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
           <div className="grid grid-cols-12 gap-8">
             <div className="col-span-12 lg:col-span-5">
-              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
                 04 — Start
               </span>
               <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -456,10 +456,10 @@ const Home = () => {
               <ol className="mt-10 space-y-0">
                 {['Scope', 'Deploy', 'Optimize'].map((step, i) => (
                   <li key={step} className="flex items-center gap-4">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-hairline font-mono text-xs text-accent-500">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-hairline font-mono text-xs text-accent-text">
                       {i + 1}
                     </span>
-                    <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
+                    <span className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
                       {step}
                     </span>
                   </li>

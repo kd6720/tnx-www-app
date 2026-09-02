@@ -125,7 +125,7 @@ const Footer = () => {
 
         <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-navy-400">
-            &copy; {new Date().getFullYear()} TrustedNetworx. All rights reserved.
+            {`© ${new Date().getFullYear()} TrustedNetworx. All rights reserved.`}
           </p>
           <p className="text-sm text-navy-400">Managed Telecom Solutions Provider</p>
         </div>
