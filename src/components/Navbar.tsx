@@ -38,6 +38,19 @@ const telecom = [
   { to: '/mobility-solutions', label: 'Mobility Solutions', desc: 'Manage your mobile fleet', icon: Smartphone },
 ];
 
+/**
+ * The DataRemote hardware pages sit under /pots-replacement. They go in the
+ * Telecom dropdown's footer rather than the main item list: eight full-height
+ * rows overflows the 26rem panel, and these are spec sheets a visitor reaches
+ * from the hub, not top-level destinations.
+ */
+const potsProducts = [
+  { to: '/pots-replacement/90x1', label: '90X1', desc: '8 lines · 5G' },
+  { to: '/pots-replacement/90x2', label: '90X2', desc: '8 lines · LTE' },
+  { to: '/pots-replacement/90x5', label: '90X5', desc: 'Modular · pre-order' },
+  { to: '/pots-replacement/ara', label: 'Ara', desc: 'Device management' },
+];
+
 const resources = [
   { to: '/blog', label: 'Blog', desc: 'Telecom & AI insights', icon: BookOpen },
   { to: '/tools', label: 'Free Tools', desc: 'ROI, risk & readiness assessments', icon: Wrench },
@@ -49,6 +62,26 @@ const company = [
   { to: '/contact', label: 'Contact', desc: 'Get in touch', icon: PhoneCall },
   { to: '/partners', label: 'Partners', desc: 'MSP & reseller program', icon: Users },
 ];
+
+const telecomFooter = (
+  <div>
+    <p className="px-3 pb-1 pt-1 font-mono text-[0.65rem] uppercase tracking-widest text-navy-400">
+      POTS IN A BOX hardware
+    </p>
+    <div className="grid grid-cols-2 gap-1">
+      {potsProducts.map(({ to, label, desc }) => (
+        <Link
+          key={to}
+          to={to}
+          className="rounded-lg px-3 py-2 transition-colors hover:bg-white/5"
+        >
+          <span className="block text-sm font-semibold text-brand-300">{label}</span>
+          <span className="block text-xs text-navy-300">{desc}</span>
+        </Link>
+      ))}
+    </div>
+  </div>
+);
 
 const platformsFooter = (
   <div className="space-y-1">
@@ -172,7 +205,7 @@ const Navbar = () => {
           <div className="hidden md:flex md:items-center md:gap-6">
             {renderDropdown('AI Solutions', aiSolutions)}
             {renderDropdown('Platforms', platforms, platformsFooter)}
-            {renderDropdown('Telecom', telecom)}
+            {renderDropdown('Telecom', telecom, telecomFooter)}
             {renderDropdown('Resources', resources)}
             {renderDropdown('Company', company)}
             <Link
@@ -220,6 +253,14 @@ const Navbar = () => {
                 {label}
               </Link>
             ))}
+            <div className="ml-4 border-l border-white/10 pl-3">
+              {potsProducts.map(({ to, label, desc }) => (
+                <Link key={to} to={to} className="flex items-baseline gap-2 rounded-lg px-3 py-2 text-sm text-navy-200 hover:bg-white/10">
+                  <span className="font-semibold text-brand-300">{label}</span>
+                  <span className="text-xs text-navy-400">{desc}</span>
+                </Link>
+              ))}
+            </div>
             <p className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-widest text-navy-400">Resources</p>
             {resources.map(({ to, label, icon: Icon }) => (
               <Link key={to} to={to} className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-navy-100 hover:bg-white/10">

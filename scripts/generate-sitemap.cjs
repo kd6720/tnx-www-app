@@ -16,6 +16,10 @@ const STATIC_ROUTES = [
   { path: '/ai-workforce', priority: '0.9', changefreq: 'monthly' },
   { path: '/ai-consulting', priority: '0.9', changefreq: 'monthly' },
   { path: '/pots-replacement', priority: '0.9', changefreq: 'monthly' },
+  { path: '/pots-replacement/90x1', priority: '0.8', changefreq: 'monthly' },
+  { path: '/pots-replacement/90x2', priority: '0.8', changefreq: 'monthly' },
+  { path: '/pots-replacement/90x5', priority: '0.7', changefreq: 'monthly' },
+  { path: '/pots-replacement/ara', priority: '0.7', changefreq: 'monthly' },
   { path: '/internet-connectivity', priority: '0.8', changefreq: 'monthly' },
   { path: '/voice-solutions', priority: '0.8', changefreq: 'monthly' },
   { path: '/mobility-solutions', priority: '0.8', changefreq: 'monthly' },
@@ -80,5 +84,6 @@ ${urls}
 </urlset>
 `;
 
-fs.writeFileSync(path.join(__dirname, '..', 'public', 'sitemap.xml'), xml, 'utf8');
-console.log(`Sitemap: ${STATIC_ROUTES.length} routes + ${posts.length} posts → public/sitemap.xml`);
+const out = path.join(__dirname, '..', 'public', 'sitemap.xml');
+fs.writeFileSync(out, xml);
+console.log(`[sitemap] ${STATIC_ROUTES.length} static + ${posts.length} posts -> ${out}`);
