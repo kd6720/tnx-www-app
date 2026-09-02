@@ -36,6 +36,11 @@
 
 # Known SPA routes → index.html (200) so deep-linking and refresh work.
 # Unknown paths fall through to /404.html (404) below instead of a soft-404.
+#
+# IMPORTANT: every route registered in src/App.tsx MUST have an explicit
+# redirect here (or a matching static file), or it 404s in production after
+# this soft-404 fix. Sprint 2/3 add /platforms/partner-hub, /platforms/crm,
+# /partners, and /ai — add them to this list as part of those sprints.
 [[redirects]]
   from = "/"
   to = "/index.html"
@@ -97,7 +102,27 @@
   status = 200
 
 [[redirects]]
-  from = "/tools/*"
+  from = "/tools/pots-roi-calculator"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/copper-sunset-risk"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/failover-readiness"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/ai-roi-calculator"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/ai-readiness"
   to = "/index.html"
   status = 200
 
