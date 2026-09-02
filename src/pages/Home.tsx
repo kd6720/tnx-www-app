@@ -80,7 +80,7 @@ const Home = () => {
         <div className="relative flex min-h-[78vh] items-center">
           <HeroVideo
             name="hero-home"
-            videoClassName="opacity-[0.28]"
+            mediaClassName="opacity-[0.34]"
             overlayClassName="absolute inset-0 bg-[linear-gradient(90deg,#0a1428_30%,rgba(10,20,40,0.55)_70%,rgba(10,20,40,0.35)_100%)]"
           />
           <div className="absolute inset-y-0 right-0 z-10 hidden w-2/3 lg:block">
