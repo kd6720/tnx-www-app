@@ -12,9 +12,11 @@ interface HeroVideoProps {
   name: string;
   /** Extra classes for the overlay gradient, if a page needs a different scrim. */
   overlayClassName?: string;
+  /** Extra classes for the <video> itself (e.g. opacity to darken the backplate). */
+  videoClassName?: string;
 }
 
-const HeroVideo = ({ name, overlayClassName }: HeroVideoProps) => (
+const HeroVideo = ({ name, overlayClassName, videoClassName }: HeroVideoProps) => (
   <div className="absolute inset-0 z-0" aria-hidden="true">
     {/* Poster layer (behind the video): instant paint + reduced-motion fallback */}
     <div
@@ -22,7 +24,7 @@ const HeroVideo = ({ name, overlayClassName }: HeroVideoProps) => (
       style={{ backgroundImage: `url(/media/${name}-poster.jpg)` }}
     />
     <video
-      className="hero-video absolute inset-0 h-full w-full object-cover"
+      className={`hero-video absolute inset-0 h-full w-full object-cover ${videoClassName ?? ''}`}
       autoPlay
       muted
       loop

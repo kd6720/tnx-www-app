@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
+import NodeField from '../components/NodeField';
 import MultiStepForm from '../components/MultiStepForm';
 import StatValue from '../components/StatValue';
 import Reveal from '../components/Reveal';
@@ -136,36 +137,33 @@ const Home = () => {
         description="AI agents and managed telecom for multi-site operators: POTS replacement, voice, connectivity, and mobility — with the AI workforce to sell, support, and monitor 24/7."
       />
 
-      {/* Hero */}
-      <section className="relative flex min-h-[88vh] items-center overflow-hidden">
+      {/* Hero — Direction A: darkened video backplate + node-field overlay */}
+      <section className="relative flex min-h-[88vh] items-center overflow-hidden bg-navy-950">
         <HeroVideo
           name="hero-home"
-          overlayClassName="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"
+          videoClassName="opacity-[0.28]"
+          overlayClassName="absolute inset-0 bg-[linear-gradient(90deg,#0a1428_30%,rgba(10,20,40,0.55)_70%,rgba(10,20,40,0.35)_100%)]"
         />
-        <div className="absolute inset-0 z-0 bg-grid-dark bg-grid opacity-40" />
-        <div className="absolute inset-0 z-0 bg-hero-glow" />
-        {/* floating orbs */}
+        <div className="absolute inset-y-0 right-0 z-10 hidden w-2/3 lg:block">
+          <NodeField className="h-full w-full" />
+        </div>
 
-        <div className="relative z-10 w-full pt-20 pb-28">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-20 w-full pt-20 pb-28">
+          <div className="mx-auto w-full max-w-site px-6 md:px-gutter">
             <div className="max-w-3xl">
-              <span className="eyebrow border border-brand-400/30 bg-brand-500/10 text-brand-200 animate-fadeInUp">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
-                Managed Solution Provider
+              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+                01 — Managed telecom &amp; AI
               </span>
-              <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.05] animate-fadeInUp">
-                AI agents and modern telecom{' '}
-                <span className="text-brand-300">
-                  for multi-site operators.
-                </span>
+              <h1 className="mt-6 font-display text-display-hero font-semibold text-white">
+                AI agents and modern telecom for multi-site operators.
               </h1>
-              <p className="mt-6 max-w-xl text-lg sm:text-xl text-navy-200 animate-fadeInUp">
+              <p className="mt-6 max-w-xl text-lg text-navy-200">
                 TrustedNetworx builds and runs AI agents that sell, support, and monitor — on top
                 of the voice, connectivity, and POTS replacement infrastructure we already manage
                 for senior living, hospitality, healthcare, and property management.
               </p>
-              <div className="mt-9 flex flex-col sm:flex-row gap-4 animate-fadeInUp">
-                <Link to="/tools/ai-readiness" className="btn-light">
+              <div className="mt-9 flex flex-col sm:flex-row gap-4">
+                <Link to="/tools/ai-readiness" className="btn-primary">
                   Book an AI Readiness Review
                   <ArrowRight size={18} />
                 </Link>
@@ -173,15 +171,15 @@ const Home = () => {
                   See the platforms
                 </a>
               </div>
-              <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-navy-300 animate-fadeInUp">
+              <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-mono-label text-navy-300">
                 <span className="inline-flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-cyan-400" /> Human-in-the-loop approvals
+                  <span className="h-1 w-1 rounded-full bg-accent-500" /> Human-in-the-loop
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-cyan-400" /> Built on your data, tenant-isolated
+                  <span className="h-1 w-1 rounded-full bg-accent-500" /> Tenant-isolated
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-cyan-400" /> Simple pricing — talk to us
+                  <span className="h-1 w-1 rounded-full bg-accent-500" /> Simple pricing
                 </span>
               </div>
             </div>
