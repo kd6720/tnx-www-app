@@ -6,7 +6,7 @@ import HeroVideo from '../components/HeroVideo';
 const capabilities = [
   { n: '01', title: 'Mobile Device as a Service (MDaaS)', desc: 'Procurement, configuration, deployment, and ongoing support — the full device lifecycle, handled end-to-end.' },
   { n: '02', title: 'Unified Endpoint Management (UEM)', desc: 'Centralized device management, security enforcement, and policy compliance across every OS.' },
-  { n: '03', title: 'IoT connectivity', desc: 'Secure global connectivity for devices that can\u2019t drop — robust options that keep them online anywhere.' },
+  { n: '03', title: 'IoT connectivity', desc: 'Secure global connectivity for devices that can’t drop — robust options that keep them online anywhere.' },
   { n: '04', title: 'AI consulting', desc: 'Automate mobile-workforce workflows and surface operational insight across distributed teams.' },
 ];
 
@@ -36,11 +36,7 @@ const MobilitySolutions = () => (
 
     {/* Hero */}
     <section className="relative flex min-h-[70vh] items-center overflow-hidden bg-navy-950">
-      <HeroVideo
-        name="hero-mobility"
-        mediaClassName="opacity-[0.34]"
-        overlayClassName="absolute inset-0 bg-[linear-gradient(90deg,#0a1428_30%,rgba(10,20,40,0.55)_70%,rgba(10,20,40,0.35)_100%)]"
-      />
+      <HeroVideo name="hero-mobility" />
       <div className="relative z-10 mx-auto w-full max-w-site px-6 py-24 md:px-gutter">
         <div className="max-w-3xl">
           <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
