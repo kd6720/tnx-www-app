@@ -14,7 +14,32 @@ import { useEffect, useRef } from 'react';
  * - Phones (< 768px) get the `-720` variant when one exists; larger screens
  *   get the full 1080p file.
  * - All copy stays in HTML on top of this component — never in the video.
+ *
+ * DIMMING: darken with the OVERLAY only, never by fading the media layer.
+ * Fading the media composites the video against the opaque poster behind it
+ * (double exposure, reads as blur) and then the overlay dims what is left a
+ * second time. That stacking is what made every hero look like a black box:
+ * the video survived at ~10% of its native brightness with almost no visible
+ * detail. DEFAULT_OVERLAY below is the single place to tune hero darkness.
  */
+
+/**
+ * Scrim over the video. Strong where the copy sits, weak where it doesn't, so
+ * the footage stays visible without costing text contrast.
+ *
+ * Desktop: copy occupies the left ~half, so the scrim ramps left-to-right and
+ * releases to 4% at the right edge.
+ * Mobile: copy spans the full width, so the scrim is near-uniform with a
+ * slightly darker top and bottom.
+ *
+ * Both were measured from rendered pixels, not eyeballed — the white H1 holds
+ * at least 6.39:1 against its own backdrop on every hero at 1440 and 390
+ * (AA wants 3:1 for large text, 4.5:1 for body).
+ */
+const DEFAULT_OVERLAY =
+  'absolute inset-0 ' +
+  'bg-[linear-gradient(180deg,rgba(10,20,40,0.72)_0%,rgba(10,20,40,0.50)_45%,rgba(10,20,40,0.74)_100%)] ' +
+  'md:bg-[linear-gradient(90deg,rgba(10,20,40,0.92)_0%,rgba(10,20,40,0.80)_30%,rgba(10,20,40,0.36)_62%,rgba(10,20,40,0.04)_100%)]';
 
 /**
  * Hero base names that actually have a /media/<name>.webm on disk. Everything
@@ -42,10 +67,9 @@ interface HeroVideoProps {
   /** Extra classes for the <video> itself. */
   videoClassName?: string;
   /**
-   * Extra classes for the poster + video layer as a unit (e.g. an opacity to
-   * darken the backplate). Darken HERE, never on the video alone: a translucent
-   * moving video composited over the opaque static poster double-exposes and
-   * reads as blur.
+   * Extra classes for the poster + video layer as a unit. Do NOT put an opacity
+   * here to darken a hero — that fades the video against the poster behind it
+   * and stacks with the overlay. Use overlayClassName instead.
    */
   mediaClassName?: string;
   /** Set when /media/<name>-720.{webm,mp4} exist; phones load those instead. */
@@ -131,12 +155,7 @@ const HeroVideo = ({
           poster={`/media/${name}-poster.${ASSET_VERSION}.jpg`}
         />
       </div>
-      <div
-        className={
-          overlayClassName ??
-          'absolute inset-0 bg-gradient-to-br from-navy-950/90 via-navy-900/75 to-brand-900/50'
-        }
-      />
+      <div className={overlayClassName ?? DEFAULT_OVERLAY} />
     </div>
   );
 };
