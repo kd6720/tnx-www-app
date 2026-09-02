@@ -1,206 +1,149 @@
-import React from 'react';
-import {
-    Shield, Award, Zap, Handshake
-} from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 
 const whyChooseUs = [
-    {
-        icon: Award,
-        title: 'Proven Telecom Expertise',
-        description:
-            'Leverage decades of industry experience that equips us to tackle the complex challenges of connectivity and infrastructure modernization.',
-    },
-    {
-        icon: Handshake,
-        title: 'Strategic Global Partnerships',
-        description:
-            'Our track record includes spearheading high-profile projects with global telecom leaders, government bodies, and Fortune 500 companies.',
-    },
-    {
-        icon: Zap,
-        title: 'Future-Ready Solutions',
-        description:
-            'We deliver cutting-edge solutions—from cellular data technology to cloud-based communication systems—customized to meet your evolving needs.',
-    },
-    {
-        icon: Shield,
-        title: 'Dependable & Scalable Solutions',
-        description:
-            'Designed for long-term success, our strategies help reduce costs, enhance operational efficiency, and boost communication capabilities.',
-    },
+  { n: '01', title: 'Proven telecom expertise', desc: 'Decades of industry experience tackling the complex challenges of connectivity and infrastructure modernization.' },
+  { n: '02', title: 'Strategic global partnerships', desc: 'High-profile projects with global telecom leaders, government bodies, and Fortune 500 companies.' },
+  { n: '03', title: 'Future-ready solutions', desc: 'Cellular data to cloud communication — customized to your evolving needs.' },
+  { n: '04', title: 'Dependable & scalable', desc: 'Strategies that cut costs, lift operational efficiency, and grow with you.' },
 ];
 
-const About = () => {
-    return (
-        <div className="bg-navy-50">
-            <Seo
-                title="About Us | TrustedNetworx"
-                description="With 25+ years in telecom and IoT, TrustedNetworx delivers advanced connectivity, voice, and managed solutions for enterprise and multi-site organizations."
-            />
-            {/* Hero Section */}
-            <div className="relative min-h-[460px] flex items-center overflow-hidden">
-                {/* Background Image */}
-                <div className="absolute inset-0 z-0" style={{
-                    backgroundImage: 'url(/Handshake.jpg)',
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat'
-                }}>
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"/>
-                    <div className="absolute inset-0 bg-grid-dark bg-grid opacity-40"/>
-                </div>
+const About = () => (
+  <div className="bg-canvas text-body antialiased">
+    <Seo
+      title="About Us | TrustedNetworx"
+      description="With 25+ years in telecom and IoT, TrustedNetworx delivers advanced connectivity, voice, and managed solutions for enterprise and multi-site organizations."
+    />
 
-                <div className="relative z-10 w-full">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center">
-                            <span className="eyebrow border border-brand-400/30 bg-brand-500/10 text-brand-200">
-                                Who we are
-                            </span>
-                            <h1 className="mt-5 text-4xl font-extrabold text-white sm:text-5xl md:text-6xl tracking-tight">
-                                About TrustedNetworx
-                            </h1>
-                            <p className="mt-4 max-w-md mx-auto text-base text-navy-200 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                                Connecting businesses with cutting-edge telecommunication services
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="relative">
-                {/* Background decorative elements */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div
-                        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent">
-                    </div>
-                </div>
-
-                {/* Leading the Future of Telecom Section */}
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                    <div className="glass-morphism rounded-2xl p-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                                Leading the Future of Telecom
-                            </h2>
-                            <p className="mt-4 text-lg text-gray-600">
-                                With over 25 years of experience in the telecom and IoT industries,{' '}
-                                <a
-                                    href="https://trustednetworx.com"
-                                    className="text-blue-600 hover:text-blue-800 font-semibold"
-                                >TrustedNetworx
-                                </a>{' '}
-                                specializes in delivering advanced connectivity solutions that drive business success.
-                                Our expertise spans IoT, M2M, cloud computing, and enterprise communication solutions,
-                                enabling organizations to modernize their infrastructure, optimize operations, and stay
-                                ahead in a rapidly evolving digital landscape.
-                            </p>
-                        </div>
-                        <div className="flex justify-center">
-                            <img
-                                src="/Global-Connectivity.jpg"
-                                alt="About TrustedNetworx"
-                                className="max-w-full h-auto rounded-xl shadow-lg"
-                            />
-                        </div>
-                    </div>
-                </div>
-
-                {/* Your Trusted Telecom Partner Section */}
-                <div className="w-full bg-blue-50">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                        <div className="glass-morphism rounded-2xl p-8 text-center">
-                            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-8">
-                                Your Trusted Telecom Partner
-                            </h2>
-                            <p className="mt-4 text-lg text-gray-600 max-w-4xl mx-auto">
-                                Having worked with industry leaders such as AT&T, Verizon, T-Mobile, US Cellular, MetTel,
-                                Fusion Connect, Xirgo Technologies, DataRemote and many more, we have a proven track
-                                record of expanding market presence, forming strategic partnerships, and delivering
-                                scalable telecom solutions. From POTS line replacement and enterprise mobility to IoT
-                                connectivity and managed services, we help businesses transition to next-generation
-                                networks with confidence.
-                            </p>
-                            <div className="mt-10">
-                                <img
-                                    src="/partners/Partners-Banner-Desktop.png"
-                                    alt="Our Trusted Partners"
-                                    className="w-full hidden md:block"
-                                />
-                                <img
-                                    src="/partners/Partners-Banner-Mobile.png"
-                                    alt="Our Trusted Partners"
-                                    className="w-full md:hidden"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Why Choose Us Section */}
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                    <div className="glass-morphism rounded-2xl p-8">
-                        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-8 text-center">
-                            Why Choose TrustedNetworx?
-                        </h2>
-                        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                            {whyChooseUs.map(({ icon: Icon, title, description }) => (
-                                <div key={title} className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                                    <div className="text-blue-600 mb-4 flex justify-center">
-                                        <Icon size={32} />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">{title}</h3>
-                                    <p className="text-gray-600 text-center">{description}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
-                {/* Meet the Team CTA */}
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                    <div className="glass-morphism rounded-2xl p-8 text-center">
-                        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4">
-                            Meet Our Team
-                        </h2>
-                        <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-                            Get to know the leadership and partners behind TrustedNetworx — bringing together decades of telecom expertise, AI-driven strategy, and creative vision.
-                        </p>
-                        <Link
-                            to="/about/team"
-                            className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brand-600 hover:bg-brand-700 md:py-4 md:text-lg md:px-10 transition-colors duration-300 shadow-lg"
-                        >
-                            Meet the Team
-                        </Link>
-                    </div>
-                </div>
-
-                {/* CTA Section */}
-                <div className="relative max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto pb-16">
-                    <div
-                        className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-8 shadow-xl border border-gray-200">
-                        <div className="text-center">
-                            <h3 className="text-2xl font-bold text-white mb-4">
-                                Ready to Transform Your Telecommunications?
-                            </h3>
-                            <p className="text-lg text-blue-100 mb-8">
-                                Let us help you navigate the future of telecom with expertise, reliability, and
-                                innovation. Partner with us for a seamless transition into the next generation of
-                                connectivity solutions.
-                            </p>
-                            <Link
-                                to="/contact"
-                                className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 md:py-4 md:text-lg md:px-10 transition-colors duration-300"
-                            >Contact Us
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    {/* Hero */}
+    <section className="relative flex min-h-[60vh] items-center overflow-hidden bg-navy-950">
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(/Handshake.jpg)',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="absolute inset-0 bg-navy-950/85" />
+      </div>
+      <div className="relative z-10 mx-auto w-full max-w-site px-6 py-24 md:px-gutter">
+        <div className="max-w-3xl">
+          <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            Who we are
+          </span>
+          <h1 className="mt-6 font-display text-[44px] leading-[1.05] tracking-[-0.02em] font-semibold text-white md:text-[56px] md:leading-[1.05] lg:text-[72px] lg:leading-[1.0]">
+            About TrustedNetworx.
+          </h1>
+          <p className="mt-6 max-w-xl text-lg text-navy-200">
+            Connecting businesses with cutting-edge telecommunication services.
+          </p>
         </div>
-    );
-};
+      </div>
+    </section>
+
+    {/* 01 — Leading the future */}
+    <section className="border-b border-hairline">
+      <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
+        <div className="grid grid-cols-12 gap-8">
+          <div className="col-span-12 lg:col-span-6">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+              01 — Who we are
+            </span>
+            <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
+              Leading the future of telecom.
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-body">
+              With over 25 years in telecom and IoT, TrustedNetworx specializes in advanced
+              connectivity solutions that drive business success. Our expertise spans IoT, M2M,
+              cloud computing, and enterprise communication — enabling organizations to modernize
+              infrastructure, optimize operations, and stay ahead.
+            </p>
+          </div>
+          <div className="col-span-12 lg:col-span-6">
+            <img
+              src="/Global-Connectivity.jpg"
+              alt="About TrustedNetworx"
+              className="aspect-[4/3] w-full rounded-lg border border-hairline object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* 02 — Your trusted partner */}
+    <section className="border-b border-hairline bg-white">
+      <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
+        <div className="grid grid-cols-12 gap-8">
+          <div className="col-span-12 lg:col-span-5">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+              02 — Your trusted partner
+            </span>
+            <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
+              A track record with the carriers.
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-body">
+              AT&amp;T, Verizon, T-Mobile, US Cellular, MetTel, Fusion Connect, Xirgo
+              Technologies, DataRemote, and more — from POTS line replacement to enterprise
+              mobility, we help businesses transition to next-generation networks with confidence.
+            </p>
+          </div>
+          <div className="col-span-12 lg:col-span-7">
+            <img
+              src="/partners/Partners-Banner-Desktop.png"
+              alt="Our trusted partners"
+              className="hidden w-full md:block"
+            />
+            <img
+              src="/partners/Partners-Banner-Mobile.png"
+              alt="Our trusted partners"
+              className="w-full md:hidden"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* 03 — Why choose us */}
+    <section className="border-b border-hairline">
+      <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
+        <div className="grid grid-cols-12 gap-8">
+          <div className="col-span-12 lg:col-span-5">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+              03 — Why choose us
+            </span>
+            <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
+              Four reasons operators stay.
+            </h2>
+          </div>
+          <div className="col-span-12 lg:col-span-7">
+            <ul className="divide-y divide-hairline border-t border-hairline">
+              {whyChooseUs.map(({ n, title, desc }) => (
+                <li key={n} className="grid grid-cols-[3rem_1fr] gap-4 py-5">
+                  <span className="font-mono text-sm text-accent-500">{n}</span>
+                  <div>
+                    <h3 className="font-display text-display-h3 font-semibold text-ink">{title}</h3>
+                    <p className="mt-1 text-base leading-relaxed text-body">{desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8">
+              <Link
+                to="/about/team"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-700"
+              >
+                Meet the team
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+);
 
 export default About;

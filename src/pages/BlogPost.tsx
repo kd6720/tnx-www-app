@@ -2,17 +2,9 @@ import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { ArrowLeft, Calendar, Clock, User } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { getPostBySlug } from '../utils/blog';
 import Seo, { SITE_URL } from '../components/Seo';
-
-const categoryColors: Record<string, string> = {
-  'Telecom Modernization': 'bg-blue-100 text-blue-700',
-  'AI for Business': 'bg-emerald-100 text-emerald-700',
-  'Industry Spotlights': 'bg-violet-100 text-violet-700',
-  'Compliance & Regulation': 'bg-amber-100 text-amber-700',
-  'Channel Growth': 'bg-rose-100 text-rose-700',
-};
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -20,16 +12,11 @@ const BlogPost = () => {
 
   if (!post) {
     return (
-      <div className="bg-navy-50 min-h-[70vh] flex items-center justify-center">
-        <div className="text-center px-4">
-          <h1 className="text-3xl font-extrabold text-navy-900">Post not found</h1>
-          <p className="mt-4 text-navy-500">
-            The article you're looking for doesn't exist or may have been moved.
-          </p>
-          <Link
-            to="/blog"
-            className="mt-6 inline-flex items-center gap-2 text-brand-600 font-semibold hover:text-brand-700 transition-colors"
-          >
+      <div className="flex min-h-[70vh] items-center justify-center bg-canvas">
+        <div className="px-4 text-center">
+          <h1 className="font-display text-display-h2 font-semibold text-ink">Post not found</h1>
+          <p className="mt-4 text-body">The article you&apos;re looking for doesn&apos;t exist or may have been moved.</p>
+          <Link to="/blog" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-700">
             <ArrowLeft size={18} />
             Back to Blog
           </Link>
@@ -67,7 +54,7 @@ const BlogPost = () => {
   };
 
   return (
-    <div className="bg-navy-50">
+    <div className="bg-canvas text-body antialiased">
       <Seo
         title={`${post.title} | TrustedNetworx Blog`}
         description={post.description}
@@ -76,13 +63,10 @@ const BlogPost = () => {
         jsonLd={[articleJsonLd, breadcrumbJsonLd]}
       />
 
-      {/* Back Link */}
-      <div className="bg-white border-b border-navy-100">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link
-            to="/blog"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-navy-500 hover:text-brand-600 transition-colors"
-          >
+      {/* Back link */}
+      <div className="border-b border-hairline bg-white">
+        <div className="mx-auto w-full max-w-[68ch] px-6 py-4 md:px-gutter">
+          <Link to="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-muted hover:text-brand-600">
             <ArrowLeft size={16} />
             Back to Blog
           </Link>
@@ -90,98 +74,54 @@ const BlogPost = () => {
       </div>
 
       {/* Article */}
-      <article className="py-12 sm:py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <header>
-            <span
-              className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
-                categoryColors[post.category] || 'bg-navy-100 text-navy-600'
-              }`}
-            >
-              {post.category}
+      <article className="mx-auto w-full max-w-[68ch] px-6 py-14 md:px-gutter">
+        <header>
+          <p className="font-mono text-xs uppercase tracking-mono-label text-accent-500">{post.category}</p>
+          <h1 className="mt-4 font-display text-display-h2 font-semibold leading-tight text-ink">{post.title}</h1>
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs uppercase tracking-mono-label text-muted">
+            <span>
+              {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </span>
-
-            <h1 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-navy-900 leading-[1.15]">
-              {post.title}
-            </h1>
-
-            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-navy-400">
-              <span className="inline-flex items-center gap-1.5">
-                <Calendar size={15} />
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <User size={15} />
-                {post.author}
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Clock size={15} />
-                {post.readTime}
-              </span>
-            </div>
-          </header>
-
-          {/* Divider */}
-          <hr className="mt-8 border-navy-200" />
-
-          {/* Featured Image */}
-          {post.image && (
-            <div className="mt-8 rounded-2xl overflow-hidden shadow-card">
-              <img
-                src={post.image}
-                alt={post.title}
-                className="w-full h-auto object-cover max-h-96"
-              />
-            </div>
-          )}
-
-          {/* Content */}
-          <div className="mt-8 prose prose-lg max-w-none">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {post.content}
-            </ReactMarkdown>
+            <span>{post.author}</span>
+            <span>{post.readTime}</span>
           </div>
+        </header>
 
-          {/* About the Author */}
-          <div className="mt-16 rounded-2xl bg-white border border-navy-100 shadow-card p-7">
-            <div className="flex items-start gap-4">
-              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-cyan-600 text-lg font-bold text-white flex-shrink-0">
-                CD
-              </span>
-              <div>
-                <h3 className="text-lg font-bold text-navy-900">{post.author}</h3>
-                <p className="mt-2 text-sm text-navy-500 leading-relaxed">
-                  Carter Dewey leads solution architecture at TrustedNetworx, helping multi-site
-                  organizations navigate telecom modernization, POTS replacement, and AI-powered
-                  operations. With deep experience across property management, senior living,
-                  hospitality, and healthcare, Carter translates complex infrastructure challenges
-                  into practical, phased migration roadmaps.
-                </p>
-              </div>
-            </div>
+        {post.image && (
+          <div className="mt-8 aspect-[16/9] overflow-hidden rounded-lg border border-hairline">
+            <img src={post.image} alt={post.title} className="h-full w-full object-cover" />
           </div>
+        )}
+
+        {/* Body — 18px / 1.7 line-height */}
+        <div className="mt-8 prose prose-lg max-w-none [&_p]:text-[18px] [&_p]:leading-[1.7] [&_li]:text-[18px] [&_li]:leading-[1.7]">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
+        </div>
+
+        {/* About the author */}
+        <div className="mt-14 border-t border-hairline pt-6">
+          <p className="font-mono text-xs uppercase tracking-mono-label text-muted">About the author</p>
+          <h2 className="mt-2 font-display text-display-h3 font-semibold text-ink">{post.author}</h2>
+          <p className="mt-3 leading-relaxed text-body">
+            Carter Dewey leads solution architecture at TrustedNetworx, helping multi-site
+            organizations navigate telecom modernization, POTS replacement, and AI-powered
+            operations — translating complex infrastructure challenges into practical, phased
+            migration roadmaps.
+          </p>
         </div>
       </article>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-brand-700 via-brand-600 to-cyan-600">
-        <div className="absolute inset-0 bg-grid-dark bg-grid opacity-20" />
-        <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 lg:flex lg:items-center lg:justify-between">
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-            <span className="block">Have a question about this topic?</span>
-            <span className="block text-brand-100">Let's talk about your specific situation.</span>
+      <section className="bg-navy-950">
+        <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
+          <h2 className="font-display text-display-h2 font-semibold text-white">
+            Have a question about this topic?
           </h2>
-          <div className="mt-8 lg:mt-0 lg:flex-shrink-0">
-            <Link to="/contact" className="btn-light">
-              Get a Quote
-              <ArrowLeft size={18} className="rotate-180" />
-            </Link>
-          </div>
+          <p className="mt-4 max-w-xl text-lg text-navy-200">Let&apos;s talk about your specific situation.</p>
+          <Link to="/contact" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-300 hover:text-brand-200">
+            Get a quote
+            <ArrowRight size={16} />
+          </Link>
         </div>
       </section>
     </div>
