@@ -11,6 +11,10 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Team from './pages/Team';
 import PotsReplacement from './pages/PotsReplacement';
+import Pots90X1 from './pages/pots/Pots90X1';
+import Pots90X2 from './pages/pots/Pots90X2';
+import Pots90X5 from './pages/pots/Pots90X5';
+import PotsAra from './pages/pots/PotsAra';
 import AiConsulting from './pages/AiConsulting';
 import InternetConnectivity from './pages/InternetConnectivity';
 import MobilitySolutions from './pages/MobilitySolutions';
@@ -82,6 +86,10 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/about/team" element={<Team />} />
               <Route path="/pots-replacement" element={<PotsReplacement />} />
+              <Route path="/pots-replacement/90x1" element={<Pots90X1 />} />
+              <Route path="/pots-replacement/90x2" element={<Pots90X2 />} />
+              <Route path="/pots-replacement/90x5" element={<Pots90X5 />} />
+              <Route path="/pots-replacement/ara" element={<PotsAra />} />
               <Route path="/ai-consulting" element={<AiConsulting />} />
               <Route path="/fleet-management" element={<Navigate to="/ai-consulting" replace />} />
               <Route path="/internet-connectivity" element={<InternetConnectivity />} />
