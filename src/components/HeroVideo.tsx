@@ -31,6 +31,14 @@ interface HeroVideoProps {
   mediaClassName?: string;
   /** Set when /media/<name>-720.{webm,mp4} exist; phones load those instead. */
   hasMobileVariant?: boolean;
+  /**
+   * Set ONLY when /media/<name>.webm actually exists. Defaults to false,
+   * because today only hero-home ships a webm. Requesting a missing .webm
+   * does not fail fast: Chrome answers the 404 with `stalled`, never `error`,
+   * so the element hangs at readyState 0 and the hero never moves. Ask for
+   * the file that exists rather than relying on an error we never get.
+   */
+  hasWebm?: boolean;
 }
 
 const HeroVideo = ({
@@ -39,6 +47,7 @@ const HeroVideo = ({
   videoClassName,
   mediaClassName,
   hasMobileVariant = false,
+  hasWebm = false,
 }: HeroVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -63,18 +72,17 @@ const HeroVideo = ({
         });
       };
 
-      // Only hero-home ships a .webm; every other hero is mp4-only. Asking for
-      // a missing .webm makes the element fire `error` (and the SPA rewrite
-      // hands back index.html rather than a 404), which froze every interior
-      // hero on its poster. Retry the mp4 on error — the same fallback the
-      // original <source> list gave us for free.
+      // Safety net only. The real guarantee is that we never request a file
+      // that isn't there (see hasWebm): a 404'd media source stalls forever
+      // in Chrome instead of erroring, so this handler cannot be relied on.
       onError = () => {
         if (el.src.endsWith('.mp4')) return; // mp4 failed too: keep the poster
         play(`${base}.mp4`);
       };
       el.addEventListener('error', onError);
 
-      play(el.canPlayType('video/webm; codecs="vp9"') ? `${base}.webm` : `${base}.mp4`);
+      const useWebm = hasWebm && el.canPlayType('video/webm; codecs="vp9"') !== '';
+      play(useWebm ? `${base}.webm` : `${base}.mp4`);
     };
 
     if (document.readyState === 'complete') {
@@ -88,7 +96,7 @@ const HeroVideo = ({
       window.removeEventListener('load', start);
       if (onError) el.removeEventListener('error', onError);
     };
-  }, [name, hasMobileVariant]);
+  }, [name, hasMobileVariant, hasWebm]);
 
   return (
     <div className="absolute inset-0 z-0" aria-hidden="true">
