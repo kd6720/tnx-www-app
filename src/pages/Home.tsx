@@ -15,7 +15,7 @@ const stats = [
   { value: '50%', label: 'Typical line-cost cut' },
 ];
 
-// 01 — AI Solutions. Numbered hairline list, 5/6 split.
+// 01 — AI Solutions. Three numbered items, 5/6 split.
 const aiSolutions = [
   {
     n: '01',
@@ -31,27 +31,9 @@ const aiSolutions = [
   },
   {
     n: '03',
-    title: 'POTS Replacement',
-    to: '/pots-replacement',
-    desc: 'Move off copper before the sunset — cellular and VoIP lines at a fraction of the cost.',
-  },
-  {
-    n: '04',
-    title: 'Voice & IP PBX',
-    to: '/voice-solutions',
-    desc: 'Cloud voice and unified comms that survive an outage, not just a day.',
-  },
-  {
-    n: '05',
-    title: 'Connectivity',
-    to: '/internet-connectivity',
-    desc: 'Fiber, fixed wireless, and LTE/5G backup — speced to what each site actually needs.',
-  },
-  {
-    n: '06',
-    title: 'Mobility',
-    to: '/mobility-solutions',
-    desc: 'Enterprise mobility managed across every facility and device.',
+    title: 'AI Readiness',
+    to: '/tools/ai-readiness',
+    desc: 'Score your AI posture in 10 minutes and get a scoped, budgeted first build.',
   },
 ];
 
@@ -109,9 +91,9 @@ const Home = () => {
             <div className="mx-auto w-full max-w-site px-6 md:px-gutter">
               <div className="max-w-3xl">
                 <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
-                  01 — Managed telecom &amp; AI
+                  Managed telecom &amp; AI
                 </span>
-                <h1 className="mt-6 font-display text-display-hero font-semibold text-white">
+                <h1 className="mt-6 font-display text-[44px] leading-[1.05] tracking-[-0.02em] font-semibold text-white md:text-[56px] md:leading-[1.05] lg:text-[72px] lg:leading-[1.0]">
                   AI agents and modern telecom for multi-site operators.
                 </h1>
                 <p className="mt-6 max-w-xl text-lg text-navy-200">
@@ -175,11 +157,11 @@ const Home = () => {
                 01 — AI Solutions
               </span>
               <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
-                One operator behind every workflow.
+                AI that runs on infrastructure we already manage.
               </h2>
               <p className="mt-5 max-w-md text-lg leading-relaxed text-body">
-                Six ways we modernize telecom — from the AI workforce that runs your operations to
-                the copper replacement underneath it.
+                From agents that sell and support around the clock to a readiness review that scopes
+                the first build.
               </p>
             </div>
             <div className="col-span-12 lg:col-span-7">
@@ -405,27 +387,29 @@ const Home = () => {
               />
             </div>
             <div className="col-span-12 flex flex-col justify-center md:col-span-8 lg:col-span-7 lg:col-start-6">
-              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
-                Run by an operator
-              </span>
-              <blockquote className="mt-6 font-display text-display-h2-sm font-semibold leading-tight text-white">
+              <blockquote className="font-display text-display-h2-sm font-semibold leading-tight text-white">
                 “TrustedNetworx moved our entire portfolio off legacy copper without a single day of
                 downtime. The savings hit our bottom line immediately.”
               </blockquote>
-              <p className="mt-8 max-w-xl leading-relaxed text-navy-200">
-                TrustedNetworx is led by Carter Dewey — 12 years at AT&amp;T leading enterprise
-                accounts, then SVP of Global Sales at DataRemote, the manufacturer of the POTS
-                replacement hardware we deploy. When you call, you deal with the people who run the
-                deployments, not a sales queue.
-              </p>
-              <div className="mt-6 font-mono text-xs uppercase tracking-mono-label text-navy-300">
+              <div className="mt-4 font-mono text-xs uppercase tracking-mono-label text-navy-300">
                 Operations Director · Multi-Site Property Group
               </div>
-              <div className="mt-8">
-                <Link to="/about/team" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-300 hover:text-brand-200">
-                  Meet the team
-                  <ArrowRight size={16} />
-                </Link>
+              <div className="mt-10 border-t border-divider pt-8">
+                <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+                  The operator
+                </span>
+                <p className="mt-4 max-w-xl leading-relaxed text-navy-200">
+                  TrustedNetworx is led by Carter Dewey — 12 years at AT&amp;T leading enterprise
+                  accounts, then SVP of Global Sales at DataRemote, the manufacturer of the POTS
+                  replacement hardware we deploy. When you call, you deal with the people who run the
+                  deployments, not a sales queue.
+                </p>
+                <div className="mt-6">
+                  <Link to="/about/team" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-300 hover:text-brand-200">
+                    Meet the team
+                    <ArrowRight size={16} />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -439,14 +423,14 @@ const Home = () => {
             <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
               Network partners
             </span>
-            <div className="flex flex-wrap items-center gap-x-10 gap-y-4 opacity-70 grayscale">
-              <span className="font-display text-lg font-semibold text-ink">AT&amp;T</span>
-              <img src="/partners/mettel-logo.png" alt="MetTel" className="h-7 w-auto" loading="lazy" />
-              <span className="font-display text-lg font-semibold text-ink">Verizon</span>
-              <span className="font-display text-lg font-semibold text-ink">T-Mobile</span>
-              <img src="/partners/velocity-logo.png" alt="Velocity" className="h-7 w-auto" loading="lazy" />
-              <img src="/partners/dataremote-logo.png" alt="DataRemote" className="h-7 w-auto" loading="lazy" />
-              <img src="/partners/mix-networks-logo.png" alt="MIX Networks" className="h-7 w-auto" loading="lazy" />
+            <div className="flex flex-wrap items-center gap-x-10 gap-y-4 grayscale">
+              <span className="font-mono text-[13px] text-muted">AT&amp;T</span>
+              <img src="/partners/mettel-logo.png" alt="MetTel" className="h-[18px] w-auto" loading="lazy" />
+              <span className="font-mono text-[13px] text-muted">Verizon</span>
+              <span className="font-mono text-[13px] text-muted">T-Mobile</span>
+              <img src="/partners/velocity-logo.png" alt="Velocity" className="h-[18px] w-auto" loading="lazy" />
+              <img src="/partners/dataremote-logo.png" alt="DataRemote" className="h-[18px] w-auto" loading="lazy" />
+              <img src="/partners/mix-networks-logo.png" alt="MIX Networks" className="h-[18px] w-auto" loading="lazy" />
             </div>
           </div>
         </div>
