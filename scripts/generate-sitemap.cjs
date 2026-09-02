@@ -32,6 +32,7 @@ const STATIC_ROUTES = [
   { path: '/platforms/partner-hub', priority: '0.8', changefreq: 'monthly' },
   { path: '/platforms/crm', priority: '0.8', changefreq: 'monthly' },
   { path: '/partners', priority: '0.8', changefreq: 'monthly' },
+  { path: '/ai', priority: '0.9', changefreq: 'monthly' },
 ];
 
 function parseFrontmatter(raw) {
@@ -52,8 +53,9 @@ const posts = fs
   .map((f) => {
     const slug = f.replace(/\.md$/, '');
     const data = parseFrontmatter(fs.readFileSync(path.join(blogDir, f), 'utf8'));
-    return { slug, date: data.date || '' };
+    return { slug, date: data.date || '', redirect: data.redirect || '' };
   })
+  .filter((p) => !p.redirect)
   .sort((a, b) => new Date(b.date) - new Date(a.date));
 
 function iso(date) {

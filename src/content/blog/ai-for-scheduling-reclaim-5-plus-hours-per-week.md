@@ -1,5 +1,6 @@
 ---
 title: "AI for Scheduling: Reclaim 5+ Hours Per Week"
+redirect: /blog/ai-for-scheduling-lets-find-a-time-2026
 date: "2026-07-09"
 category: "AI for Business"
 description: "AI scheduling tools eliminate the back-and-forth of meeting coordination, freeing up hours every week for work that actually moves the needle."

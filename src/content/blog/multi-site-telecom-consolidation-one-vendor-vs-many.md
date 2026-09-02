@@ -1,5 +1,6 @@
 ---
 title: "Multi-Site Telecom Consolidation: One Vendor vs Many"
+redirect: /blog/multi-site-telecom-consolidation-2026
 date: "2026-06-25"
 category: "Telecom Modernization"
 description: "Managing telecom across multiple locations? Learn when consolidating vendors saves money and when a multi-vendor strategy makes more sense."

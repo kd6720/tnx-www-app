@@ -31,6 +31,7 @@ const AiReadinessAssessment = lazy(() => import('./pages/tools/AiReadinessAssess
 const PartnerHub = lazy(() => import('./pages/PartnerHub'));
 const Crm = lazy(() => import('./pages/Crm'));
 const Partners = lazy(() => import('./pages/Partners'));
+const Ai = lazy(() => import('./pages/Ai'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const PageFallback = () => (
@@ -65,6 +66,7 @@ function App() {
                 <Route path="/platforms/partner-hub" element={<PartnerHub />} />
                 <Route path="/platforms/crm" element={<Crm />} />
                 <Route path="/partners" element={<Partners />} />
+                <Route path="/ai" element={<Ai />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
                 <Route path="/tools" element={<Tools />} />

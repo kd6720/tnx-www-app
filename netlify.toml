@@ -107,6 +107,11 @@
   status = 200
 
 [[redirects]]
+  from = "/ai"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
   from = "/blog"
   to = "/index.html"
   status = 200
