@@ -253,7 +253,7 @@ const InternetConnectivity = () => {
                             business day.
                         </p>
                     </div>
-                    <MultiStepForm defaultPainPoint="Improving internet reliability" />
+                    <MultiStepForm preset="connectivity" />
                 </div>
             </section>
 

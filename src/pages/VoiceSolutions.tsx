@@ -231,7 +231,7 @@ const VoiceSolutions = () => {
                             business day.
                         </p>
                     </div>
-                    <MultiStepForm defaultPainPoint="Modernizing voice systems" />
+                    <MultiStepForm preset="voice" />
                 </div>
             </section>
 

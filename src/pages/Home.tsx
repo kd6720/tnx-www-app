@@ -87,10 +87,10 @@ const whyChooseUs = [
 ];
 
 const stats = [
+  { value: '24/7', label: 'AI-handled inbound' },
   { value: '25+', label: 'Years of telecom expertise' },
-  { value: '12M+', label: 'Legacy lines we can modernize' },
   { value: '50%', label: 'Typical reduction in line costs' },
-  { value: '24/7', label: 'Monitoring & support' },
+  { value: '12M+', label: 'Legacy lines we can modernize' },
 ];
 
 const testimonials = [
@@ -140,41 +140,34 @@ const Home = () => {
                 Managed Solution Provider
               </span>
               <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.05] animate-fadeInUp">
-                Replace failing copper.{' '}
+                AI agents and modern telecom{' '}
                 <span className="text-brand-300">
-                  Cut line costs in half.
-                </span>{' '}
-                Stay compliant.
+                  for multi-site operators.
+                </span>
               </h1>
               <p className="mt-6 max-w-xl text-lg sm:text-xl text-navy-200 animate-fadeInUp">
-                TrustedNetworx modernizes POTS lines, voice, connectivity, and mobility for
-                multi-site organizations — senior living, hospitality, property management, and
-                healthcare — without downtime and without the carrier runaround.
+                TrustedNetworx builds and runs AI agents that sell, support, and monitor — on top
+                of the voice, connectivity, and POTS replacement infrastructure we already manage
+                for senior living, hospitality, healthcare, and property management.
               </p>
               <div className="mt-9 flex flex-col sm:flex-row gap-4 animate-fadeInUp">
-                <a href="#quote" className="btn-light">
-                  Get a Free Line Audit
+                <Link to="/tools/ai-readiness" className="btn-light">
+                  Book an AI Readiness Review
                   <ArrowRight size={18} />
-                </a>
-                <a href="#services" className="btn-outline">
-                  Explore Solutions
+                </Link>
+                <a href="#platforms" className="btn-outline">
+                  See the platforms
                 </a>
               </div>
               <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-navy-300 animate-fadeInUp">
                 <span className="inline-flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-accent-400" /> NFPA 72-compliant alarm
-                  communications
+                  <CheckCircle2 size={16} className="text-accent-400" /> Human-in-the-loop approvals
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-accent-400" /> UL 864-listed hardware
-                  deployments
+                  <CheckCircle2 size={16} className="text-accent-400" /> Built on your data, tenant-isolated
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-accent-400" /> E911 / Kari&apos;s Law
-                  ready
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-accent-400" /> 24/7 monitored lines
+                  <CheckCircle2 size={16} className="text-accent-400" /> No token surprises — flat monthly
                 </span>
               </div>
             </div>
@@ -196,6 +189,72 @@ const Home = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Platforms */}
+      <section id="platforms" className="relative py-20 sm:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <span className="eyebrow bg-brand-50 text-brand-700">Our platforms</span>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-navy-900">
+              Two platforms. One operator behind them.
+            </h2>
+            <p className="mt-4 text-lg text-navy-500">
+              We don't just consult on AI and telecom — we run our own business on these tools and
+              license them to partners who want the same leverage.
+            </p>
+          </Reveal>
+
+          <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <Link
+              to="/platforms/partner-hub"
+              className="group relative flex flex-col rounded-2xl bg-white p-8 border border-navy-100 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover hover:border-brand-200"
+            >
+              <span className="text-xs font-semibold uppercase tracking-widest text-brand-600">
+                AI Agent Management
+              </span>
+              <h3 className="mt-3 text-2xl font-bold text-navy-900">TNX Partner Hub</h3>
+              <p className="mt-3 text-navy-500">
+                Run a fleet of AI agents without losing control of them. Spin up agents from proven
+                blueprints, give each one a budget and an approval boundary, and shut one down in a
+                click.
+              </p>
+              <ul className="mt-6 space-y-2 text-sm text-navy-700">
+                <li>• Agent blueprints for sales, support, and monitoring</li>
+                <li>• Per-agent budgets with hard stops</li>
+                <li>• Multi-tenant, human-in-the-loop approvals</li>
+              </ul>
+              <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand-600">
+                Explore Partner Hub
+                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </span>
+            </Link>
+
+            <Link
+              to="/platforms/crm"
+              className="group relative flex flex-col rounded-2xl bg-white p-8 border border-navy-100 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover hover:border-brand-200"
+            >
+              <span className="text-xs font-semibold uppercase tracking-widest text-brand-600">
+                CRM / Opportunity Management
+              </span>
+              <h3 className="mt-3 text-2xl font-bold text-navy-900">TNX CRM</h3>
+              <p className="mt-3 text-navy-500">
+                A pipeline built for how telecom and MSP deals actually close — sites, lines, terms,
+                install dates, and the direct / agent / reseller channels a generic CRM makes you
+                bolt on.
+              </p>
+              <ul className="mt-6 space-y-2 text-sm text-navy-700">
+                <li>• Direct, agent, and reseller pipelines in one view</li>
+                <li>• Telecom-native fields: sites, lines, term, MRC/NRC</li>
+                <li>• AI agents log calls and update stages automatically</li>
+              </ul>
+              <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand-600">
+                Explore TNX CRM
+                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </span>
+            </Link>
           </div>
         </div>
       </section>
@@ -364,7 +423,7 @@ const Home = () => {
           </div>
           <div className="rounded-2xl bg-white border border-navy-100 shadow-card overflow-hidden">
             <div className="p-8 sm:p-10">
-              <MultiStepForm />
+              <MultiStepForm preset="home" />
             </div>
           </div>
         </div>
