@@ -1,195 +1,144 @@
-import React from 'react';
-import {
-    Shield, Award, Zap, Handshake, Video, Camera, Palette, Network, TrendingUp, Code, Database, Cpu
-} from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 
-const Team = () => {
-    return (
-        <div className="bg-navy-50">
-            <Seo
-                title="Our Team | TrustedNetworx"
-                description="Meet the leadership and partners behind TrustedNetworx — telecom experts, enterprise architects, and creative professionals driving connectivity forward."
-            />
+const members = [
+  {
+    name: 'Carter Dewey',
+    role: 'CEO & Founder',
+    image: '/team/carter-dewey.webp',
+    objectPosition: 'object-[65%_28%]',
+    bio: [
+      'Carter Dewey is the CEO and Founder of TrustedNetworx, a leading solution provider of IoT, AI-driven, and managed telecommunications technology. He is responsible for overall company leadership, business development, sales strategy and forecasting, and coordination with key stakeholders and partners.',
+      'A seasoned sales executive, Carter previously served as Senior Vice President of Global Sales for DataRemote, Inc., where he led business development and global sales operations beginning in April 2016. His earlier experience includes 12 years with AT&T, where he advanced to Signature Client Director, leading a team responsible for AT&T\u2019s entire portfolio across enterprise accounts.',
+    ],
+    skills: ['Business development', 'Strategic partnerships', 'AI & IoT solutions'],
+  },
+  {
+    name: 'Angel Castro',
+    role: 'AI Developer & Automation Engineer',
+    image: '/team/angele-castro.jpg',
+    objectPosition: 'object-center',
+    bio: [
+      'Angel is a San Francisco-based AI developer who builds Claude-powered agents, automation pipelines, and full-stack systems for B2B teams across EMEA and LatAm. His work spans agent orchestration, RAG and embedding pipelines, and internal tooling built with TypeScript, Next.js, Python, and Supabase.',
+      'He built Kyra, a white-label AI workforce platform, from scratch — 70+ AI worker roles, a 21-template library, and a working partner integration layer. He brings engineering precision to every build: clean architecture, real infrastructure, and systems that run in production.',
+    ],
+    skills: ['Agent orchestration', 'Full-stack development', 'RAG & embeddings', 'AI infrastructure'],
+    linkedin: 'https://www.linkedin.com/in/angelecastro/',
+  },
+  {
+    name: 'Deeno Perez',
+    role: 'Multimedia Specialist & Business Content Creator',
+    image: '/team/deeno-perez.jpg',
+    objectPosition: 'object-center',
+    bio: [
+      'Deeno is a Miami-based multimedia specialist and business content creator who helps brands bring their stories to life through polished visual content. His work spans promotional videos, interview-style content, brand storytelling, social media visuals, and project showcases.',
+      'With a strong background in technology, operations, logistics, and visual production, Deeno brings both creative direction and business-minded precision to every project.',
+    ],
+    skills: ['Video production', 'Brand storytelling', 'Visual content'],
+  },
+];
 
-            {/* Hero Section */}
-            <div className="relative min-h-[400px] flex items-center overflow-hidden">
-                <div className="absolute inset-0 z-0" style={{
-                    backgroundImage: 'url(/Handshake.jpg)',
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat'
-                }}>
-                    <div className="absolute inset-0 bg-gradient-to-br from-navy-950/95 via-navy-900/85 to-brand-900/60"/>
-                    <div className="absolute inset-0 bg-grid-dark bg-grid opacity-40"/>
-                </div>
+const Team = () => (
+  <div className="bg-canvas text-body antialiased">
+    <Seo
+      title="Our Team | TrustedNetworx"
+      description="Meet the leadership and partners behind TrustedNetworx — telecom experts, enterprise architects, and creative professionals driving connectivity forward."
+    />
 
-                <div className="relative z-10 w-full">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center">
-                            <span className="eyebrow border border-brand-400/30 bg-brand-500/10 text-brand-200">
-                                Our People
-                            </span>
-                            <h1 className="mt-5 text-4xl font-extrabold text-white sm:text-5xl md:text-6xl tracking-tight">
-                                Meet the Team
-                            </h1>
-                            <p className="mt-4 max-w-md mx-auto text-base text-navy-200 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                                The people behind TrustedNetworx bring together deep telecom expertise and creative vision to help our clients succeed.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="relative">
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"/>
-                </div>
-
-                {/* Team Cards */}
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                    <div className="grid grid-cols-1 gap-10 max-w-3xl mx-auto">
-                        {/* Carter Dewey */}
-                        <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden ring-2 ring-brand-200">
-                            <div className="grid grid-cols-1 md:grid-cols-3">
-                                <div className="bg-gradient-to-br from-navy-900 to-brand-900 flex items-center justify-center p-6">
-                                    <img
-                                        src="/team/carter-dewey.webp"
-                                        alt="Carter Dewey"
-                                        width="192"
-                                        height="192"
-                                        className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover object-[65%_28%] border-4 border-brand-400/40 shadow-xl"
-                                    />
-                                </div>
-                                <div className="md:col-span-2 p-6 md:p-8">
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-1">Carter Dewey</h3>
-                                    <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">
-                                        CEO &amp; Founder
-                                    </p>
-                                    <p className="text-gray-600 leading-relaxed mb-4">
-                                        Carter Dewey is the CEO and Founder of TrustedNetworx, a leading solution provider of IoT, AI-driven, and managed telecommunications technology. He is responsible for overall company leadership, business development, sales strategy and forecasting, and coordination with key stakeholders and partners. Under his direction, TrustedNetworx helps businesses modernize their communications infrastructure — applying AI-powered solutioning to network monitoring, business continuity, and operational automation so customers can reduce risk, cut costs, and scale with confidence.
-                                    </p>
-                                    <p className="text-gray-600 leading-relaxed mb-4">
-                                        A seasoned sales executive, Carter previously served as Senior Vice President of Global Sales for DataRemote, Inc., a leading IoT technology provider, where he led business development and global sales operations beginning in April 2016. His earlier experience includes 12 years with AT&amp;T, where he advanced into a leadership role as Signature Client Director, leading a team responsible for AT&amp;T's entire portfolio of products and services across enterprise accounts.
-                                    </p>
-                                    <div className="flex gap-3 mt-5">
-                                        <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <TrendingUp size={14} /> Business Development
-                                        </span>
-                                        <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <Handshake size={14} /> Strategic Partnerships
-                                        </span>
-                                        <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <Zap size={14} /> AI &amp; IoT Solutions
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Angel Castro */}
-                        <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
-                            <div className="grid grid-cols-1 md:grid-cols-3">
-                                <div className="bg-gradient-to-br from-brand-800 to-brand-950 flex items-center justify-center p-6">
-                                    <img
-                                        src="/team/angele-castro.jpg"
-                                        alt="Angel Castro"
-                                        className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-brand-400/30 shadow-xl"
-                                    />
-                                </div>
-                                <div className="md:col-span-2 p-6 md:p-8">
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-1">Angel Castro</h3>
-                                    <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">
-                                        AI Developer & Automation Engineer
-                                    </p>
-                                    <p className="text-gray-600 leading-relaxed mb-4">
-                                        Angel is a San Francisco-based AI developer who builds Claude-powered agents, automation pipelines, and full-stack systems for B2B teams across EMEA and LatAm. His work spans agent orchestration, RAG and embedding pipelines, and internal tooling built with TypeScript, Next.js, Python, and Supabase — shipped end-to-end, from architecture to production.
-                                    </p>
-                                    <p className="text-gray-600 leading-relaxed mb-4">
-                                        A daily Claude Code and Claude API user, Angel built Kyra, a white-label AI workforce platform, from scratch — 70+ AI worker roles, a 21-template library, and a working partner integration layer. He also built a Claude-powered knowledge base that scrapes, chunks, and embeds 700+ documentation sources into a queryable Q&A app. He brings engineering precision to every build: clean architecture, real infrastructure, and systems that run in production, not just in a demo.
-                                    </p>
-                                    <div className="flex flex-wrap gap-3 mt-5">
-                                        <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <Zap size={14} /> Agent Orchestration
-                                        </span>
-                                        <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <Code size={14} /> Full-Stack Development
-                                        </span>
-                                        <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <Database size={14} /> RAG & Embeddings
-                                        </span>
-                                        <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <Cpu size={14} /> AI Infrastructure
-                                        </span>
-                                        <a href="https://www.linkedin.com/in/angelecastro/" target="_blank" rel="noopener noreferrer"
-                                           className="inline-flex items-center gap-1.5 text-xs text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded-full transition-colors">
-                                            🔗 LinkedIn
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Deeno Perez */}
-                        <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
-                            <div className="grid grid-cols-1 md:grid-cols-3">
-                                <div className="bg-gradient-to-br from-navy-800 to-navy-950 flex items-center justify-center p-6">
-                                    <img
-                                        src="/team/deeno-perez.jpg"
-                                        alt="Deeno Perez"
-                                        className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-brand-400/30 shadow-xl"
-                                    />
-                                </div>
-                                <div className="md:col-span-2 p-6 md:p-8">
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-1">Deeno Perez</h3>
-                                    <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">
-                                        Multimedia Specialist &amp; Business Content Creator
-                                    </p>
-                                    <p className="text-gray-600 leading-relaxed mb-4">
-                                        Deeno is a Miami-based multimedia specialist and business content creator who helps brands, businesses, and professionals bring their stories to life through polished visual content. His work spans promotional videos, interview-style content, brand storytelling, social media visuals, product highlights, and project showcases.
-                                    </p>
-                                    <p className="text-gray-600 leading-relaxed">
-                                        With a strong background in technology, operations, logistics, and visual production, Deeno brings both creative direction and business-minded precision to every project. He creates content that feels clean, professional, and purposeful — helping businesses present themselves in a way that feels credible, modern, and market-ready.
-                                    </p>
-                                    <div className="flex gap-3 mt-5">
-                                        <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <Video size={14} /> Video Production
-                                        </span>
-                                        <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <Camera size={14} /> Brand Storytelling
-                                        </span>
-                                        <span className="inline-flex items-center gap-1.5 text-xs text-navy-500 bg-navy-50 px-3 py-1 rounded-full">
-                                            <Palette size={14} /> Visual Content
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* CTA */}
-                <div className="relative max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto pb-16">
-                    <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-8 shadow-xl border border-gray-200">
-                        <div className="text-center">
-                            <h3 className="text-2xl font-bold text-white mb-4">
-                                Work With Our Team
-                            </h3>
-                            <p className="text-lg text-blue-100 mb-8">
-                                Ready to put our expertise to work for your business? Let's start the conversation.
-                            </p>
-                            <Link
-                                to="/contact"
-                                className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 md:py-4 md:text-lg md:px-10 transition-colors duration-300"
-                            >Contact Us
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    {/* Hero */}
+    <section className="relative flex min-h-[50vh] items-center overflow-hidden bg-navy-950">
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(/Handshake.jpg)',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="absolute inset-0 bg-navy-950/85" />
+      </div>
+      <div className="relative z-10 mx-auto w-full max-w-site px-6 py-24 md:px-gutter">
+        <div className="max-w-3xl">
+          <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            Our people
+          </span>
+          <h1 className="mt-6 font-display text-[44px] leading-[1.05] tracking-[-0.02em] font-semibold text-white md:text-[56px] md:leading-[1.05] lg:text-[72px] lg:leading-[1.0]">
+            Meet the team.
+          </h1>
+          <p className="mt-6 max-w-xl text-lg text-navy-200">
+            The people behind TrustedNetworx bring together deep telecom expertise and creative
+            vision to help our clients succeed.
+          </p>
         </div>
-    );
-};
+      </div>
+    </section>
+
+    {/* Team */}
+    <section className="border-b border-hairline">
+      <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
+        <ul className="divide-y divide-hairline border-t border-hairline">
+          {members.map(({ name, role, image, objectPosition, bio, skills, linkedin }) => (
+            <li key={name} className="grid grid-cols-12 gap-8 py-10">
+              <div className="col-span-12 md:col-span-3">
+                <img
+                  src={image}
+                  alt={name}
+                  width="192"
+                  height="192"
+                  className={`h-40 w-40 rounded-full object-cover ${objectPosition} border border-hairline`}
+                />
+              </div>
+              <div className="col-span-12 md:col-span-9">
+                <h2 className="font-display text-display-h2 font-semibold text-ink">{name}</h2>
+                <p className="mt-1 font-mono text-xs uppercase tracking-mono-label text-accent-500">{role}</p>
+                {bio.map((p) => (
+                  <p key={p.slice(0, 24)} className="mt-4 max-w-[68ch] leading-relaxed text-body">{p}</p>
+                ))}
+                <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+                  {skills.map((s) => (
+                    <li key={s} className="font-mono text-xs uppercase tracking-mono-label text-muted">{s}</li>
+                  ))}
+                  {linkedin && (
+                    <li>
+                      <a
+                        href={linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-mono text-xs uppercase tracking-mono-label text-brand-600 hover:text-brand-700"
+                      >
+                        LinkedIn
+                      </a>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    {/* CTA */}
+    <section className="bg-navy-950">
+      <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
+        <h2 className="font-display text-display-h2 font-semibold text-white">
+          Work with our team.
+        </h2>
+        <p className="mt-4 max-w-xl text-lg text-navy-200">
+          Ready to put our expertise to work for your business? Let&apos;s start the conversation.
+        </p>
+        <Link
+          to="/contact"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-300 hover:text-brand-200"
+        >
+          Contact us
+          <ArrowRight size={16} />
+        </Link>
+      </div>
+    </section>
+  </div>
+);
 
 export default Team;
