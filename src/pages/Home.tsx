@@ -81,6 +81,7 @@ const Home = () => {
           <HeroVideo
             name="hero-home"
             mediaClassName="opacity-[0.34]"
+            hasMobileVariant
             overlayClassName="absolute inset-0 bg-[linear-gradient(90deg,#0a1428_30%,rgba(10,20,40,0.55)_70%,rgba(10,20,40,0.35)_100%)]"
           />
           <div className="absolute inset-y-0 right-0 z-10 hidden w-2/3 lg:block">
