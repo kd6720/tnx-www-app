@@ -10,6 +10,7 @@
     "prebuild": "npm run generate:seo",
     "build": "vite build",
     "postbuild": "node scripts/postbuild.cjs",
+    "postinstall": "patch-package",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -70,6 +71,7 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.11",
     "globals": "^15.9.0",
+    "patch-package": "^8.0.0",
     "postcss": "^8.4.35",
     "puppeteer": "25.3.0",
     "react-snap": "^1.23.0",

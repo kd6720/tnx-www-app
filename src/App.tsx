@@ -28,6 +28,7 @@ import Crm from './pages/Crm';
 import Partners from './pages/Partners';
 import Ai from './pages/Ai';
 import NotFound from './pages/NotFound';
+import { preloaded } from './preloads';
 
 // The blog content (61 markdown posts via blog.ts) is the one heavy chunk
 // (~419 KB raw). Blog + BlogPost are the ONLY code-split routes; everything
@@ -43,6 +44,31 @@ const PageFallback = () => (
   </div>
 );
 
+// The blog chunk is preloaded by main.tsx on /blog and /blog/:slug and stored
+// in the preloads registry. Render the resolved component directly there so
+// there is NO <Suspense> boundary in the hydration tree (see src/preloads.ts).
+// Suspense + React.lazy is only used on client-side navigation to a blog route
+// whose chunk hasn't been fetched yet.
+function BlogRoute() {
+  const Resolved = preloaded.Blog;
+  if (Resolved) return <Resolved />;
+  return (
+    <Suspense fallback={<PageFallback />}>
+      <Blog />
+    </Suspense>
+  );
+}
+
+function BlogPostRoute() {
+  const Resolved = preloaded.BlogPost;
+  if (Resolved) return <Resolved />;
+  return (
+    <Suspense fallback={<PageFallback />}>
+      <BlogPost />
+    </Suspense>
+  );
+}
+
 function App() {
   return (
     <HelmetProvider>
@@ -51,8 +77,7 @@ function App() {
           <ScrollToTop />
           <Navbar />
           <main id="main-content" tabIndex={-1}>
-            <Suspense fallback={<PageFallback />}>
-              <Routes>
+            <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/about/team" element={<Team />} />
@@ -69,8 +94,8 @@ function App() {
               <Route path="/platforms/crm" element={<Crm />} />
               <Route path="/partners" element={<Partners />} />
               <Route path="/ai" element={<Ai />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/blog" element={<BlogRoute />} />
+              <Route path="/blog/:slug" element={<BlogPostRoute />} />
               <Route path="/tools" element={<Tools />} />
               <Route path="/tools/pots-roi-calculator" element={<PotsRoiCalculator />} />
               <Route path="/tools/copper-sunset-risk" element={<CopperSunsetRisk />} />
@@ -79,7 +104,6 @@ function App() {
               <Route path="/tools/ai-readiness" element={<AiReadinessAssessment />} />
               <Route path="*" element={<NotFound />} />
               </Routes>
-            </Suspense>
           </main>
           <Footer />
           <ChatWidget />

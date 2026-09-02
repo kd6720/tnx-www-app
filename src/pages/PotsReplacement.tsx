@@ -86,7 +86,7 @@ const PotsReplacement = () => (
       <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 lg:col-span-5">
-            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
               01 — Compliance
             </span>
             <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -102,7 +102,7 @@ const PotsReplacement = () => (
             <ul className="divide-y divide-hairline border-t border-hairline">
               {compliance.map(({ n, title, desc }) => (
                 <li key={n} className="grid grid-cols-[3rem_1fr] gap-4 py-5">
-                  <span className="font-mono text-sm text-accent-500">{n}</span>
+                  <span className="font-mono text-sm text-accent-text">{n}</span>
                   <div>
                     <h3 className="font-display text-display-h3 font-semibold text-ink">{title}</h3>
                     <p className="mt-1 text-base leading-relaxed text-body">{desc}</p>
@@ -120,7 +120,7 @@ const PotsReplacement = () => (
       <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 lg:col-span-5">
-            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
               02 — Hardware
             </span>
             <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -137,10 +137,10 @@ const PotsReplacement = () => (
               <table className="w-full border-collapse text-left">
                 <thead>
                   <tr className="border-b border-hairline">
-                    <th className="py-3 pr-4 font-mono text-xs uppercase tracking-mono-label text-muted">Model</th>
-                    <th className="py-3 pr-4 font-mono text-xs uppercase tracking-mono-label text-muted">POTS lines</th>
-                    <th className="py-3 pr-4 font-mono text-xs uppercase tracking-mono-label text-muted">Connectivity</th>
-                    <th className="py-3 font-mono text-xs uppercase tracking-mono-label text-muted">Best for</th>
+                    <th className="py-3 pr-4 font-mono text-xs uppercase tracking-mono-label text-muted-text">Model</th>
+                    <th className="py-3 pr-4 font-mono text-xs uppercase tracking-mono-label text-muted-text">POTS lines</th>
+                    <th className="py-3 pr-4 font-mono text-xs uppercase tracking-mono-label text-muted-text">Connectivity</th>
+                    <th className="py-3 font-mono text-xs uppercase tracking-mono-label text-muted-text">Best for</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-hairline">
@@ -148,7 +148,7 @@ const PotsReplacement = () => (
                     <tr key={model}>
                       <td className="py-4 pr-4">
                         <span className="font-display text-display-h3 font-semibold text-ink">{model}</span>
-                        <span className="ml-2 font-mono text-xs text-muted">{sku}</span>
+                        <span className="ml-2 font-mono text-xs text-muted-text">{sku}</span>
                       </td>
                       <td className="py-4 pr-4 text-base text-body">{lines}</td>
                       <td className="py-4 pr-4 text-base text-body">LTE + Wi-Fi + Ethernet</td>
@@ -159,7 +159,7 @@ const PotsReplacement = () => (
               </table>
             </div>
             <div className="mt-8 border-t border-hairline pt-6">
-              <p className="font-mono text-xs uppercase tracking-mono-label text-muted">
+              <p className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
                 Certifications &amp; compliance
               </p>
               <ul className="mt-3 space-y-1 text-sm text-body">
@@ -179,7 +179,7 @@ const PotsReplacement = () => (
       <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 lg:col-span-5">
-            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
               03 — Use cases
             </span>
             <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -207,7 +207,7 @@ const PotsReplacement = () => (
       <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 lg:col-span-5">
-            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
               04 — Industries
             </span>
             <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -218,7 +218,7 @@ const PotsReplacement = () => (
             <ul className="divide-y divide-hairline border-t border-hairline">
               {industries.map(({ n, title, desc }) => (
                 <li key={n} className="grid grid-cols-[3rem_1fr] gap-4 py-5">
-                  <span className="font-mono text-sm text-accent-500">{n}</span>
+                  <span className="font-mono text-sm text-accent-text">{n}</span>
                   <div>
                     <h3 className="font-display text-display-h3 font-semibold text-ink">{title}</h3>
                     <p className="mt-1 text-base leading-relaxed text-body">{desc}</p>

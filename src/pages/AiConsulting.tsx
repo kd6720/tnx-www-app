@@ -97,9 +97,9 @@ const AiConsulting = () => (
       <div className="mx-auto w-full max-w-site px-6 py-10 md:px-gutter">
         <div className="grid grid-cols-2 md:grid-cols-4">
           {stats.map(({ value, label }, i) => (
-            <div key={label} className={`py-6 ${i > 0 ? 'border-l border-hairline pl-8' : ''} ${i % 2 === 1 ? 'max-md:border-l max-md:border-hairline max-md:pl-8' : ''}`}>
+            <div key={label} className={`py-6${i > 0 ? ' border-l border-hairline pl-8' : ''}${i % 2 === 1 ? ' max-md:border-l max-md:border-hairline max-md:pl-8' : ''}`}>
               <p className="font-display text-stat font-semibold text-ink">{value}</p>
-              <p className="mt-2 font-mono text-xs uppercase tracking-mono-label text-muted">{label}</p>
+              <p className="mt-2 font-mono text-xs uppercase tracking-mono-label text-muted-text">{label}</p>
             </div>
           ))}
         </div>
@@ -111,7 +111,7 @@ const AiConsulting = () => (
       <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 lg:col-span-5">
-            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
               01 — What we deliver
             </span>
             <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -122,7 +122,7 @@ const AiConsulting = () => (
             <ul className="divide-y divide-hairline border-t border-hairline">
               {services.map(({ n, title, desc }) => (
                 <li key={n} className="grid grid-cols-[3rem_1fr] gap-4 py-5">
-                  <span className="font-mono text-sm text-accent-500">{n}</span>
+                  <span className="font-mono text-sm text-accent-text">{n}</span>
                   <div>
                     <h3 className="font-display text-display-h3 font-semibold text-ink">{title}</h3>
                     <p className="mt-1 text-base leading-relaxed text-body">{desc}</p>
@@ -140,7 +140,7 @@ const AiConsulting = () => (
       <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 lg:col-span-5">
-            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
               02 — Industries
             </span>
             <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -151,7 +151,7 @@ const AiConsulting = () => (
             <ul className="divide-y divide-hairline border-t border-hairline">
               {industries.map(({ n, title, desc }) => (
                 <li key={n} className="grid grid-cols-[3rem_1fr] gap-4 py-5">
-                  <span className="font-mono text-sm text-accent-500">{n}</span>
+                  <span className="font-mono text-sm text-accent-text">{n}</span>
                   <div>
                     <h3 className="font-display text-display-h3 font-semibold text-ink">{title}</h3>
                     <p className="mt-1 text-base leading-relaxed text-body">{desc}</p>
@@ -169,7 +169,7 @@ const AiConsulting = () => (
       <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 lg:col-span-5">
-            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
               03 — How we work
             </span>
             <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -180,7 +180,7 @@ const AiConsulting = () => (
             <ul className="divide-y divide-hairline border-t border-hairline">
               {steps.map(({ n, title, desc }) => (
                 <li key={n} className="grid grid-cols-[3rem_1fr] gap-4 py-5">
-                  <span className="font-mono text-sm text-accent-500">{n}</span>
+                  <span className="font-mono text-sm text-accent-text">{n}</span>
                   <div>
                     <h3 className="font-display text-display-h3 font-semibold text-ink">{title}</h3>
                     <p className="mt-1 text-base leading-relaxed text-body">{desc}</p>
@@ -198,7 +198,7 @@ const AiConsulting = () => (
       <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 lg:col-span-5">
-            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
               04 — Why TrustedNetworx
             </span>
             <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -209,7 +209,7 @@ const AiConsulting = () => (
             <ul className="divide-y divide-hairline border-t border-hairline">
               {differentiators.map(({ n, title, desc }) => (
                 <li key={n} className="grid grid-cols-[3rem_1fr] gap-4 py-5">
-                  <span className="font-mono text-sm text-accent-500">{n}</span>
+                  <span className="font-mono text-sm text-accent-text">{n}</span>
                   <div>
                     <h3 className="font-display text-display-h3 font-semibold text-ink">{title}</h3>
                     <p className="mt-1 text-base leading-relaxed text-body">{desc}</p>

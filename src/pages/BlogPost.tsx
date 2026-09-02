@@ -66,7 +66,7 @@ const BlogPost = () => {
       {/* Back link */}
       <div className="border-b border-hairline bg-white">
         <div className="mx-auto w-full max-w-[68ch] px-6 py-4 md:px-gutter">
-          <Link to="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-muted hover:text-brand-600">
+          <Link to="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-muted-text hover:text-brand-600">
             <ArrowLeft size={16} />
             Back to Blog
           </Link>
@@ -76,9 +76,9 @@ const BlogPost = () => {
       {/* Article */}
       <article className="mx-auto w-full max-w-[68ch] px-6 py-14 md:px-gutter">
         <header>
-          <p className="font-mono text-xs uppercase tracking-mono-label text-accent-500">{post.category}</p>
+          <p className="font-mono text-xs uppercase tracking-mono-label text-accent-text">{post.category}</p>
           <h1 className="mt-4 font-display text-display-h2 font-semibold leading-tight text-ink">{post.title}</h1>
-          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs uppercase tracking-mono-label text-muted">
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs uppercase tracking-mono-label text-muted-text">
             <span>
               {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </span>
@@ -100,7 +100,7 @@ const BlogPost = () => {
 
         {/* About the author */}
         <div className="mt-14 border-t border-hairline pt-6">
-          <p className="font-mono text-xs uppercase tracking-mono-label text-muted">About the author</p>
+          <p className="font-mono text-xs uppercase tracking-mono-label text-muted-text">About the author</p>
           <h2 className="mt-2 font-display text-display-h3 font-semibold text-ink">{post.author}</h2>
           <p className="mt-3 leading-relaxed text-body">
             Carter Dewey leads solution architecture at TrustedNetworx, helping multi-site

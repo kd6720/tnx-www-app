@@ -24,6 +24,12 @@ export default {
         ink: '#111f3d',
         body: '#3a4a66',
         muted: '#8a94a6',
+        // Darker variants for text ON LIGHT backgrounds — the 12px mono labels
+        // in accent-500 (#ff7a1a) and muted (#8a94a6) fail 4.5:1 on the light
+        // canvas. These two tokens meet AA; keep the brighter #ff7a1a/#8a94a6
+        // for text on navy where their contrast is fine.
+        'muted-text': '#6b7587',
+        'accent-text': '#c2410c',
         hairline: '#e3e6eb',
         divider: '#243f70',
         // Deep navy — headers, footer, dark surfaces

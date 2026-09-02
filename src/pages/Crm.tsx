@@ -75,14 +75,14 @@ const Crm = () => {
         <div className="mx-auto w-full max-w-site px-6 pb-16 md:px-gutter">
           <div className="rounded-lg border border-hairline bg-white p-4">
             <div className="flex aspect-video max-h-[420px] w-full items-center justify-center rounded border border-dashed border-hairline bg-canvas">
-              <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
+              <span className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
                 [ASSET] — pipeline screenshot
               </span>
             </div>
             <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
-              <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted">01 Pipeline view</span>
-              <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted">02 Quotes + renewals</span>
-              <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted">03 Reporting</span>
+              <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted-text">01 Pipeline view</span>
+              <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted-text">02 Quotes + renewals</span>
+              <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted-text">03 Reporting</span>
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@ const Crm = () => {
         <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
           <div className="grid grid-cols-12 gap-8">
             <div className="col-span-12 lg:col-span-5">
-              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
                 What it does
               </span>
               <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -104,7 +104,7 @@ const Crm = () => {
               <ul className="divide-y divide-hairline border-t border-hairline">
                 {capabilities.map(({ n, title, body }) => (
                   <li key={n} className="grid grid-cols-[3rem_1fr] gap-4 py-5">
-                    <span className="font-mono text-sm text-accent-500">{n}</span>
+                    <span className="font-mono text-sm text-accent-text">{n}</span>
                     <span>
                       <h3 className="font-display text-display-h3 font-semibold text-ink">{title}</h3>
                       <span className="mt-1 block text-base leading-relaxed text-body">{body}</span>
@@ -122,7 +122,7 @@ const Crm = () => {
         <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
           <div className="grid grid-cols-12 gap-8">
             <div className="col-span-12 lg:col-span-5">
-              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">Who it's for</span>
+              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">Who it's for</span>
               <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">Built for channel sales.</h2>
             </div>
             <div className="col-span-12 lg:col-span-7">
@@ -162,7 +162,7 @@ const Crm = () => {
         <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
           <div className="grid grid-cols-12 gap-8">
             <div className="col-span-12 lg:col-span-5">
-              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">FAQ</span>
+              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">FAQ</span>
               <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">Asked before the trial.</h2>
             </div>
             <div className="col-span-12 lg:col-span-7">

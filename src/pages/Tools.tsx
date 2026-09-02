@@ -40,7 +40,7 @@ const Tools = () => (
       <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 lg:col-span-5">
-            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
               The tools
             </span>
             <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -55,14 +55,14 @@ const Tools = () => (
                     to={to}
                     className="group grid grid-cols-[3rem_1fr_auto] items-baseline gap-4 py-5"
                   >
-                    <span className="font-mono text-sm text-accent-500">{n}</span>
+                    <span className="font-mono text-sm text-accent-text">{n}</span>
                     <span>
                       <span className="block font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
                         {title}
                       </span>
                       <span className="mt-1 block text-base leading-relaxed text-body">{desc}</span>
                     </span>
-                    <ArrowRight size={18} className="translate-y-1 text-muted transition-transform group-hover:translate-x-1" />
+                    <ArrowRight size={18} className="translate-y-1 text-muted-text transition-transform group-hover:translate-x-1" />
                   </Link>
                 </li>
               ))}

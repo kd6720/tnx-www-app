@@ -310,9 +310,19 @@ const MultiStepForm = ({ preset = 'home', defaultPainPoint, onSuccess }: MultiSt
   const current = visibleSteps[step];
 
   const stepLabel = (
-    <p className="text-center text-sm font-medium text-navy-400 mb-2">
-      Step {step + 1} of {totalSteps}
-    </p>
+    <div
+      className="mb-4 h-0.5 w-full overflow-hidden rounded-full bg-navy-100"
+      role="progressbar"
+      aria-valuenow={step + 1}
+      aria-valuemin={1}
+      aria-valuemax={totalSteps}
+      aria-label={`Step ${step + 1} of ${totalSteps}`}
+    >
+      <div
+        className="h-full bg-brand-600 transition-all duration-300"
+        style={{ width: `${((step + 1) / totalSteps) * 100}%` }}
+      />
+    </div>
   );
 
   const navButtons = (
@@ -346,7 +356,7 @@ const MultiStepForm = ({ preset = 'home', defaultPainPoint, onSuccess }: MultiSt
   const tileClass = (selected: boolean) =>
     `text-left px-5 py-3.5 rounded-xl border text-sm font-medium transition-all duration-200 ${
       selected
-        ? 'border-brand-500 bg-brand-50 text-brand-700 shadow-[0_0_0_1px_rgba(37,99,235,0.2)]'
+        ? 'border-brand-500 bg-brand-50 text-brand-700'
         : 'border-navy-200 bg-white text-navy-700 hover:border-brand-300 hover:bg-brand-50/50'
     }`;
 
@@ -370,7 +380,7 @@ const MultiStepForm = ({ preset = 'home', defaultPainPoint, onSuccess }: MultiSt
                   className={tileClass(relationship === r.value)}
                 >
                   <span className="block font-semibold">{r.label}</span>
-                  <span className="block text-xs text-navy-400 mt-0.5">{r.desc}</span>
+                  <span className="block text-xs text-navy-500 mt-0.5">{r.desc}</span>
                 </button>
               ))}
             </div>
@@ -453,7 +463,7 @@ const MultiStepForm = ({ preset = 'home', defaultPainPoint, onSuccess }: MultiSt
         {current === 'contact' && (
           <form onSubmit={handleSubmit} className="animate-fadeIn">
             <h3 className="text-xl font-bold text-navy-900 text-center">How can we reach you?</h3>
-            <p className="mt-1 text-sm text-navy-400 text-center">
+            <p className="mt-1 text-sm text-navy-500 text-center">
               You'll hear from Carter's team within one business day.
             </p>
             <div className="mt-7 space-y-5">

@@ -68,7 +68,7 @@ const MobilitySolutions = () => (
       <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 lg:col-span-5">
-            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
               01 — Enterprise mobility
             </span>
             <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -83,7 +83,7 @@ const MobilitySolutions = () => (
             <ul className="divide-y divide-hairline border-t border-hairline">
               {capabilities.map(({ n, title, desc }) => (
                 <li key={n} className="grid grid-cols-[3rem_1fr] gap-4 py-5">
-                  <span className="font-mono text-sm text-accent-500">{n}</span>
+                  <span className="font-mono text-sm text-accent-text">{n}</span>
                   <div>
                     <h3 className="font-display text-display-h3 font-semibold text-ink">{title}</h3>
                     <p className="mt-1 text-base leading-relaxed text-body">{desc}</p>
@@ -101,7 +101,7 @@ const MobilitySolutions = () => (
       <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 lg:col-span-5">
-            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
               02 — Benefits
             </span>
             <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -112,7 +112,7 @@ const MobilitySolutions = () => (
             <ul className="divide-y divide-hairline border-t border-hairline">
               {benefits.map(({ n, title, desc }) => (
                 <li key={n} className="grid grid-cols-[3rem_1fr] gap-4 py-5">
-                  <span className="font-mono text-sm text-accent-500">{n}</span>
+                  <span className="font-mono text-sm text-accent-text">{n}</span>
                   <div>
                     <h3 className="font-display text-display-h3 font-semibold text-ink">{title}</h3>
                     <p className="mt-1 text-base leading-relaxed text-body">{desc}</p>

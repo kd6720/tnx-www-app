@@ -50,7 +50,7 @@ const Ai = () => (
       <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 lg:col-span-5">
-            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
               01 — The AI stack
             </span>
             <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -69,7 +69,7 @@ const Ai = () => (
                     to={to}
                     className="group grid grid-cols-[3rem_1fr_auto] items-baseline gap-4 py-5"
                   >
-                    <span className="font-mono text-sm text-accent-500">{n}</span>
+                    <span className="font-mono text-sm text-accent-text">{n}</span>
                     <span>
                       <h3 className="font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
                         {title}
@@ -78,7 +78,7 @@ const Ai = () => (
                     </span>
                     <ArrowRight
                       size={18}
-                      className="translate-y-1 text-muted transition-transform group-hover:translate-x-1 group-hover:text-brand-600"
+                      className="translate-y-1 text-muted-text transition-transform group-hover:translate-x-1 group-hover:text-brand-600"
                     />
                   </Link>
                 </li>
@@ -94,7 +94,7 @@ const Ai = () => (
       <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 lg:col-span-5">
-            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
               02 — Free tools
             </span>
             <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -112,7 +112,7 @@ const Ai = () => (
                     to={to}
                     className="group grid grid-cols-[3rem_1fr_auto] items-baseline gap-4 py-5"
                   >
-                    <span className="font-mono text-sm text-accent-500">{n}</span>
+                    <span className="font-mono text-sm text-accent-text">{n}</span>
                     <span>
                       <h3 className="font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
                         {title}
@@ -121,7 +121,7 @@ const Ai = () => (
                     </span>
                     <ArrowRight
                       size={18}
-                      className="translate-y-1 text-muted transition-transform group-hover:translate-x-1 group-hover:text-brand-600"
+                      className="translate-y-1 text-muted-text transition-transform group-hover:translate-x-1 group-hover:text-brand-600"
                     />
                   </Link>
                 </li>
@@ -137,7 +137,7 @@ const Ai = () => (
       <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 lg:col-span-5">
-            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
               03 — Latest thinking
             </span>
             <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
@@ -155,7 +155,7 @@ const Ai = () => (
                     <h3 className="font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
                       {p.title}
                     </h3>
-                    <ArrowRight size={18} className="shrink-0 text-muted transition-transform group-hover:translate-x-1" />
+                    <ArrowRight size={18} className="shrink-0 text-muted-text transition-transform group-hover:translate-x-1" />
                   </Link>
                 </li>
               ))}

@@ -44,6 +44,7 @@ const Contact = () => (
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
         }}
+        suppressHydrationWarning
       >
         <div className="absolute inset-0 bg-navy-950/85" />
       </div>
@@ -77,7 +78,7 @@ const Contact = () => (
             <ul className="divide-y divide-hairline border-t border-hairline">
               {contactInfo.map(({ label, value, href }) => (
                 <li key={label} className="grid grid-cols-[6rem_1fr] gap-4 py-4">
-                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted">{label}</span>
+                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted-text">{label}</span>
                   {href ? (
                     <a href={href} className="text-base text-body hover:text-brand-600">{value}</a>
                   ) : (
