@@ -7,6 +7,19 @@ const SITE_URL = 'https://trustednetworx.com';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/TrustedNetworx-Hero-Image.jpg`;
 const DEFAULT_DESCRIPTION = 'TrustedNetworx is a managed telecom solutions provider delivering POTS replacement, AI consulting, internet connectivity, IP PBX, mobility, and voice solutions for enterprise and multi-site businesses.';
 
+// Every @type the patch script injects as the source of truth for route-page
+// JSON-LD. `stripStructuredData` drops any Helmet-rendered copy of these types
+// BEFORE appending the deterministic ones, so a page never carries duplicates
+// and the output is identical across builds regardless of Helmet flush timing.
+const STRUCTURED_DATA_TYPES = [
+  'BlogPosting',
+  'Service',
+  'SoftwareApplication',
+  'FAQPage',
+  'BreadcrumbList',
+  'LocalBusiness',
+];
+
 function parseFrontmatter(raw) {
   const parts = raw.split('---');
   if (parts.length < 3) return { data: {}, content: '' };
@@ -108,7 +121,7 @@ function patchPage(filePath, seo) {
   html = upsertMeta(html, 'name', 'twitter:description', seo.description);
   html = upsertMeta(html, 'name', 'twitter:image', seo.image);
 
-  for (const type of ['BlogPosting']) {
+  for (const type of STRUCTURED_DATA_TYPES) {
     html = stripStructuredData(html, type);
   }
   if (seo.jsonLd && seo.jsonLd.length) {
@@ -159,7 +172,10 @@ function patchBlogPosts(distDir, srcBlogDir, rootDir) {
       datePublished: data.date,
       dateModified: data.date,
       articleSection: data.category || 'Blog',
-      author: { '@type': 'Person', name: data.author || 'Carter Dewey' },
+      author:
+        !data.author || data.author === 'TrustedNetworx'
+          ? { '@type': 'Organization', name: 'TrustedNetworx' }
+          : { '@type': 'Person', name: data.author },
       publisher: {
         '@type': 'Organization',
         name: 'TrustedNetworx',
@@ -191,31 +207,131 @@ function patchBlogPosts(distDir, srcBlogDir, rootDir) {
 // --- Static route pages (non-blog) ---
 // These pages get unique HTML shells with proper SEO meta so search engines
 // see correct titles/descriptions without needing to execute JavaScript.
+
+// Intermediate path segments that map to a real page (mirrors Seo.tsx so the
+// prerendered BreadcrumbList matches what the runtime component emits).
+const SECTION_ROUTES = { tools: '/tools', about: '/about', 'about/team': '/about/team' };
+
+function titleCase(seg) {
+  return seg.replace(/-/g, ' ').replace(/\b\w/g, (ch) => ch.toUpperCase());
+}
+
+/** BreadcrumbList mirroring src/components/Seo.tsx buildBreadcrumbs(). */
+function buildBreadcrumbList(route) {
+  const segments = route.split('/').filter(Boolean);
+  const items = [{ '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL }];
+  let acc = '';
+  segments.forEach((seg, i) => {
+    acc += `/${seg}`;
+    const isLeaf = i === segments.length - 1;
+    // Only link intermediate segments that resolve to a real page.
+    if (!isLeaf && !SECTION_ROUTES[acc.slice(1)]) return;
+    items.push({
+      '@type': 'ListItem',
+      position: items.length + 1,
+      name: titleCase(seg),
+      item: `${SITE_URL}${acc}`,
+    });
+  });
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items,
+  };
+}
+
+/** Service schema for the six solution pages (audit #10 / Sprint 4 A2). */
+function serviceJsonLd({ name, serviceType, route, description }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name,
+    provider: { '@type': 'Organization', name: 'TrustedNetworx' },
+    areaServed: { '@type': 'Country', name: 'US' },
+    serviceType,
+    description,
+    url: `${SITE_URL}/${route}`,
+  };
+}
+
+/** SoftwareApplication schema for the two platform pages (no offers). */
+function softwareAppJsonLd({ name, description }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    description,
+  };
+}
+
+function faqPageJsonLd(faqs) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  };
+}
+
 const ROUTE_PAGES = [
   {
     route: 'about',
     title: 'About Us | TrustedNetworx',
     description: 'With 25+ years in telecom and IoT, TrustedNetworx delivers advanced connectivity, voice, and managed solutions for enterprise and multi-site organizations.',
+    jsonLd: [buildBreadcrumbList('about')],
   },
   {
     route: 'about/team',
     title: 'Our Team | TrustedNetworx',
     description: 'Meet the leadership and partners behind TrustedNetworx — telecom experts, enterprise architects, and creative professionals driving connectivity forward.',
+    jsonLd: [buildBreadcrumbList('about/team')],
   },
   {
     route: 'pots-replacement',
     title: 'POTS Replacement | TrustedNetworx',
     description: 'Modern, cost-saving alternatives to legacy POTS lines. Migrate analog systems to reliable IP and cellular networks with TrustedNetworx.',
+    jsonLd: [
+      serviceJsonLd({
+        name: 'POTS Replacement',
+        serviceType: 'Telecom Line Replacement',
+        route: 'pots-replacement',
+        description: 'Modern, cost-saving alternatives to legacy POTS lines.',
+      }),
+      buildBreadcrumbList('pots-replacement'),
+    ],
   },
   {
     route: 'ai-consulting',
     title: 'AI Consulting & Solutions | TrustedNetworx',
     description: 'Practical AI consulting and implementation for telecom operators, channel partners, and multi-site businesses — automation, customer engagement, and strategy with measurable ROI.',
+    jsonLd: [
+      serviceJsonLd({
+        name: 'AI Consulting',
+        serviceType: 'AI Consulting',
+        route: 'ai-consulting',
+        description: 'Practical AI consulting and implementation for telecom and multi-site businesses.',
+      }),
+      buildBreadcrumbList('ai-consulting'),
+    ],
   },
   {
     route: 'ai-workforce',
     title: 'AI Workforce — AI Agents for Telecom | TrustedNetworx',
     description: 'Deploy AI sales, service, and operations agents built for telecom. Lead qualification, scheduling, email triage, infrastructure monitoring — 24/7, telecom-native.',
+    jsonLd: [
+      serviceJsonLd({
+        name: 'AI Workforce',
+        serviceType: 'AI Agents',
+        route: 'ai-workforce',
+        description: 'AI agents for sales, service, and operations, built for telecom.',
+      }),
+      buildBreadcrumbList('ai-workforce'),
+    ],
   },
   // NOTE: /fleet-management intentionally removed — it 301s to /ai-consulting in
   // netlify.toml (no dedicated page exists; a patched shell here would create a
@@ -224,46 +340,128 @@ const ROUTE_PAGES = [
     route: 'internet-connectivity',
     title: 'Internet Connectivity | TrustedNetworx',
     description: 'Enterprise-grade internet connectivity — managed SD-WAN, Starlink satellite broadband, and global IoT SIM solutions to keep your business securely online.',
+    jsonLd: [
+      serviceJsonLd({
+        name: 'Internet Connectivity',
+        serviceType: 'Enterprise Internet',
+        route: 'internet-connectivity',
+        description: 'Enterprise-grade internet connectivity with managed SD-WAN and wireless failover.',
+      }),
+      buildBreadcrumbList('internet-connectivity'),
+    ],
   },
   {
     route: 'voice-solutions',
     title: 'Voice Solutions — IP PBX & Unified Communications | TrustedNetworx',
     description: 'Enterprise voice communications from TrustedNetworx — cloud-based IP PBX, HD voice, unified communications, voice analytics, and scalable cloud calling for modern business.',
+    jsonLd: [
+      serviceJsonLd({
+        name: 'Voice Solutions / IP PBX',
+        serviceType: 'Unified Communications',
+        route: 'voice-solutions',
+        description: 'Cloud IP PBX and unified communications for multi-site businesses.',
+      }),
+      buildBreadcrumbList('voice-solutions'),
+    ],
   },
   {
     route: 'mobility-solutions',
     title: 'Mobility Solutions | TrustedNetworx',
     description: 'Enterprise mobility management from TrustedNetworx — MDaaS, IoT connectivity, and unified endpoint management to keep your mobile workforce secure and productive.',
+    jsonLd: [
+      serviceJsonLd({
+        name: 'Mobility Solutions',
+        serviceType: 'Enterprise Mobility Management',
+        route: 'mobility-solutions',
+        description: 'Enterprise mobility management and IoT connectivity.',
+      }),
+      buildBreadcrumbList('mobility-solutions'),
+    ],
+  },
+  {
+    route: 'platforms/partner-hub',
+    title: 'TNX Partner Hub — AI Agent Management Platform for MSPs & Channel Partners | TrustedNetworx',
+    description: 'Deploy, budget, monitor, and govern AI agents for sales, support, and operations from one multi-tenant hub. Built by an operator, for MSPs and resellers.',
+    jsonLd: [
+      softwareAppJsonLd({
+        name: 'TNX Partner Hub',
+        description:
+          'AI agent management platform for MSPs and channel partners: deploy, budget, monitor, and govern AI agents from one multi-tenant hub.',
+      }),
+      faqPageJsonLd([
+        { q: 'Which AI models does it use?', a: 'Model-agnostic; default is a cost-optimized provider with the option to bring your own keys.' },
+        { q: 'Do I need developers?', a: 'No for blueprint agents. Yes for custom integrations, which we can build.' },
+        { q: 'Where does it run?', a: 'Dedicated VPS per client or shared multi-tenant, your choice.' },
+        { q: 'Is my client data isolated?', a: 'Yes — tenant isolation is enforced at the database layer, not just the UI.' },
+      ]),
+      buildBreadcrumbList('platforms/partner-hub'),
+    ],
+  },
+  {
+    route: 'platforms/crm',
+    title: 'TNX CRM — Opportunity Management for Telecom, MSP & Channel Sales | TrustedNetworx',
+    description: 'Track direct, agent, and reseller deals with telecom-native fields and AI agents that keep the pipeline current. Simple, flat pricing.',
+    jsonLd: [
+      softwareAppJsonLd({
+        name: 'TNX CRM',
+        description:
+          'Opportunity management for telecom, MSP and channel sales: direct, agent, and reseller pipelines with telecom-native fields.',
+      }),
+      faqPageJsonLd([
+        { q: 'Can I import from Pipedrive / HubSpot?', a: 'Yes — CSV import with field mapping.' },
+        { q: 'Does it replace Partner Hub?', a: 'No. Partner Hub manages agents; TNX CRM manages deals. They share data.' },
+        { q: 'Can partners see each other\u2019s deals?', a: 'No. Partner visibility is scoped to their own book.' },
+      ]),
+      buildBreadcrumbList('platforms/crm'),
+    ],
+  },
+  {
+    route: 'partners',
+    title: 'Become a Partner — MSP & Reseller Program | TrustedNetworx',
+    description: 'Join the TrustedNetworx partner program for MSPs, telecom agents, and resellers. White-label telecom and AI, TNX Partner Hub, and commission on every deal.',
+    jsonLd: [buildBreadcrumbList('partners')],
+  },
+  {
+    route: 'ai',
+    title: 'AI for Telecom & Multi-Site Operators | TrustedNetworx',
+    description: 'AI agents and consulting for telecom and multi-site operators. Explore the AI workforce, run a readiness assessment, and read the latest on AI in telecom.',
+    jsonLd: [buildBreadcrumbList('ai')],
   },
   {
     route: 'tools',
     title: 'Free Telecom Assessment Tools | TrustedNetworx',
     description: 'Interactive tools to evaluate your telecom infrastructure: POTS replacement ROI, copper sunset risk, and business continuity readiness.',
+    jsonLd: [buildBreadcrumbList('tools')],
   },
   {
     route: 'tools/pots-roi-calculator',
     title: 'POTS Replacement ROI Calculator | TrustedNetworx',
     description: 'Calculate the cost savings of replacing legacy POTS lines with IP/cellular alternatives. See estimated ROI, break-even timeline, and total cost of ownership.',
+    jsonLd: [buildBreadcrumbList('tools/pots-roi-calculator')],
   },
   {
     route: 'tools/copper-sunset-risk',
     title: 'Copper Sunset Risk Assessment | TrustedNetworx',
     description: 'Assess your organization\'s exposure to the copper network shutdown. Identify at-risk phone lines, elevator lines, alarm panels, and fax machines.',
+    jsonLd: [buildBreadcrumbList('tools/copper-sunset-risk')],
   },
   {
     route: 'tools/failover-readiness',
     title: 'Failover Readiness Check | TrustedNetworx',
     description: 'Check how prepared your business is for an internet outage. Score your network resilience and get recommendations for LTE/5G wireless failover.',
+    jsonLd: [buildBreadcrumbList('tools/failover-readiness')],
   },
   {
     route: 'tools/ai-roi-calculator',
     title: 'AI Implementation ROI Calculator | TrustedNetworx',
     description: 'Estimate the return on investment for AI automation in your business. Compare manual vs. AI-powered workflows across sales, service, and operations.',
+    jsonLd: [buildBreadcrumbList('tools/ai-roi-calculator')],
   },
   {
     route: 'tools/ai-readiness',
     title: 'AI Readiness Assessment | TrustedNetworx',
     description: 'Evaluate your organization\'s readiness for AI adoption. Score data maturity, operational readiness, and workforce alignment for successful AI deployment.',
+    jsonLd: [buildBreadcrumbList('tools/ai-readiness')],
   },
   {
     route: 'contact',
@@ -285,8 +483,9 @@ const ROUTE_PAGES = [
           postalCode: '33157',
           addressCountry: 'US',
         },
-        openingHours: 'Mo-Su 00:00-24:00',
+        openingHours: 'Mo-Fr 09:00-18:00',
       },
+      buildBreadcrumbList('contact'),
     ],
   },
 ];

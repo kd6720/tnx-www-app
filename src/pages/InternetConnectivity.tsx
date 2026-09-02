@@ -9,6 +9,16 @@ const InternetConnectivity = () => {
         <div className="bg-navy-50">
             <Seo
                 title="Internet Connectivity | TrustedNetworx"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: 'Internet Connectivity',
+          provider: { '@type': 'Organization', name: 'TrustedNetworx' },
+          areaServed: { '@type': 'Country', name: 'US' },
+          serviceType: 'Enterprise Internet',
+          description: 'Enterprise-grade internet connectivity with managed SD-WAN and wireless failover.',
+          url: 'https://trustednetworx.com/internet-connectivity',
+        }}
                 description="Enterprise-grade internet connectivity — managed SD-WAN, Starlink satellite broadband, and global IoT SIM solutions to keep your business securely online."
             />
             {/* Hero Section */}

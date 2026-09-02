@@ -86,31 +86,45 @@ const whyChooseUs = [
   },
 ];
 
+// Stats bar config (audit #1). The two AI outcome metrics Carter will supply
+// are marked below; the other two are telecom facts.
 const stats = [
-  { value: '24/7', label: 'AI-handled inbound' },
+  { value: '24/7', label: 'AI-handled inbound' }, // AI metric #1 — Carter to confirm value
   { value: '25+', label: 'Years of telecom expertise' },
   { value: '50%', label: 'Typical reduction in line costs' },
-  { value: '12M+', label: 'Legacy lines we can modernize' },
+  { value: '12M+', label: 'Legacy lines we can modernize' }, // AI metric #2 — Carter to supply
 ];
 
+// Testimonials (audit #7). permissioned=false renders the anonymized form
+// (title + company only). Set name/photo + permissioned=true once Carter
+// permissions real names. Zero copy changes.
 const testimonials = [
   {
     quote:
       'TrustedNetworx moved our entire portfolio off legacy copper without a single day of downtime. The savings hit our bottom line immediately.',
-    name: 'Operations Director',
-    role: 'Multi-Site Property Group',
+    name: '',
+    title: 'Operations Director',
+    company: 'Multi-Site Property Group',
+    photo: '',
+    permissioned: false,
   },
   {
     quote:
       'Their team understood our compliance constraints from day one. The new voice and mobility stack just works across all of our facilities.',
-    name: 'IT Manager',
-    role: 'Senior Living Network',
+    name: '',
+    title: 'IT Manager',
+    company: 'Senior Living Network',
+    photo: '',
+    permissioned: false,
   },
   {
     quote:
       'Practical, no-nonsense partners. They scoped exactly what we needed, deployed fast, and stuck around to optimize. Genuinely refreshing.',
-    name: 'VP of Technology',
-    role: 'Regional Hospitality Brand',
+    name: '',
+    title: 'VP of Technology',
+    company: 'Regional Hospitality Brand',
+    photo: '',
+    permissioned: false,
   },
 ];
 
@@ -352,15 +366,25 @@ const Home = () => {
           </div>
 
           <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {testimonials.map(({ quote, name, role }) => (
+            {testimonials.map(({ quote, name, title, company, photo, permissioned }) => (
               <figure
-                key={name}
+                key={`${title}-${company}`}
                 className="flex flex-col rounded-2xl bg-white p-7 border border-navy-100 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1"
               >
                 <blockquote className="flex-grow text-navy-700 leading-relaxed">“{quote}”</blockquote>
                 <figcaption className="mt-6 border-t border-navy-100 pt-5">
-                  <span className="block text-sm font-semibold text-navy-900">{name}</span>
-                  <span className="block text-xs text-navy-500">{role}</span>
+                  {permissioned && name ? (
+                    <>
+                      {photo && <img src={photo} alt={name} className="mb-3 h-10 w-10 rounded-full object-cover" />}
+                      <span className="block text-sm font-semibold text-navy-900">{name}</span>
+                      <span className="block text-xs text-navy-500">{title}, {company}</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="block text-sm font-semibold text-navy-900">{title}</span>
+                      <span className="block text-xs text-navy-500">{company}</span>
+                    </>
+                  )}
                 </figcaption>
               </figure>
             ))}
@@ -396,8 +420,10 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center max-w-5xl mx-auto">
             <div className="flex justify-center">
               <img
-                src="/team/carter-dewey.jpg"
+                src="/team/carter-dewey.webp"
                 alt="Carter Dewey, CEO and Founder of TrustedNetworx"
+                width="192"
+                height="192"
                 className="w-48 h-48 rounded-full object-cover object-[65%_28%] border-4 border-brand-400/40"
                 loading="lazy"
               />

@@ -9,6 +9,16 @@ const VoiceSolutions = () => {
         <div className="bg-navy-50">
             <Seo
                 title="Voice Solutions — IP PBX & Unified Communications | TrustedNetworx"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: 'Voice Solutions / IP PBX',
+          provider: { '@type': 'Organization', name: 'TrustedNetworx' },
+          areaServed: { '@type': 'Country', name: 'US' },
+          serviceType: 'Unified Communications',
+          description: 'Cloud IP PBX and unified communications for multi-site businesses.',
+          url: 'https://trustednetworx.com/voice-solutions',
+        }}
                 description="Enterprise voice communications from TrustedNetworx — cloud-based IP PBX, HD voice, unified communications, voice analytics, and scalable cloud calling for modern business."
             />
             {/* Hero Section */}
