@@ -175,13 +175,13 @@ const Home = () => {
               </div>
               <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-navy-300 animate-fadeInUp">
                 <span className="inline-flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-accent-400" /> Human-in-the-loop approvals
+                  <CheckCircle2 size={16} className="text-cyan-400" /> Human-in-the-loop approvals
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-accent-400" /> Built on your data, tenant-isolated
+                  <CheckCircle2 size={16} className="text-cyan-400" /> Built on your data, tenant-isolated
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-accent-400" /> Simple pricing — talk to us
+                  <CheckCircle2 size={16} className="text-cyan-400" /> Simple pricing — talk to us
                 </span>
               </div>
             </div>

@@ -29,7 +29,7 @@ const StickyCTA = ({
         {/* Quote button */}
         <Link
           to={quotePath}
-          className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl my-1.5 bg-gradient-to-r from-brand-600 to-accent-600 text-sm font-semibold text-white shadow-glow transition-all duration-200 hover:shadow-card-hover active:scale-[0.98]"
+          className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl my-1.5 bg-gradient-to-r from-brand-600 to-cyan-600 text-sm font-semibold text-white shadow-glow transition-all duration-200 hover:shadow-card-hover active:scale-[0.98]"
         >
           Get a Quote
           <ArrowRight size={16} />

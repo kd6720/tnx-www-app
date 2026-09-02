@@ -251,7 +251,7 @@ const ExitIntentPopup = ({
                 disabled={!email.trim() || submitting}
                 className={`w-full inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-200 ${
                   email.trim() && !submitting
-                    ? 'bg-gradient-to-r from-brand-600 to-accent-600 text-white shadow-glow hover:shadow-card-hover hover:-translate-y-0.5'
+                    ? 'bg-gradient-to-r from-brand-600 to-cyan-600 text-white shadow-glow hover:shadow-card-hover hover:-translate-y-0.5'
                     : 'bg-navy-100 text-navy-400 cursor-not-allowed'
                 }`}
               >

@@ -148,7 +148,7 @@ const PotsReplacement = () => {
                             ].map(({title, text}) => (
                                 <div key={title}
                                      className="flex items-start gap-4 rounded-xl border border-navy-800 bg-navy-900/60 p-5">
-                                    <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-accent-400"/>
+                                    <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-cyan-400"/>
                                     <div>
                                         <h3 className="font-bold text-white">{title}</h3>
                                         <p className="mt-1 text-navy-300">{text}</p>

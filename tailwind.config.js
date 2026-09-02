@@ -15,8 +15,17 @@ export default {
           'Arial',
           'sans-serif',
         ],
+        display: ['"Bricolage Grotesque"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       colors: {
+        // Design tokens (design-direction-v1-DECISION)
+        canvas: '#f7f8fa',
+        ink: '#111f3d',
+        body: '#3a4a66',
+        muted: '#8a94a6',
+        hairline: '#e3e6eb',
+        divider: '#243f70',
         // Deep navy — headers, footer, dark surfaces
         navy: {
           50: '#f1f5fb',
@@ -44,8 +53,21 @@ export default {
           800: '#1e40af',
           900: '#1e3a8a',
         },
-        // Teal / cyan accent
+        // Accent orange — numbers, section labels, node highlights ONLY
         accent: {
+          50: '#fff7ed',
+          100: '#ffedd5',
+          200: '#fed7aa',
+          300: '#fdba74',
+          400: '#fb923c',
+          500: '#ff7a1a',
+          600: '#ea580c',
+          700: '#c2410c',
+          800: '#9a3412',
+          900: '#7c2d12',
+        },
+        // Legacy teal accent (pre-redesign) — kept so unrebuilt pages don't shift
+        cyan: {
           50: '#ecfeff',
           100: '#cffafe',
           200: '#a5f3fc',
@@ -56,7 +78,28 @@ export default {
           700: '#0e7490',
         },
       },
+      fontSize: {
+        'display-hero': ['72px', { lineHeight: '1.0', letterSpacing: '-0.02em' }],
+        'display-h2': ['44px', { lineHeight: '1.08', letterSpacing: '-0.02em' }],
+        'display-h2-sm': ['36px', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'display-h3': ['24px', { lineHeight: '1.3' }],
+        'stat': ['44px', { lineHeight: '1.0', letterSpacing: '-0.02em' }],
+      },
+      letterSpacing: {
+        'mono-label': '0.02em',
+      },
+      maxWidth: {
+        site: '1440px',
+      },
+      spacing: {
+        section: '112px',
+        gutter: '64px',
+      },
+      borderRadius: {
+        lg: '8px',
+      },
       boxShadow: {
+        // Hairlines only — no card shadows in the new direction (kept for legacy).
         card: '0 1px 2px 0 rgba(16, 31, 61, 0.04), 0 8px 24px -8px rgba(16, 31, 61, 0.12)',
         'card-hover': '0 4px 8px -2px rgba(16, 31, 61, 0.08), 0 24px 48px -12px rgba(16, 31, 61, 0.22)',
         glow: '0 0 0 1px rgba(37, 99, 235, 0.1), 0 18px 50px -12px rgba(37, 99, 235, 0.45)',
@@ -86,11 +129,16 @@ export default {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-12px)' },
         },
+        nodePulse: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.25' },
+        },
       },
       animation: {
         fadeIn: 'fadeIn 0.25s ease-out',
         fadeInUp: 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both',
         float: 'float 8s ease-in-out infinite',
+        'node-pulse': 'nodePulse 2.6s ease-in-out infinite',
       },
       transitionTimingFunction: {
         'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
