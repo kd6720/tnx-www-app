@@ -38,10 +38,28 @@ const Navbar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 12);
+      // Close open dropdowns on scroll so the mega-menu never covers page headings.
+      setIsDropdownOpen(false);
+      setIsAboutDropdownOpen(false);
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Close any open menu on Escape (keyboard users).
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsDropdownOpen(false);
+        setIsAboutDropdownOpen(false);
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
   }, []);
 
   // Close menus on navigation
@@ -116,9 +134,10 @@ const Navbar = () => {
 
               {isDropdownOpen && (
                 <div
-                  className="absolute left-1/2 -translate-x-1/2 mt-4 w-[34rem] rounded-2xl p-3 grid grid-cols-2 gap-1.5 bg-navy-900/95 backdrop-blur-xl border border-white/10 shadow-2xl shadow-navy-950/50 animate-fadeIn"
+                  className="absolute left-1/2 -translate-x-1/2 mt-4 w-[34rem] rounded-2xl p-3 bg-navy-900/95 backdrop-blur-xl border border-white/10 shadow-2xl shadow-navy-950/50 animate-fadeIn"
                 >
-                  {solutions.map(({ to, label, desc, icon: Icon }) => (
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {solutions.map(({ to, label, desc, icon: Icon }) => (
                     <Link
                       key={to}
                       to={to}
@@ -132,13 +151,10 @@ const Navbar = () => {
                         <span className="block text-xs text-navy-300">{desc}</span>
                       </span>
                     </Link>
-                  ))}
-                </div>
-              )}
+                    ))}
+                  </div>
 
-              {/* Tools section in dropdown */}
-              {isDropdownOpen && (
-                <div className="mt-3 pt-3 border-t border-white/10">
+                  <div className="mt-3 pt-3 border-t border-white/10">
                   <p className="px-3 text-xs font-semibold uppercase tracking-widest text-navy-400">
                     Free Assessment Tools
                   </p>
@@ -178,6 +194,7 @@ const Navbar = () => {
                       <Brain size={14} className="text-accent-400" />
                       AI Readiness
                     </Link>
+                    </div>
                   </div>
                 </div>
               )}
@@ -241,7 +258,7 @@ const Navbar = () => {
 
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-glow transition-all duration-300 hover:bg-brand-500 hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-glow transition-all duration-300 hover:bg-brand-500 hover:-translate-y-0.5"
             >
               Get a Quote
             </Link>

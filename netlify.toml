@@ -34,11 +34,103 @@
   status = 200
   force = true
 
-# SPA fallback — every other path serves the React app.
+# Known SPA routes → index.html (200) so deep-linking and refresh work.
+# Unknown paths fall through to /404.html (404) below instead of a soft-404.
+#
+# IMPORTANT: every route registered in src/App.tsx MUST have an explicit
+# redirect here (or a matching static file), or it 404s in production after
+# this soft-404 fix. Sprint 2/3 add /platforms/partner-hub, /platforms/crm,
+# /partners, and /ai — add them to this list as part of those sprints.
 [[redirects]]
-  from = "/*"
+  from = "/"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/about"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/about/team"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pots-replacement"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/ai-consulting"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/internet-connectivity"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/mobility-solutions"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/voice-solutions"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/ai-workforce"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/pots-roi-calculator"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/copper-sunset-risk"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/failover-readiness"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/ai-roi-calculator"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/ai-readiness"
+  to = "/index.html"
+  status = 200
+
+# Unknown routes → real 404 (soft-404 fix: no more 200-with-homepage).
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
 
 # --- Security headers (all routes) ---
 [[headers]]
@@ -49,7 +141,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://webforms.pipedrive.com https://cdn.pipedriveassets.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:; frame-src 'self' https://webforms.pipedrive.com https://enhancedlines.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://webforms.pipedrive.com https://cdn.pipedriveassets.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https:; frame-src 'self' https://webforms.pipedrive.com https://enhancedlines.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
 
 # --- Long-lived caching for fingerprinted build assets ---
 [[headers]]

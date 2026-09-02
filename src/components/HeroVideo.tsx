@@ -27,7 +27,7 @@ const HeroVideo = ({ name, overlayClassName }: HeroVideoProps) => (
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="none"
       poster={`/media/${name}-poster.jpg`}
       // React doesn't serialize `muted` into static HTML, so set it
       // imperatively too — keeps autoplay legal in the pre-hydration window.
@@ -35,6 +35,7 @@ const HeroVideo = ({ name, overlayClassName }: HeroVideoProps) => (
         if (el) el.muted = true;
       }}
     >
+      <source src={`/media/${name}.webm`} type="video/webm" />
       <source src={`/media/${name}.mp4`} type="video/mp4" />
     </video>
     <div
