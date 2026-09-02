@@ -173,7 +173,7 @@ const Partners = () => (
           <a href="mailto:sales@trustednetworx.com" className="text-brand-300 hover:text-brand-200">
             sales@trustednetworx.com
           </a>
-          {' '}— or explore the hub your clients would run on.
+          {' — or explore the hub your clients would run on.'}
         </p>
         <Link
           to="/platforms/partner-hub"
