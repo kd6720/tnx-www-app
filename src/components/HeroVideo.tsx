@@ -48,17 +48,33 @@ const HeroVideo = ({
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     let cancelled = false;
+    let onError: (() => void) | null = null;
     const start = () => {
       if (cancelled || !el.isConnected) return;
       const small = hasMobileVariant && window.innerWidth < 768;
       const base = `/media/${name}${small ? '-720' : ''}`;
-      const webm = el.canPlayType('video/webm; codecs="vp9"');
-      el.src = webm ? `${base}.webm` : `${base}.mp4`;
-      el.muted = true;
-      el.load();
-      el.play().catch(() => {
-        /* autoplay blocked — poster stays visible */
-      });
+
+      const play = (src: string) => {
+        el.src = src;
+        el.muted = true;
+        el.load();
+        el.play().catch(() => {
+          /* autoplay blocked — poster stays visible */
+        });
+      };
+
+      // Only hero-home ships a .webm; every other hero is mp4-only. Asking for
+      // a missing .webm makes the element fire `error` (and the SPA rewrite
+      // hands back index.html rather than a 404), which froze every interior
+      // hero on its poster. Retry the mp4 on error — the same fallback the
+      // original <source> list gave us for free.
+      onError = () => {
+        if (el.src.endsWith('.mp4')) return; // mp4 failed too: keep the poster
+        play(`${base}.mp4`);
+      };
+      el.addEventListener('error', onError);
+
+      play(el.canPlayType('video/webm; codecs="vp9"') ? `${base}.webm` : `${base}.mp4`);
     };
 
     if (document.readyState === 'complete') {
@@ -70,6 +86,7 @@ const HeroVideo = ({
     return () => {
       cancelled = true;
       window.removeEventListener('load', start);
+      if (onError) el.removeEventListener('error', onError);
     };
   }, [name, hasMobileVariant]);
 
@@ -89,7 +106,6 @@ const HeroVideo = ({
           loop
           playsInline
           preload="none"
-          poster={`/media/${name}-poster.jpg`}
         />
       </div>
       <div
