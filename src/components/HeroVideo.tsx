@@ -15,6 +15,16 @@ import { useEffect, useRef } from 'react';
  *   get the full 1080p file.
  * - All copy stays in HTML on top of this component — never in the video.
  */
+
+/**
+ * Hero base names that actually have a /media/<name>.webm on disk. Everything
+ * else is mp4-only. Keep this in sync when a new webm is encoded — asking for
+ * a webm that isn't there does not fail fast: Chrome answers the 404 with
+ * `stalled`, never `error`, so the element hangs at readyState 0 and the hero
+ * never moves. (That is what froze every interior hero in production.)
+ */
+const WEBM_AVAILABLE = new Set(['hero-home']);
+
 interface HeroVideoProps {
   /** Base name under /media, e.g. "hero-home" → /media/hero-home.mp4 + poster. */
   name: string;
@@ -31,13 +41,7 @@ interface HeroVideoProps {
   mediaClassName?: string;
   /** Set when /media/<name>-720.{webm,mp4} exist; phones load those instead. */
   hasMobileVariant?: boolean;
-  /**
-   * Set ONLY when /media/<name>.webm actually exists. Defaults to false,
-   * because today only hero-home ships a webm. Requesting a missing .webm
-   * does not fail fast: Chrome answers the 404 with `stalled`, never `error`,
-   * so the element hangs at readyState 0 and the hero never moves. Ask for
-   * the file that exists rather than relying on an error we never get.
-   */
+  /** Override the WEBM_AVAILABLE lookup for this instance. Rarely needed. */
   hasWebm?: boolean;
 }
 
@@ -47,7 +51,7 @@ const HeroVideo = ({
   videoClassName,
   mediaClassName,
   hasMobileVariant = false,
-  hasWebm = false,
+  hasWebm,
 }: HeroVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -73,15 +77,16 @@ const HeroVideo = ({
       };
 
       // Safety net only. The real guarantee is that we never request a file
-      // that isn't there (see hasWebm): a 404'd media source stalls forever
-      // in Chrome instead of erroring, so this handler cannot be relied on.
+      // that isn't there (see WEBM_AVAILABLE): a 404'd media source stalls
+      // forever in Chrome instead of erroring, so this cannot be relied on.
       onError = () => {
         if (el.src.endsWith('.mp4')) return; // mp4 failed too: keep the poster
         play(`${base}.mp4`);
       };
       el.addEventListener('error', onError);
 
-      const useWebm = hasWebm && el.canPlayType('video/webm; codecs="vp9"') !== '';
+      const webmExists = hasWebm ?? WEBM_AVAILABLE.has(name);
+      const useWebm = webmExists && el.canPlayType('video/webm; codecs="vp9"') !== '';
       play(useWebm ? `${base}.webm` : `${base}.mp4`);
     };
 
