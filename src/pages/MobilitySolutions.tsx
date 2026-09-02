@@ -18,6 +18,16 @@ const MobilitySolutions = () => {
       <div className="bg-navy-50">
         <Seo
           title="Mobility Solutions | TrustedNetworx"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: 'Mobility Solutions',
+          provider: { '@type': 'Organization', name: 'TrustedNetworx' },
+          areaServed: { '@type': 'Country', name: 'US' },
+          serviceType: 'Enterprise Mobility Management',
+          description: 'Enterprise mobility management and IoT connectivity.',
+          url: 'https://trustednetworx.com/mobility-solutions',
+        }}
           description="Enterprise mobility management from TrustedNetworx — MDaaS, IoT connectivity, and unified endpoint management to keep your mobile workforce secure and productive."
         />
         {/* Hero Section */}

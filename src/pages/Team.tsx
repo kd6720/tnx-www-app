@@ -55,8 +55,10 @@ const Team = () => {
                             <div className="grid grid-cols-1 md:grid-cols-3">
                                 <div className="bg-gradient-to-br from-navy-900 to-brand-900 flex items-center justify-center p-6">
                                     <img
-                                        src="/team/carter-dewey.jpg"
+                                        src="/team/carter-dewey.webp"
                                         alt="Carter Dewey"
+                                        width="192"
+                                        height="192"
                                         className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover object-[65%_28%] border-4 border-brand-400/40 shadow-xl"
                                     />
                                 </div>

@@ -180,6 +180,16 @@ const AiConsulting = () => {
     <div className="bg-navy-50">
       <Seo
         title="AI Consulting & Solutions | TrustedNetworx"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: 'AI Consulting',
+          provider: { '@type': 'Organization', name: 'TrustedNetworx' },
+          areaServed: { '@type': 'Country', name: 'US' },
+          serviceType: 'AI Consulting',
+          description: 'Practical AI consulting and implementation for telecom and multi-site businesses.',
+          url: 'https://trustednetworx.com/ai-consulting',
+        }}
         description="Practical AI consulting and implementation for telecom operators, channel partners, and multi-site businesses — automation, customer engagement, and strategy with measurable ROI."
       />
       {/* Hero Section */}

@@ -90,16 +90,17 @@ const Seo = ({
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const state = window as Window & { snapSaveState?: () => Promise<void> };
-    state.snapSaveState = () =>
-      new Promise<void>((resolve) => {
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => resolve());
-        });
-      });
+    // Signal react-snap (postbuild `waitFor: "html[data-seo-ready]"`) that the
+    // route component AND its Helmet head elements have committed. react-snap
+    // snapshots only after this flag, so the prerendered HTML carries the same
+    // JSON-LD/meta the runtime app renders — closing the nondeterministic
+    // Helmet-flush race (V1). The patch script remains the source of truth.
+    window.__seoReady = true;
+    document.documentElement.setAttribute('data-seo-ready', 'true');
 
     return () => {
-      delete state.snapSaveState;
+      document.documentElement.removeAttribute('data-seo-ready');
+      delete window.__seoReady;
     };
   }, [title, description, canonical, ogImage, blocks.length]);
 

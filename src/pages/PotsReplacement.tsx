@@ -53,6 +53,16 @@ const PotsReplacement = () => {
         <div className="bg-navy-50">
             <Seo
                 title="POTS Replacement | TrustedNetworx"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: 'POTS Replacement',
+          provider: { '@type': 'Organization', name: 'TrustedNetworx' },
+          areaServed: { '@type': 'Country', name: 'US' },
+          serviceType: 'Telecom Line Replacement',
+          description: 'Modern, cost-saving alternatives to legacy POTS lines.',
+          url: 'https://trustednetworx.com/pots-replacement',
+        }}
                 description="Modern, cost-saving alternatives to legacy POTS lines. Migrate analog systems to reliable IP and cellular networks with TrustedNetworx."
             />
             {/* Hero Section */}
@@ -299,7 +309,7 @@ const PotsReplacement = () => {
 
                             {/* Certifications */}
                             <div className="space-y-2 max-w-2xl mx-auto">
-                                <h4 className="text-sm font-semibold text-navy-500 uppercase tracking-wider text-center">Certifications & Compliance</h4>
+                                <h3 className="text-sm font-semibold text-navy-500 uppercase tracking-wider text-center">Certifications & Compliance</h3>
                                 <div className="flex flex-wrap justify-center gap-2">
                                     <span className="inline-flex items-center gap-1.5 text-sm bg-green-50 text-green-700 px-3 py-1.5 rounded-lg border border-green-200">
                                         <Shield size={14} /> UL 62368-1 Listed
@@ -344,25 +354,25 @@ const PotsReplacement = () => {
 
                             {/* Stats Section */}
                             <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3 items-center">
-                                <div
+                                <dl
                                     className="bg-white py-6 px-2 rounded-xl shadow-card border border-navy-100 text-center">
                                     <dt className="text-5xl font-extrabold text-brand-600">900M+</dt>
                                     <dd className="mt-2 font-medium text-navy-500">Legacy Landlines Globally</dd>
-                                </div>
+                                </dl>
 
-                                <div
+                                <dl
                                     className="bg-white py-6 px-2 rounded-xl shadow-card border border-navy-100 text-center">
                                     <dt className="text-5xl font-extrabold text-brand-600">30M+</dt>
                                     <dd className="mt-2 font-medium text-navy-500">POTS Lines in the US</dd>
-                                </div>
+                                </dl>
 
-                                <div
+                                <dl
                                     className="bg-white py-6 px-2 rounded-xl shadow-card border border-navy-100 text-center">
                                     <dt className="text-5xl font-extrabold text-brand-600">31.4%</dt>
                                     <dd className="mt-2 font-medium text-navy-500">Increase in POTS Costs Over The Past
                                         5 Years
                                     </dd>
-                                </div>
+                                </dl>
                             </div>
                         </div>
                     </div>

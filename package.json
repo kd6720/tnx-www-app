@@ -41,6 +41,7 @@
     ],
     "skipThirdPartyRequests": true,
     "inlineCss": false,
+    "waitFor": "html[data-seo-ready]",
     "puppeteerArgs": [
       "--no-sandbox",
       "--disable-setuid-sandbox"

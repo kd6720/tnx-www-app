@@ -107,6 +107,16 @@ const AiWorkforce = () => {
     <div className="bg-navy-50">
       <Seo
         title="AI Workforce — AI Agents for Telecom | TrustedNetworx"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: 'AI Workforce',
+          provider: { '@type': 'Organization', name: 'TrustedNetworx' },
+          areaServed: { '@type': 'Country', name: 'US' },
+          serviceType: 'AI Agents',
+          description: 'AI agents for sales, service, and operations, built for telecom.',
+          url: 'https://trustednetworx.com/ai-workforce',
+        }}
         description="Deploy AI sales, service, and operations agents built for telecom. Lead qualification, scheduling, email triage, infrastructure monitoring — 24/7, telecom-native."
       />
 

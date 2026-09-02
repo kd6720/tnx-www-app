@@ -24,7 +24,7 @@ const Contact = () => {
             postalCode: '33157',
             addressCountry: 'US',
           },
-          openingHours: 'Mo-Su 00:00-24:00',
+          openingHours: 'Mo-Fr 09:00-18:00',
         }}
       />
 
@@ -33,7 +33,7 @@ const Contact = () => {
         <div
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: 'url(/Circuit-Board.jpg)',
+            backgroundImage: 'url(/Circuit-Board.webp)',
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
@@ -114,8 +114,10 @@ const Contact = () => {
                 </p>
                 <div className="mt-5 flex items-center gap-3 rounded-xl bg-navy-50 p-4">
                   <img
-                    src="/team/carter-dewey.jpg"
+                    src="/team/carter-dewey.webp"
                     alt="Carter Dewey"
+                    width="48"
+                    height="48"
                     className="h-12 w-12 rounded-full object-cover object-[65%_28%]"
                     loading="lazy"
                   />
