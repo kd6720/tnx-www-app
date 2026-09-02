@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import {
   Menu,
   X,
@@ -10,51 +10,85 @@ import {
   PhoneCall,
   Smartphone,
   Mic,
-  Calculator,
-  AlertTriangle,
-  Shield,
-  TrendingUp,
-  Brain,
+  Layers,
+  BarChart3,
+  BookOpen,
+  Wrench,
   Users,
   Building2,
 } from 'lucide-react';
 
-const solutions = [
+const aiSolutions = [
   { to: '/ai-workforce', label: 'AI Workforce', desc: 'AI agents for telecom', icon: Bot },
+  { to: '/ai-consulting', label: 'AI Consulting', desc: 'Practical AI automation', icon: Bot },
+  { to: '/tools/ai-readiness', label: 'AI Readiness', desc: 'Free AI readiness assessment', icon: Wrench },
+  { to: '/tools/ai-roi-calculator', label: 'AI ROI Calculator', desc: 'Estimate your AI payback', icon: Wrench },
+  { to: '/ai', label: 'AI Overview', desc: 'All AI resources in one place', icon: Bot },
+];
+
+const platforms = [
+  { to: '/platforms/partner-hub', label: 'TNX Partner Hub', desc: 'AI agent management', icon: Layers },
+  { to: '/platforms/crm', label: 'TNX CRM', desc: 'Opportunity management', icon: BarChart3 },
+];
+
+const telecom = [
   { to: '/pots-replacement', label: 'POTS Replacement', desc: 'Modern landline alternatives', icon: Phone },
-  { to: '/ai-consulting', label: 'AI Consulting & Solutions', desc: 'Practical AI automation', icon: Bot },
+  { to: '/voice-solutions', label: 'Voice & IP PBX', desc: 'Unified voice communications', icon: Mic },
   { to: '/internet-connectivity', label: 'Internet Connectivity', desc: 'Enterprise-grade access', icon: Wifi },
   { to: '/mobility-solutions', label: 'Mobility Solutions', desc: 'Manage your mobile fleet', icon: Smartphone },
-  { to: '/voice-solutions', label: 'Voice Solutions', desc: 'Unified voice communications', icon: Mic },
 ];
+
+const resources = [
+  { to: '/blog', label: 'Blog', desc: 'Telecom & AI insights', icon: BookOpen },
+  { to: '/tools', label: 'Free Tools', desc: 'ROI, risk & readiness assessments', icon: Wrench },
+];
+
+const company = [
+  { to: '/about', label: 'About', desc: 'Who we are & what we do', icon: Building2 },
+  { to: '/about/team', label: 'Team', desc: 'Meet our team & partners', icon: Users },
+  { to: '/contact', label: 'Contact', desc: 'Get in touch', icon: PhoneCall },
+  { to: '/partners', label: 'Partners', desc: 'MSP & reseller program', icon: Users },
+];
+
+const platformsFooter = (
+  <div className="space-y-1">
+    <a href="https://tnxpartnerhub.com" target="_blank" rel="noopener noreferrer" className="block rounded-lg px-3 py-2 text-sm font-semibold text-brand-300 hover:bg-white/5 hover:text-brand-200 transition-colors">
+      Log in to Partner Hub
+    </a>
+    <a href="https://tnxcrm.com" target="_blank" rel="noopener noreferrer" className="block rounded-lg px-3 py-2 text-sm font-semibold text-brand-300 hover:bg-white/5 hover:text-brand-200 transition-colors">
+      Log in to TNX CRM
+    </a>
+  </div>
+);
+
+interface MenuItem {
+  to: string;
+  label: string;
+  desc: string;
+  icon: typeof Bot;
+}
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const aboutCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 12);
-      // Close open dropdowns on scroll so the mega-menu never covers page headings.
-      setIsDropdownOpen(false);
-      setIsAboutDropdownOpen(false);
+      setOpenMenu(null);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close any open menu on Escape (keyboard users).
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setIsDropdownOpen(false);
-        setIsAboutDropdownOpen(false);
+        setOpenMenu(null);
         setIsOpen(false);
       }
     };
@@ -62,35 +96,59 @@ const Navbar = () => {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
-  // Close menus on navigation
   useEffect(() => {
     setIsOpen(false);
-    setIsDropdownOpen(false);
-    setIsAboutDropdownOpen(false);
+    setOpenMenu(null);
   }, [location.pathname]);
 
-  const openDropdown = () => {
+  const open = (name: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    setIsDropdownOpen(true);
+    setOpenMenu(name);
   };
   const scheduleClose = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setIsDropdownOpen(false), 140);
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 140);
   };
 
-  const openAboutDropdown = () => {
-    if (aboutCloseTimer.current) clearTimeout(aboutCloseTimer.current);
-    setIsAboutDropdownOpen(true);
-  };
-  const scheduleAboutClose = () => {
-    if (aboutCloseTimer.current) clearTimeout(aboutCloseTimer.current);
-    aboutCloseTimer.current = setTimeout(() => setIsAboutDropdownOpen(false), 140);
-  };
+  const renderDropdown = (name: string, items: MenuItem[], footer?: ReactNode) => (
+    <div className="relative" onMouseEnter={() => open(name)} onMouseLeave={scheduleClose}>
+      <button
+        type="button"
+        className="flex items-center gap-1 text-sm font-medium text-navy-200 hover:text-white transition-colors"
+        onClick={() => setOpenMenu((v) => (v === name ? null : name))}
+        aria-expanded={openMenu === name}
+      >
+        {name}
+        <ChevronDown
+          size={16}
+          className={`transition-transform duration-300 ${openMenu === name ? 'rotate-180' : ''}`}
+        />
+      </button>
 
-  const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `relative text-sm font-medium transition-colors ${
-      isActive ? 'text-white' : 'text-navy-200 hover:text-white'
-    }`;
+      {openMenu === name && (
+        <div className="absolute left-1/2 -translate-x-1/2 mt-4 w-[26rem] rounded-2xl p-3 bg-navy-900/95 backdrop-blur-xl border border-white/10 shadow-2xl shadow-navy-950/50 animate-fadeIn">
+          <div className="grid grid-cols-1 gap-1.5">
+            {items.map(({ to, label, desc, icon: Icon }) => (
+              <Link
+                key={to}
+                to={to}
+                className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-white/5 group"
+              >
+                <span className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-brand-500/15 text-brand-300 group-hover:bg-brand-500/25 transition-colors">
+                  <Icon size={18} />
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold text-white">{label}</span>
+                  <span className="block text-xs text-navy-300">{desc}</span>
+                </span>
+              </Link>
+            ))}
+          </div>
+          {footer && <div className="mt-2 border-t border-white/10 pt-2">{footer}</div>}
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <header
@@ -100,7 +158,6 @@ const Navbar = () => {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
-          {/* Logo */}
           <Link to="/" className="flex-shrink-0 flex items-center gap-2.5 group">
             <img
               src="/logo.svg"
@@ -112,159 +169,20 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex md:items-center md:gap-8">
-            <NavLink to="/" className={linkClass} end>
-              Home
-            </NavLink>
-
-            <div className="relative" onMouseEnter={openDropdown} onMouseLeave={scheduleClose}>
-              <button
-                type="button"
-                className="flex items-center gap-1 text-sm font-medium text-navy-200 hover:text-white transition-colors"
-                onClick={() => setIsDropdownOpen((v) => !v)}
-                aria-expanded={isDropdownOpen}
-              >
-                Solutions
-                <ChevronDown
-                  size={16}
-                  className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
-                />
-              </button>
-
-              {isDropdownOpen && (
-                <div
-                  className="absolute left-1/2 -translate-x-1/2 mt-4 w-[34rem] rounded-2xl p-3 bg-navy-900/95 backdrop-blur-xl border border-white/10 shadow-2xl shadow-navy-950/50 animate-fadeIn"
-                >
-                  <div className="grid grid-cols-2 gap-1.5">
-                    {solutions.map(({ to, label, desc, icon: Icon }) => (
-                    <Link
-                      key={to}
-                      to={to}
-                      className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-white/5 group"
-                    >
-                      <span className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-brand-500/15 text-brand-300 group-hover:bg-brand-500/25 transition-colors">
-                        <Icon size={18} />
-                      </span>
-                      <span>
-                        <span className="block text-sm font-semibold text-white">{label}</span>
-                        <span className="block text-xs text-navy-300">{desc}</span>
-                      </span>
-                    </Link>
-                    ))}
-                  </div>
-
-                  <div className="mt-3 pt-3 border-t border-white/10">
-                  <p className="px-3 text-xs font-semibold uppercase tracking-widest text-navy-400">
-                    Free Assessment Tools
-                  </p>
-                  <div className="mt-2 flex gap-1.5 px-1.5">
-                    <Link
-                      to="/tools/pots-roi-calculator"
-                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-navy-300 hover:text-white hover:bg-white/5 transition-colors"
-                    >
-                      <Calculator size={14} className="text-brand-300" />
-                      ROI Calculator
-                    </Link>
-                    <Link
-                      to="/tools/copper-sunset-risk"
-                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-navy-300 hover:text-white hover:bg-white/5 transition-colors"
-                    >
-                      <AlertTriangle size={14} className="text-amber-400" />
-                      Sunset Risk
-                    </Link>
-                    <Link
-                      to="/tools/failover-readiness"
-                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-navy-300 hover:text-white hover:bg-white/5 transition-colors"
-                    >
-                      <Shield size={14} className="text-brand-300" />
-                      Failover Check
-                    </Link>
-                    <Link
-                      to="/tools/ai-roi-calculator"
-                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-navy-300 hover:text-white hover:bg-white/5 transition-colors"
-                    >
-                      <TrendingUp size={14} className="text-cyan-400" />
-                      AI ROI Calculator
-                    </Link>
-                    <Link
-                      to="/tools/ai-readiness"
-                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-navy-300 hover:text-white hover:bg-white/5 transition-colors"
-                    >
-                      <Brain size={14} className="text-accent-400" />
-                      AI Readiness
-                    </Link>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <NavLink to="/blog" className={linkClass}>
-              Blog
-            </NavLink>
-            <NavLink to="/tools" className={linkClass}>
-              Tools
-            </NavLink>
-
-            <div className="relative" onMouseEnter={openAboutDropdown} onMouseLeave={scheduleAboutClose}>
-              <button
-                type="button"
-                className="flex items-center gap-1 text-sm font-medium text-navy-200 hover:text-white transition-colors"
-                onClick={() => setIsAboutDropdownOpen((v) => !v)}
-                aria-expanded={isAboutDropdownOpen}
-              >
-                About
-                <ChevronDown
-                  size={16}
-                  className={`transition-transform duration-300 ${isAboutDropdownOpen ? 'rotate-180' : ''}`}
-                />
-              </button>
-
-              {isAboutDropdownOpen && (
-                <div
-                  className="absolute left-1/2 -translate-x-1/2 mt-4 w-56 rounded-2xl p-2 bg-navy-900/95 backdrop-blur-xl border border-white/10 shadow-2xl shadow-navy-950/50 animate-fadeIn"
-                >
-                  <Link
-                    to="/about"
-                    className="flex items-center gap-3 rounded-xl p-3 transition-colors hover:bg-white/5 group"
-                  >
-                    <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-brand-500/15 text-brand-300 group-hover:bg-brand-500/25 transition-colors">
-                      <Building2 size={18} />
-                    </span>
-                    <span>
-                      <span className="block text-sm font-semibold text-white">Our Story</span>
-                      <span className="block text-xs text-navy-300">Who we are &amp; what we do</span>
-                    </span>
-                  </Link>
-                  <Link
-                    to="/about/team"
-                    className="flex items-center gap-3 rounded-xl p-3 transition-colors hover:bg-white/5 group"
-                  >
-                    <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-brand-500/15 text-brand-300 group-hover:bg-brand-500/25 transition-colors">
-                      <Users size={18} />
-                    </span>
-                    <span>
-                      <span className="block text-sm font-semibold text-white">Partners</span>
-                      <span className="block text-xs text-navy-300">Meet our team &amp; partners</span>
-                    </span>
-                  </Link>
-                </div>
-              )}
-            </div>
-            <NavLink to="/contact" className={linkClass}>
-              Contact
-            </NavLink>
-
+          <div className="hidden md:flex md:items-center md:gap-6">
+            {renderDropdown('AI Solutions', aiSolutions)}
+            {renderDropdown('Platforms', platforms, platformsFooter)}
+            {renderDropdown('Telecom', telecom)}
+            {renderDropdown('Resources', resources)}
+            {renderDropdown('Company', company)}
             <Link
-              to="/contact"
+              to="/tools/ai-readiness"
               className="inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-glow transition-all duration-300 hover:bg-brand-500 hover:-translate-y-0.5"
             >
-              Get a Quote
+              Book a Review
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen((v) => !v)}
             className="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-white hover:bg-white/10 transition-colors"
@@ -276,53 +194,51 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-navy-950/95 backdrop-blur-xl border-t border-white/10 animate-fadeIn">
           <div className="px-4 py-4 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
-            <Link to="/" className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-white/10">
-              Home
-            </Link>
-            <p className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-widest text-navy-400">
-              Solutions
+            <p className="px-3 pt-2 pb-1 text-xs font-semibold uppercase tracking-widest text-navy-400">
+              AI Solutions
             </p>
-            {solutions.map(({ to, label, icon: Icon }) => (
-              <Link
-                key={to}
-                to={to}
-                className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-navy-100 hover:bg-white/10"
-              >
+            {aiSolutions.map(({ to, label, icon: Icon }) => (
+              <Link key={to} to={to} className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-navy-100 hover:bg-white/10">
+                <Icon size={18} className="text-brand-300" />
+                {label}
+              </Link>
+            ))}
+            <p className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-widest text-navy-400">Platforms</p>
+            {platforms.map(({ to, label, icon: Icon }) => (
+              <Link key={to} to={to} className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-navy-100 hover:bg-white/10">
+                <Icon size={18} className="text-brand-300" />
+                {label}
+              </Link>
+            ))}
+            <p className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-widest text-navy-400">Telecom</p>
+            {telecom.map(({ to, label, icon: Icon }) => (
+              <Link key={to} to={to} className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-navy-100 hover:bg-white/10">
+                <Icon size={18} className="text-brand-300" />
+                {label}
+              </Link>
+            ))}
+            <p className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-widest text-navy-400">Resources</p>
+            {resources.map(({ to, label, icon: Icon }) => (
+              <Link key={to} to={to} className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-navy-100 hover:bg-white/10">
+                <Icon size={18} className="text-brand-300" />
+                {label}
+              </Link>
+            ))}
+            <p className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-widest text-navy-400">Company</p>
+            {company.map(({ to, label, icon: Icon }) => (
+              <Link key={to} to={to} className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-navy-100 hover:bg-white/10">
                 <Icon size={18} className="text-brand-300" />
                 {label}
               </Link>
             ))}
             <Link
-              to="/about"
-              className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-white/10 mt-1"
-            >
-              About
-            </Link>
-            <Link
-              to="/about/team"
-              className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-navy-100 hover:bg-white/10 ml-4"
-            >
-              <Users size={18} className="text-brand-300" />
-              Partners
-            </Link>
-            <Link to="/blog" className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-white/10">
-              Blog
-            </Link>
-            <Link to="/tools" className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-white/10">
-              Free Tools
-            </Link>
-            <Link to="/contact" className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-white/10">
-              Contact
-            </Link>
-            <Link
-              to="/contact"
+              to="/tools/ai-readiness"
               className="mt-3 flex items-center justify-center rounded-xl bg-brand-600 px-5 py-3 text-base font-semibold text-white shadow-glow"
             >
-              Get a Quote
+              Book a Review
             </Link>
           </div>
         </div>

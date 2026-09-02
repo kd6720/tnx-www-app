@@ -33,7 +33,10 @@
       "/tools/copper-sunset-risk",
       "/tools/failover-readiness",
       "/tools/ai-roi-calculator",
-      "/tools/ai-readiness"
+      "/tools/ai-readiness",
+      "/platforms/partner-hub",
+      "/platforms/crm",
+      "/partners"
     ],
     "skipThirdPartyRequests": true,
     "inlineCss": false,

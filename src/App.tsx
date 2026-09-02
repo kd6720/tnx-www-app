@@ -28,6 +28,9 @@ const CopperSunsetRisk = lazy(() => import('./pages/tools/CopperSunsetRisk'));
 const FailoverReadiness = lazy(() => import('./pages/tools/FailoverReadiness'));
 const AiRoiCalculator = lazy(() => import('./pages/tools/AiRoiCalculator'));
 const AiReadinessAssessment = lazy(() => import('./pages/tools/AiReadinessAssessment'));
+const PartnerHub = lazy(() => import('./pages/PartnerHub'));
+const Crm = lazy(() => import('./pages/Crm'));
+const Partners = lazy(() => import('./pages/Partners'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const PageFallback = () => (
@@ -59,6 +62,9 @@ function App() {
                 <Route path="/voice-solutions" element={<VoiceSolutions />} />
                 <Route path="/ai-workforce" element={<AiWorkforce />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/platforms/partner-hub" element={<PartnerHub />} />
+                <Route path="/platforms/crm" element={<Crm />} />
+                <Route path="/partners" element={<Partners />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
                 <Route path="/tools" element={<Tools />} />

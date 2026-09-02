@@ -16,6 +16,7 @@ import {
   Server,
 } from 'lucide-react';
 import Seo from '../../components/Seo';
+import MultiStepForm from '../../components/MultiStepForm';
 
 const CRM_ENDPOINT =
   'https://enhancedlines.com/api/public/forms/f042309a-4268-4d51-986d-c1a827af9dea/submit';
@@ -471,92 +472,8 @@ const AiReadinessAssessment = () => {
                   <ArrowRight size={18} />
                 </button>
               </div>
-            ) : submitted ? (
-              <div className="rounded-2xl bg-emerald-50 border border-emerald-200 p-8 text-center">
-                <CheckCircle2 size={48} className="mx-auto text-emerald-500 mb-4" />
-                <h3 className="text-xl font-bold text-navy-900">Thank You!</h3>
-                <p className="mt-2 text-navy-600">
-                  Your AI readiness assessment and contact details have been submitted. A
-                  TrustedNetworx AI specialist will reach out within one business day with
-                  personalized recommendations.
-                </p>
-              </div>
             ) : (
-              <div className="surface-card p-6 sm:p-10">
-                <h3 className="text-xl font-extrabold text-navy-900 flex items-center gap-2">
-                  <Send size={20} className="text-brand-500" />
-                  Get an AI Readiness Consultation
-                </h3>
-                <p className="mt-1 text-sm text-navy-500">
-                  We'll include your assessment results — our AI specialists will prepare tailored
-                  recommendations for your organization.
-                </p>
-                <form onSubmit={handleSubmit} className="mt-6 space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-sm font-semibold text-navy-800 mb-1.5">
-                        Full Name *
-                      </label>
-                      <input
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleFormChange}
-                        className="w-full rounded-xl border border-navy-200 bg-white px-4 py-3 text-navy-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition"
-                        placeholder="John Smith"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-navy-800 mb-1.5">
-                        Email *
-                      </label>
-                      <input
-                        name="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={handleFormChange}
-                        className="w-full rounded-xl border border-navy-200 bg-white px-4 py-3 text-navy-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition"
-                        placeholder="john@company.com"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-navy-800 mb-1.5">
-                        Phone
-                      </label>
-                      <input
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleFormChange}
-                        className="w-full rounded-xl border border-navy-200 bg-white px-4 py-3 text-navy-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition"
-                        placeholder="(555) 123-4567"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-navy-800 mb-1.5">
-                        Company *
-                      </label>
-                      <input
-                        name="company"
-                        required
-                        value={formData.company}
-                        onChange={handleFormChange}
-                        className="w-full rounded-xl border border-navy-200 bg-white px-4 py-3 text-navy-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition"
-                        placeholder="Acme Corp"
-                      />
-                    </div>
-                  </div>
-                  <button
-                    type="submit"
-                    disabled={submitting}
-                    className="btn-primary w-full sm:w-auto"
-                  >
-                    {submitting ? 'Submitting...' : 'Submit & Get Your Consultation'}
-                    {!submitting && <ArrowRight size={18} />}
-                  </button>
-                </form>
-              </div>
+              <MultiStepForm preset="ai" />
             )}
           </div>
         </div>

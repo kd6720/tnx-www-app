@@ -4,15 +4,21 @@ import { Mail, MapPin, Phone, ArrowUpRight } from 'lucide-react';
 const solutionLinks = [
   { to: '/pots-replacement', label: 'POTS Replacement' },
   { to: '/ai-consulting', label: 'AI Consulting & Solutions' },
+  { to: '/ai', label: 'AI Overview' },
   { to: '/internet-connectivity', label: 'Internet Connectivity' },
-  { to: '/voice-solutions', label: 'IP PBX' },
+  { to: '/voice-solutions', label: 'Voice & IP PBX' },
   { to: '/mobility-solutions', label: 'Mobility Solutions' },
-  { to: '/voice-solutions', label: 'Voice Solutions' },
+];
+
+const platformLinks = [
+  { to: '/platforms/partner-hub', label: 'TNX Partner Hub' },
+  { to: '/platforms/crm', label: 'TNX CRM' },
 ];
 
 const companyLinks = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About Us' },
+  { to: '/partners', label: 'Partners' },
   { to: '/contact', label: 'Contact Us' },
 ];
 
@@ -46,10 +52,24 @@ const Footer = () => {
           </div>
 
           {/* Solutions */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <h4 className="text-sm font-semibold uppercase tracking-widest text-white">Solutions</h4>
             <ul className="mt-4 space-y-3">
               {solutionLinks.map(({ to, label }) => (
+                <li key={to}>
+                  <Link to={to} className="text-sm text-navy-300 transition-colors hover:text-brand-300">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Platforms */}
+          <div className="lg:col-span-2">
+            <h4 className="text-sm font-semibold uppercase tracking-widest text-white">Platforms</h4>
+            <ul className="mt-4 space-y-3">
+              {platformLinks.map(({ to, label }) => (
                 <li key={to}>
                   <Link to={to} className="text-sm text-navy-300 transition-colors hover:text-brand-300">
                     {label}
@@ -74,7 +94,7 @@ const Footer = () => {
           </div>
 
           {/* Contact */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <h4 className="text-sm font-semibold uppercase tracking-widest text-white">Contact</h4>
             <ul className="mt-4 space-y-4">
               <li>

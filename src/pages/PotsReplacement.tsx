@@ -489,7 +489,7 @@ const PotsReplacement = () => {
                             business day.
                         </p>
                     </div>
-                    <MultiStepForm defaultPainPoint="Replacing legacy copper lines" />
+                    <MultiStepForm preset="pots" />
                 </div>
             </section>
 

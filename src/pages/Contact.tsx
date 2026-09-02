@@ -48,7 +48,7 @@ const Contact = () => {
               <p className="mt-2 text-navy-500">Fill out the form below and we'll get back to you shortly.</p>
 
               <div className="mt-8">
-                <MultiStepForm />
+                <MultiStepForm preset="contact" />
               </div>
             </div>
 

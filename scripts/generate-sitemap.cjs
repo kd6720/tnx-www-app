@@ -29,6 +29,9 @@ const STATIC_ROUTES = [
   { path: '/about', priority: '0.6', changefreq: 'yearly' },
   { path: '/about/team', priority: '0.7', changefreq: 'monthly' },
   { path: '/contact', priority: '0.7', changefreq: 'yearly' },
+  { path: '/platforms/partner-hub', priority: '0.8', changefreq: 'monthly' },
+  { path: '/platforms/crm', priority: '0.8', changefreq: 'monthly' },
+  { path: '/partners', priority: '0.8', changefreq: 'monthly' },
 ];
 
 function parseFrontmatter(raw) {
