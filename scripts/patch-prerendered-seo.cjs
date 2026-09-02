@@ -123,6 +123,12 @@ function stripHeroVideoSrc(html) {
 function patchPage(filePath, seo) {
   let html = fs.readFileSync(filePath, 'utf8');
   html = stripHeroVideoSrc(html);
+  if (seo.heroPoster) {
+    html = html.replace(
+      '</head>',
+      `<link rel="preload" as="image" href="${seo.heroPoster}" fetchpriority="high">\n</head>`
+    );
+  }
   html = upsertTitle(html, seo.title);
   html = upsertMeta(html, 'name', 'description', seo.description);
   html = upsertLink(html, 'canonical', seo.canonical);
@@ -308,6 +314,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'pots-replacement',
+    heroPoster: '/media/hero-pots-poster.jpg',
     title: 'POTS Replacement | TrustedNetworx',
     description: 'Modern, cost-saving alternatives to legacy POTS lines. Migrate analog systems to reliable IP and cellular networks with TrustedNetworx.',
     jsonLd: [
@@ -322,6 +329,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'ai-consulting',
+    heroPoster: '/media/hero-ai-consulting-poster.jpg',
     title: 'AI Consulting & Solutions | TrustedNetworx',
     description: 'Practical AI consulting and implementation for telecom operators, channel partners, and multi-site businesses — automation, customer engagement, and strategy with measurable ROI.',
     jsonLd: [
@@ -336,6 +344,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'ai-workforce',
+    heroPoster: '/media/hero-ai-workforce-poster.jpg',
     title: 'AI Workforce — AI Agents for Telecom | TrustedNetworx',
     description: 'Deploy AI sales, service, and operations agents built for telecom. Lead qualification, scheduling, email triage, infrastructure monitoring — 24/7, telecom-native.',
     jsonLd: [
@@ -353,6 +362,7 @@ const ROUTE_PAGES = [
   // duplicate-content page with mismatched meta).
   {
     route: 'internet-connectivity',
+    heroPoster: '/media/hero-connectivity-poster.jpg',
     title: 'Internet Connectivity | TrustedNetworx',
     description: 'Enterprise-grade internet connectivity — managed SD-WAN, Starlink satellite broadband, and global IoT SIM solutions to keep your business securely online.',
     jsonLd: [
@@ -367,6 +377,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'voice-solutions',
+    heroPoster: '/media/hero-voice-poster.jpg',
     title: 'Voice Solutions — IP PBX & Unified Communications | TrustedNetworx',
     description: 'Enterprise voice communications from TrustedNetworx — cloud-based IP PBX, HD voice, unified communications, voice analytics, and scalable cloud calling for modern business.',
     jsonLd: [
@@ -381,6 +392,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'mobility-solutions',
+    heroPoster: '/media/hero-mobility-poster.jpg',
     title: 'Mobility Solutions | TrustedNetworx',
     description: 'Enterprise mobility management from TrustedNetworx — MDaaS, IoT connectivity, and unified endpoint management to keep your mobile workforce secure and productive.',
     jsonLd: [
@@ -509,7 +521,7 @@ function patchRoutePages(distDir) {
   const fallbackHtmlPath = path.join(distDir, 'index.html');
   let count = 0;
 
-  for (const { route, title, description, jsonLd } of ROUTE_PAGES) {
+  for (const { route, title, description, jsonLd, heroPoster } of ROUTE_PAGES) {
     const filePath = path.join(distDir, route, 'index.html');
     ensureHtmlShell(filePath, fallbackHtmlPath);
     patchPage(filePath, {
@@ -519,6 +531,7 @@ function patchRoutePages(distDir) {
       image: DEFAULT_OG_IMAGE,
       type: 'website',
       jsonLd: jsonLd || [],
+      heroPoster,
     });
     count++;
   }
