@@ -1,6 +1,5 @@
 ---
 title: "Fire Alarm Supervision and Testing: The NFPA 72 Rules Most Facilities Overlook"
-redirect: /blog/nfpa-72-compliance-fire-alarm-communications-practical-guide
 date: "2026-08-13"
 category: "Compliance & Regulation"
 description: "NFPA 72 compliance is about supervision and testing, not just installation. Here's what inspectors actually check — and where facilities slip."

@@ -1,6 +1,5 @@
 ---
 title: "Why Most AI Projects Fail — and the Three Fixes That Change the Odds"
-redirect: /blog/why-most-ai-projects-fail-and-how-to-succeed
 date: "2026-08-22"
 category: "AI for Business"
 description: "Most AI projects don't fail on technology — they fail on scope, data, and adoption. Here's how to fix all three before you spend a dime."

@@ -1,6 +1,5 @@
 ---
 title: "The End of T1 Lines: Migration Strategies That Actually Work"
-redirect: /blog/end-of-t1-lines-migration-strategies
 date: "2026-08-09"
 category: "Telecom Modernization"
 description: "Carriers are retiring T1 lines faster than ever. Here are the migration strategies that keep your business running without blowing the budget."

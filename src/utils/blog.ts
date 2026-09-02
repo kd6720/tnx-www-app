@@ -203,6 +203,7 @@ const RAW_POSTS: [string, string][] = [
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
+  .filter(([, raw]) => !parseFrontmatter(raw).data.redirect)
   .map(([slug, raw]) => {
     const { data, content } = parseFrontmatter(raw);
     return {

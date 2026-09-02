@@ -1,5 +1,6 @@
 ---
 title: "Why POTS Replacement Matters Now More Than Ever"
+redirect: /blog/pots-replacement-roi-real-cost-of-waiting
 date: "2026-06-18"
 category: "Telecom Modernization"
 description: "The copper network is retiring. Here's what it means for your business and why waiting isn't an option."

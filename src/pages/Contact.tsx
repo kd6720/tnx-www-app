@@ -18,10 +18,13 @@ const Contact = () => {
           url: 'https://trustednetworx.com',
           address: {
             '@type': 'PostalAddress',
+            streetAddress: '18001 Old Cutler Rd',
             addressLocality: 'Miami',
             addressRegion: 'FL',
+            postalCode: '33157',
             addressCountry: 'US',
           },
+          openingHours: 'Mo-Su 00:00-24:00',
         }}
       />
 

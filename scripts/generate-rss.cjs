@@ -33,8 +33,9 @@ const posts = fs.readdirSync(blogDir)
     const slug = f.replace(/\.md$/, '');
     const raw = fs.readFileSync(path.join(blogDir, f), 'utf8');
     const { data } = parseFrontmatter(raw);
-    return { slug, title: data.title || slug, date: data.date, description: data.description || '', category: data.category || '', image: data.image || null };
+    return { slug, title: data.title || slug, date: data.date, description: data.description || '', category: data.category || '', image: data.image || null, redirect: data.redirect || '' };
   })
+  .filter(p => !p.redirect)
   .sort((a, b) => new Date(b.date) - new Date(a.date));
 
 const items = posts.map(p =>

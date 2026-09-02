@@ -1,6 +1,5 @@
 ---
 title: "Government Telecom Modernization: How to Pay for It Before the Copper Runs Out"
-redirect: /blog/government-telecom-modernization-navigating-procurement-compliance
 date: "2026-08-25"
 category: "Industry Spotlights"
 description: "Government agencies can fund telecom modernization by redirecting legacy circuit spend before copper sunset forces a costly scramble."

@@ -1,6 +1,5 @@
 ---
 title: "SD-WAN in 2026: The ROI Case Every Business Leader Should See"
-redirect: /blog/sd-wan-explained-for-business-leaders
 date: "2026-08-20"
 category: "Telecom Modernization"
 description: "SD-WAN isn't a buzzword anymore — it's a line item with real ROI. Here's the math, the mistakes that kill the savings, and how to know if you're ready."

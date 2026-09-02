@@ -18,7 +18,16 @@ interface SeoProps {
   jsonLd?: object | object[];
 }
 
+/** Intermediate path segments that map to a real page (linked in breadcrumbs). */
+const SECTION_ROUTES: Record<string, string> = {
+  tools: '/tools',
+  blog: '/blog',
+  about: '/about',
+  'about/team': '/about/team',
+};
+
 /** Build a BreadcrumbList from the pathname (Home > Segment > Segment). */
+
 function buildBreadcrumbs(pathname: string) {
   const segments = pathname.split('/').filter(Boolean);
   if (segments.length === 0) return null;
@@ -26,15 +35,19 @@ function buildBreadcrumbs(pathname: string) {
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
   ];
   let acc = '';
-  for (const seg of segments) {
+  segments.forEach((seg, i) => {
     acc += `/${seg}`;
+    const isLeaf = i === segments.length - 1;
+    // Only link intermediate segments that resolve to a real page; otherwise
+    // drop them (e.g. /platforms/* has no single /platforms page).
+    if (!isLeaf && !SECTION_ROUTES[acc.slice(1)]) return;
     items.push({
       '@type': 'ListItem',
       position: items.length + 1,
-      name: seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+      name: seg.replace(/-/g, ' ').replace(/\b\w/g, (ch) => ch.toUpperCase()),
       item: `${SITE_URL}${acc}`,
     });
-  }
+  });
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -64,10 +77,14 @@ const Seo = ({
       ? image
       : `${SITE_URL}${image}`
     : DEFAULT_OG_IMAGE;
-  const breadcrumbs = buildBreadcrumbs(pathname);
+  const callerJsonLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+  const callerHasBreadcrumb = callerJsonLd.some(
+    (block) => block && (block['@type'] === 'BreadcrumbList' || (Array.isArray(block) && block.some((b) => b && b['@type'] === 'BreadcrumbList'))),
+  );
+  const breadcrumbs = callerHasBreadcrumb ? null : buildBreadcrumbs(pathname);
   const blocks = [
     ...(breadcrumbs ? [breadcrumbs] : []),
-    ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []),
+    ...callerJsonLd,
   ];
 
   useEffect(() => {

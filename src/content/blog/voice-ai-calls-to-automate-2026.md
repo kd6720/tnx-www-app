@@ -1,6 +1,5 @@
 ---
 title: "Voice AI in Business: The Calls You Should Automate (And the Ones You Shouldn't)"
-redirect: /blog/voice-ai-in-business-beyond-the-robot-operator
 date: "2026-08-23"
 category: "AI for Business"
 description: "Voice AI isn't about replacing people — it's about deciding which calls deserve a human and which don't. Here's how to draw that line."
