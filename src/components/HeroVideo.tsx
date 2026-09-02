@@ -106,6 +106,7 @@ const HeroVideo = ({
           loop
           playsInline
           preload="none"
+          poster={`/media/${name}-poster.jpg`}
         />
       </div>
       <div
