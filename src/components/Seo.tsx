@@ -24,6 +24,16 @@ const SECTION_ROUTES: Record<string, string> = {
   blog: '/blog',
   about: '/about',
   'about/team': '/about/team',
+  'pots-replacement': '/pots-replacement',
+};
+
+// Segments whose display name isn't derivable from the slug (model numbers).
+const CRUMB_NAMES: Record<string, string> = {
+  'pots-replacement': 'POTS Replacement',
+  '90x1': '90X1',
+  '90x2': '90X2',
+  '90x5': '90X5',
+  ara: 'Ara',
 };
 
 /** Build a BreadcrumbList from the pathname (Home > Segment > Segment). */
@@ -44,7 +54,7 @@ function buildBreadcrumbs(pathname: string) {
     items.push({
       '@type': 'ListItem',
       position: items.length + 1,
-      name: seg.replace(/-/g, ' ').replace(/\b\w/g, (ch) => ch.toUpperCase()),
+      name: CRUMB_NAMES[seg] || seg.replace(/-/g, ' ').replace(/\b\w/g, (ch) => ch.toUpperCase()),
       item: `${SITE_URL}${acc}`,
     });
   });

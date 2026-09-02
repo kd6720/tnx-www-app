@@ -18,6 +18,7 @@ const STRUCTURED_DATA_TYPES = [
   'FAQPage',
   'BreadcrumbList',
   'LocalBusiness',
+  'Product',
 ];
 
 function parseFrontmatter(raw) {
@@ -231,10 +232,24 @@ function patchBlogPosts(distDir, srcBlogDir, rootDir) {
 
 // Intermediate path segments that map to a real page (mirrors Seo.tsx so the
 // prerendered BreadcrumbList matches what the runtime component emits).
-const SECTION_ROUTES = { tools: '/tools', about: '/about', 'about/team': '/about/team' };
+const SECTION_ROUTES = {
+  tools: '/tools',
+  about: '/about',
+  'about/team': '/about/team',
+  'pots-replacement': '/pots-replacement',
+};
+
+// Segments whose display name isn't derivable from the slug (model numbers).
+const CRUMB_NAMES = {
+  'pots-replacement': 'POTS Replacement',
+  '90x1': '90X1',
+  '90x2': '90X2',
+  '90x5': '90X5',
+  ara: 'Ara',
+};
 
 function titleCase(seg) {
-  return seg.replace(/-/g, ' ').replace(/\b\w/g, (ch) => ch.toUpperCase());
+  return CRUMB_NAMES[seg] || seg.replace(/-/g, ' ').replace(/\b\w/g, (ch) => ch.toUpperCase());
 }
 
 /** BreadcrumbList mirroring src/components/Seo.tsx buildBreadcrumbs(). */
@@ -270,6 +285,19 @@ function serviceJsonLd({ name, serviceType, route, description }) {
     provider: { '@type': 'Organization', name: 'TrustedNetworx' },
     areaServed: { '@type': 'Country', name: 'US' },
     serviceType,
+    description,
+    url: `${SITE_URL}/${route}`,
+  };
+}
+
+/** Product schema for the four POTS IN A BOX product pages (no offers/pricing). */
+function productJsonLd({ name, route, description }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name,
+    brand: { '@type': 'Brand', name: 'DataRemote' },
+    category: 'POTS Replacement',
     description,
     url: `${SITE_URL}/${route}`,
   };
@@ -316,7 +344,7 @@ const ROUTE_PAGES = [
     route: 'pots-replacement',
     heroPoster: '/media/hero-pots-poster.v2.jpg',
     title: 'POTS Replacement | TrustedNetworx',
-    description: 'Modern, cost-saving alternatives to legacy POTS lines. Migrate analog systems to reliable IP and cellular networks with TrustedNetworx.',
+    description: 'Replace legacy analog lines with the DataRemote POTS IN A BOX platform — 8-line 5G and LTE units with 48-hour battery backup, aligned with UL 864, deployed and monitored by TrustedNetworx.',
     jsonLd: [
       serviceJsonLd({
         name: 'POTS Replacement',
@@ -325,6 +353,62 @@ const ROUTE_PAGES = [
         description: 'Modern, cost-saving alternatives to legacy POTS lines.',
       }),
       buildBreadcrumbList('pots-replacement'),
+    ],
+  },
+  {
+    route: 'pots-replacement/90x1',
+    heroPoster: '/media/hero-pots-poster.v2.jpg',
+    title: 'DataRemote POTS IN A BOX 90X1 — 5G POTS Replacement | TrustedNetworx',
+    description: 'The DataRemote 90X1 replaces eight analog lines over 5G Sub-6 with an 18-cell 15Ah battery and up to 48 hours of standby. UL 864 aligned, CSFM listed, deployed and monitored by TrustedNetworx.',
+    jsonLd: [
+      productJsonLd({
+        name: 'POTS IN A BOX 90X1',
+        route: 'pots-replacement/90x1',
+        description: 'Eight-line 5G Sub-6 POTS replacement with an 18-cell 15Ah battery and up to 48 hours of standby.',
+      }),
+      buildBreadcrumbList('pots-replacement/90x1'),
+    ],
+  },
+  {
+    route: 'pots-replacement/90x2',
+    heroPoster: '/media/hero-pots-poster.v2.jpg',
+    title: 'DataRemote POTS IN A BOX 90X2 — LTE POTS Replacement | TrustedNetworx',
+    description: 'The DataRemote 90X2 replaces eight analog lines over LTE including band 14 for FirstNet, with a 48-hour battery and a 12VDC 4.0A UPS output. FirstNet Trusted and Bell Canada approved.',
+    jsonLd: [
+      productJsonLd({
+        name: 'POTS IN A BOX 90X2',
+        route: 'pots-replacement/90x2',
+        description: 'Eight-line LTE POTS replacement including band 14 for FirstNet, with a 48-hour battery.',
+      }),
+      buildBreadcrumbList('pots-replacement/90x2'),
+    ],
+  },
+  {
+    route: 'pots-replacement/90x5',
+    heroPoster: '/media/hero-pots-poster.v2.jpg',
+    title: 'DataRemote POTS IN A BOX 90X5 — Modular POTS Replacement | TrustedNetworx',
+    description: 'The DataRemote 90X5 is a modular POTS replacement platform: a PoE-detachable 5G RedCap radio, a 4-line gateway expandable to 8 via RJ-14, and a swappable battery module. Pre-order, specifications preliminary.',
+    jsonLd: [
+      productJsonLd({
+        name: 'POTS IN A BOX 90X5',
+        route: 'pots-replacement/90x5',
+        description: 'Modular POTS replacement with a PoE-detachable 5G RedCap radio and a 4-line gateway expandable to 8 via RJ-14.',
+      }),
+      buildBreadcrumbList('pots-replacement/90x5'),
+    ],
+  },
+  {
+    route: 'pots-replacement/ara',
+    heroPoster: '/media/hero-pots-poster.v2.jpg',
+    title: 'Ara — DataRemote POTS IN A BOX Device Management | TrustedNetworx',
+    description: 'Ara is DataRemote’s cloud device-management platform for the POTS IN A BOX family: remote access, firmware upgrade, line-status alerts, no-reboot configuration and a RESTful API for OSS/BSS integration.',
+    jsonLd: [
+      productJsonLd({
+        name: 'Ara',
+        route: 'pots-replacement/ara',
+        description: 'Cloud device-management platform for the DataRemote POTS IN A BOX family.',
+      }),
+      buildBreadcrumbList('pots-replacement/ara'),
     ],
   },
   {
@@ -437,7 +521,7 @@ const ROUTE_PAGES = [
       faqPageJsonLd([
         { q: 'Can I import from Pipedrive / HubSpot?', a: 'Yes — CSV import with field mapping.' },
         { q: 'Does it replace Partner Hub?', a: 'No. Partner Hub manages agents; TNX CRM manages deals. They share data.' },
-        { q: 'Can partners see each other\u2019s deals?', a: 'No. Partner visibility is scoped to their own book.' },
+        { q: 'Can partners see each other’s deals?', a: 'No. Partner visibility is scoped to their own book.' },
       ]),
       buildBreadcrumbList('platforms/crm'),
     ],
