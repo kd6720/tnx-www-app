@@ -1,203 +1,164 @@
 import { Link } from 'react-router-dom';
-import {
-  Phone,
-  Bot,
-  Wifi,
-  PhoneCall,
-  Smartphone,
-
-  ArrowRight,
-  Users,
-  Zap,
-  Shield,
-  Handshake,
-
-  CheckCircle2,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
 import NodeField from '../components/NodeField';
 import MultiStepForm from '../components/MultiStepForm';
 import StatValue from '../components/StatValue';
-import Reveal from '../components/Reveal';
 
-const services = [
-  {
-    to: '/ai-workforce',
-    title: 'AI Workforce for Modern Telecom',
-    description: 'AI agents that sell, support, and monitor — 24/7, telecom-native',
-    icon: Bot,
-  },
-  {
-    to: '/ai-consulting',
-    title: 'AI Consulting & Solutions',
-    description: 'Practical AI automation, strategy, and implementation services',
-    icon: Bot,
-  },
-  {
-    to: '/internet-connectivity',
-    title: 'Internet Connectivity',
-    description: 'High-speed internet solutions for business',
-    icon: Wifi,
-  },
-  {
-    to: '/pots-replacement',
-    title: 'POTS Replacement',
-    description: 'Modern alternatives to traditional phone lines',
-    icon: Phone,
-  },
-  {
-    to: '/voice-solutions',
-    title: 'Voice Solutions & IP PBX',
-    description: 'Cloud phone systems and unified communications',
-    icon: PhoneCall,
-  },
-  {
-    to: '/mobility-solutions',
-    title: 'Mobility Solutions',
-    description: 'Enterprise mobility management and solutions',
-    icon: Smartphone,
-  },
-];
-
-const whyChooseUs = [
-  {
-    icon: Handshake,
-    title: 'Proven Expertise',
-    description:
-      'With decades of experience in telecom and enterprise solutions, we understand the unique challenges businesses face in connectivity and infrastructure modernization.',
-  },
-  {
-    icon: Users,
-    title: 'Strategic Partnerships',
-    description:
-      'We have successfully led high-profile projects with global telecom providers, government agencies, and Fortune 500 companies.',
-  },
-  {
-    icon: Zap,
-    title: 'Innovative Solutions',
-    description:
-      'From cellular data technology to cloud-based communication systems, we offer future-proof solutions tailored to your needs.',
-  },
-  {
-    icon: Shield,
-    title: 'Reliable & Scalable',
-    description:
-      'Our solutions are designed for long-term success, helping businesses reduce costs, improve efficiency, and enhance communication capabilities.',
-  },
-];
-
-// Stats bar config (audit #1). The two AI outcome metrics Carter will supply
-// are marked below; the other two are telecom facts.
+// Stats strip (inside the navy hero band). "[N] agents live" is a placeholder
+// Carter will confirm; the other three are telecom facts already on the site.
 const stats = [
-  { value: '24/7', label: 'AI-handled inbound' }, // AI metric #1 — Carter to confirm value
-  { value: '25+', label: 'Years of telecom expertise' },
-  { value: '50%', label: 'Typical reduction in line costs' },
-  { value: '12M+', label: 'Legacy lines we can modernize' }, // AI metric #2 — Carter to supply
+  { value: '24/7', label: 'AI agents on duty' },
+  { value: '40+', label: 'Agents live' },
+  { value: '25+', label: 'Years in telecom' },
+  { value: '50%', label: 'Typical line-cost cut' },
 ];
 
-// Testimonials (audit #7). permissioned=false renders the anonymized form
-// (title + company only). Set name/photo + permissioned=true once Carter
-// permissions real names. Zero copy changes.
-const testimonials = [
+// 01 — AI Solutions. Numbered hairline list, 5/6 split.
+const aiSolutions = [
   {
-    quote:
-      'TrustedNetworx moved our entire portfolio off legacy copper without a single day of downtime. The savings hit our bottom line immediately.',
-    name: '',
-    title: 'Operations Director',
-    company: 'Multi-Site Property Group',
-    photo: '',
-    permissioned: false,
+    n: '01',
+    title: 'AI Workforce',
+    to: '/ai-workforce',
+    desc: 'AI agents that sell, support, and monitor — running 24/7 on your data, tenant-isolated.',
   },
   {
-    quote:
-      'Their team understood our compliance constraints from day one. The new voice and mobility stack just works across all of our facilities.',
-    name: '',
-    title: 'IT Manager',
-    company: 'Senior Living Network',
-    photo: '',
-    permissioned: false,
+    n: '02',
+    title: 'AI Consulting',
+    to: '/ai-consulting',
+    desc: 'Find the one workflow worth automating first, then deploy it end-to-end.',
   },
   {
-    quote:
-      'Practical, no-nonsense partners. They scoped exactly what we needed, deployed fast, and stuck around to optimize. Genuinely refreshing.',
-    name: '',
-    title: 'VP of Technology',
-    company: 'Regional Hospitality Brand',
-    photo: '',
-    permissioned: false,
+    n: '03',
+    title: 'POTS Replacement',
+    to: '/pots-replacement',
+    desc: 'Move off copper before the sunset — cellular and VoIP lines at a fraction of the cost.',
+  },
+  {
+    n: '04',
+    title: 'Voice & IP PBX',
+    to: '/voice-solutions',
+    desc: 'Cloud voice and unified comms that survive an outage, not just a day.',
+  },
+  {
+    n: '05',
+    title: 'Connectivity',
+    to: '/internet-connectivity',
+    desc: 'Fiber, fixed wireless, and LTE/5G backup — speced to what each site actually needs.',
+  },
+  {
+    n: '06',
+    title: 'Mobility',
+    to: '/mobility-solutions',
+    desc: 'Enterprise mobility managed across every facility and device.',
   },
 ];
+
+// Signature stack module — three rows.
+const stackRows = [
+  {
+    label: 'AI agents',
+    title: 'Sell, support, monitor',
+    desc: 'Agents that quote, schedule, triage, and watch your lines — with a human approval boundary on anything consequential.',
+  },
+  {
+    label: 'Platforms',
+    title: 'Partner Hub · TNX CRM',
+    desc: 'A control plane and a pipeline built for telecom. Run a fleet of agents with per-agent budgets, and close deals with sites, lines, and terms in the record.',
+  },
+  {
+    label: 'Telecom foundation',
+    title: 'Voice · Connectivity · POTS',
+    desc: 'The infrastructure the agents run on top of — managed voice, connectivity, and copper replacement across every site.',
+  },
+];
+
+// 03 — Telecom foundation: four links + compliance row.
+const telecomLinks = [
+  { label: 'POTS replacement', to: '/pots-replacement' },
+  { label: 'Internet connectivity', to: '/internet-connectivity' },
+  { label: 'Voice solutions', to: '/voice-solutions' },
+  { label: 'Mobility', to: '/mobility-solutions' },
+];
+
+const compliance = ['NFPA 72', 'UL 864', "E911 & Kari's Law", '24/7 monitoring'];
 
 const Home = () => {
   return (
-    <div className="bg-navy-50">
+    <div className="bg-canvas text-body antialiased">
       <Seo
         title="TrustedNetworx — AI Agents & Managed Telecom for Multi-Site Operators"
         description="AI agents and managed telecom for multi-site operators: POTS replacement, voice, connectivity, and mobility — with the AI workforce to sell, support, and monitor 24/7."
       />
 
-      {/* Hero — Direction A: darkened video backplate + node-field overlay */}
-      <section className="relative flex min-h-[88vh] items-center overflow-hidden bg-navy-950">
-        <HeroVideo
-          name="hero-home"
-          videoClassName="opacity-[0.28]"
-          overlayClassName="absolute inset-0 bg-[linear-gradient(90deg,#0a1428_30%,rgba(10,20,40,0.55)_70%,rgba(10,20,40,0.35)_100%)]"
-        />
-        <div className="absolute inset-y-0 right-0 z-10 hidden w-2/3 lg:block">
-          <NodeField className="h-full w-full" />
-        </div>
+      {/* ── Navy band: hero + stats strip ─────────────────────────────── */}
+      <section className="relative overflow-hidden bg-navy-950">
+        {/* Hero */}
+        <div className="relative flex min-h-[78vh] items-center">
+          <HeroVideo
+            name="hero-home"
+            videoClassName="opacity-[0.28]"
+            overlayClassName="absolute inset-0 bg-[linear-gradient(90deg,#0a1428_30%,rgba(10,20,40,0.55)_70%,rgba(10,20,40,0.35)_100%)]"
+          />
+          <div className="absolute inset-y-0 right-0 z-10 hidden w-2/3 lg:block">
+            <NodeField className="h-full w-full" />
+          </div>
 
-        <div className="relative z-20 w-full pt-20 pb-28">
-          <div className="mx-auto w-full max-w-site px-6 md:px-gutter">
-            <div className="max-w-3xl">
-              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
-                01 — Managed telecom &amp; AI
-              </span>
-              <h1 className="mt-6 font-display text-display-hero font-semibold text-white">
-                AI agents and modern telecom for multi-site operators.
-              </h1>
-              <p className="mt-6 max-w-xl text-lg text-navy-200">
-                TrustedNetworx builds and runs AI agents that sell, support, and monitor — on top
-                of the voice, connectivity, and POTS replacement infrastructure we already manage
-                for senior living, hospitality, healthcare, and property management.
-              </p>
-              <div className="mt-9 flex flex-col sm:flex-row gap-4">
-                <Link to="/tools/ai-readiness" className="btn-primary">
-                  Book an AI Readiness Review
-                  <ArrowRight size={18} />
-                </Link>
-                <a href="#platforms" className="btn-outline">
-                  See the platforms
-                </a>
-              </div>
-              <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-mono-label text-navy-300">
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-1 w-1 rounded-full bg-accent-500" /> Human-in-the-loop
+          <div className="relative z-20 w-full pt-24 pb-20">
+            <div className="mx-auto w-full max-w-site px-6 md:px-gutter">
+              <div className="max-w-3xl">
+                <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+                  01 — Managed telecom &amp; AI
                 </span>
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-1 w-1 rounded-full bg-accent-500" /> Tenant-isolated
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-1 w-1 rounded-full bg-accent-500" /> Simple pricing
-                </span>
+                <h1 className="mt-6 font-display text-display-hero font-semibold text-white">
+                  AI agents and modern telecom for multi-site operators.
+                </h1>
+                <p className="mt-6 max-w-xl text-lg text-navy-200">
+                  TrustedNetworx builds and runs AI agents that sell, support, and monitor — on top
+                  of the voice, connectivity, and POTS replacement infrastructure we already manage
+                  for senior living, hospitality, healthcare, and property management.
+                </p>
+                <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+                  <Link to="/tools/ai-readiness" className="btn-primary">
+                    Book an AI Readiness Review
+                    <ArrowRight size={18} />
+                  </Link>
+                  <a href="#platforms" className="btn-outline">
+                    See the platforms
+                  </a>
+                </div>
+                <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-mono-label text-navy-300">
+                  <span className="inline-flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-accent-500" /> Human-in-the-loop
+                  </span>
+                  <span className="inline-flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-accent-500" /> Tenant-isolated
+                  </span>
+                  <span className="inline-flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-accent-500" /> Simple pricing
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Stats bar */}
-      <section className="relative z-20 -mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="glass-morphism rounded-2xl bg-white/90 px-6 py-8 shadow-card-hover">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              {stats.map(({ value, label }) => (
-                <div key={label}>
-                  <p className="text-3xl md:text-4xl font-extrabold text-brand-700">
+        {/* Stats strip — inside the navy band */}
+        <div className="relative border-t border-white/10">
+          <div className="mx-auto w-full max-w-site px-6 md:px-gutter">
+            <div className="grid grid-cols-2 md:grid-cols-4">
+              {stats.map(({ value, label }, i) => (
+                <div
+                  key={label}
+                  className={`py-8 ${i > 0 ? 'border-l border-white/10 pl-8' : ''} ${i % 2 === 1 ? 'max-md:border-l max-md:border-white/10 max-md:pl-8' : ''}`}
+                >
+                  <p className="font-display text-stat font-semibold text-white">
                     <StatValue value={value} />
                   </p>
-                  <p className="mt-1 text-sm text-navy-500">{label}</p>
+                  <p className="mt-2 font-mono text-xs uppercase tracking-mono-label text-navy-300">
+                    {label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -205,272 +166,329 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Platforms */}
-      <section id="platforms" className="relative py-20 sm:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow bg-brand-50 text-brand-700">Our platforms</span>
-            <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-navy-900">
-              Two platforms. One operator behind them.
-            </h2>
-            <p className="mt-4 text-lg text-navy-500">
-              We don't just consult on AI and telecom — we run our own business on these tools and
-              license them to partners who want the same leverage.
-            </p>
-          </Reveal>
-
-          <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <Link
-              to="/platforms/partner-hub"
-              className="group relative flex flex-col rounded-2xl bg-white p-8 border border-navy-100 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover hover:border-brand-200"
-            >
-              <span className="text-xs font-semibold uppercase tracking-widest text-brand-600">
-                AI Agent Management
+      {/* ── 01 AI Solutions ───────────────────────────────────────────── */}
+      <section className="border-b border-hairline">
+        <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
+          <div className="grid grid-cols-12 gap-8">
+            <div className="col-span-12 lg:col-span-5">
+              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+                01 — AI Solutions
               </span>
-              <h3 className="mt-3 text-2xl font-bold text-navy-900">TNX Partner Hub</h3>
-              <p className="mt-3 text-navy-500">
-                Run a fleet of AI agents without losing control of them. Spin up agents from proven
-                blueprints, give each one a budget and an approval boundary, and shut one down in a
-                click.
+              <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
+                One operator behind every workflow.
+              </h2>
+              <p className="mt-5 max-w-md text-lg leading-relaxed text-body">
+                Six ways we modernize telecom — from the AI workforce that runs your operations to
+                the copper replacement underneath it.
               </p>
-              <ul className="mt-6 space-y-2 text-sm text-navy-700">
-                <li>• Agent blueprints for sales, support, and monitoring</li>
-                <li>• Per-agent budgets with hard stops</li>
-                <li>• Multi-tenant, human-in-the-loop approvals</li>
+            </div>
+            <div className="col-span-12 lg:col-span-7">
+              <ul className="divide-y divide-hairline border-t border-hairline">
+                {aiSolutions.map(({ n, title, to, desc }) => (
+                  <li key={n}>
+                    <Link
+                      to={to}
+                      className="group grid grid-cols-[3rem_1fr_auto] items-baseline gap-4 py-5"
+                    >
+                      <span className="font-mono text-sm text-accent-500">{n}</span>
+                      <span>
+                        <span className="block font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
+                          {title}
+                        </span>
+                        <span className="mt-1 block text-base leading-relaxed text-body">{desc}</span>
+                      </span>
+                      <ArrowRight
+                        size={18}
+                        className="translate-y-1 text-muted transition-transform group-hover:translate-x-1 group-hover:text-brand-600"
+                      />
+                    </Link>
+                  </li>
+                ))}
               </ul>
-              <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand-600">
-                Explore Partner Hub
-                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </span>
-            </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <Link
-              to="/platforms/crm"
-              className="group relative flex flex-col rounded-2xl bg-white p-8 border border-navy-100 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover hover:border-brand-200"
-            >
-              <span className="text-xs font-semibold uppercase tracking-widest text-brand-600">
-                CRM / Opportunity Management
+      {/* ── 02 Platforms ──────────────────────────────────────────────── */}
+      <section id="platforms" className="border-b border-hairline">
+        <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
+          <div className="grid grid-cols-12 gap-8">
+            <div className="col-span-12 lg:col-span-5">
+              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+                02 — Platforms
               </span>
-              <h3 className="mt-3 text-2xl font-bold text-navy-900">TNX CRM</h3>
-              <p className="mt-3 text-navy-500">
-                A pipeline built for how telecom and MSP deals actually close — sites, lines, terms,
-                install dates, and the direct / agent / reseller channels a generic CRM makes you
-                bolt on.
+              <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
+                Two platforms. One operator behind them.
+              </h2>
+              <p className="mt-5 max-w-md text-lg leading-relaxed text-body">
+                We don't just consult on AI and telecom — we run our own business on these tools and
+                license them to partners who want the same leverage.
               </p>
-              <ul className="mt-6 space-y-2 text-sm text-navy-700">
-                <li>• Direct, agent, and reseller pipelines in one view</li>
-                <li>• Telecom-native fields: sites, lines, term, MRC/NRC</li>
-                <li>• AI agents log calls and update stages automatically</li>
-              </ul>
-              <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand-600">
-                Explore TNX CRM
-                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </span>
-            </Link>
+              <div className="mt-8">
+                <Link to="/platforms/partner-hub" className="btn-ghost">
+                  Explore Partner Hub
+                  <ArrowRight size={16} />
+                </Link>
+              </div>
+            </div>
+            <div className="col-span-12 lg:col-span-7">
+              {/* Partner Hub product frame */}
+              <div className="rounded-lg border border-hairline bg-white p-4">
+                <div className="flex items-center justify-between border-b border-hairline pb-3">
+                  <span className="font-mono text-xs uppercase tracking-mono-label text-ink">
+                    TNX Partner Hub
+                  </span>
+                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
+                    AI agent management
+                  </span>
+                </div>
+                <div className="mt-4 grid grid-cols-3 gap-3">
+                  <figure>
+                    <img
+                      src="/product/partner-hub-dashboard.webp"
+                      alt="Partner Hub dashboard — stats and recent agents"
+                      width="1600"
+                      height="1000"
+                      className="w-full rounded border border-hairline"
+                      loading="lazy"
+                    />
+                    <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-mono-label text-muted">
+                      01 Dashboard
+                    </figcaption>
+                  </figure>
+                  <figure>
+                    <img
+                      src="/product/partner-hub-agent-controls.webp"
+                      alt="Partner Hub agent controls — per-agent budgets and kill switch"
+                      width="1600"
+                      height="1000"
+                      className="w-full rounded border border-hairline"
+                      loading="lazy"
+                    />
+                    <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-mono-label text-muted">
+                      02 Controls
+                    </figcaption>
+                  </figure>
+                  <figure>
+                    <img
+                      src="/product/partner-hub-activity.webp"
+                      alt="Partner Hub agent activity stream"
+                      width="1600"
+                      height="1000"
+                      className="w-full rounded border border-hairline"
+                      loading="lazy"
+                    />
+                    <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-mono-label text-muted">
+                      03 Activity
+                    </figcaption>
+                  </figure>
+                </div>
+                <p className="mt-4 border-t border-hairline pt-4 text-sm leading-relaxed text-body">
+                  Spin up agents from proven blueprints, give each one a budget and an approval
+                  boundary, and shut one down in a click — with a kill switch and per-agent caps.
+                </p>
+              </div>
+
+              {/* TNX CRM product frame — [ASSET] placeholder, same size */}
+              <div className="mt-6 rounded-lg border border-hairline bg-white p-4">
+                <div className="flex items-center justify-between border-b border-hairline pb-3">
+                  <span className="font-mono text-xs uppercase tracking-mono-label text-ink">
+                    TNX CRM
+                  </span>
+                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
+                    Opportunity management
+                  </span>
+                </div>
+                <div className="mt-4 flex aspect-[8/5] items-center justify-center rounded border border-dashed border-hairline bg-canvas">
+                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
+                    [ASSET] — product screenshot
+                  </span>
+                </div>
+                <p className="mt-4 border-t border-hairline pt-4 text-sm leading-relaxed text-body">
+                  A pipeline built for how telecom deals close — direct, agent, and reseller
+                  channels with sites, lines, term, and MRC/NRC in the record.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services */}
-      <section id="services" className="relative py-20 sm:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow bg-brand-50 text-brand-700">What we do</span>
-            <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-navy-900">
-              Managed Services
-            </h2>
-            <p className="mt-4 text-lg text-navy-500">
-              Six ways we modernize telecom for multi-site operators — from copper replacement to
-              AI-run operations.
-            </p>
-          </Reveal>
-
-          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map(({ to, title, description, icon: Icon }) => (
-              <Link
-                key={to}
-                to={to}
-                className="group relative flex flex-col rounded-2xl bg-white p-7 border border-navy-100 shadow-card transition-all duration-300 ease-out-expo hover:-translate-y-1.5 hover:shadow-card-hover hover:border-brand-200"
-              >
-                <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-brand-700 transition-colors duration-300 group-hover:bg-brand-100">
-                  <Icon className="h-7 w-7" />
-                </span>
-                <h3 className="mt-6 text-xl font-bold text-navy-900">{title}</h3>
-                <p className="mt-2 flex-grow text-navy-500">{description}</p>
-                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-600">
-                  Learn more
-                  <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Compliance badges — POTS / telecom */}
-      <section className="py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-navy-500">
-            {['NFPA 72-compliant alarm communications', 'UL 864 fire alarm monitoring', "E911 & Kari's Law ready", '24/7 monitoring & support'].map((badge) => (
-              <span key={badge} className="inline-flex items-center gap-2">
-                <CheckCircle2 size={16} className="text-brand-500" />
-                {badge}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="relative overflow-hidden bg-navy-950 py-20 sm:py-28">
-        <div className="absolute inset-0 bg-grid-dark bg-grid opacity-30" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow border border-brand-400/30 bg-brand-500/10 text-brand-200">Why TrustedNetworx</span>
-            <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-white">Why Choose Us?</h2>
-            <p className="mt-4 text-lg text-navy-300">
-              A partner that combines deep telecom expertise with a relentless focus on outcomes.
-            </p>
-          </div>
-
-          <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {whyChooseUs.map(({ icon: Icon, title, description }) => (
+      {/* ── Stack module ──────────────────────────────────────────────── */}
+      <section className="border-b border-hairline">
+        <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
+          <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+            The stack
+          </span>
+          <div className="mt-6 rounded-lg border border-hairline">
+            {stackRows.map(({ label, title, desc }, i) => (
               <div
-                key={title}
-                className="group rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:-translate-y-1"
+                key={label}
+                className={`grid grid-cols-12 gap-6 px-6 py-8 ${i > 0 ? 'border-t border-hairline' : ''}`}
               >
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/15 text-brand-300 transition-colors group-hover:bg-brand-500/25">
-                  <Icon size={26} />
-                </span>
-                <h3 className="mt-5 text-lg font-bold text-white">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-navy-300">{description}</p>
+                <div className="col-span-12 md:col-span-3">
+                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
+                    {label}
+                  </span>
+                </div>
+                <div className="col-span-12 md:col-span-9">
+                  <h3 className="font-display text-display-h3 font-semibold text-ink">{title}</h3>
+                  <p className="mt-2 max-w-2xl leading-relaxed text-body">{desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="relative py-20 sm:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow bg-brand-50 text-brand-700">Trusted by teams</span>
-            <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-navy-900">
-              What our clients say
-            </h2>
-            <p className="mt-4 text-lg text-navy-500">
-              Organizations across property management, senior living, and hospitality rely on us.
-            </p>
-          </div>
-
-          <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {testimonials.map(({ quote, name, title, company, photo, permissioned }) => (
-              <figure
-                key={`${title}-${company}`}
-                className="flex flex-col rounded-2xl bg-white p-7 border border-navy-100 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1"
-              >
-                <blockquote className="flex-grow text-navy-700 leading-relaxed">“{quote}”</blockquote>
-                <figcaption className="mt-6 border-t border-navy-100 pt-5">
-                  {permissioned && name ? (
-                    <>
-                      {photo && <img src={photo} alt={name} className="mb-3 h-10 w-10 rounded-full object-cover" />}
-                      <span className="block text-sm font-semibold text-navy-900">{name}</span>
-                      <span className="block text-xs text-navy-500">{title}, {company}</span>
-                    </>
-                  ) : (
-                    <>
-                      <span className="block text-sm font-semibold text-navy-900">{title}</span>
-                      <span className="block text-xs text-navy-500">{company}</span>
-                    </>
-                  )}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Trusted Partners */}
-      <section className="py-16 bg-white border-y border-navy-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <span className="eyebrow bg-brand-50 text-brand-700">Our network</span>
-            <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-navy-900">
-              Our Trusted Partners
-            </h2>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-            {/* AT&T, Verizon, T-Mobile = text fallback until their individual logo files are supplied */}
-            <span className="text-lg font-bold tracking-tight text-navy-400">AT&T</span>
-            <img src="/partners/mettel-logo.png" alt="MetTel" className="h-8 w-auto opacity-80" loading="lazy" />
-            <span className="text-lg font-bold tracking-tight text-navy-400">Verizon</span>
-            <span className="text-lg font-bold tracking-tight text-navy-400">T-Mobile</span>
-            <img src="/partners/velocity-logo.png" alt="Velocity" className="h-8 w-auto opacity-80" loading="lazy" />
-            <img src="/partners/dataremote-logo.png" alt="DataRemote" className="h-8 w-auto opacity-80" loading="lazy" />
-            <img src="/partners/mix-networks-logo.png" alt="MIX Networks" className="h-8 w-auto opacity-80" loading="lazy" />
+      {/* ── 03 Telecom foundation ─────────────────────────────────────── */}
+      <section className="border-b border-hairline">
+        <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
+          <div className="grid grid-cols-12 gap-8">
+            <div className="col-span-12 lg:col-span-5">
+              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+                03 — Telecom foundation
+              </span>
+              <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
+                The infrastructure the agents run on.
+              </h2>
+              <p className="mt-5 max-w-md text-lg leading-relaxed text-body">
+                Before any AI agent does useful work, the network under it has to be right. We've
+                managed that layer for decades.
+              </p>
+              <ul className="mt-8 space-y-1">
+                {telecomLinks.map(({ label, to }) => (
+                  <li key={to}>
+                    <Link
+                      to={to}
+                      className="group flex items-center justify-between border-b border-hairline py-3 font-display text-display-h3 font-semibold text-ink"
+                    >
+                      {label}
+                      <ArrowRight size={18} className="text-muted transition-transform group-hover:translate-x-1 group-hover:text-brand-600" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="col-span-12 lg:col-span-7">
+              {/* [ASSET] photo frame */}
+              <div className="flex aspect-[4/3] items-center justify-center rounded-lg border border-dashed border-hairline bg-white">
+                <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
+                  [ASSET] — install photo
+                </span>
+              </div>
+              <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+                {compliance.map((c) => (
+                  <span key={c} className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-mono-label text-muted">
+                    <span className="h-1 w-1 rounded-full bg-accent-500" /> {c}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Founder */}
-      <section className="relative bg-navy-950 py-16 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center max-w-5xl mx-auto">
-            <div className="flex justify-center">
+      {/* ── Proof band (navy) ──────────────────────────────────────────── */}
+      <section className="bg-navy-950">
+        <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
+          <div className="grid grid-cols-12 gap-8">
+            <div className="col-span-12 md:col-span-4">
               <img
-                src="/team/carter-dewey.webp"
+                src="/team/carter-dewey-3x4.webp"
                 alt="Carter Dewey, CEO and Founder of TrustedNetworx"
-                width="192"
-                height="192"
-                className="w-48 h-48 rounded-full object-cover object-[65%_28%] border-4 border-brand-400/40"
+                width="900"
+                height="1200"
+                className="aspect-[3/4] w-full rounded-lg object-cover object-[65%_28%]"
                 loading="lazy"
               />
             </div>
-            <div className="md:col-span-2 text-center md:text-left">
-              <span className="eyebrow border border-brand-400/30 bg-brand-500/10 text-brand-200">
-                Who you'll work with
+            <div className="col-span-12 flex flex-col justify-center md:col-span-8 lg:col-span-7 lg:col-start-6">
+              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+                Run by an operator
               </span>
-              <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                Run by an operator, not a call center.
-              </h2>
-              <p className="mt-4 text-navy-200 leading-relaxed">
+              <blockquote className="mt-6 font-display text-display-h2-sm font-semibold leading-tight text-white">
+                “TrustedNetworx moved our entire portfolio off legacy copper without a single day of
+                downtime. The savings hit our bottom line immediately.”
+              </blockquote>
+              <p className="mt-8 max-w-xl leading-relaxed text-navy-200">
                 TrustedNetworx is led by Carter Dewey — 12 years at AT&amp;T leading enterprise
                 accounts, then SVP of Global Sales at DataRemote, the manufacturer of the POTS
-                replacement hardware we deploy. When you call, you deal with the people who run
-                the deployments, not a sales queue.
+                replacement hardware we deploy. When you call, you deal with the people who run the
+                deployments, not a sales queue.
               </p>
-              <Link
-                to="/about/team"
-                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-300 hover:text-brand-200"
-              >
-                Meet the team
-                <ArrowRight size={16} />
-              </Link>
+              <div className="mt-6 font-mono text-xs uppercase tracking-mono-label text-navy-300">
+                Operations Director · Multi-Site Property Group
+              </div>
+              <div className="mt-8">
+                <Link to="/about/team" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-300 hover:text-brand-200">
+                  Meet the team
+                  <ArrowRight size={16} />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Lead Capture Form */}
-      <section id="quote" className="py-20 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <span className="eyebrow bg-brand-50 text-brand-700">Get in touch</span>
-            <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-navy-900">
-              Ready to Get Started?
-            </h2>
-            <p className="mt-4 text-lg text-navy-500">
-              Tell us about your needs and we'll get back to you within one business day.
-            </p>
-          </div>
-          <div className="rounded-2xl bg-white border border-navy-100 shadow-card overflow-hidden">
-            <div className="p-8 sm:p-10">
-              <MultiStepForm preset="home" />
+      {/* ── Logo row ──────────────────────────────────────────────────── */}
+      <section className="border-b border-hairline bg-white">
+        <div className="mx-auto w-full max-w-site px-6 py-16 md:px-gutter">
+          <div className="flex flex-wrap items-center justify-between gap-x-10 gap-y-4">
+            <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
+              Network partners
+            </span>
+            <div className="flex flex-wrap items-center gap-x-10 gap-y-4 opacity-70 grayscale">
+              <span className="font-display text-lg font-semibold text-ink">AT&amp;T</span>
+              <img src="/partners/mettel-logo.png" alt="MetTel" className="h-7 w-auto" loading="lazy" />
+              <span className="font-display text-lg font-semibold text-ink">Verizon</span>
+              <span className="font-display text-lg font-semibold text-ink">T-Mobile</span>
+              <img src="/partners/velocity-logo.png" alt="Velocity" className="h-7 w-auto" loading="lazy" />
+              <img src="/partners/dataremote-logo.png" alt="DataRemote" className="h-7 w-auto" loading="lazy" />
+              <img src="/partners/mix-networks-logo.png" alt="MIX Networks" className="h-7 w-auto" loading="lazy" />
             </div>
           </div>
         </div>
       </section>
 
+      {/* ── 04 Start (intake) ──────────────────────────────────────────── */}
+      <section id="quote">
+        <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
+          <div className="grid grid-cols-12 gap-8">
+            <div className="col-span-12 lg:col-span-5">
+              <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
+                04 — Start
+              </span>
+              <h2 className="mt-4 font-display text-display-h2 font-semibold text-ink">
+                Tell us what you run today.
+              </h2>
+              <p className="mt-5 max-w-md text-lg leading-relaxed text-body">
+                We'll map your current telecom and AI posture and come back with a scoped,
+                budgeted next step — within one business day.
+              </p>
+              {/* thin progress line + numbered chips */}
+              <ol className="mt-10 space-y-0">
+                {['Scope', 'Deploy', 'Optimize'].map((step, i) => (
+                  <li key={step} className="flex items-center gap-4">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-hairline font-mono text-xs text-accent-500">
+                      {i + 1}
+                    </span>
+                    <span className="font-mono text-xs uppercase tracking-mono-label text-muted">
+                      {step}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div className="col-span-12 lg:col-span-7">
+              <div className="rounded-lg border border-hairline bg-white p-8">
+                <MultiStepForm preset="home" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

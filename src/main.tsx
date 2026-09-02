@@ -4,14 +4,32 @@ import App from './App.tsx';
 import './index.css';
 import './fonts.css';
 
-// Routes are pre-rendered to static HTML at build time (react-snap). Page
-// components are statically imported (no React.lazy), so the first render
-// already has the current route and never suspends to a fallback — the source
-// of the earlier 0.40 CLS (a Suspense spinner swapping the pre-rendered page,
-// making the footer jump). The pre-rendered markup and the re-rendered markup
-// are identical, so the swap is visually seamless.
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+// Blog/BlogPost are the only code-split routes (React.lazy in App.tsx) — the
+// blog content (61 markdown posts via blog.ts) is the one heavy chunk. For
+// /blog and /blog/:slug we resolve that chunk BEFORE rendering, so the lazy
+// component never suspends to a visible fallback on first load (keeps CLS at
+// zero). Every other page stays statically imported in the main bundle.
+async function bootstrap() {
+  const pathname = window.location.pathname.replace(/\/+$/, '') || '/';
+  if (pathname === '/blog') {
+    try {
+      await import('./pages/Blog');
+    } catch {
+      // Chunk failed to prefetch — render immediately; <Suspense> handles it.
+    }
+  } else if (pathname.startsWith('/blog/')) {
+    try {
+      await import('./pages/BlogPost');
+    } catch {
+      // Chunk failed to prefetch — render immediately; <Suspense> handles it.
+    }
+  }
+
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <App />
+    </StrictMode>
+  );
+}
+
+bootstrap();
