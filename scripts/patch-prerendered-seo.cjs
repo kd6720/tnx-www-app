@@ -106,8 +106,23 @@ function versionedImageUrl(rootDir, imagePath) {
   return `${SITE_URL}${imagePath}?v=${sha}`;
 }
 
+/**
+ * Remove the src attribute from any <video> whose class contains "hero-video".
+ * HeroVideo attaches its source imperatively after window load; react-snap
+ * snapshots the DOM after that attach, so without this strip the prerendered
+ * HTML would carry a src and fetch the crawler-sized video file at parse time
+ * on every viewport.
+ */
+function stripHeroVideoSrc(html) {
+  return html.replace(
+    /<video\b[^>]*class="[^"]*\bhero-video\b[^"]*"[^>]*>/g,
+    (tag) => tag.replace(/\s+src="[^"]*"/g, '')
+  );
+}
+
 function patchPage(filePath, seo) {
   let html = fs.readFileSync(filePath, 'utf8');
+  html = stripHeroVideoSrc(html);
   html = upsertTitle(html, seo.title);
   html = upsertMeta(html, 'name', 'description', seo.description);
   html = upsertLink(html, 'canonical', seo.canonical);
@@ -519,6 +534,19 @@ function main() {
   patchBlogIndex(distDir);
   patchBlogPosts(distDir, srcBlogDir, root);
   patchRoutePages(distDir);
+
+  // Homepage shell: strip the hero video src (so parse time never fetches it)
+  // and preload the poster — the LCP element that is otherwise discovered late
+  // as a CSS background-image.
+  const indexPath = path.join(distDir, 'index.html');
+  let indexHtml = fs.readFileSync(indexPath, 'utf8');
+  indexHtml = stripHeroVideoSrc(indexHtml);
+  indexHtml = indexHtml.replace(
+    '</head>',
+    '<link rel="preload" as="image" href="/media/hero-home-poster.jpg" fetchpriority="high">\n</head>'
+  );
+  fs.writeFileSync(indexPath, indexHtml, 'utf8');
+
   console.log('[postbuild] Patched prerendered blog SEO metadata.');
 }
 
