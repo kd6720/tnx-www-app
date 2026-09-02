@@ -1,4 +1,6 @@
 ---
+redirect: /blog/sd-wan-explained-for-business-leaders
+
 title: "SD-WAN in 2026: The ROI Case Every Business Leader Should See"
 date: "2026-08-20"
 category: "Telecom Modernization"

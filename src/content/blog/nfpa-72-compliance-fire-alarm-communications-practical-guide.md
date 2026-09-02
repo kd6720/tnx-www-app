@@ -1,6 +1,7 @@
 ---
 title: "NFPA 72 Compliance for Fire Alarm Communications: A Practical Guide"
 date: "2026-07-07"
+dateModified: "2026-08-13"
 category: "Compliance & Regulation"
 description: "Everything facility managers need to know about NFPA 72 fire alarm communication requirements — and how to stay compliant during modernization."
 author: "Carter Dewey"
@@ -66,6 +67,18 @@ Any time you change a fire alarm communication pathway, you're triggering a seri
 NFPA 72 compliance during a POTS migration isn't complicated, but it requires attention to detail. Pick a supervised, redundant communication path. Document the change. Notify the right people. Test it thoroughly.
 
 The facilities that get into trouble aren't the ones that migrate. They're the ones that wait until the POTS line fails — and then scramble.
+
+
+## Supervision and testing rules facilities overlook
+
+NFPA 72 compliance is about supervision and testing, not just installation. The code requires the communication path to be supervised — the system has to detect a failure and report it within **200 seconds**. That isn't a benchmark; it's a hard requirement.
+
+Two gaps show up constantly:
+
+- **Legacy POTS panels with no line supervision.** Older DACT setups dial out over a copper pair but can't reliably supervise that pair between the building and the central office. The panel reports everything is fine while the line quietly dies.
+- **IP communicators on unprotected network paths.** An IP path running through a switch, firewall, and router that lose power during an outage isn't supervised in any meaningful sense — the panel's battery doesn't help if the network in front of it is dark.
+
+Before you assume compliance, ask one question: if the communication path fails right now, does anyone find out within 200 seconds?
 
 ---
 

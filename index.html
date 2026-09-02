@@ -70,8 +70,9 @@
       <textarea name="message"></textarea>
     </form>
     <div id="root"></div>
-    <!-- Pipedrive CRM webforms — connects contact form to Pipedrive leads -->
-    <script src="https://webforms.pipedrive.com/f/loader"></script>
+    <!-- Pipedrive CRM webforms — connects contact form to Pipedrive leads.
+         defer so it never blocks first paint. -->
+    <script defer src="https://webforms.pipedrive.com/f/loader"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

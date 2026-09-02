@@ -7,24 +7,6 @@
   <language>en-us</language>
   <atom:link href="https://trustednetworx.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>FCC POTS Forbearance: The Cost of Waiting to Migrate</title>
-    <link>https://trustednetworx.com/blog/fcc-pots-forbearance-cost-of-waiting-2026</link>
-    <guid isPermaLink="true">https://trustednetworx.com/blog/fcc-pots-forbearance-cost-of-waiting-2026</guid>
-    <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
-    <description>Every month you delay your POTS migration costs real money — and the copper sunset won't wait for next year's budget. Here's the math.</description>
-    <category>Compliance &amp; Regulation</category>
-    <enclosure url="https://trustednetworx.com/blog-images/fcc-pots-forbearance-cost-of-waiting-2026.png" type="image/png"/>
-  </item>
-  <item>
-    <title>UL 864 Listed vs. UL 864 Compliant: What Fire Alarm Migration Actually Requires</title>
-    <link>https://trustednetworx.com/blog/ul-864-listed-vs-compliant-fire-alarm-2026</link>
-    <guid isPermaLink="true">https://trustednetworx.com/blog/ul-864-listed-vs-compliant-fire-alarm-2026</guid>
-    <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
-    <description>Buying a UL 864-listed communicator doesn't make your fire alarm migration compliant. Here's the gap most facility managers miss.</description>
-    <category>Compliance &amp; Regulation</category>
-    <enclosure url="https://trustednetworx.com/blog-images/ul-864-listed-vs-compliant-fire-alarm-2026.png" type="image/png"/>
-  </item>
-  <item>
     <title>Back-to-School Bandwidth: How to Keep School Networks From Crashing in Week One</title>
     <link>https://trustednetworx.com/blog/back-to-school-bandwidth-school-networks-2026</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/back-to-school-bandwidth-school-networks-2026</guid>
@@ -59,15 +41,6 @@
     <description>Bad connectivity doesn't just annoy tenants — it costs owners turnover, NOI, and asset value. The retention math most pro formas leave out.</description>
     <category>Industry Spotlights</category>
     <enclosure url="https://trustednetworx.com/blog-images/multi-family-connectivity-retention-noi-2026.png" type="image/png"/>
-  </item>
-  <item>
-    <title>Government Telecom Modernization: How to Pay for It Before the Copper Runs Out</title>
-    <link>https://trustednetworx.com/blog/government-telecom-modernization-funding-2026</link>
-    <guid isPermaLink="true">https://trustednetworx.com/blog/government-telecom-modernization-funding-2026</guid>
-    <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
-    <description>Government agencies can fund telecom modernization by redirecting legacy circuit spend before copper sunset forces a costly scramble.</description>
-    <category>Industry Spotlights</category>
-    <enclosure url="https://trustednetworx.com/blog-images/government-telecom-modernization-funding-2026.png" type="image/png"/>
   </item>
   <item>
     <title>Retail Connectivity: What One Hour of POS Downtime Actually Costs</title>
@@ -106,15 +79,6 @@
     <enclosure url="https://trustednetworx.com/blog-images/ai-for-scheduling-lets-find-a-time-2026.png" type="image/png"/>
   </item>
   <item>
-    <title>Voice AI in Business: The Calls You Should Automate (And the Ones You Shouldn't)</title>
-    <link>https://trustednetworx.com/blog/voice-ai-calls-to-automate-2026</link>
-    <guid isPermaLink="true">https://trustednetworx.com/blog/voice-ai-calls-to-automate-2026</guid>
-    <pubDate>Sun, 23 Aug 2026 00:00:00 GMT</pubDate>
-    <description>Voice AI isn't about replacing people — it's about deciding which calls deserve a human and which don't. Here's how to draw that line.</description>
-    <category>AI for Business</category>
-    <enclosure url="https://trustednetworx.com/blog-images/voice-ai-calls-to-automate-2026.png" type="image/png"/>
-  </item>
-  <item>
     <title>Lead Qualification at Scale: The Signals AI Actually Trusts</title>
     <link>https://trustednetworx.com/blog/lead-qualification-ai-scoring-signals-2026</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/lead-qualification-ai-scoring-signals-2026</guid>
@@ -122,15 +86,6 @@
     <description>Most teams don't have a lead problem — they have a sorting problem. Here's how to build an AI scorer that surfaces the leads that actually matter.</description>
     <category>AI for Business</category>
     <enclosure url="https://trustednetworx.com/blog-images/lead-qualification-ai-scoring-signals-2026.png" type="image/png"/>
-  </item>
-  <item>
-    <title>Why Most AI Projects Fail — and the Three Fixes That Change the Odds</title>
-    <link>https://trustednetworx.com/blog/why-ai-projects-fail-three-fixes-2026</link>
-    <guid isPermaLink="true">https://trustednetworx.com/blog/why-ai-projects-fail-three-fixes-2026</guid>
-    <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
-    <description>Most AI projects don't fail on technology — they fail on scope, data, and adoption. Here's how to fix all three before you spend a dime.</description>
-    <category>AI for Business</category>
-    <enclosure url="https://trustednetworx.com/blog-images/why-ai-projects-fail-three-fixes-2026.png" type="image/png"/>
   </item>
   <item>
     <title>The 30-Day AI Pilot: A Decision-First Playbook</title>
@@ -158,15 +113,6 @@
     <description>AI sales agents are useful — but not everywhere. Here's which sales tasks to automate, which to keep human, and how to split the work.</description>
     <category>AI for Business</category>
     <enclosure url="https://trustednetworx.com/blog-images/ai-sales-agents-vs-humans-2026.png" type="image/png"/>
-  </item>
-  <item>
-    <title>SD-WAN in 2026: The ROI Case Every Business Leader Should See</title>
-    <link>https://trustednetworx.com/blog/sd-wan-roi-business-case-2026</link>
-    <guid isPermaLink="true">https://trustednetworx.com/blog/sd-wan-roi-business-case-2026</guid>
-    <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
-    <description>SD-WAN isn't a buzzword anymore — it's a line item with real ROI. Here's the math, the mistakes that kill the savings, and how to know if you're ready.</description>
-    <category>Telecom Modernization</category>
-    <enclosure url="https://trustednetworx.com/blog-images/sd-wan-roi-business-case-2026-hero.png" type="image/png"/>
   </item>
   <item>
     <title>How Property Managers Are Cutting Telecom Costs by 40%+</title>
@@ -223,15 +169,6 @@
     <enclosure url="https://trustednetworx.com/blog-images/multi-site-telecom-consolidation-2026.png" type="image/png"/>
   </item>
   <item>
-    <title>Fire Alarm Supervision and Testing: The NFPA 72 Rules Most Facilities Overlook</title>
-    <link>https://trustednetworx.com/blog/nfpa-72-fire-alarm-testing-supervision-2026</link>
-    <guid isPermaLink="true">https://trustednetworx.com/blog/nfpa-72-fire-alarm-testing-supervision-2026</guid>
-    <pubDate>Thu, 13 Aug 2026 00:00:00 GMT</pubDate>
-    <description>NFPA 72 compliance is about supervision and testing, not just installation. Here's what inspectors actually check — and where facilities slip.</description>
-    <category>Compliance &amp; Regulation</category>
-    <enclosure url="https://trustednetworx.com/blog-images/nfpa-72-fire-alarm-testing-supervision-2026.png" type="image/png"/>
-  </item>
-  <item>
     <title>Migrating to VoIP: What Business Leaders Get Wrong</title>
     <link>https://trustednetworx.com/blog/migrating-to-voip-what-business-leaders-get-wrong</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/migrating-to-voip-what-business-leaders-get-wrong</guid>
@@ -248,15 +185,6 @@
     <description>AI-powered email triage can reclaim 2+ hours a day by filtering noise, flagging priority messages, and drafting replies — here's how to set it up without breaking anything.</description>
     <category>AI for Business</category>
     <enclosure url="https://trustednetworx.com/blog-images/ai-email-triage-2026.png" type="image/png"/>
-  </item>
-  <item>
-    <title>The End of T1 Lines: Migration Strategies That Actually Work</title>
-    <link>https://trustednetworx.com/blog/t1-migration-strategies-2026</link>
-    <guid isPermaLink="true">https://trustednetworx.com/blog/t1-migration-strategies-2026</guid>
-    <pubDate>Sun, 09 Aug 2026 00:00:00 GMT</pubDate>
-    <description>Carriers are retiring T1 lines faster than ever. Here are the migration strategies that keep your business running without blowing the budget.</description>
-    <category>Telecom Modernization</category>
-    <enclosure url="https://trustednetworx.com/blog-images/t1-migration-strategies-2026.png" type="image/png"/>
   </item>
   <item>
     <title>POTS Replacement ROI: The Real Cost of Waiting</title>

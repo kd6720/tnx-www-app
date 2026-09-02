@@ -317,7 +317,7 @@ const AiReadinessAssessment = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="glass-morphism rounded-2xl p-6 sm:p-10">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900 flex items-center gap-3">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-accent-600 text-white">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-cyan-600 text-white">
                 <Brain size={20} />
               </span>
               AI Readiness Questionnaire
@@ -480,7 +480,7 @@ const AiReadinessAssessment = () => {
       </section>
 
       {/* Bottom CTA banner */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600">
+      <section className="relative overflow-hidden bg-gradient-to-br from-brand-700 via-brand-600 to-cyan-600">
         <div className="absolute inset-0 bg-grid-dark bg-grid opacity-20" />
         <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 lg:flex lg:items-center lg:justify-between">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">

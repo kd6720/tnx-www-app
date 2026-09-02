@@ -12,9 +12,11 @@ interface HeroVideoProps {
   name: string;
   /** Extra classes for the overlay gradient, if a page needs a different scrim. */
   overlayClassName?: string;
+  /** Extra classes for the <video> itself (e.g. opacity to darken the backplate). */
+  videoClassName?: string;
 }
 
-const HeroVideo = ({ name, overlayClassName }: HeroVideoProps) => (
+const HeroVideo = ({ name, overlayClassName, videoClassName }: HeroVideoProps) => (
   <div className="absolute inset-0 z-0" aria-hidden="true">
     {/* Poster layer (behind the video): instant paint + reduced-motion fallback */}
     <div
@@ -22,15 +24,17 @@ const HeroVideo = ({ name, overlayClassName }: HeroVideoProps) => (
       style={{ backgroundImage: `url(/media/${name}-poster.jpg)` }}
     />
     <video
-      className="hero-video absolute inset-0 h-full w-full object-cover"
+      className={`hero-video absolute inset-0 h-full w-full object-cover ${videoClassName ?? ''}`}
       autoPlay
-      muted
+      defaultMuted
       loop
       playsInline
       preload="none"
       poster={`/media/${name}-poster.jpg`}
-      // React doesn't serialize `muted` into static HTML, so set it
-      // imperatively too — keeps autoplay legal in the pre-hydration window.
+      // `defaultMuted` writes the muted attribute so the prerendered HTML and
+      // hydration agree (the controlled `muted` prop is set as a property and
+      // isn't serialized). Keep the imperative set too so autoplay stays legal
+      // in the pre-hydration window.
       ref={(el) => {
         if (el) el.muted = true;
       }}

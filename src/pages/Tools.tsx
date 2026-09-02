@@ -36,7 +36,7 @@ const tools = [
     title: 'AI Readiness Assessment',
     description: 'Evaluate how prepared your organization is for AI adoption.',
     icon: Brain,
-    gradient: 'from-brand-500 to-accent-600',
+    gradient: 'from-brand-500 to-cyan-600',
   },
 ];
 

@@ -1,6 +1,7 @@
 ---
 title: "Government Telecom Modernization: Navigating Procurement and Compliance"
 date: "2026-07-21"
+dateModified: "2026-08-25"
 category: "Industry Spotlights"
 description: "Government telecom modernization requires navigating complex procurement rules, strict compliance, and legacy infrastructure — here's how to do it without getting stuck."
 author: "Carter Dewey"
@@ -59,6 +60,15 @@ That's 8 months instead of 18. And it starts the clock before the carrier discon
 The agencies that get in trouble are the ones that wait for the carrier's letter. By then, you're reacting instead of planning, and every option costs more.
 
 Start the conversation today. Even if your actual cutover is a year out, having a plan on file with procurement means you're not scrambling when the clock starts ticking.
+
+
+## How to pay for it
+
+The money for modernization is usually already sitting in the telecom budget, tied up in legacy circuits the carriers are shutting down.
+
+A single analog POTS line runs $50–100 a month before taxes and fees, and rates have gone up every year. Across a county with forty buildings — each with alarm lines, elevator phones, and fax lines — that's serious monthly spend. Audit the legacy circuit inventory and the number being spent on dying copper is often close to, or more than, the cost of the modern replacement.
+
+The project doesn't need new money; it needs a reallocation. Treat modernization as a **budget-neutral swap**: decommission legacy circuits and move those dollars to the new solution. It skips the appropriation fight — a reallocation inside an existing telecom line item rarely needs the same board approval as a new appropriation — and it starts paying for itself immediately.
 
 ---
 

@@ -1,4 +1,6 @@
 ---
+redirect: /blog/why-most-ai-projects-fail-and-how-to-succeed
+
 title: "Why Most AI Projects Fail — and the Three Fixes That Change the Odds"
 date: "2026-08-22"
 category: "AI for Business"

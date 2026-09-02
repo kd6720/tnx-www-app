@@ -1,4 +1,6 @@
 ---
+redirect: /blog/ul-864-fire-alarm-monitoring-compliance-migration
+
 title: "UL 864 Listed vs. UL 864 Compliant: What Fire Alarm Migration Actually Requires"
 date: "2026-08-28"
 category: "Compliance & Regulation"

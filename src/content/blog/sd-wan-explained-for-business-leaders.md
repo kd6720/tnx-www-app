@@ -1,6 +1,7 @@
 ---
 title: "SD-WAN Explained for Business Leaders"
 date: "2026-07-02"
+dateModified: "2026-08-20"
 category: "Telecom Modernization"
 description: "SD-WAN isn't just another networking acronym — it's how smart businesses are cutting costs, improving performance, and simplifying multi-site connectivity."
 author: "Carter Dewey"
@@ -79,3 +80,11 @@ SD-WAN isn't hype. It's the standard architecture for any business running more 
 The question isn't really "should we do SD-WAN?" It's "when do we start, and who do we trust to get it right?"
 
 If you're evaluating SD-WAN for a multi-site business — or just trying to figure out whether your current connectivity is costing more than it should — [let's talk](/contact). We've done this for property management firms, healthcare networks, retail chains, and everything in between. No pitch. Just practical guidance from people who do this every day.
+
+## The ROI case
+
+The math that matters: a traditional MPLS circuit runs $500–$1,500 per site, per month; a commodity broadband connection runs $80–$200. Run two broadband circuits through SD-WAN for primary and backup and it still comes in at a fraction of a single MPLS link.
+
+Take a 15-location business. Dropping MPLS for dual broadband with SD-WAN commonly lands **six-figure annual savings** before counting a single productivity gain. That's the number that gets finance's attention.
+
+Downtime math matters more. A traditional setup fails over in 30–90 seconds — long enough to drop every VoIP call and freeze every POS terminal. SD-WAN fails over in sub-second time, so the call survives and the card reader keeps processing. The real question isn't the circuit price; it's what one hour of lost connectivity costs a single site.

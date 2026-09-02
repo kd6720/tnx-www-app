@@ -1,6 +1,7 @@
 ---
 title: "The End of T1 Lines: Migration Strategies That Actually Work"
 date: "2026-06-24"
+dateModified: "2026-08-09"
 category: "Telecom Modernization"
 description: "T1 lines are being phased out by major carriers. Here's a practical migration roadmap that won't disrupt your business — from assessment to cutover."
 author: "Carter Dewey"
@@ -88,6 +89,15 @@ The carriers aren't going to call you six months in advance and ask nicely. When
 Start your audit now. Identify what's on T1s. Map the dependencies. Research the alternatives. Get quotes.
 
 The organizations that handle this well are the ones that started planning before the deadline was breathing down their neck.
+
+
+## Migration numbers that matter now
+
+Carriers are now sending disconnection notices on 30- to 90-day windows, so the planning timeline has compressed from "next fiscal year" to "this quarter." The numbers worth anchoring on:
+
+- A fiber primary with wireless LTE/5G backup typically runs **30–50% less** than an equivalent bonded T1 setup, while delivering 10x–1000x the bandwidth.
+- We spec a **100 Mbps or 200 Mbps** fiber circuit for most business locations, with fixed wireless or cellular backup that fails over automatically.
+- Where fiber isn't available (or is months out), fixed wireless as a primary is a workable stopgap — and the savings math gets better once fiber arrives.
 
 ---
 

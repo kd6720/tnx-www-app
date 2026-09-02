@@ -1,4 +1,6 @@
 ---
+redirect: /blog/voice-ai-in-business-beyond-the-robot-operator
+
 title: "Voice AI in Business: The Calls You Should Automate (And the Ones You Shouldn't)"
 date: "2026-08-23"
 category: "AI for Business"

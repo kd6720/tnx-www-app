@@ -1,4 +1,6 @@
 ---
+redirect: /blog/government-telecom-modernization-navigating-procurement-compliance
+
 title: "Government Telecom Modernization: How to Pay for It Before the Copper Runs Out"
 date: "2026-08-25"
 category: "Industry Spotlights"

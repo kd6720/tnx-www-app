@@ -332,7 +332,7 @@ const MultiStepForm = ({ preset = 'home', defaultPainPoint, onSuccess }: MultiSt
           disabled={!canAdvance()}
           className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
             canAdvance()
-              ? 'bg-gradient-to-r from-brand-600 to-accent-600 text-white shadow-glow hover:shadow-card-hover hover:-translate-y-0.5'
+              ? 'bg-gradient-to-r from-brand-600 to-cyan-600 text-white shadow-glow hover:shadow-card-hover hover:-translate-y-0.5'
               : 'bg-navy-100 text-navy-400 cursor-not-allowed'
           }`}
         >
@@ -555,7 +555,7 @@ const MultiStepForm = ({ preset = 'home', defaultPainPoint, onSuccess }: MultiSt
                 disabled={submitting || !contact.name || !contact.email || (phoneRequired && !contact.phone)}
                 className={`inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${
                   !submitting && contact.name && contact.email && (!phoneRequired || contact.phone)
-                    ? 'bg-gradient-to-r from-brand-600 to-accent-600 text-white shadow-glow hover:shadow-card-hover hover:-translate-y-0.5'
+                    ? 'bg-gradient-to-r from-brand-600 to-cyan-600 text-white shadow-glow hover:shadow-card-hover hover:-translate-y-0.5'
                     : 'bg-navy-100 text-navy-400 cursor-not-allowed'
                 }`}
               >

@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -16,8 +17,6 @@ import MobilitySolutions from './pages/MobilitySolutions';
 import VoiceSolutions from './pages/VoiceSolutions';
 import AiWorkforce from './pages/AiWorkforce';
 import Contact from './pages/Contact';
-import Blog from './pages/Blog';
-import BlogPost from './pages/BlogPost';
 import Tools from './pages/Tools';
 import PotsRoiCalculator from './pages/tools/PotsRoiCalculator';
 import CopperSunsetRisk from './pages/tools/CopperSunsetRisk';
@@ -30,6 +29,20 @@ import Partners from './pages/Partners';
 import Ai from './pages/Ai';
 import NotFound from './pages/NotFound';
 
+// The blog content (61 markdown posts via blog.ts) is the one heavy chunk
+// (~419 KB raw). Blog + BlogPost are the ONLY code-split routes; everything
+// else stays statically imported in the main bundle. main.tsx resolves the
+// blog chunk before render on /blog and /blog/:slug, so the lazy component
+// never suspends to a visible fallback on first load (no CLS).
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
+
+const PageFallback = () => (
+  <div className="flex min-h-[60vh] items-center justify-center" aria-busy="true">
+    <span className="sr-only">Loading…</span>
+  </div>
+);
+
 function App() {
   return (
     <HelmetProvider>
@@ -38,7 +51,8 @@ function App() {
           <ScrollToTop />
           <Navbar />
           <main id="main-content" tabIndex={-1}>
-            <Routes>
+            <Suspense fallback={<PageFallback />}>
+              <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/about/team" element={<Team />} />
@@ -64,7 +78,8 @@ function App() {
               <Route path="/tools/ai-roi-calculator" element={<AiRoiCalculator />} />
               <Route path="/tools/ai-readiness" element={<AiReadinessAssessment />} />
               <Route path="*" element={<NotFound />} />
-            </Routes>
+              </Routes>
+            </Suspense>
           </main>
           <Footer />
           <ChatWidget />
