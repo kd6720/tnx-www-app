@@ -74,16 +74,11 @@ const Home = () => {
         description="AI agents and managed telecom for multi-site operators: POTS replacement, voice, connectivity, and mobility — with the AI workforce to sell, support, and monitor 24/7."
       />
 
-      {/* ── Navy band: hero + stats strip ─────────────────────────────── */}
+      {/* ── Navy band: hero + stats strip ───────────────────────────── */}
       <section className="relative overflow-hidden bg-navy-950">
         {/* Hero */}
         <div className="relative flex min-h-[78vh] items-center">
-          <HeroVideo
-            name="hero-home"
-            mediaClassName="opacity-[0.34]"
-            hasMobileVariant
-            overlayClassName="absolute inset-0 bg-[linear-gradient(90deg,#0a1428_30%,rgba(10,20,40,0.55)_70%,rgba(10,20,40,0.35)_100%)]"
-          />
+          <HeroVideo name="hero-home" hasMobileVariant />
           <div className="absolute inset-y-0 right-0 z-10 hidden w-2/3 lg:block">
             <NodeField className="h-full w-full" />
           </div>
@@ -149,7 +144,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── 01 AI Solutions ───────────────────────────────────────────── */}
+      {/* ── 01 AI Solutions ────────────────────────────────────── */}
       <section className="border-b border-hairline">
         <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
           <div className="grid grid-cols-12 gap-8">
@@ -193,7 +188,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── 02 Platforms ──────────────────────────────────────────────── */}
+      {/* ── 02 Platforms ───────────────────────────────────────── */}
       <section id="platforms" className="border-b border-hairline">
         <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
           <div className="grid grid-cols-12 gap-8">
@@ -298,7 +293,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── Stack module ──────────────────────────────────────────────── */}
+      {/* ── Stack module ───────────────────────────────────────── */}
       <section className="border-b border-hairline">
         <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
           <span className="font-mono text-xs uppercase tracking-mono-label text-accent-text">
@@ -325,7 +320,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── 03 Telecom foundation ─────────────────────────────────────── */}
+      {/* ── 03 Telecom foundation ────────────────────────────────── */}
       <section className="border-b border-hairline">
         <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
           <div className="grid grid-cols-12 gap-8">
@@ -373,7 +368,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── Proof band (navy) ──────────────────────────────────────────── */}
+      {/* ── Proof band (navy) ───────────────────────────────────── */}
       <section className="bg-navy-950">
         <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
           <div className="grid grid-cols-12 gap-8">
@@ -417,7 +412,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── Logo row ──────────────────────────────────────────────────── */}
+      {/* ── Logo row ──────────────────────────────────────────── */}
       <section className="border-b border-hairline bg-white">
         <div className="mx-auto w-full max-w-site px-6 py-16 md:px-gutter">
           <div className="flex flex-wrap items-center justify-between gap-x-10 gap-y-4">
@@ -437,7 +432,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── 04 Start (intake) ──────────────────────────────────────────── */}
+      {/* ── 04 Start (intake) ───────────────────────────────────── */}
       <section id="quote">
         <div className="mx-auto w-full max-w-site px-6 py-section md:px-gutter">
           <div className="grid grid-cols-12 gap-8">
