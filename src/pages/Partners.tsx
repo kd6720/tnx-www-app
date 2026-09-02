@@ -170,7 +170,10 @@ const Partners = () => (
           Reach the partner team directly.
         </h2>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-navy-200">
-          <a href="mailto:sales@trustednetworx.com" className="text-brand-300 hover:text-brand-200">
+          <a
+            href="mailto:sales@trustednetworx.com"
+            className="text-brand-300 underline underline-offset-4 hover:text-brand-200"
+          >
             sales@trustednetworx.com
           </a>
           {' — or explore the hub your clients would run on.'}
