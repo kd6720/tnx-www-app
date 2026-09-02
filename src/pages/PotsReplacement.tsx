@@ -82,11 +82,7 @@ const PotsReplacement = () => (
 
     {/* Hero */}
     <section className="relative flex min-h-[70vh] items-center overflow-hidden bg-navy-950">
-      <HeroVideo
-        name="hero-pots"
-        mediaClassName="opacity-[0.34]"
-        overlayClassName="absolute inset-0 bg-[linear-gradient(90deg,#0a1428_30%,rgba(10,20,40,0.55)_70%,rgba(10,20,40,0.35)_100%)]"
-      />
+      <HeroVideo name="hero-pots" />
       <div className="relative z-10 mx-auto w-full max-w-site px-6 py-24 md:px-gutter">
         <div className="max-w-3xl">
           <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
@@ -255,9 +251,7 @@ const PotsReplacement = () => (
               ))}
             </ul>
             <div className="mt-8 border-t border-hairline pt-6">
-              {/* text-body, not text-muted-text: #6b7587 clears AA on the white
-                  sections but not on the #f7f8fa canvas this section sits on. */}
-              <p className="font-mono text-xs uppercase tracking-mono-label text-body">
+              <p className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
                 What the rules actually require
               </p>
               <p className="mt-3 text-base leading-relaxed text-body">

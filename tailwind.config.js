@@ -28,7 +28,10 @@ export default {
         // in accent-500 (#ff7a1a) and muted (#8a94a6) fail 4.5:1 on the light
         // canvas. These two tokens meet AA; keep the brighter #ff7a1a/#8a94a6
         // for text on navy where their contrast is fine.
-        'muted-text': '#6b7587',
+        // muted-text is #667082, not #6b7587: the old value was 4.37:1 on the
+        // #f7f8fa canvas and only passed on the white sections (4.65). This one
+        // clears both (4.70 / 4.99) and stays lighter than body #3a4a66.
+        'muted-text': '#667082',
         'accent-text': '#c2410c',
         hairline: '#e3e6eb',
         divider: '#243f70',

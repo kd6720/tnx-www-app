@@ -13,7 +13,7 @@ const fundamentals = [
 const solutions = [
   { n: '01', title: 'Managed SD-WAN', desc: 'MPLS, broadband, and 4G-LTE combined into one resilient, high-performance network that manages resources dynamically.' },
   { n: '02', title: 'Starlink satellite broadband', desc: 'Authorized Starlink reseller — high-speed, low-latency broadband for remote locations where terrestrial options end.' },
-  { n: '03', title: 'IoT single SIM', desc: 'One SIM that roams to the strongest carrier signal — global connectivity for devices that can\u2019t drop.' },
+  { n: '03', title: 'IoT single SIM', desc: 'One SIM that roams to the strongest carrier signal — global connectivity for devices that can’t drop.' },
 ];
 
 const InternetConnectivity = () => (
@@ -35,11 +35,7 @@ const InternetConnectivity = () => (
 
     {/* Hero */}
     <section className="relative flex min-h-[70vh] items-center overflow-hidden bg-navy-950">
-      <HeroVideo
-        name="hero-connectivity"
-        mediaClassName="opacity-[0.34]"
-        overlayClassName="absolute inset-0 bg-[linear-gradient(90deg,#0a1428_30%,rgba(10,20,40,0.55)_70%,rgba(10,20,40,0.35)_100%)]"
-      />
+      <HeroVideo name="hero-connectivity" />
       <div className="relative z-10 mx-auto w-full max-w-site px-6 py-24 md:px-gutter">
         <div className="max-w-3xl">
           <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">

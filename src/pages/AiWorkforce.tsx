@@ -16,7 +16,7 @@ const agents = [
 ];
 
 const why = [
-  { n: '01', title: 'Deploy in days', desc: 'Most agents go live within 2\u20135 business days. No 6-month engagements.' },
+  { n: '01', title: 'Deploy in days', desc: 'Most agents go live within 2–5 business days. No 6-month engagements.' },
   { n: '02', title: 'Measurable ROI', desc: 'Every agent ships with baseline metrics and monthly performance reporting.' },
   { n: '03', title: 'Telecom-native', desc: 'Built for telecom workflows — POTS migration tracking, compliance, carrier coordination.' },
   { n: '04', title: 'Not a black box', desc: 'You control the playbooks, tone, and escalation rules. Full transparency.' },
@@ -47,11 +47,7 @@ const AiWorkforce = () => (
 
     {/* Hero */}
     <section className="relative flex min-h-[70vh] items-center overflow-hidden bg-navy-950">
-      <HeroVideo
-        name="hero-ai-workforce"
-        mediaClassName="opacity-[0.34]"
-        overlayClassName="absolute inset-0 bg-[linear-gradient(90deg,#0a1428_30%,rgba(10,20,40,0.55)_70%,rgba(10,20,40,0.35)_100%)]"
-      />
+      <HeroVideo name="hero-ai-workforce" />
       <div className="relative z-10 mx-auto w-full max-w-site px-6 py-24 md:px-gutter">
         <div className="max-w-3xl">
           <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
