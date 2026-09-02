@@ -19,15 +19,56 @@
   status = 301
   force = true
 
-# === 8 contested duplicate pairs (2026-vs-older direction) — HELD for Carter ===
-# t1-migration-strategies-2026  vs  end-of-t1-lines-migration-strategies
-# fcc-pots-forbearance-cost-of-waiting-2026  vs  fcc-pots-forbearance-what-changed-and-what-it-means
-# government-telecom-modernization-funding-2026  vs  government-telecom-modernization-navigating-procurement-compliance
-# nfpa-72-fire-alarm-testing-supervision-2026  vs  nfpa-72-compliance-fire-alarm-communications-practical-guide
-# sd-wan-roi-business-case-2026  vs  sd-wan-explained-for-business-leaders
-# ul-864-listed-vs-compliant-fire-alarm-2026  vs  ul-864-fire-alarm-monitoring-compliance-migration
-# voice-ai-calls-to-automate-2026  vs  voice-ai-in-business-beyond-the-robot-operator
-# why-ai-projects-fail-three-fixes-2026  vs  why-most-ai-projects-fail-and-how-to-succeed
+# === 8 contested duplicate pairs — RESOLVED 2026-09-02: older slug wins ===
+# Newer post's angle merged into the older winner as a new H2 (dateModified bumped);
+# losers carry redirect: frontmatter and are excluded from the sitemap/RSS.
+[[redirects]]
+  from = "/blog/t1-migration-strategies-2026"
+  to = "/blog/end-of-t1-lines-migration-strategies"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/fcc-pots-forbearance-cost-of-waiting-2026"
+  to = "/blog/fcc-pots-forbearance-what-changed-and-what-it-means"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/government-telecom-modernization-funding-2026"
+  to = "/blog/government-telecom-modernization-navigating-procurement-compliance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/nfpa-72-fire-alarm-testing-supervision-2026"
+  to = "/blog/nfpa-72-compliance-fire-alarm-communications-practical-guide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/sd-wan-roi-business-case-2026"
+  to = "/blog/sd-wan-explained-for-business-leaders"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/ul-864-listed-vs-compliant-fire-alarm-2026"
+  to = "/blog/ul-864-fire-alarm-monitoring-compliance-migration"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/voice-ai-calls-to-automate-2026"
+  to = "/blog/voice-ai-in-business-beyond-the-robot-operator"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/why-ai-projects-fail-three-fixes-2026"
+  to = "/blog/why-most-ai-projects-fail-and-how-to-succeed"
+  status = 301
+  force = true
 [[redirects]]
   from = "/blog/30-day-ai-pilot-how-to-test-ai"
   to = "/blog/30-day-ai-pilot-decision-first-2026"

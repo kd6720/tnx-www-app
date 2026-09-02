@@ -1,4 +1,6 @@
 ---
+redirect: /blog/fcc-pots-forbearance-what-changed-and-what-it-means
+
 title: "FCC POTS Forbearance: The Cost of Waiting to Migrate"
 date: "2026-08-28"
 category: "Compliance & Regulation"

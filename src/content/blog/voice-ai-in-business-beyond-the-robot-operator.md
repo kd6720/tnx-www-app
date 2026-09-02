@@ -1,6 +1,7 @@
 ---
 title: "Voice AI in Business: Beyond the Robot Operator"
 date: "2026-07-10"
+dateModified: "2026-08-23"
 category: "AI for Business"
 description: "Voice AI now handles scheduling, routing, and routine service calls without sounding like the clunky phone trees businesses used to dread."
 author: "Carter Dewey"
@@ -87,3 +88,14 @@ Voice AI is not about making your business sound futuristic. It’s about making
 Used that way, it can be one of the most practical AI tools a business deploys this year.
 
 If you want to evaluate where Voice AI fits into your call flow, [contact TrustedNetworx](/contact) and we’ll help you map the right use cases before you invest.
+
+## Which calls to automate — and which not to
+
+Draw the line by judgment. High-volume, low-complexity, predictable calls are safe to automate:
+
+- **Status and account questions** — "What's my balance?" "When is my technician arriving?" These are lookups against a database.
+- **Booking and rescheduling** — appointment changes, confirmations, and reminders are conversational but formulaic.
+- **Payment and intake** — taking a payment or capturing a lead's basic information is scriptable and friction-free.
+- **Overflow and after-hours** — the calls that would otherwise roll to voicemail and never get returned.
+
+The common thread: these calls have a clear right answer. Anything that needs judgment, empathy, or a relationship should still ring a human.

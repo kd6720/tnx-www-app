@@ -1,6 +1,7 @@
 ---
 title: "Why Most AI Projects Fail (And How to Make Yours Succeed)"
 date: "2026-07-08"
+dateModified: "2026-08-22"
 category: "AI for Business"
 description: "Most AI projects fail before they ever deliver value. Here's why — and a practical framework for making yours one of the few that actually works."
 author: "Carter Dewey"
@@ -67,3 +68,13 @@ Companies that succeed with AI aren't the ones with the biggest budgets or the m
 If you're considering an AI initiative — or if you have one that's stalled somewhere between pilot and production — we'd be happy to talk through what a realistic deployment plan looks like. We've helped organizations across telecom, property management, healthcare, and senior living move from proof-of-concept to production value. Sometimes that means scaling down scope. Sometimes it means fixing data pipelines first. But it always starts with an honest conversation about where you actually are.
 
 [Let's talk about making AI work for your business →](/contact)
+
+## Three fixes that change the odds
+
+The same three patterns show up in pilot postmortems across every industry. Spot them early and you can stop a doomed project on day one.
+
+**One: scope that swallows the pilot.** The fix is one workflow, one measurable outcome, and a hard deadline. Write down in one sentence what "working" looks like before you start; if you can't, the scope is still too vague.
+
+**Two: data nobody cleaned.** You don't need a massive, perfectly labeled dataset to begin — you need a small set of real examples that reflect the actual task. Messy, contradictory examples produce confident-sounding wrong answers, which is worse than none.
+
+**Three: no plan for adoption.** The most technically successful model still fails if nobody uses the result. Adoption has to be designed in from the start, not bolted on after launch.

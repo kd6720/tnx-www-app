@@ -1,6 +1,7 @@
 ---
 title: "UL 864 and Fire Alarm Monitoring: Staying Compliant During Migration"
 date: "2026-07-29"
+dateModified: "2026-08-28"
 category: "Compliance & Regulation"
 description: "Migrating fire alarm communications away from POTS doesn't have to trigger a compliance headache — here's what UL 864 actually requires and how to stay fully compliant."
 author: "Carter Dewey"
@@ -65,3 +66,12 @@ Migration isn't optional. It's just a question of whether you do it on your sche
 UL 864 compliance during migration comes down to three things: use listed equipment, supervise the path, and document everything. The standard exists to keep buildings safe, not to prevent modernization. Done right, your fire alarm will be more reliable after migration than before.
 
 Need help navigating your fire alarm migration? [Let's talk →](/contact)
+
+## Listed vs. compliant
+
+"UL 864 listed" describes the box — a device tested against the standard's construction and performance requirements. Compliance is the outcome you get when listed equipment is installed, configured, supervised, and monitored the way the standard and your AHJ require. You can buy the most listed box on the shelf and still end up with a non-compliant installation.
+
+A couple of things a listing can't do for you:
+
+- **Supervision is configured, not purchased.** The communicator is capable of supervising its path, but capability isn't configuration. If nobody wires the trouble output into the panel or programs the supervision timer, the panel never knows the communicator lost its path.
+- **The monitoring station has to actually receive the signal.** A path that isn't verified end-to-end isn't supervised — it's just plugged in.

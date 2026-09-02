@@ -170,7 +170,7 @@ function patchBlogPosts(distDir, srcBlogDir, rootDir) {
       description,
       image,
       datePublished: data.date,
-      dateModified: data.date,
+      dateModified: data.dateModified || data.date,
       articleSection: data.category || 'Blog',
       author:
         !data.author || data.author === 'TrustedNetworx'

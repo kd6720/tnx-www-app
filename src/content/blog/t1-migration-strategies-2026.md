@@ -1,4 +1,6 @@
 ---
+redirect: /blog/end-of-t1-lines-migration-strategies
+
 title: "The End of T1 Lines: Migration Strategies That Actually Work"
 date: "2026-08-09"
 category: "Telecom Modernization"

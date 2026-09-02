@@ -53,7 +53,7 @@ const posts = fs
   .map((f) => {
     const slug = f.replace(/\.md$/, '');
     const data = parseFrontmatter(fs.readFileSync(path.join(blogDir, f), 'utf8'));
-    return { slug, date: data.date || '', redirect: data.redirect || '' };
+    return { slug, date: data.date || '', dateModified: data.dateModified || '', redirect: data.redirect || '' };
   })
   .filter((p) => !p.redirect)
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -70,7 +70,7 @@ const urls = [
   ),
   ...posts.map(
     (p) =>
-      `  <url>\n    <loc>${SITE_URL}/blog/${p.slug}</loc>\n    <lastmod>${iso(p.date)}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`
+      `  <url>\n    <loc>${SITE_URL}/blog/${p.slug}</loc>\n    <lastmod>${iso(p.dateModified || p.date)}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`
   ),
 ].join('\n');
 

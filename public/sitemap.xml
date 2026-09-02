@@ -106,18 +106,6 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://trustednetworx.com/blog/fcc-pots-forbearance-cost-of-waiting-2026</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://trustednetworx.com/blog/ul-864-listed-vs-compliant-fire-alarm-2026</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://trustednetworx.com/blog/back-to-school-bandwidth-school-networks-2026</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -138,12 +126,6 @@
   <url>
     <loc>https://trustednetworx.com/blog/multi-family-connectivity-retention-noi-2026</loc>
     <lastmod>2026-08-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://trustednetworx.com/blog/government-telecom-modernization-funding-2026</loc>
-    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -172,19 +154,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://trustednetworx.com/blog/voice-ai-calls-to-automate-2026</loc>
-    <lastmod>2026-08-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://trustednetworx.com/blog/lead-qualification-ai-scoring-signals-2026</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://trustednetworx.com/blog/why-ai-projects-fail-three-fixes-2026</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -203,12 +173,6 @@
   </url>
   <url>
     <loc>https://trustednetworx.com/blog/ai-sales-agents-vs-humans-2026</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://trustednetworx.com/blog/sd-wan-roi-business-case-2026</loc>
     <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -250,12 +214,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://trustednetworx.com/blog/nfpa-72-fire-alarm-testing-supervision-2026</loc>
-    <lastmod>2026-08-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://trustednetworx.com/blog/migrating-to-voip-what-business-leaders-get-wrong</loc>
     <lastmod>2026-08-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -264,12 +222,6 @@
   <url>
     <loc>https://trustednetworx.com/blog/ai-email-triage-2026</loc>
     <lastmod>2026-08-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://trustednetworx.com/blog/t1-migration-strategies-2026</loc>
-    <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -323,13 +275,13 @@
   </url>
   <url>
     <loc>https://trustednetworx.com/blog/ul-864-fire-alarm-monitoring-compliance-migration</loc>
-    <lastmod>2026-07-29</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://trustednetworx.com/blog/fcc-pots-forbearance-what-changed-and-what-it-means</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -353,7 +305,7 @@
   </url>
   <url>
     <loc>https://trustednetworx.com/blog/government-telecom-modernization-navigating-procurement-compliance</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -365,19 +317,19 @@
   </url>
   <url>
     <loc>https://trustednetworx.com/blog/voice-ai-in-business-beyond-the-robot-operator</loc>
-    <lastmod>2026-07-10</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://trustednetworx.com/blog/why-most-ai-projects-fail-and-how-to-succeed</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://trustednetworx.com/blog/nfpa-72-compliance-fire-alarm-communications-practical-guide</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -401,7 +353,7 @@
   </url>
   <url>
     <loc>https://trustednetworx.com/blog/sd-wan-explained-for-business-leaders</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -425,7 +377,7 @@
   </url>
   <url>
     <loc>https://trustednetworx.com/blog/end-of-t1-lines-migration-strategies</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

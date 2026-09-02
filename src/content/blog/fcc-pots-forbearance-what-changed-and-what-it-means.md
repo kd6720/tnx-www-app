@@ -1,6 +1,7 @@
 ---
 title: "FCC POTS Forbearance: What Changed and What It Means"
 date: "2026-07-28"
+dateModified: "2026-08-28"
 category: "Compliance & Regulation"
 description: "The FCC's POTS forbearance is reshaping telecom regulation. Here's what actually changed, who it affects, and what to do next."
 author: "Carter Dewey"
@@ -67,3 +68,12 @@ A single analog line often runs $65-95/month before taxes and fees. A cellular P
 The forbearance isn't a disaster — it's a forcing function. The organizations that act now will have more reliable communications and lower bills a year from now. The ones that wait will be scrambling.
 
 If you need help auditing your POTS dependencies or building a migration roadmap, [get in touch](/contact). We do this every day.
+
+## The cost of waiting
+
+The forbearance didn't ban analog lines — it removed the carrier's obligation to keep maintaining the copper. The only open question is whether you migrate on your schedule or the carrier's. What waiting actually costs:
+
+- **The line math you already know.** A legacy POTS line runs $65–95 a month after taxes and fees; a cellular replacement runs $25–40. Across forty lines, that's **$1,200–$2,200 saved every month**.
+- **Captive pricing on the tail end.** As copper shrinks, carriers stop competing for the customers who still have it — the lines you keep get more expensive, not less.
+- **Rush installation.** Migrating under a 90-day notice means expedited equipment, overtime labor, and vendor surcharges. Planned work is routine; last-minute work is priced accordingly.
+- **Failed inspections.** A fire alarm panel that can't dial out is a code violation, not an inconvenience — reinspection fees and non-compliant communicator citations follow.

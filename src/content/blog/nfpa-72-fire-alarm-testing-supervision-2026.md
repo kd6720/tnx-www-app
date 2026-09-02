@@ -1,4 +1,6 @@
 ---
+redirect: /blog/nfpa-72-compliance-fire-alarm-communications-practical-guide
+
 title: "Fire Alarm Supervision and Testing: The NFPA 72 Rules Most Facilities Overlook"
 date: "2026-08-13"
 category: "Compliance & Regulation"
