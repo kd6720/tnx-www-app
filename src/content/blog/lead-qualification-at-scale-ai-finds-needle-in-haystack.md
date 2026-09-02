@@ -1,5 +1,6 @@
 ---
 title: "Lead Qualification at Scale: How AI Finds the Needle in the Haystack"
+redirect: /blog/lead-qualification-ai-scoring-signals-2026
 date: "2026-07-06"
 category: "AI for Business"
 description: "AI lead qualification turns thousands of raw leads into a prioritized pipeline — automatically scoring, researching, and routing prospects so your team only talks to buyers."

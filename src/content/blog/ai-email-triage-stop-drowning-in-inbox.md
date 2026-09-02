@@ -1,5 +1,6 @@
 ---
 title: "AI Email Triage: How to Stop Drowning in Your Inbox"
+redirect: /blog/ai-email-triage-2026
 date: "2026-07-01"
 category: "AI for Business"
 description: "Practical ways AI can triage, categorize, and draft responses to your email — reclaiming hours every week without sacrificing the human touch."

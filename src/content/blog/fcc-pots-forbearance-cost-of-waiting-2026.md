@@ -1,5 +1,6 @@
 ---
 title: "FCC POTS Forbearance: The Cost of Waiting to Migrate"
+redirect: /blog/fcc-pots-forbearance-what-changed-and-what-it-means
 date: "2026-08-28"
 category: "Compliance & Regulation"
 description: "Every month you delay your POTS migration costs real money — and the copper sunset won't wait for next year's budget. Here's the math."

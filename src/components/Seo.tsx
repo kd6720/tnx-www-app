@@ -18,6 +18,30 @@ interface SeoProps {
   jsonLd?: object | object[];
 }
 
+/** Build a BreadcrumbList from the pathname (Home > Segment > Segment). */
+function buildBreadcrumbs(pathname: string) {
+  const segments = pathname.split('/').filter(Boolean);
+  if (segments.length === 0) return null;
+  const items: { '@type': string; position: number; name: string; item: string }[] = [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+  ];
+  let acc = '';
+  for (const seg of segments) {
+    acc += `/${seg}`;
+    items.push({
+      '@type': 'ListItem',
+      position: items.length + 1,
+      name: seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+      item: `${SITE_URL}${acc}`,
+    });
+  }
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items,
+  };
+}
+
 /**
  * Per-page document head: title, meta description, canonical URL,
  * Open Graph + Twitter cards, and optional JSON-LD structured data.
@@ -40,7 +64,11 @@ const Seo = ({
       ? image
       : `${SITE_URL}${image}`
     : DEFAULT_OG_IMAGE;
-  const blocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+  const breadcrumbs = buildBreadcrumbs(pathname);
+  const blocks = [
+    ...(breadcrumbs ? [breadcrumbs] : []),
+    ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []),
+  ];
 
   useEffect(() => {
     if (typeof window === 'undefined') return;

@@ -1,5 +1,6 @@
 ---
 title: "Auto Dealership Connectivity: From Showroom to Service Bay"
+redirect: /blog/auto-dealership-downtime-cost-2026
 date: "2026-07-22"
 category: "Industry Spotlights"
 description: "Why reliable connectivity across every corner of an auto dealership is no longer optional — and how to get it right."

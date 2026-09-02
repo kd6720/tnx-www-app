@@ -36,7 +36,8 @@
       "/tools/ai-readiness",
       "/platforms/partner-hub",
       "/platforms/crm",
-      "/partners"
+      "/partners",
+      "/ai"
     ],
     "skipThirdPartyRequests": true,
     "inlineCss": false,

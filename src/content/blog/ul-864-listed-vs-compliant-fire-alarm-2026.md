@@ -1,5 +1,6 @@
 ---
 title: "UL 864 Listed vs. UL 864 Compliant: What Fire Alarm Migration Actually Requires"
+redirect: /blog/ul-864-fire-alarm-monitoring-compliance-migration
 date: "2026-08-28"
 category: "Compliance & Regulation"
 description: "Buying a UL 864-listed communicator doesn't make your fire alarm migration compliant. Here's the gap most facility managers miss."

@@ -1,5 +1,6 @@
 ---
 title: "What Actually Happens When a Carrier Sends a Disconnection Notice"
+redirect: /blog/carrier-disconnection-notice-2026
 date: "2026-06-26"
 category: "Telecom Modernization"
 description: "A carrier disconnection notice isn't just a letter — it's a deadline with real operational consequences. Here's what to expect and how to respond without panic."

@@ -363,11 +363,12 @@ const Home = () => {
               Our Trusted Partners
             </h2>
           </div>
-          <div className="w-full">
-            <picture>
-              <source media="(min-width: 768px)" srcSet="/partners/Partners-Banner-Desktop.png" />
-              <img src="/partners/Partners-Banner-Mobile.png" alt="Our Trusted Partners" className="w-full" loading="lazy" />
-            </picture>
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+            {['AT&T', 'MetTel', 'Verizon', 'T-Mobile', 'Velocity', 'DataRemote', 'MIX Networks'].map((name) => (
+              <span key={name} className="text-lg font-bold tracking-tight text-navy-400">
+                {name}
+              </span>
+            ))}
           </div>
         </div>
       </section>

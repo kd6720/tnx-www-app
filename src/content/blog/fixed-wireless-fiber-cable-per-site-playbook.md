@@ -1,5 +1,6 @@
 ---
 title: "Fixed Wireless vs Fiber vs Cable: A Per-Site Decision Playbook"
+redirect: /blog/fixed-wireless-vs-fiber-vs-cable-primary-connection
 date: "2026-08-16"
 category: "Telecom Modernization"
 description: "One connection doesn't fit every location. A practical framework for assigning fiber, cable, or fixed wireless to each site in your portfolio."
