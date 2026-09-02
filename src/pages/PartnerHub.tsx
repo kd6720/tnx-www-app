@@ -54,34 +54,38 @@ const PartnerHub = () => {
         ]}
       />
 
-      {/* Lead — compact header + product screenshot (not a text hero) */}
-      <section className="border-b border-hairline bg-white">
-        <div className="mx-auto w-full max-w-site px-6 pt-20 md:px-gutter">
+      {/* Hero — navy band */}
+      <section className="relative overflow-hidden bg-navy-950 pt-24 pb-40">
+        <div className="mx-auto w-full max-w-site px-6 md:px-gutter">
           <div className="max-w-3xl">
             <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
               TNX Partner Hub
             </span>
-            <h1 className="mt-4 font-display text-[44px] leading-[1.05] tracking-[-0.02em] font-semibold text-ink md:text-[56px] lg:text-[72px] lg:leading-[1.0]">
+            <h1 className="mt-4 font-display text-[44px] leading-[1.05] tracking-[-0.02em] font-semibold text-white md:text-[56px] lg:text-[72px] lg:leading-[1.0]">
               AI agents you can actually manage.
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-body">
+            <p className="mt-5 max-w-xl text-lg text-navy-200">
               Most AI tools give you a chatbot. Partner Hub gives you a workforce — with a manager.
             </p>
           </div>
-          <div className="mt-10 pb-section">
-            <div className="rounded-lg border border-hairline p-4">
-              <img
-                src="/product/partner-hub-dashboard.webp"
-                alt="Partner Hub dashboard — stats and recent agents"
-                width="1600"
-                height="1000"
-                className="w-full rounded border border-hairline"
-              />
-              <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
-                <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted">01 Dashboard</span>
-                <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted">02 Controls — budgets + kill switch</span>
-                <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted">03 Activity stream</span>
-              </div>
+        </div>
+      </section>
+
+      {/* Product screenshot — overlaps the hero band */}
+      <section className="relative z-10 -mt-[120px]">
+        <div className="mx-auto w-full max-w-site px-6 pb-16 md:px-gutter">
+          <div className="rounded-lg border border-hairline bg-white p-4">
+            <img
+              src="/product/partner-hub-dashboard.webp"
+              alt="Partner Hub dashboard — stats and recent agents"
+              width="1600"
+              height="1000"
+              className="w-full rounded border border-hairline"
+            />
+            <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
+              <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted">01 Dashboard</span>
+              <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted">02 Controls — budgets + kill switch</span>
+              <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted">03 Activity stream</span>
             </div>
           </div>
         </div>
