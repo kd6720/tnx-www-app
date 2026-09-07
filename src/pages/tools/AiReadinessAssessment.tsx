@@ -299,7 +299,7 @@ const AiReadinessAssessment = () => {
                 Interactive Assessment Tool
               </span>
               <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
-                AI{' '}
+                {'AI '}
                 <span className="text-brand-300">
                   Readiness Assessment
                 </span>
@@ -334,7 +334,7 @@ const AiReadinessAssessment = () => {
                 return (
                   <div key={q.id}>
                     <label className="block text-sm font-semibold text-navy-800 mb-3">
-                      {qi + 1}. {q.label}: "{q.options[0].desc.split(',')[0]}" — How would you describe your current state?
+                      {`${qi + 1}. ${q.label}: "${q.options[0].desc.split(',')[0]}" — How would you describe your current state?`}
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-5 gap-2">
                       {q.options.map((opt) => {
@@ -361,7 +361,7 @@ const AiReadinessAssessment = () => {
                       })}
                     </div>
                     <p className="mt-1 text-xs text-navy-400">
-                      Score: {isAnswered ? currentScore : '—'} / 4
+                      {`Score: ${isAnswered ? currentScore : '—'} / 4`}
                     </p>
                   </div>
                 );
@@ -415,7 +415,7 @@ const AiReadinessAssessment = () => {
                           {cat.label}
                         </span>
                         <span className="text-sm font-bold text-navy-900">
-                          {cat.score}/{cat.max}
+                          {`${cat.score}/${cat.max}`}
                         </span>
                       </div>
                       <div className="h-3 rounded-full bg-navy-100 overflow-hidden">
