@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
 import MultiStepForm from '../components/MultiStepForm';
+import ProductVideo from '../components/ProductVideo';
 
 const capabilities = [
   { n: '01', title: 'Three channels, one pipeline view', body: 'Direct customers, agents, and resellers each get the right stages and commission fields.' },
@@ -76,14 +77,10 @@ const Crm = () => {
       <section className="relative z-10 -mt-[120px]">
         <div className="mx-auto w-full max-w-site px-6 pb-16 md:px-gutter">
           <div className="rounded-lg border border-hairline bg-white p-4">
-            <img
-              src="/media/crm-pipeline.v2.webp"
-              alt="TNX CRM pipeline board in Kanban view, with deals across New Lead, Contacted, Qualified, Discovery, Proposal and Negotiation stages. Demo data."
-              width={1568}
-              height={640}
-              className="w-full rounded border border-hairline bg-canvas"
-              loading="lazy"
-              decoding="async"
+            <ProductVideo
+              name="crm-value"
+              label="TNX CRM pipeline — account data landing on a deal, a next step being set, and the deal moving to Negotiation. Sample data."
+              className="w-full rounded border border-hairline"
             />
             <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
               <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted-text">01 Pipeline view</span>
