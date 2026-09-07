@@ -3,7 +3,7 @@
  *
  * A deterministic line-and-node SVG field drawn over the right two-thirds of
  * the hero, on top of the darkened video backplate. Three accent nodes are
- * labelled SELL / SUPPORT / MONITOR in JetBrains Mono and pulse in sequence.
+ * labelled SELL / SUPPORT / MONITOR in Geist Mono and pulse in sequence.
  *
  * Determinism matters: node positions are hard-coded (no Math.random) so the
  * prerendered HTML and the hydration render agree. The pulse is pure CSS and
@@ -115,7 +115,7 @@ export default function NodeField({ className = '' }: { className?: string }) {
               y={n.y - 16}
               textAnchor="middle"
               fill="#ff7a1a"
-              fontFamily="'JetBrains Mono', monospace"
+              fontFamily="'Geist Mono', ui-monospace, monospace"
               fontSize="12"
               letterSpacing="0.08em"
             >
