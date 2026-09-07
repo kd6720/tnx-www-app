@@ -5,6 +5,7 @@ import HeroVideo from '../components/HeroVideo';
 import NodeField from '../components/NodeField';
 import MultiStepForm from '../components/MultiStepForm';
 import StatValue from '../components/StatValue';
+import ProductVideo from '../components/ProductVideo';
 
 /**
  * Stats strip (inside the navy hero band).
@@ -17,9 +18,16 @@ import StatValue from '../components/StatValue';
  *  - "25+ Years in telecom" sat unattributed beside company stats, which read
  *    as the company's age. It is Carter's experience — the label now says so.
  *  - "50% Typical line-cost cut" contradicted /tools/pots-roi-calculator,
- *    whose own defaults ($85 → $25) imply ~71%. Neither figure was sourced, so
- *    the tile now shows the same two numbers the calculator uses. A visitor who
- *    clicks through finds the page agreeing with itself.
+ *    whose own defaults ($85 → $25) imply ~71%. It was briefly replaced by
+ *    those two figures, and then removed entirely: the homepage leads with AI,
+ *    a per-line price on it anchors every later negotiation, and Carter's real
+ *    range ($130–$500/line) makes the calculator's $85 default wrong anyway.
+ *    The line-cost story now lives on /pots-replacement and in the calculator,
+ *    where the reader supplies their own number.
+ *
+ * The remaining three are all defensible: "24/7" is what the agents do,
+ * "5–10 days" is Carter's own confirmed deployment window (and matches
+ * /ai-workforce — keep the two in sync), and the 25+ years is his.
  *
  * The site's credibility rests on publishing real certification identifiers
  * and an explicit "what we will not claim" section. Do not put an unsourced
@@ -27,8 +35,8 @@ import StatValue from '../components/StatValue';
  */
 const stats = [
   { value: '24/7', label: 'AI agents on duty' },
+  { value: '5–10 days', label: 'From kickoff to first agent live' },
   { value: '25+', label: 'Years of founder experience' },
-  { value: '$85 → $25', label: 'Typical line cost, per month' },
 ];
 
 // 01 — AI Solutions. Three numbered items, 5/6 split.
@@ -372,14 +380,17 @@ const Home = () => {
               </ul>
             </div>
             <div className="col-span-12 lg:col-span-7">
-              {/* DataRemote POTS IN A BOX — the hardware every analog line moves onto */}
-              <img
-                src="/media/dataremote-pots-in-a-box.v2.webp"
-                alt="DataRemote POTS IN A BOX cellular gateway — eight analog phone ports, LAN/WAN, external antennas"
-                width="1600"
-                height="1200"
-                className="aspect-[4/3] w-full rounded-lg border border-hairline bg-canvas object-cover"
-                loading="lazy"
+              {/*
+                Network infrastructure, not a product shot. The homepage leads
+                with AI, so the device photography lives on /pots-replacement
+                and the product pages — and per the standing rule, any frame
+                that presents hardware as *our* hardware uses real DataRemote
+                imagery, never generic or generated devices.
+              */}
+              <ProductVideo
+                name="network-infrastructure"
+                label="Fiber patch panels, switch ports and structured cabling in a telecom equipment room — the managed network layer beneath the agents"
+                className="w-full rounded-lg border border-hairline"
               />
               <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
                 {compliance.map((c) => (
