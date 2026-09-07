@@ -197,6 +197,17 @@ const PotsReplacement = () => (
                 return (
                   <li key={slug} className="bg-white">
                     <Link to={`/pots-replacement/${slug}`} className="group block h-full p-6">
+                      {p.image && (
+                        <img
+                          src={p.image.src}
+                          alt={p.image.alt}
+                          width={p.image.width}
+                          height={p.image.height}
+                          className="mb-5 h-28 w-auto object-contain object-left"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      )}
                       <span className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
                         {p.eyebrow}
                       </span>
