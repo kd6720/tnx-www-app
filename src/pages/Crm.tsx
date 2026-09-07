@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
+import HeroVideo from '../components/HeroVideo';
+import ProductVideo from '../components/ProductVideo';
 import MultiStepForm from '../components/MultiStepForm';
 
 const capabilities = [
@@ -53,9 +55,10 @@ const Crm = () => {
         ]}
       />
 
-      {/* Hero — navy band */}
-      <section className="relative overflow-hidden bg-navy-950 pt-24 pb-40">
-        <div className="mx-auto w-full max-w-site px-6 md:px-gutter">
+      {/* Hero — navy band with motion; the product frame below overlaps it */}
+      <section className="relative overflow-hidden bg-navy-950 pt-32 pb-44">
+        <HeroVideo name="hero-crm" />
+        <div className="relative z-10 mx-auto w-full max-w-site px-6 md:px-gutter">
           <div className="max-w-3xl">
             <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
               TNX CRM
@@ -74,11 +77,11 @@ const Crm = () => {
       <section className="relative z-10 -mt-[120px]">
         <div className="mx-auto w-full max-w-site px-6 pb-16 md:px-gutter">
           <div className="rounded-lg border border-hairline bg-white p-4">
-            <div className="flex aspect-video max-h-[420px] w-full items-center justify-center rounded border border-dashed border-hairline bg-canvas">
-              <span className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
-                [ASSET] — pipeline screenshot
-              </span>
-            </div>
+            <ProductVideo
+              name="crm-value"
+              label="TNX CRM pipeline — customer data flowing into deals, with an agent keeping the record current"
+              className="w-full rounded border border-hairline"
+            />
             <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
               <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted-text">01 Pipeline view</span>
               <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted-text">02 Quotes + renewals</span>

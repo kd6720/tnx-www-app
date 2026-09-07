@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
+import HeroVideo from '../components/HeroVideo';
 
 const sections = [
   { n: '01', to: '/ai-workforce', title: 'AI Workforce', desc: 'AI agents that sell, support, and monitor — 24/7, telecom-native, tenant-isolated.' },
@@ -29,9 +30,10 @@ const Ai = () => (
       description="AI agents and consulting for telecom and multi-site operators. Explore the AI workforce, run a readiness assessment, and read the latest on AI in telecom."
     />
 
-    {/* Hero — navy band (interior hub, no video) */}
-    <section className="relative overflow-hidden bg-navy-950 pt-32 pb-20">
-      <div className="mx-auto w-full max-w-site px-6 md:px-gutter">
+    {/* Hero — navy band with motion */}
+    <section className="relative flex min-h-[70vh] items-center overflow-hidden bg-navy-950">
+      <HeroVideo name="hero-ai" />
+      <div className="relative z-10 mx-auto w-full max-w-site px-6 py-24 md:px-gutter">
         <div className="max-w-3xl">
           <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">AI</span>
           <h1 className="mt-6 font-display text-[44px] leading-[1.05] tracking-[-0.02em] font-semibold text-white md:text-[56px] md:leading-[1.05] lg:text-[72px] lg:leading-[1.0]">
