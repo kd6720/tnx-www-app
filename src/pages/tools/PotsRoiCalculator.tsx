@@ -126,7 +126,7 @@ const PotsRoiCalculator = () => {
                 Interactive Assessment Tool
               </span>
               <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
-                POTS Replacement{' '}
+                {'POTS Replacement '}
                 <span className="text-brand-300">
                   ROI Calculator
                 </span>
@@ -231,7 +231,7 @@ const PotsRoiCalculator = () => {
                 <div>
                   <h3 className="text-xl font-extrabold text-navy-900">Your Savings Projection</h3>
                   <p className="text-sm text-navy-500">
-                    Based on {lines} line{lines !== 1 ? 's' : ''} at {formatCurrency(monthlyCost)}/mo each
+                    {`Based on ${lines} line${lines !== 1 ? 's' : ''} at ${formatCurrency(monthlyCost)}/mo each`}
                   </p>
                 </div>
               </div>
@@ -289,9 +289,7 @@ const PotsRoiCalculator = () => {
 
               {/* Transparency note */}
               <p className="mt-4 text-xs text-navy-400 text-center">
-                Estimated replacement cost: ~{formatCurrency(REPLACEMENT_COST)}/line/mo
-                ({formatCurrency(replacementAnnualSpend)}/yr for {lines} lines). Actual
-                pricing depends on your specific deployment.
+                {`Estimated replacement cost: ~${formatCurrency(REPLACEMENT_COST)}/line/mo (${formatCurrency(replacementAnnualSpend)}/yr for ${lines} lines). Actual pricing depends on your specific deployment.`}
               </p>
             </div>
           )}

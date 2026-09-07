@@ -243,7 +243,7 @@ const CopperSunsetRisk = () => {
                 Interactive Assessment Tool
               </span>
               <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
-                Copper Sunset{' '}
+                {'Copper Sunset '}
                 <span className="text-brand-300">
                   Risk Assessment
                 </span>

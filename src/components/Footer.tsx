@@ -25,6 +25,7 @@ const companyLinks = [
 const Footer = () => {
   return (
     <footer className="relative bg-navy-950 text-navy-200 overflow-hidden">
+      <h2 className="sr-only">Site footer</h2>
       {/* Ambient glow */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent" />
 
@@ -53,7 +54,7 @@ const Footer = () => {
 
           {/* Solutions */}
           <div className="lg:col-span-2">
-            <h4 className="text-sm font-semibold uppercase tracking-widest text-white">Solutions</h4>
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-white">Solutions</h3>
             <ul className="mt-4 space-y-3">
               {solutionLinks.map(({ to, label }) => (
                 <li key={to}>
@@ -67,7 +68,7 @@ const Footer = () => {
 
           {/* Platforms */}
           <div className="lg:col-span-2">
-            <h4 className="text-sm font-semibold uppercase tracking-widest text-white">Platforms</h4>
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-white">Platforms</h3>
             <ul className="mt-4 space-y-3">
               {platformLinks.map(({ to, label }) => (
                 <li key={to}>
@@ -81,7 +82,7 @@ const Footer = () => {
 
           {/* Company */}
           <div className="lg:col-span-2">
-            <h4 className="text-sm font-semibold uppercase tracking-widest text-white">Company</h4>
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-white">Company</h3>
             <ul className="mt-4 space-y-3">
               {companyLinks.map(({ to, label }) => (
                 <li key={to}>
@@ -95,7 +96,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="lg:col-span-2">
-            <h4 className="text-sm font-semibold uppercase tracking-widest text-white">Contact</h4>
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-white">Contact</h3>
             <ul className="mt-4 space-y-4">
               <li>
                 <a
