@@ -123,12 +123,16 @@ const PotsReplacement = () => (
           </div>
           <div className="col-span-12 lg:col-span-7">
             <p className="text-lg leading-relaxed text-body">
-              Copper retirement is not a future event you can schedule around. Carriers file to
-              discontinue legacy service route by route, and the practical experience is a rate
-              increase, then a repair that never gets scheduled, then a line that stops working
-              during an inspection. Industry estimates still put roughly 40 million analog lines
-              in service across the US — the majority attached to equipment nobody thinks about
-              until it fails.
+              {'Copper retirement is not a future event you can schedule around. Carriers file to discontinue legacy service route by route, and the practical experience is a rate increase, then a repair that never gets scheduled, then a line that stops working during an inspection. The FCC counted 15.0 million end-user switched access lines still in service as of 30 June 2025, down from 27.2 million three years earlier — roughly four million lines a year disappearing, most of them attached to equipment nobody thinks about until it fails. '}
+              <a
+                href="https://docs.fcc.gov/public/attachments/DOC-421558A1.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-text underline underline-offset-4"
+              >
+                FCC, Voice Telephone Services
+              </a>
+              {', released May 2026.'}
             </p>
             <p className="mt-5 text-lg leading-relaxed text-body">
               The exposure is rarely the phone on someone&apos;s desk. It is the elevator phone,
