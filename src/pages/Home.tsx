@@ -5,6 +5,7 @@ import HeroVideo from '../components/HeroVideo';
 import NodeField from '../components/NodeField';
 import MultiStepForm from '../components/MultiStepForm';
 import StatValue from '../components/StatValue';
+import ProductVideo from '../components/ProductVideo';
 
 // Stats strip (inside the navy hero band). "[N] agents live" is a placeholder
 // Carter will confirm; the other three are telecom facts already on the site.
@@ -268,7 +269,7 @@ const Home = () => {
                 </p>
               </div>
 
-              {/* TNX CRM product frame — [ASSET] placeholder, same size */}
+              {/* TNX CRM product frame — motion piece built from the live pipeline board */}
               <div className="mt-6 rounded-lg border border-hairline bg-white p-4">
                 <div className="flex items-center justify-between border-b border-hairline pb-3">
                   <span className="font-mono text-xs uppercase tracking-mono-label text-ink">
@@ -278,10 +279,12 @@ const Home = () => {
                     Opportunity management
                   </span>
                 </div>
-                <div className="mt-4 flex aspect-[8/5] items-center justify-center rounded border border-dashed border-hairline bg-canvas">
-                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
-                    [ASSET] — product screenshot
-                  </span>
+                <div className="mt-4">
+                  <ProductVideo
+                    name="crm-value"
+                    label="TNX CRM pipeline — customer and site data flowing into deals while an agent keeps the record current"
+                    className="w-full rounded border border-hairline"
+                  />
                 </div>
                 <p className="mt-4 border-t border-hairline pt-4 text-sm leading-relaxed text-body">
                   A pipeline built for how telecom deals close — direct, agent, and reseller
@@ -350,12 +353,15 @@ const Home = () => {
               </ul>
             </div>
             <div className="col-span-12 lg:col-span-7">
-              {/* [ASSET] photo frame */}
-              <div className="flex aspect-[4/3] items-center justify-center rounded-lg border border-dashed border-hairline bg-white">
-                <span className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
-                  [ASSET] — install photo
-                </span>
-              </div>
+              {/* DataRemote POTS IN A BOX — the hardware every analog line moves onto */}
+              <img
+                src="/media/dataremote-pots-in-a-box.v2.webp"
+                alt="DataRemote POTS IN A BOX cellular gateway — eight analog phone ports, LAN/WAN, external antennas"
+                width="1600"
+                height="1200"
+                className="aspect-[4/3] w-full rounded-lg border border-hairline bg-canvas object-cover"
+                loading="lazy"
+              />
               <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
                 {compliance.map((c) => (
                   <span key={c} className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-mono-label text-muted-text">

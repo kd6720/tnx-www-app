@@ -491,6 +491,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'platforms/partner-hub',
+    heroPoster: '/media/hero-partner-hub-poster.v2.jpg',
     title: 'TNX Partner Hub — AI Agent Management Platform for MSPs & Channel Partners | TrustedNetworx',
     description: 'Deploy, budget, monitor, and govern AI agents for sales, support, and operations from one multi-tenant hub. Built by an operator, for MSPs and resellers.',
     jsonLd: [
@@ -510,6 +511,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'platforms/crm',
+    heroPoster: '/media/hero-crm-poster.v2.jpg',
     title: 'TNX CRM — Opportunity Management for Telecom, MSP & Channel Sales | TrustedNetworx',
     description: 'Track direct, agent, and reseller deals with telecom-native fields and AI agents that keep the pipeline current. Simple, flat pricing.',
     jsonLd: [
@@ -528,12 +530,14 @@ const ROUTE_PAGES = [
   },
   {
     route: 'partners',
+    heroPoster: '/media/hero-partners-poster.v2.jpg',
     title: 'Become a Partner — MSP & Reseller Program | TrustedNetworx',
     description: 'Join the TrustedNetworx partner program for MSPs, telecom agents, and resellers. White-label telecom and AI, TNX Partner Hub, and commission on every deal.',
     jsonLd: [buildBreadcrumbList('partners')],
   },
   {
     route: 'ai',
+    heroPoster: '/media/hero-ai-poster.v2.jpg',
     title: 'AI for Telecom & Multi-Site Operators | TrustedNetworx',
     description: 'AI agents and consulting for telecom and multi-site operators. Explore the AI workforce, run a readiness assessment, and read the latest on AI in telecom.',
     jsonLd: [buildBreadcrumbList('ai')],
@@ -576,6 +580,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'contact',
+    heroPoster: '/media/hero-contact-poster.v2.jpg',
     title: 'Contact Us | TrustedNetworx',
     description: 'Get in touch with the TrustedNetworx team to discuss your managed telecom, connectivity, voice, and AI needs.',
     jsonLd: [
