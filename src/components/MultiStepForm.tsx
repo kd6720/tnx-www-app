@@ -33,18 +33,6 @@ interface PresetConfig {
 
 // ── Config ────────────────────────────────────────────────────────────────────
 
-const CRM_FORM_IDS: Record<Preset, string> = {
-  home: 'f042309a-4268-4d51-986d-c1a827af9dea',
-  pots: 'f042309a-4268-4d51-986d-c1a827af9dea',
-  ai: 'f042309a-4268-4d51-986d-c1a827af9dea',
-  voice: 'f042309a-4268-4d51-986d-c1a827af9dea',
-  connectivity: 'f042309a-4268-4d51-986d-c1a827af9dea',
-  'partner-hub': 'f042309a-4268-4d51-986d-c1a827af9dea',
-  crm: 'f042309a-4268-4d51-986d-c1a827af9dea',
-  partners: 'f042309a-4268-4d51-986d-c1a827af9dea',
-  contact: 'f042309a-4268-4d51-986d-c1a827af9dea',
-};
-
 const PRESETS: Record<Preset, PresetConfig> = {
   home: {
     button: 'Get my recommendation',
@@ -243,13 +231,13 @@ const MultiStepForm = ({ preset = 'home', defaultPainPoint, onSuccess }: MultiSt
     setError(null);
     try {
       const payload = {
-        // legacy keys — the existing CRM public form maps by these
+        // legacy keys — kept so the bridge function can accept either shape
         contact_name: contact.name,
         company_name: contact.company,
         message: contact.notes,
         industry: vertical,
         pain_point: needs.join(', '),
-        // new keys — for the per-preset form-ids Carter will create
+        // qualifying answers — the bridge folds these into the lead's notes + custom_fields
         source_page: typeof window !== 'undefined' ? window.location.pathname : '',
         preset,
         relationship,
@@ -264,14 +252,11 @@ const MultiStepForm = ({ preset = 'home', defaultPainPoint, onSuccess }: MultiSt
         lines,
         ...contact,
       };
-      const res = await fetch(
-        `https://enhancedlines.com/api/public/forms/${CRM_FORM_IDS[preset]}/submit`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        },
-      );
+      const res = await fetch('/.netlify/functions/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
       window.dispatchEvent(new CustomEvent('form_submit', { detail: { preset } }));
       sessionStorage.removeItem(`tnx-form:${preset}`);

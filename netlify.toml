@@ -3,6 +3,11 @@
   publish = "dist"
   base = "/"
 
+# Serverless functions — currently just the lead-capture bridge to TNX CRM.
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 # --- SEO 301 redirects (server-side, before the SPA fallback) ---
 # Old service page consolidated into Voice Solutions.
 [[redirects]]
