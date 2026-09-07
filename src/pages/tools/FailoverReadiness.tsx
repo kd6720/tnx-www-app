@@ -20,8 +20,7 @@ import {
 } from 'lucide-react';
 import Seo from '../../components/Seo';
 
-const CRM_ENDPOINT =
-  'https://enhancedlines.com/api/public/forms/f042309a-4268-4d51-986d-c1a827af9dea/submit';
+const CRM_ENDPOINT = '/.netlify/functions/lead';
 
 const SITE_TIERS = [
   { value: '1', label: '1', score: 5 },
@@ -192,6 +191,7 @@ const FailoverReadiness = () => {
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', company: '' });
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -201,8 +201,9 @@ const FailoverReadiness = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setSubmitError(null);
     try {
-      await fetch(CRM_ENDPOINT, {
+      const res = await fetch(CRM_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -223,9 +224,10 @@ const FailoverReadiness = () => {
           }),
         }),
       });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
       setSubmitted(true);
     } catch {
-      setSubmitted(true);
+      setSubmitError("We couldn't send that just now. Please try again, or email sales@trustednetworx.com.");
     } finally {
       setSubmitting(false);
     }
@@ -579,6 +581,11 @@ const FailoverReadiness = () => {
                       />
                     </div>
                   </div>
+                  {submitError && (
+                    <p role="alert" className="mb-3 rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+                      {submitError}
+                    </p>
+                  )}
                   <button
                     type="submit"
                     disabled={submitting}

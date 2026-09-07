@@ -16,8 +16,7 @@ import {
 import Seo from '../../components/Seo';
 import MultiStepForm from '../../components/MultiStepForm';
 
-const CRM_ENDPOINT =
-  'https://enhancedlines.com/api/public/forms/f042309a-4268-4d51-986d-c1a827af9dea/submit';
+const CRM_ENDPOINT = '/.netlify/functions/lead';
 
 const AI_HOURLY_EQUIVALENT = 15;
 
