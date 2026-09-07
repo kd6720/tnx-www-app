@@ -1,7 +1,10 @@
 /**
  * Lead capture bridge: trustednetworx.com → TNX CRM.
  *
- * The site's MultiStepForm posts its payload here (same origin, so no CORS).
+ * The site's MultiStepForm and the standalone tool calculators post their
+ * payloads here (same origin, so no CORS). Two payload shapes are accepted:
+ * the MultiStepForm shape and the calculator shape (name/email/phone/company
+ * plus `source` and a double-encoded `calculator_results` JSON string).
  * This function holds the CRM Agent Key server-side, translates the marketing
  * payload into a crm_leads row, and forwards it to POST /api/v1/leads on the
  * CRM. The browser never sees the key and never talks to the CRM directly.
@@ -47,12 +50,64 @@ function splitName(full: string): { first: string; last: string } {
   return { first: parts[0], last: parts.slice(1).join(" ") };
 }
 
+/** "Copper Sunset Risk Assessment" -> "copper-sunset-risk-assessment", for use as a tag. */
+function slug(v: string): string {
+  return v.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40);
+}
+
+/**
+ * The tool calculators send their computed output as `calculator_results`: a
+ * JSON string nested inside the JSON body (double-encoded). Parse it back into
+ * an object so the values land in custom_fields as real fields rather than one
+ * opaque blob. Returns null for anything that is not a parseable object.
+ */
+function parseCalculatorResults(raw: unknown): Record<string, unknown> | null {
+  if (typeof raw === "object" && raw !== null && !Array.isArray(raw)) {
+    return raw as Record<string, unknown>;
+  }
+  if (typeof raw !== "string" || raw.trim() === "") return null;
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) return null;
+    return parsed as Record<string, unknown>;
+  } catch {
+    return null;
+  }
+}
+
+/** Renders one calculator answer for the notes block. Objects/arrays are compacted, not dumped. */
+function renderResultValue(v: unknown): string {
+  if (v === null || v === undefined || v === "") return "";
+  if (Array.isArray(v)) {
+    return v
+      .map((item) =>
+        item !== null && typeof item === "object"
+          ? String((item as Record<string, unknown>).label ?? (item as Record<string, unknown>).question ?? "")
+          : String(item),
+      )
+      .filter(Boolean)
+      .join(", ");
+  }
+  if (typeof v === "object") return "";
+  return String(v);
+}
+
+/** camelCase / snake_case -> "Camel case" for a notes label. */
+function humanize(key: string): string {
+  const spaced = key.replace(/[_-]+/g, " ").replace(/([a-z0-9])([A-Z])/g, "$1 $2");
+  return spaced.charAt(0).toUpperCase() + spaced.slice(1).toLowerCase();
+}
+
 /** A rep-readable summary of every qualifying answer the visitor gave. Only lines with a value are emitted. */
 function buildNotes(p: Payload): string {
   const lines: string[] = [];
   const page = str(p.source_page);
   const preset = str(p.preset);
-  lines.push(`Website inquiry${page ? ` — ${page}` : ""}${preset ? ` (${preset})` : ""}`);
+  const source = str(p.source);
+  // A calculator names itself in `source` ("Copper Sunset Risk Assessment");
+  // MultiStepForm identifies itself by page + preset. Prefer the specific one.
+  const heading = source || `Website inquiry${page ? ` — ${page}` : ""}${preset ? ` (${preset})` : ""}`;
+  lines.push(heading);
   lines.push("");
 
   const row = (label: string, value: unknown) => {
@@ -74,6 +129,20 @@ function buildNotes(p: Payload): string {
   const lns = str(p.lines);
   if (sites || lns) {
     lines.push(["Sites", sites].filter(Boolean).join(": ") + (sites && lns ? " · " : "") + (lns ? `Lines: ${lns}` : ""));
+  }
+
+  const results = parseCalculatorResults(p.calculator_results);
+  if (results) {
+    const resultLines: string[] = [];
+    for (const [k, v] of Object.entries(results)) {
+      const rendered = renderResultValue(v);
+      if (rendered) resultLines.push(`${humanize(k)}: ${rendered}`);
+    }
+    if (resultLines.length > 0) {
+      if (lines.length > 2) lines.push("");
+      lines.push("Calculator results:");
+      lines.push(...resultLines);
+    }
   }
 
   const message = str(p.notes) || str(p.message);
@@ -130,6 +199,8 @@ export default async (req: Request): Promise<Response> => {
   const company = str(payload.company) || str(payload.company_name);
   const preset = str(payload.preset);
   const relationship = str(payload.relationship);
+  const source = str(payload.source);
+  const calculatorResults = parseCalculatorResults(payload.calculator_results);
 
   const lead: Record<string, unknown> = {
     first_name: first,
@@ -138,8 +209,10 @@ export default async (req: Request): Promise<Response> => {
     company_name: company || null,
     phone: phone ? normalizePhone(phone) : null,
     notes: buildNotes(payload),
-    tags: ["website", preset, relationship].filter(Boolean),
+    tags: ["website", preset, relationship, source ? slug(source) : ""].filter(Boolean),
     custom_fields: {
+      ...(calculatorResults ?? {}),
+      source_tool: source || null,
       source_page: str(payload.source_page) || null,
       preset: preset || null,
       relationship: relationship || null,
