@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
-import ProductVideo from '../components/ProductVideo';
 import MultiStepForm from '../components/MultiStepForm';
 
 const capabilities = [
@@ -77,10 +76,14 @@ const Crm = () => {
       <section className="relative z-10 -mt-[120px]">
         <div className="mx-auto w-full max-w-site px-6 pb-16 md:px-gutter">
           <div className="rounded-lg border border-hairline bg-white p-4">
-            <ProductVideo
-              name="crm-value"
-              label="TNX CRM pipeline — customer data flowing into deals, with an agent keeping the record current"
-              className="w-full rounded border border-hairline"
+            <img
+              src="/media/crm-pipeline.v2.webp"
+              alt="TNX CRM pipeline board in Kanban view, with deals across New Lead, Contacted, Qualified, Discovery, Proposal and Negotiation stages. Demo data."
+              width={1568}
+              height={640}
+              className="w-full rounded border border-hairline bg-canvas"
+              loading="lazy"
+              decoding="async"
             />
             <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
               <span className="font-mono text-[11px] uppercase tracking-mono-label text-muted-text">01 Pipeline view</span>

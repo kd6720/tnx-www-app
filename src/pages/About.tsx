@@ -13,7 +13,7 @@ const About = () => (
   <div className="bg-canvas text-body antialiased">
     <Seo
       title="About Us | TrustedNetworx"
-      description="With 25+ years in telecom and IoT, TrustedNetworx delivers advanced connectivity, voice, and managed solutions for enterprise and multi-site organizations."
+      description="Founded on 25+ years of telecom and IoT experience, TrustedNetworx delivers advanced connectivity, voice, and managed solutions for enterprise and multi-site organizations."
     />
 
     {/* Hero */}
@@ -57,10 +57,10 @@ const About = () => (
               Leading the future of telecom.
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-body">
-              With over 25 years in telecom and IoT, TrustedNetworx specializes in advanced
-              connectivity solutions that drive business success. Our expertise spans IoT, M2M,
-              cloud computing, and enterprise communication — enabling organizations to modernize
-              infrastructure, optimize operations, and stay ahead.
+              TrustedNetworx was built on our founder&apos;s 25+ years in telecom and IoT, and
+              specializes in advanced connectivity solutions that drive business success. Our
+              expertise spans IoT, M2M, cloud computing, and enterprise communication — enabling
+              organizations to modernize infrastructure, optimize operations, and stay ahead.
             </p>
           </div>
           <div className="col-span-12 lg:col-span-6">

@@ -5,15 +5,30 @@ import HeroVideo from '../components/HeroVideo';
 import NodeField from '../components/NodeField';
 import MultiStepForm from '../components/MultiStepForm';
 import StatValue from '../components/StatValue';
-import ProductVideo from '../components/ProductVideo';
 
-// Stats strip (inside the navy hero band). "[N] agents live" is a placeholder
-// Carter will confirm; the other three are telecom facts already on the site.
+/**
+ * Stats strip (inside the navy hero band).
+ *
+ * Three tiles, not four, and every one of them is defensible:
+ *
+ *  - "40+ Agents live" was a placeholder that shipped. The real count is not
+ *    one we publish, and a hedged number reads worse than no number, so the
+ *    tile is gone rather than softened.
+ *  - "25+ Years in telecom" sat unattributed beside company stats, which read
+ *    as the company's age. It is Carter's experience — the label now says so.
+ *  - "50% Typical line-cost cut" contradicted /tools/pots-roi-calculator,
+ *    whose own defaults ($85 → $25) imply ~71%. Neither figure was sourced, so
+ *    the tile now shows the same two numbers the calculator uses. A visitor who
+ *    clicks through finds the page agreeing with itself.
+ *
+ * The site's credibility rests on publishing real certification identifiers
+ * and an explicit "what we will not claim" section. Do not put an unsourced
+ * round number back in this strip.
+ */
 const stats = [
   { value: '24/7', label: 'AI agents on duty' },
-  { value: '40+', label: 'Agents live' },
-  { value: '25+', label: 'Years in telecom' },
-  { value: '50%', label: 'Typical line-cost cut' },
+  { value: '25+', label: 'Years of founder experience' },
+  { value: '$85 → $25', label: 'Typical line cost, per month' },
 ];
 
 // 01 — AI Solutions. Three numbered items, 5/6 split.
@@ -126,11 +141,11 @@ const Home = () => {
         {/* Stats strip — inside the navy band */}
         <div className="relative border-t border-white/10">
           <div className="mx-auto w-full max-w-site px-6 md:px-gutter">
-            <div className="grid grid-cols-2 md:grid-cols-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3">
               {stats.map(({ value, label }, i) => (
                 <div
                   key={label}
-                  className={`py-8${i > 0 ? ' border-l border-white/10 pl-8' : ''}${i % 2 === 1 ? ' max-md:border-l max-md:border-white/10 max-md:pl-8' : ''}`}
+                  className={`py-8${i > 0 ? ' sm:border-l sm:border-white/10 sm:pl-8 max-sm:border-t max-sm:border-white/10' : ''}`}
                 >
                   <p className="font-display text-stat font-semibold text-white">
                     <StatValue value={value} />
@@ -280,10 +295,14 @@ const Home = () => {
                   </span>
                 </div>
                 <div className="mt-4">
-                  <ProductVideo
-                    name="crm-value"
-                    label="TNX CRM pipeline — customer and site data flowing into deals while an agent keeps the record current"
-                    className="w-full rounded border border-hairline"
+                  <img
+                    src="/media/crm-dashboard.v2.webp"
+                    alt="TNX CRM sales overview showing open deals, weighted pipeline value, forecast by category and pipeline by stage. Demo data."
+                    width={1568}
+                    height={640}
+                    className="w-full rounded border border-hairline bg-canvas"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <p className="mt-4 border-t border-hairline pt-4 text-sm leading-relaxed text-body">
