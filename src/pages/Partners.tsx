@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
+import HeroVideo from '../components/HeroVideo';
 import MultiStepForm from '../components/MultiStepForm';
 
 const whatYouGet = [
@@ -38,8 +39,9 @@ const Partners = () => (
     />
 
     {/* Hero */}
-    <section className="relative overflow-hidden bg-navy-950 pt-24 pb-20">
-      <div className="mx-auto w-full max-w-site px-6 md:px-gutter">
+    <section className="relative flex min-h-[70vh] items-center overflow-hidden bg-navy-950">
+      <HeroVideo name="hero-partners" />
+      <div className="relative z-10 mx-auto w-full max-w-site px-6 py-24 md:px-gutter">
         <div className="max-w-3xl">
           <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">
             Partner Program

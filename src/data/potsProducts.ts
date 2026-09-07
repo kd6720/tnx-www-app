@@ -30,6 +30,38 @@ export interface CertRow {
   holder?: string;
 }
 
+/**
+ * Product photography. Every asset is a transparent WebP exported from the
+ * manufacturer originals in the MIX Networks brand library, so the same file
+ * sits correctly on the navy hero band and on white. Intrinsic width/height
+ * are required — without them the image reserves no space and the page shifts
+ * as it decodes.
+ */
+export interface ProductImage {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+export interface Feature {
+  title: string;
+  desc: string;
+}
+
+export interface Faq {
+  q: string;
+  a: string;
+}
+
+/** 90X5 only — the independently swappable modules that make up the platform. */
+export interface ProductModule {
+  name: string;
+  role: string;
+  image?: ProductImage;
+  rows: SpecRow[];
+}
+
 export interface Product {
   slug: ProductSlug;
   /** Short name used in nav, cards and cross-links. */
@@ -55,6 +87,18 @@ export interface Product {
   carriers?: string[];
   /** Rendered as the "best fit" line on the hub card and the product hero. */
   bestFor: string;
+  /** Hero product shot. */
+  image?: ProductImage;
+  /** Secondary shot rendered beside the spec table, with a caption. */
+  detail?: ProductImage & { caption: string };
+  /** Capability cards. Every claim traces to a published manufacturer spec. */
+  features?: Feature[];
+  /** 90X5 only. */
+  modules?: ProductModule[];
+  /** 90X5 only — orderable options beyond the base configuration. */
+  expansion?: SpecRow[];
+  /** Rendered as an FAQ section and emitted as FAQPage structured data. */
+  faqs?: Faq[];
 }
 
 /** Endpoints the whole family replaces — shared by every product page. */
@@ -113,6 +157,67 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       'The DataRemote 90X1 replaces eight analog lines over 5G Sub-6 with an 18-cell 15Ah battery and up to 48 hours of standby. UL 864 aligned, CSFM listed, deployed and monitored by TrustedNetworx.',
     positioning: SHARED_90X_POSITIONING,
     bestFor: 'Sites with 5G coverage carrying fire, elevator or emergency endpoints.',
+    image: {
+      src: '/product/90x1-hero.v2.webp',
+      alt: 'DataRemote POTS IN A BOX 90X1 appliance, three-quarter view with the FXS, Ethernet and antenna ports visible',
+      width: 1200,
+      height: 1152,
+    },
+    detail: {
+      src: '/product/90x1-front.v2.webp',
+      alt: 'DataRemote 90X1 front view showing the status indicators and antenna placement',
+      width: 1185,
+      height: 1200,
+      caption: 'Eight FXS ports, three Ethernet, dual SIM and four SMA antenna connections on a single chassis.',
+    },
+    features: [
+      {
+        title: 'Eight analog lines',
+        desc: 'Eight RJ-11 FXS ports with surge protection retire up to eight copper lines from one appliance — no per-line adapter, no separate ATA to power and monitor.',
+      },
+      {
+        title: '5G Sub-6, NSA and SA',
+        desc: 'A 5G Sub-6 radio carries the lines, with LTE fallback and approvals across Verizon, AT&T, T-Mobile, UScellular and Webbing.',
+      },
+      {
+        title: 'Up to 48 hours of standby',
+        desc: 'An 18-cell 15Ah lithium-ion pack holds the site through a mains outage, and a 12VDC 3.0A UPS output powers approved connected devices from the same battery.',
+      },
+      {
+        title: 'E911 with GNSS location',
+        desc: 'Integrated GNSS supplies the geo-location an emergency call needs once the line no longer maps to a fixed street address in the carrier database.',
+      },
+      {
+        title: 'Line-grade analog behaviour',
+        desc: 'Ring-down, CPC, DTMF in and out of band and G.168 echo cancellation are what make a fire panel or elevator phone work on this path rather than merely connect to it.',
+      },
+      {
+        title: 'Managed through Ara',
+        desc: 'Every unit we deploy enrols in Ara for remote provisioning, firmware, line-state alerts and syslog retrieval — most faults are diagnosed without a truck.',
+      },
+    ],
+    faqs: [
+      {
+        q: 'How many lines does one 90X1 replace?',
+        a: 'Eight. The unit provides eight RJ-11 FXS ports with surge protection, and each one presents as a normal analog line to whatever is plugged into it. The model number is not the line count — the 90X1 and 90X2 are both eight-line units.',
+      },
+      {
+        q: 'What happens when the power goes out?',
+        a: 'The internal 18-cell 15Ah lithium-ion battery is rated for up to 48 hours of standby, and real runtime depends on line activity and load. A 12VDC 3.0A UPS output can carry approved connected equipment from the same pack, and the unit sends a low-battery alert before shutting down gracefully.',
+      },
+      {
+        q: 'Can it carry fire alarm and elevator phone lines?',
+        a: 'That is the primary use case. The 90X1 is aligned with UL 864 and NFPA 72 requirements for fire alarm signal transmission and is listed by the California State Fire Marshal under 7305-2384:0002. NFPA 72 applies to the installed system rather than to a product, so whether a specific installation satisfies it is determined by the authority having jurisdiction at the site.',
+      },
+      {
+        q: 'How is 911 handled on a cellular line?',
+        a: 'Two layers. On the device, integrated GNSS supplies geo-location with the call. On the network, MIX Networks meets the service obligations — E911 address association and dispatchable location, 911-call notification to designated contacts, and Kari’s Law and RAY BAUM’S Act support.',
+      },
+      {
+        q: 'When would we choose the 90X2 instead?',
+        a: 'When the site has no usable 5G coverage, when FirstNet band 14 priority access matters, or when the location is in Canada — the 90X2 is the model approved on Bell. The line count, battery and management are otherwise identical.',
+      },
+    ],
     specGroups: [
       {
         heading: 'Analog and network',
@@ -169,6 +274,67 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       'The DataRemote 90X2 replaces eight analog lines over LTE including band 14 for FirstNet, with a 48-hour battery and a 12VDC 4.0A UPS output. FirstNet Trusted and Bell Canada approved.',
     positioning: SHARED_90X_POSITIONING,
     bestFor: 'Sites without 5G, and anywhere FirstNet priority access matters.',
+    image: {
+      src: '/product/90x2-hero.v2.webp',
+      alt: 'DataRemote POTS IN A BOX 90X2 LTE appliance with both antennas fitted and the port bank visible',
+      width: 1200,
+      height: 1122,
+    },
+    detail: {
+      src: '/product/90x2-battery.v2.webp',
+      alt: 'DataRemote 90X2 with the base removed, showing the internal lithium-ion battery pack and SIM slot',
+      width: 1200,
+      height: 932,
+      caption: 'The 18-cell pack and SIM sit inside the chassis — nothing external to mount, cable or lose.',
+    },
+    features: [
+      {
+        title: 'Eight analog lines',
+        desc: 'Eight RJ-11 FXS ports with surge protection, identical in capacity and behaviour to the 90X1 — the difference between the two models is the radio, not the line count.',
+      },
+      {
+        title: 'LTE including band 14',
+        desc: 'Bands 2, 4, 5, 12, 13, 14, 66 and 71 cover the mainstream North American carriers. Band 14 is FirstNet, and the unit is FirstNet Trusted.',
+      },
+      {
+        title: 'Approved on Bell Canada',
+        desc: 'The only model in the family carrying a Bell approval, which makes it the default choice for Canadian sites and cross-border portfolios.',
+      },
+      {
+        title: 'Up to 48 hours of standby',
+        desc: 'The same 18-cell 15Ah lithium-ion pack as the 90X1, with a higher 12VDC 4.0A UPS output for approved connected devices.',
+      },
+      {
+        title: 'Line-grade analog behaviour',
+        desc: 'Ring-down, CPC, DTMF in and out of band and G.168 echo cancellation — the call-handling detail that determines whether legacy endpoints actually work.',
+      },
+      {
+        title: 'Managed through Ara',
+        desc: 'Remote provisioning, firmware, line-state alerts, configuration changes without a reboot, and a documented API for OSS/BSS integration.',
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between the 90X2 and the 90X1?',
+        a: 'The radio. The 90X2 runs on LTE bands 2, 4, 5, 12, 13, 14, 66 and 71; the 90X1 runs on 5G Sub-6. Both are eight-line units with the same 18-cell battery and the same Ara management. Choose the 90X2 for LTE-only coverage, FirstNet priority, or Canada.',
+      },
+      {
+        q: 'Is the 90X2 FirstNet capable?',
+        a: 'Yes. It supports band 14 and is AT&T FirstNet Trusted, which is what gives public-safety-adjacent sites priority and pre-emption on the network during an incident.',
+      },
+      {
+        q: 'How long does it run without mains power?',
+        a: 'The 18-cell 15Ah lithium-ion battery is rated for up to 48 hours of standby, with real runtime varying by line activity and load. A 12VDC 4.0A UPS output can power approved connected equipment from the same pack.',
+      },
+      {
+        q: 'Can it carry fire alarm and elevator phone lines?',
+        a: 'Yes. The 90X2 is aligned with UL 864 and NFPA 72 requirements for fire alarm signal transmission and is listed by the California State Fire Marshal under 7305-2384:0002. NFPA 72 is a code that applies to the installed system, not a product certification, so the authority having jurisdiction makes the final call on any given site.',
+      },
+      {
+        q: 'Whose FCC grant does the 90X2 carry?',
+        a: 'The FCC identifier on the 90X2 is a modular grant held by Quectel for the embedded cellular module, unlike the 90X1 which carries DataRemote’s own grant. We publish this because it is the kind of detail an AHJ or a procurement review will eventually ask about.',
+      },
+    ],
     specGroups: [
       {
         heading: 'Analog and network',
@@ -225,6 +391,115 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     positioning:
       'Every other POTS replacement forces the same compromise: the box has to sit near the analog endpoints, but the radio needs to sit near a window. The 90X5 separates them. The cellular module detaches and mounts up to a standard PoE Ethernet run away, while the gateway and battery stay in the cabinet with the panel.',
     bestFor: 'Signal-difficult buildings — basements, interior cabinets, thick-wall construction.',
+    image: {
+      src: '/product/90x5-hero.v2.webp',
+      alt: 'DataRemote POTS IN A BOX 90X5 modular gateway, assembled, showing the FXS and Ethernet port bank and OLED display',
+      width: 701,
+      height: 1000,
+    },
+    detail: {
+      src: '/product/90x5-modules.v2.webp',
+      alt: 'Exploded view of the 90X5 showing the WWAN module, core gateway and ATA, and battery pack and charger as three separate stacked units',
+      width: 1097,
+      height: 1400,
+      caption: 'Three independent modules: cellular radio on top, gateway and ATA in the middle, power and battery at the base.',
+    },
+    features: [
+      {
+        title: 'The radio leaves the cabinet',
+        desc: 'The cellular module detaches and mounts up to a standard PoE Ethernet run away from the chassis, so the antenna goes where the signal is while the gateway stays with the panel.',
+      },
+      {
+        title: 'Four lines, expandable to eight',
+        desc: 'Four FXS ports ship standard with POTS IN A BOX line technology, expandable to eight via RJ-14 without changing the chassis.',
+      },
+      {
+        title: '5G RedCap with LTE fallback',
+        desc: 'Dual-SIM — one physical, one eSIM — on a 5G RedCap radio that falls back to LTE, with an optional 5G NR Sub-6 module for sites that need the throughput.',
+      },
+      {
+        title: 'Battery sized to the site',
+        desc: 'A 24-hour 87Wh lithium-ion pack is standard, with 8-hour, 48-hour and no-battery configurations available, and the module is swappable in the field.',
+      },
+      {
+        title: 'A 1 Gb/s router underneath',
+        desc: 'Four WAN/LAN ports, two of them PoE, on a 1 Gb/s router platform — the same box can carry primary or backup internet for the whole site.',
+      },
+      {
+        title: 'Same fleet, same management',
+        desc: 'Full Ara support including provisioning across the modular hardware variants, so a 90X5 appears in the same console as every 90X1 and 90X2 you already run.',
+      },
+    ],
+    modules: [
+      {
+        name: 'Cellular WWAN module',
+        role: 'Detaches and relocates to the best signal position over a standard PoE Ethernet run.',
+        image: {
+          src: '/product/90x5-module-wwan.v2.webp',
+          alt: 'The 90X5 detachable cellular WWAN module with its wall-mount bracket',
+          width: 533,
+          height: 800,
+        },
+        rows: [
+          { label: 'Radio', value: '5G RedCap with LTE fallback' },
+          { label: 'SIM', value: '1 physical SIM + 1 eSIM' },
+          { label: 'Location', value: 'GNSS and E911' },
+        ],
+      },
+      {
+        name: 'Core gateway / ATA',
+        role: 'The routing and voice core — where the analog lines and the Ethernet ports terminate.',
+        rows: [
+          { label: 'Analog lines', value: '4 FXS standard, expandable to 8 via RJ-14' },
+          { label: 'Ethernet', value: '4 × WAN/LAN, 2 with PoE' },
+          { label: 'Display', value: 'OLED status display' },
+        ],
+      },
+      {
+        name: 'Power / battery / charger',
+        role: 'Swappable in the field, and sized to the runtime the site actually needs.',
+        image: {
+          src: '/product/90x5-module-battery.v2.webp',
+          alt: 'The 90X5 battery pack and charger module shown separately from the chassis',
+          width: 800,
+          height: 526,
+        },
+        rows: [
+          { label: 'Standard', value: '24 hr / 87 Wh lithium-ion' },
+          { label: 'Options', value: '8 hr, 48 hr, or no battery' },
+          { label: 'Mounting', value: 'Tabletop, or wall and board mount' },
+        ],
+      },
+    ],
+    expansion: [
+      { label: 'Battery', value: '8-hour, 24-hour, 48-hour, or no-battery configuration' },
+      { label: 'Wi-Fi', value: 'Optional Wi-Fi 6 module, 2×2 MIMO' },
+      { label: 'Radio variant', value: 'Optional 5G NR Sub-6 WWAN module' },
+      { label: 'Power', value: 'Optional PDU module' },
+      { label: 'Accessories', value: 'Mounting brackets, 19V PSU, PoE / RJ-11 / RJ-14 cables, USB-PD cable' },
+    ],
+    faqs: [
+      {
+        q: 'Can we order the 90X5 today?',
+        a: 'It is available for pre-order. DataRemote describes the specifications as preliminary and based on EVT-stage product planning, and subject to change without notice. For anything going live in the next quarter, we would deploy the 90X1 or 90X2 instead.',
+      },
+      {
+        q: 'What does modular actually buy us?',
+        a: 'It solves the placement conflict. Analog endpoints are usually in a basement or a riser cabinet; cellular signal is usually near a window. On every other appliance you have to compromise on one. On the 90X5 the cellular module detaches and mounts over a PoE Ethernet run, so the radio and the gateway can sit in different places.',
+      },
+      {
+        q: 'How many phone lines does it support?',
+        a: 'Four FXS ports are standard, with an eight-port configuration available via RJ-14. That is half the standard capacity of a 90X1 or 90X2 at base configuration, which matters when you are sizing a site.',
+      },
+      {
+        q: 'Can we put fire alarm lines on it?',
+        a: 'Not yet, in our view. Certifications on the 90X5 attach per module rather than to the chassis, and DataRemote publishes no certification identifiers for any module while the product sits at EVT stage. We will not represent this unit as fire-alarm capable until those identifiers exist. Life-safety endpoints go on a 90X1 or 90X2 today.',
+      },
+      {
+        q: 'Does it work with the Ara fleet we already have?',
+        a: 'Yes. Ara supports the 90X5 including provisioning across its modular hardware variants, so it appears alongside the rest of your deployed units rather than in a separate console.',
+      },
+    ],
     specGroups: [
       {
         heading: 'Module 1 — Cellular WWAN',

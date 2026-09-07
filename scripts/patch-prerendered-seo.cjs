@@ -121,6 +121,43 @@ function stripHeroVideoSrc(html) {
   );
 }
 
+/**
+ * Rebuild FAQPage structured data from the prerendered markup.
+ *
+ * react-snap does not carry Helmet's <script type="application/ld+json"> tags
+ * into the snapshot, so anything the Seo component emits at runtime is absent
+ * from the HTML a crawler or an answer engine actually reads. Rather than
+ * duplicating every question into this file (which is how the hardware table
+ * drifted last time), the FAQ section marks its <dl> with data-faq and we read
+ * the pairs back out of the page we just built.
+ */
+function extractFaqJsonLd(html) {
+  const list = html.match(/<dl[^>]*data-faq="true"[^>]*>([\s\S]*?)<\/dl>/);
+  if (!list) return null;
+  const pairs = [...list[1].matchAll(/<dt[^>]*>([\s\S]*?)<\/dt>\s*<dd[^>]*>([\s\S]*?)<\/dd>/g)];
+  if (!pairs.length) return null;
+  const plain = (fragment) =>
+    fragment
+      .replace(/<[^>]+>/g, '')
+      .replace(/&quot;/g, '"')
+      .replace(/&#x27;|&#39;/g, "'")
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&nbsp;/g, ' ')
+      .replace(/&amp;/g, '&')
+      .replace(/\s+/g, ' ')
+      .trim();
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: pairs.map(([, q, a]) => ({
+      '@type': 'Question',
+      name: plain(q),
+      acceptedAnswer: { '@type': 'Answer', text: plain(a) },
+    })),
+  };
+}
+
 function patchPage(filePath, seo) {
   let html = fs.readFileSync(filePath, 'utf8');
   html = stripHeroVideoSrc(html);
@@ -128,6 +165,14 @@ function patchPage(filePath, seo) {
     html = html.replace(
       '</head>',
       `<link rel="preload" as="image" href="${seo.heroPoster}" fetchpriority="high">\n</head>`
+    );
+  }
+  // On the product pages the device shot sits beside the H1 and is the LCP
+  // element more often than the hero poster is. Preload it too.
+  if (seo.heroImage) {
+    html = html.replace(
+      '</head>',
+      `<link rel="preload" as="image" href="${seo.heroImage}" fetchpriority="high">\n</head>`
     );
   }
   html = upsertTitle(html, seo.title);
@@ -146,8 +191,10 @@ function patchPage(filePath, seo) {
   for (const type of STRUCTURED_DATA_TYPES) {
     html = stripStructuredData(html, type);
   }
-  if (seo.jsonLd && seo.jsonLd.length) {
-    html = appendStructuredData(html, seo.jsonLd);
+  const faqJsonLd = extractFaqJsonLd(html);
+  const blocks = [...(seo.jsonLd || []), ...(faqJsonLd ? [faqJsonLd] : [])];
+  if (blocks.length) {
+    html = appendStructuredData(html, blocks);
   }
 
   fs.writeFileSync(filePath, html, 'utf8');
@@ -291,7 +338,7 @@ function serviceJsonLd({ name, serviceType, route, description }) {
 }
 
 /** Product schema for the four POTS IN A BOX product pages (no offers/pricing). */
-function productJsonLd({ name, route, description }) {
+function productJsonLd({ name, route, description, image }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -300,6 +347,7 @@ function productJsonLd({ name, route, description }) {
     category: 'POTS Replacement',
     description,
     url: `${SITE_URL}/${route}`,
+    ...(image ? { image: `${SITE_URL}${image}` } : {}),
   };
 }
 
@@ -358,12 +406,14 @@ const ROUTE_PAGES = [
   {
     route: 'pots-replacement/90x1',
     heroPoster: '/media/hero-pots-poster.v2.jpg',
+    heroImage: '/product/90x1-hero.v2.webp',
     title: 'DataRemote POTS IN A BOX 90X1 — 5G POTS Replacement | TrustedNetworx',
     description: 'The DataRemote 90X1 replaces eight analog lines over 5G Sub-6 with an 18-cell 15Ah battery and up to 48 hours of standby. UL 864 aligned, CSFM listed, deployed and monitored by TrustedNetworx.',
     jsonLd: [
       productJsonLd({
         name: 'POTS IN A BOX 90X1',
         route: 'pots-replacement/90x1',
+        image: '/product/90x1-hero.v2.webp',
         description: 'Eight-line 5G Sub-6 POTS replacement with an 18-cell 15Ah battery and up to 48 hours of standby.',
       }),
       buildBreadcrumbList('pots-replacement/90x1'),
@@ -372,12 +422,14 @@ const ROUTE_PAGES = [
   {
     route: 'pots-replacement/90x2',
     heroPoster: '/media/hero-pots-poster.v2.jpg',
+    heroImage: '/product/90x2-hero.v2.webp',
     title: 'DataRemote POTS IN A BOX 90X2 — LTE POTS Replacement | TrustedNetworx',
     description: 'The DataRemote 90X2 replaces eight analog lines over LTE including band 14 for FirstNet, with a 48-hour battery and a 12VDC 4.0A UPS output. FirstNet Trusted and Bell Canada approved.',
     jsonLd: [
       productJsonLd({
         name: 'POTS IN A BOX 90X2',
         route: 'pots-replacement/90x2',
+        image: '/product/90x2-hero.v2.webp',
         description: 'Eight-line LTE POTS replacement including band 14 for FirstNet, with a 48-hour battery.',
       }),
       buildBreadcrumbList('pots-replacement/90x2'),
@@ -386,12 +438,14 @@ const ROUTE_PAGES = [
   {
     route: 'pots-replacement/90x5',
     heroPoster: '/media/hero-pots-poster.v2.jpg',
+    heroImage: '/product/90x5-hero.v2.webp',
     title: 'DataRemote POTS IN A BOX 90X5 — Modular POTS Replacement | TrustedNetworx',
     description: 'The DataRemote 90X5 is a modular POTS replacement platform: a PoE-detachable 5G RedCap radio, a 4-line gateway expandable to 8 via RJ-14, and a swappable battery module. Pre-order, specifications preliminary.',
     jsonLd: [
       productJsonLd({
         name: 'POTS IN A BOX 90X5',
         route: 'pots-replacement/90x5',
+        image: '/product/90x5-hero.v2.webp',
         description: 'Modular POTS replacement with a PoE-detachable 5G RedCap radio and a 4-line gateway expandable to 8 via RJ-14.',
       }),
       buildBreadcrumbList('pots-replacement/90x5'),
@@ -491,6 +545,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'platforms/partner-hub',
+    heroPoster: '/media/hero-partner-hub-poster.v2.jpg',
     title: 'TNX Partner Hub — AI Agent Management Platform for MSPs & Channel Partners | TrustedNetworx',
     description: 'Deploy, budget, monitor, and govern AI agents for sales, support, and operations from one multi-tenant hub. Built by an operator, for MSPs and resellers.',
     jsonLd: [
@@ -510,6 +565,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'platforms/crm',
+    heroPoster: '/media/hero-crm-poster.v2.jpg',
     title: 'TNX CRM — Opportunity Management for Telecom, MSP & Channel Sales | TrustedNetworx',
     description: 'Track direct, agent, and reseller deals with telecom-native fields and AI agents that keep the pipeline current. Simple, flat pricing.',
     jsonLd: [
@@ -528,12 +584,14 @@ const ROUTE_PAGES = [
   },
   {
     route: 'partners',
+    heroPoster: '/media/hero-partners-poster.v2.jpg',
     title: 'Become a Partner — MSP & Reseller Program | TrustedNetworx',
     description: 'Join the TrustedNetworx partner program for MSPs, telecom agents, and resellers. White-label telecom and AI, TNX Partner Hub, and commission on every deal.',
     jsonLd: [buildBreadcrumbList('partners')],
   },
   {
     route: 'ai',
+    heroPoster: '/media/hero-ai-poster.v2.jpg',
     title: 'AI for Telecom & Multi-Site Operators | TrustedNetworx',
     description: 'AI agents and consulting for telecom and multi-site operators. Explore the AI workforce, run a readiness assessment, and read the latest on AI in telecom.',
     jsonLd: [buildBreadcrumbList('ai')],
@@ -576,6 +634,7 @@ const ROUTE_PAGES = [
   },
   {
     route: 'contact',
+    heroPoster: '/media/hero-contact-poster.v2.jpg',
     title: 'Contact Us | TrustedNetworx',
     description: 'Get in touch with the TrustedNetworx team to discuss your managed telecom, connectivity, voice, and AI needs.',
     jsonLd: [
@@ -605,7 +664,7 @@ function patchRoutePages(distDir) {
   const fallbackHtmlPath = path.join(distDir, 'index.html');
   let count = 0;
 
-  for (const { route, title, description, jsonLd, heroPoster } of ROUTE_PAGES) {
+  for (const { route, title, description, jsonLd, heroPoster, heroImage } of ROUTE_PAGES) {
     const filePath = path.join(distDir, route, 'index.html');
     ensureHtmlShell(filePath, fallbackHtmlPath);
     patchPage(filePath, {
@@ -616,6 +675,7 @@ function patchRoutePages(distDir) {
       type: 'website',
       jsonLd: jsonLd || [],
       heroPoster,
+      heroImage,
     });
     count++;
   }

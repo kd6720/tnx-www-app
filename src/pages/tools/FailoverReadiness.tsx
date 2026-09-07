@@ -253,7 +253,7 @@ const FailoverReadiness = () => {
                 Interactive Assessment Tool
               </span>
               <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
-                Business Continuity{' '}
+                {'Business Continuity '}
                 <span className="text-brand-300">
                   Readiness Check
                 </span>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
+import HeroVideo from '../components/HeroVideo';
 import MultiStepForm from '../components/MultiStepForm';
 
 const contactInfo = [
@@ -36,18 +37,7 @@ const Contact = () => (
 
     {/* Hero */}
     <section className="relative flex min-h-[60vh] items-center overflow-hidden bg-navy-950">
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: 'url(/Circuit-Board.webp)',
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-        }}
-        suppressHydrationWarning
-      >
-        <div className="absolute inset-0 bg-navy-950/85" />
-      </div>
+      <HeroVideo name="hero-contact" />
       <div className="relative z-10 mx-auto w-full max-w-site px-6 py-24 md:px-gutter">
         <div className="max-w-3xl">
           <span className="font-mono text-xs uppercase tracking-mono-label text-accent-500">

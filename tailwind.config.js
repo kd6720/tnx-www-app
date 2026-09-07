@@ -4,8 +4,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        // One family, two faces. Geist carries body and display; the display
+        // role is separated only by weight + tracking (see fontSize below).
         sans: [
-          'Inter',
+          'Geist',
           'ui-sans-serif',
           'system-ui',
           '-apple-system',
@@ -15,8 +17,8 @@ export default {
           'Arial',
           'sans-serif',
         ],
-        display: ['"Bricolage Grotesque"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        display: ['Geist', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       colors: {
         // Design tokens (design-direction-v1-DECISION)
@@ -88,14 +90,14 @@ export default {
         },
       },
       fontSize: {
-        'display-hero': ['72px', { lineHeight: '1.0', letterSpacing: '-0.02em' }],
-        'display-h2': ['44px', { lineHeight: '1.08', letterSpacing: '-0.02em' }],
-        'display-h2-sm': ['36px', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        'display-h3': ['24px', { lineHeight: '1.3' }],
-        'stat': ['44px', { lineHeight: '1.0', letterSpacing: '-0.02em' }],
+        'display-hero': ['72px', { lineHeight: '1.0', letterSpacing: '-0.035em' }],
+        'display-h2': ['44px', { lineHeight: '1.08', letterSpacing: '-0.03em' }],
+        'display-h2-sm': ['36px', { lineHeight: '1.1', letterSpacing: '-0.025em' }],
+        'display-h3': ['24px', { lineHeight: '1.3', letterSpacing: '-0.015em' }],
+        'stat': ['44px', { lineHeight: '1.0', letterSpacing: '-0.03em' }],
       },
       letterSpacing: {
-        'mono-label': '0.02em',
+        'mono-label': '0.06em',
       },
       maxWidth: {
         site: '1440px',

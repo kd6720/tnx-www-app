@@ -6,13 +6,29 @@ import NodeField from '../components/NodeField';
 import MultiStepForm from '../components/MultiStepForm';
 import StatValue from '../components/StatValue';
 
-// Stats strip (inside the navy hero band). "[N] agents live" is a placeholder
-// Carter will confirm; the other three are telecom facts already on the site.
+/**
+ * Stats strip (inside the navy hero band).
+ *
+ * Three tiles, not four, and every one of them is defensible:
+ *
+ *  - "40+ Agents live" was a placeholder that shipped. The real count is not
+ *    one we publish, and a hedged number reads worse than no number, so the
+ *    tile is gone rather than softened.
+ *  - "25+ Years in telecom" sat unattributed beside company stats, which read
+ *    as the company's age. It is Carter's experience — the label now says so.
+ *  - "50% Typical line-cost cut" contradicted /tools/pots-roi-calculator,
+ *    whose own defaults ($85 → $25) imply ~71%. Neither figure was sourced, so
+ *    the tile now shows the same two numbers the calculator uses. A visitor who
+ *    clicks through finds the page agreeing with itself.
+ *
+ * The site's credibility rests on publishing real certification identifiers
+ * and an explicit "what we will not claim" section. Do not put an unsourced
+ * round number back in this strip.
+ */
 const stats = [
   { value: '24/7', label: 'AI agents on duty' },
-  { value: '40+', label: 'Agents live' },
-  { value: '25+', label: 'Years in telecom' },
-  { value: '50%', label: 'Typical line-cost cut' },
+  { value: '25+', label: 'Years of founder experience' },
+  { value: '$85 → $25', label: 'Typical line cost, per month' },
 ];
 
 // 01 — AI Solutions. Three numbered items, 5/6 split.
@@ -125,11 +141,11 @@ const Home = () => {
         {/* Stats strip — inside the navy band */}
         <div className="relative border-t border-white/10">
           <div className="mx-auto w-full max-w-site px-6 md:px-gutter">
-            <div className="grid grid-cols-2 md:grid-cols-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3">
               {stats.map(({ value, label }, i) => (
                 <div
                   key={label}
-                  className={`py-8${i > 0 ? ' border-l border-white/10 pl-8' : ''}${i % 2 === 1 ? ' max-md:border-l max-md:border-white/10 max-md:pl-8' : ''}`}
+                  className={`py-8${i > 0 ? ' sm:border-l sm:border-white/10 sm:pl-8 max-sm:border-t max-sm:border-white/10' : ''}`}
                 >
                   <p className="font-display text-stat font-semibold text-white">
                     <StatValue value={value} />
@@ -268,7 +284,7 @@ const Home = () => {
                 </p>
               </div>
 
-              {/* TNX CRM product frame — [ASSET] placeholder, same size */}
+              {/* TNX CRM product frame — motion piece built from the live pipeline board */}
               <div className="mt-6 rounded-lg border border-hairline bg-white p-4">
                 <div className="flex items-center justify-between border-b border-hairline pb-3">
                   <span className="font-mono text-xs uppercase tracking-mono-label text-ink">
@@ -278,10 +294,16 @@ const Home = () => {
                     Opportunity management
                   </span>
                 </div>
-                <div className="mt-4 flex aspect-[8/5] items-center justify-center rounded border border-dashed border-hairline bg-canvas">
-                  <span className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
-                    [ASSET] — product screenshot
-                  </span>
+                <div className="mt-4">
+                  <img
+                    src="/media/crm-dashboard.v2.webp"
+                    alt="TNX CRM sales overview showing open deals, weighted pipeline value, forecast by category and pipeline by stage. Demo data."
+                    width={1568}
+                    height={640}
+                    className="w-full rounded border border-hairline bg-canvas"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <p className="mt-4 border-t border-hairline pt-4 text-sm leading-relaxed text-body">
                   A pipeline built for how telecom deals close — direct, agent, and reseller
@@ -350,12 +372,15 @@ const Home = () => {
               </ul>
             </div>
             <div className="col-span-12 lg:col-span-7">
-              {/* [ASSET] photo frame */}
-              <div className="flex aspect-[4/3] items-center justify-center rounded-lg border border-dashed border-hairline bg-white">
-                <span className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
-                  [ASSET] — install photo
-                </span>
-              </div>
+              {/* DataRemote POTS IN A BOX — the hardware every analog line moves onto */}
+              <img
+                src="/media/dataremote-pots-in-a-box.v2.webp"
+                alt="DataRemote POTS IN A BOX cellular gateway — eight analog phone ports, LAN/WAN, external antennas"
+                width="1600"
+                height="1200"
+                className="aspect-[4/3] w-full rounded-lg border border-hairline bg-canvas object-cover"
+                loading="lazy"
+              />
               <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
                 {compliance.map((c) => (
                   <span key={c} className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-mono-label text-muted-text">

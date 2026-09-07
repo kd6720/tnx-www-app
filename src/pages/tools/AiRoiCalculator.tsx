@@ -148,7 +148,7 @@ const AiRoiCalculator = () => {
                 Interactive ROI Calculator
               </span>
               <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
-                AI Solutions{' '}
+                {'AI Solutions '}
                 <span className="text-brand-300">
                   ROI Calculator
                 </span>
@@ -250,7 +250,7 @@ const AiRoiCalculator = () => {
                   <label className="text-sm font-semibold text-navy-800">
                     Percentage AI could realistically automate
                   </label>
-                  <span className="text-2xl font-extrabold text-brand-600">{automationPct}%</span>
+                  <span className="text-2xl font-extrabold text-brand-600">{`${automationPct}%`}</span>
                 </div>
                 <input
                   type="range"
@@ -279,8 +279,7 @@ const AiRoiCalculator = () => {
                 <div>
                   <h3 className="text-xl font-extrabold text-navy-900">Your Savings Projection</h3>
                   <p className="text-sm text-navy-500">
-                    Based on {employees} employees, {hoursSpent} hrs/wk repetitive tasks at{' '}
-                    {formatCurrency(hourlyCost)}/hr, {automationPct}% automatable
+                    {`Based on ${employees} employees, ${hoursSpent} hrs/wk repetitive tasks at ${formatCurrency(hourlyCost)}/hr, ${automationPct}% automatable`}
                   </p>
                 </div>
               </div>
@@ -325,11 +324,10 @@ const AiRoiCalculator = () => {
                   </p>
                 </div>
                 <p className="text-5xl sm:text-6xl font-extrabold text-brand-600">
-                  {Math.round(roiPct)}%
+                  {`${Math.round(roiPct)}%`}
                 </p>
                 <p className="mt-1 text-sm text-navy-500">
-                  Net savings of {formatCurrency(netAnnualSavings)} on an AI investment of{' '}
-                  {formatCurrency(aiCost)}
+                  {`Net savings of ${formatCurrency(netAnnualSavings)} on an AI investment of ${formatCurrency(aiCost)}`}
                 </p>
               </div>
 
@@ -390,7 +388,7 @@ const AiRoiCalculator = () => {
                   <Percent size={20} className="text-navy-400 flex-shrink-0" />
                   <div>
                     <p className="text-xs text-navy-400">Automation Rate</p>
-                    <p className="text-lg font-bold text-navy-900">{automationPct}%</p>
+                    <p className="text-lg font-bold text-navy-900">{`${automationPct}%`}</p>
                   </div>
                 </div>
               </div>
@@ -401,10 +399,7 @@ const AiRoiCalculator = () => {
                 <div>
                   <p className="text-sm font-semibold text-brand-800">AI Agent Cost Transparency</p>
                   <p className="text-sm text-brand-700">
-                    Estimated AI agent equivalent cost: ~${AI_HOURLY_EQUIVALENT}/hr (compared to{' '}
-                    {formatCurrency(hourlyCost)}/hr human cost). Annual AI cost:{' '}
-                    {formatCurrency(aiCost)}. Actual pricing depends on your specific deployment
-                    and use cases.
+                    {`Estimated AI agent equivalent cost: ~$${AI_HOURLY_EQUIVALENT}/hr (compared to ${formatCurrency(hourlyCost)}/hr human cost). Annual AI cost: ${formatCurrency(aiCost)}. Actual pricing depends on your specific deployment and use cases.`}
                   </p>
                 </div>
               </div>
