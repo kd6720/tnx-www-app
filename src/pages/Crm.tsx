@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
-import ProductVideo from '../components/ProductVideo';
 import MultiStepForm from '../components/MultiStepForm';
+import ProductVideo from '../components/ProductVideo';
 
 const capabilities = [
   { n: '01', title: 'Three channels, one pipeline view', body: 'Direct customers, agents, and resellers each get the right stages and commission fields.' },
@@ -79,7 +79,7 @@ const Crm = () => {
           <div className="rounded-lg border border-hairline bg-white p-4">
             <ProductVideo
               name="crm-value"
-              label="TNX CRM pipeline — customer data flowing into deals, with an agent keeping the record current"
+              label="TNX CRM pipeline — account data landing on a deal, a next step being set, and the deal moving to Negotiation. Sample data."
               className="w-full rounded border border-hairline"
             />
             <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">

@@ -16,7 +16,7 @@ const agents = [
 ];
 
 const why = [
-  { n: '01', title: 'Deploy in days', desc: 'Most agents go live within 2–5 business days. No 6-month engagements.' },
+  { n: '01', title: 'Deploy in days', desc: 'Most agents go live within 5–10 business days. No 6-month engagements.' },
   { n: '02', title: 'Measurable ROI', desc: 'Every agent ships with baseline metrics and monthly performance reporting.' },
   { n: '03', title: 'Telecom-native', desc: 'Built for telecom workflows — POTS migration tracking, compliance, carrier coordination.' },
   { n: '04', title: 'Not a black box', desc: 'You control the playbooks, tone, and escalation rules. Full transparency.' },
