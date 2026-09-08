@@ -3,15 +3,11 @@ import {
   Calculator,
   ArrowRight,
   DollarSign,
-  TrendingDown,
-  TrendingUp,
   BarChart3,
-  Zap,
   PhoneOff,
   CheckCircle2,
-  ChevronRight,
-  Building2,
   Send,
+  Info,
 } from 'lucide-react';
 import Seo from '../../components/Seo';
 
@@ -30,21 +26,37 @@ const INDUSTRIES = [
   'Other',
 ];
 
+// Scenario modeling only. TrustedNetworx publishes no per-line replacement
+// price on this page. The reduction percentage is supplied by the reader and
+// is explicitly labelled as their assumption, not a quote. Do not reintroduce
+// a hardcoded replacement cost, savings percentage, or default scenario value
+// without an approved, sourced figure.
+const BAND_SPREAD = 10;
+const BAND_FLOOR = 5;
+const BAND_CEILING = 75;
+
 const PotsRoiCalculator = () => {
   const [lines, setLines] = useState(50);
   const [monthlyCost, setMonthlyCost] = useState(85);
   const [industry, setIndustry] = useState('');
+  const [reductionPct, setReductionPct] = useState(0);
 
-  const REPLACEMENT_COST = 25;
+  const currentMonthlySpend = useMemo(() => lines * monthlyCost, [lines, monthlyCost]);
+  const currentAnnualSpend = currentMonthlySpend * 12;
+  const currentThreeYearSpend = currentAnnualSpend * 3;
 
-  const monthlySavings = useMemo(
-    () => Math.max(0, lines * (monthlyCost - REPLACEMENT_COST)),
-    [lines, monthlyCost],
-  );
-  const annualSavings = monthlySavings * 12;
-  const threeYearSavings = annualSavings * 3;
-  const currentAnnualSpend = lines * monthlyCost * 12;
-  const replacementAnnualSpend = lines * REPLACEMENT_COST * 12;
+  const band = useMemo(() => {
+    if (reductionPct <= 0) return null;
+    const low = Math.max(BAND_FLOOR, reductionPct - BAND_SPREAD);
+    const high = Math.min(BAND_CEILING, reductionPct + BAND_SPREAD);
+    const at = (pct: number) => ({
+      pct,
+      monthly: currentMonthlySpend * (pct / 100),
+      annual: currentAnnualSpend * (pct / 100),
+      threeYear: currentThreeYearSpend * (pct / 100),
+    });
+    return { low: at(low), mid: at(reductionPct), high: at(high) };
+  }, [reductionPct, currentMonthlySpend, currentAnnualSpend, currentThreeYearSpend]);
 
   // Form state
   const [showForm, setShowForm] = useState(false);
@@ -80,11 +92,11 @@ const PotsRoiCalculator = () => {
             lines,
             monthlyCost,
             industry,
-            monthlySavings: Math.round(monthlySavings),
-            annualSavings: Math.round(annualSavings),
-            threeYearSavings: Math.round(threeYearSavings),
+            currentMonthlySpend: Math.round(currentMonthlySpend),
             currentAnnualSpend: Math.round(currentAnnualSpend),
-            replacementAnnualSpend: Math.round(replacementAnnualSpend),
+            currentThreeYearSpend: Math.round(currentThreeYearSpend),
+            scenarioReductionPct: reductionPct,
+            scenarioAnnualSavings: band ? Math.round(band.mid.annual) : null,
           }),
         }),
       });
@@ -111,7 +123,7 @@ const PotsRoiCalculator = () => {
     <div className="bg-navy-50">
       <Seo
         title="POTS Replacement ROI Calculator | TrustedNetworx"
-        description="Calculate how much your organization can save by replacing legacy POTS copper lines with modern alternatives. Interactive ROI tool from TrustedNetworx."
+        description="Size what your legacy POTS copper lines cost you today and model what a per-line cost reduction is worth. Interactive planning tool from TrustedNetworx."
       />
 
       {/* Hero */}
@@ -133,7 +145,7 @@ const PotsRoiCalculator = () => {
                 </span>
               </h1>
               <p className="mt-6 max-w-xl text-lg sm:text-xl text-navy-200">
-                See how much your organization can save by modernizing legacy copper lines.
+                Start with what copper costs you today. Then model what a reduction is worth.
               </p>
             </div>
           </div>
@@ -222,76 +234,164 @@ const PotsRoiCalculator = () => {
             </div>
           </div>
 
-          {/* Results */}
+          {/* Current spend */}
+          {hasResults && (
+            <div className="mt-8 rounded-2xl bg-white border border-navy-200 p-6 sm:p-10">
+              <div className="flex items-center gap-3 mb-8">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-navy-700 to-navy-900 text-white">
+                  <DollarSign size={20} />
+                </span>
+                <div>
+                  <h3 className="text-xl font-extrabold text-navy-900">What Copper Costs You Today</h3>
+                  <p className="text-sm text-navy-500">
+                    {`Your figures: ${lines} line${lines !== 1 ? 's' : ''} at ${formatCurrency(monthlyCost)}/mo each`}
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="rounded-xl bg-navy-50 border border-navy-100 p-6 text-center">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
+                    Monthly
+                  </p>
+                  <p className="text-3xl sm:text-4xl font-extrabold text-navy-900">
+                    {formatCurrency(currentMonthlySpend)}
+                  </p>
+                </div>
+                <div className="rounded-xl bg-navy-50 border border-navy-100 p-6 text-center">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
+                    Annual
+                  </p>
+                  <p className="text-3xl sm:text-4xl font-extrabold text-navy-900">
+                    {formatCurrency(currentAnnualSpend)}
+                  </p>
+                </div>
+                <div className="rounded-xl bg-navy-50 border border-navy-100 p-6 text-center">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
+                    Over 3 Years
+                  </p>
+                  <p className="text-3xl sm:text-4xl font-extrabold text-navy-900">
+                    {formatCurrency(currentThreeYearSpend)}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6 rounded-xl bg-navy-50 border border-navy-100 p-4 flex items-center gap-3">
+                <PhoneOff size={20} className="text-navy-400 flex-shrink-0" />
+                <p className="text-sm text-navy-600">
+                  {`That is the run rate on ${lines} line${lines !== 1 ? 's' : ''} that the copper network is being retired out from under.`}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Scenario band */}
           {hasResults && (
             <div className="mt-8 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 p-6 sm:p-10">
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-6">
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white">
                   <BarChart3 size={20} />
                 </span>
                 <div>
-                  <h3 className="text-xl font-extrabold text-navy-900">Your Savings Projection</h3>
+                  <h3 className="text-xl font-extrabold text-navy-900">Model a Reduction</h3>
                   <p className="text-sm text-navy-500">
-                    {`Based on ${lines} line${lines !== 1 ? 's' : ''} at ${formatCurrency(monthlyCost)}/mo each`}
+                    Move the slider to see what a given per-line cost reduction is worth against your spend.
                   </p>
                 </div>
               </div>
 
-              {/* Big number cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                <div className="rounded-xl bg-white border border-emerald-100 p-6 text-center shadow-sm">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
-                    Monthly Savings
-                  </p>
-                  <p className="text-3xl sm:text-4xl font-extrabold text-emerald-600">
-                    {formatCurrency(monthlySavings)}
-                  </p>
-                  <p className="mt-1 text-xs text-navy-400">per month</p>
+              <div className="mb-8">
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-sm font-semibold text-navy-800">
+                    Per-line cost reduction to model
+                  </label>
+                  <span className="text-2xl font-extrabold text-emerald-600">
+                    {reductionPct > 0 ? `${reductionPct}%` : '—'}
+                  </span>
                 </div>
-                <div className="rounded-xl bg-white border border-emerald-100 p-6 text-center shadow-sm">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
-                    Annual Savings
-                  </p>
-                  <p className="text-3xl sm:text-4xl font-extrabold text-emerald-600">
-                    {formatCurrency(annualSavings)}
-                  </p>
-                  <p className="mt-1 text-xs text-navy-400">per year</p>
-                </div>
-                <div className="rounded-xl bg-white border border-emerald-100 p-6 text-center shadow-sm">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
-                    3-Year Savings
-                  </p>
-                  <p className="text-3xl sm:text-4xl font-extrabold text-emerald-600">
-                    {formatCurrency(threeYearSavings)}
-                  </p>
-                  <p className="mt-1 text-xs text-navy-400">over 3 years</p>
+                <input
+                  type="range"
+                  min={0}
+                  max={BAND_CEILING}
+                  step={5}
+                  value={reductionPct}
+                  onChange={(e) => setReductionPct(Number(e.target.value))}
+                  className="w-full h-2 bg-navy-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                />
+                <div className="flex justify-between text-xs text-navy-400 mt-1">
+                  <span>0%</span>
+                  <span>{`${BAND_CEILING}%`}</span>
                 </div>
               </div>
 
-              {/* Context metrics */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="rounded-xl bg-white/60 border border-navy-100 p-4 flex items-center gap-3">
-                  <PhoneOff size={20} className="text-navy-400 flex-shrink-0" />
-                  <div>
-                    <p className="text-xs text-navy-400">Lines Being Retired</p>
-                    <p className="text-lg font-bold text-navy-900">{lines}</p>
+              {band ? (
+                <>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className="rounded-xl bg-white/70 border border-emerald-100 p-6 text-center">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
+                        {`At ${band.low.pct}%`}
+                      </p>
+                      <p className="text-2xl sm:text-3xl font-extrabold text-navy-700">
+                        {formatCurrency(band.low.annual)}
+                      </p>
+                      <p className="mt-1 text-xs text-navy-400">per year</p>
+                    </div>
+                    <div className="rounded-xl bg-white border-2 border-emerald-300 p-6 text-center shadow-sm">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-emerald-600 mb-2">
+                        {`At ${band.mid.pct}%`}
+                      </p>
+                      <p className="text-3xl sm:text-4xl font-extrabold text-emerald-600">
+                        {formatCurrency(band.mid.annual)}
+                      </p>
+                      <p className="mt-1 text-xs text-navy-400">per year</p>
+                    </div>
+                    <div className="rounded-xl bg-white/70 border border-emerald-100 p-6 text-center">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
+                        {`At ${band.high.pct}%`}
+                      </p>
+                      <p className="text-2xl sm:text-3xl font-extrabold text-navy-700">
+                        {formatCurrency(band.high.annual)}
+                      </p>
+                      <p className="mt-1 text-xs text-navy-400">per year</p>
+                    </div>
                   </div>
-                </div>
-                <div className="rounded-xl bg-white/60 border border-navy-100 p-4 flex items-center gap-3">
-                  <DollarSign size={20} className="text-navy-400 flex-shrink-0" />
-                  <div>
-                    <p className="text-xs text-navy-400">Current Annual Spend</p>
-                    <p className="text-lg font-bold text-navy-900">
-                      {formatCurrency(currentAnnualSpend)}
-                    </p>
+
+                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="rounded-xl bg-white/60 border border-navy-100 p-4 text-center">
+                      <p className="text-xs text-navy-400">{`Monthly at ${band.mid.pct}%`}</p>
+                      <p className="text-lg font-bold text-navy-900">
+                        {formatCurrency(band.mid.monthly)}
+                      </p>
+                    </div>
+                    <div className="rounded-xl bg-white/60 border border-navy-100 p-4 text-center">
+                      <p className="text-xs text-navy-400">{`Over 3 years at ${band.mid.pct}%`}</p>
+                      <p className="text-lg font-bold text-navy-900">
+                        {formatCurrency(band.mid.threeYear)}
+                      </p>
+                    </div>
                   </div>
+                </>
+              ) : (
+                <div className="rounded-xl bg-white/70 border border-emerald-100 p-8 text-center">
+                  <p className="text-navy-500">
+                    Move the slider above to model a reduction against your current spend.
+                  </p>
+                </div>
+              )}
+
+              <div className="mt-6 rounded-xl bg-white/70 border border-navy-100 p-4 flex items-start gap-3">
+                <Info size={18} className="text-navy-500 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-sm font-semibold text-navy-800">This is a model, not a quote.</p>
+                  <p className="text-sm text-navy-600">
+                    The reduction percentage is the one you selected. We do not publish a per-line
+                    replacement price, because the real number depends on line type, site count,
+                    circuit availability, and what each line is actually doing — a fire alarm or
+                    elevator line is not priced like a back-office fax line. Send us your figures
+                    and we will price your specific deployment.
+                  </p>
                 </div>
               </div>
-
-              {/* Transparency note */}
-              <p className="mt-4 text-xs text-navy-400 text-center">
-                {`Estimated replacement cost: ~${formatCurrency(REPLACEMENT_COST)}/line/mo (${formatCurrency(replacementAnnualSpend)}/yr for ${lines} lines). Actual pricing depends on your specific deployment.`}
-              </p>
             </div>
           )}
 
@@ -300,7 +400,7 @@ const PotsRoiCalculator = () => {
             {!showForm ? (
               <div className="text-center">
                 <p className="text-navy-500 mb-4">
-                  Want a tailored quote for your organization?
+                  Want your actual numbers instead of a model?
                 </p>
                 <button onClick={() => setShowForm(true)} className="btn-primary">
                   Get a Custom Quote
@@ -312,7 +412,7 @@ const PotsRoiCalculator = () => {
                 <CheckCircle2 size={48} className="mx-auto text-emerald-500 mb-4" />
                 <h3 className="text-xl font-bold text-navy-900">Thank You!</h3>
                 <p className="mt-2 text-navy-600">
-                  Your information and savings projection have been submitted. A TrustedNetworx
+                  Your information and current-spend figures have been submitted. A TrustedNetworx
                   specialist will reach out within one business day.
                 </p>
               </div>
@@ -323,7 +423,7 @@ const PotsRoiCalculator = () => {
                   Get Your Custom Quote
                 </h3>
                 <p className="mt-1 text-sm text-navy-500">
-                  We'll include your calculator results — no need to re-enter anything.
+                  We'll include the figures you entered — no need to re-enter anything.
                 </p>
                 <form onSubmit={handleSubmit} className="mt-6 space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
