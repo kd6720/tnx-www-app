@@ -6,7 +6,7 @@ const NotFound = () => (
   <div className="bg-navy-50 min-h-[70vh] flex items-center justify-center">
     <Seo
       title="Page Not Found | TrustedNetworx"
-      description="The page you're looking for doesn't exist or may have moved."
+      description="This page does not exist or has moved. Head back to the TrustedNetworx home page, or browse managed telecom, POTS replacement, voice, and AI solutions instead."
       noindex
     />
     <div className="text-center px-4">

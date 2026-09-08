@@ -6,7 +6,7 @@ const tools = [
   { n: '01', to: '/tools/pots-roi-calculator', title: 'POTS Replacement ROI Calculator', desc: 'See how much your organization can save by modernizing legacy copper lines.' },
   { n: '02', to: '/tools/copper-sunset-risk', title: 'Copper Sunset Risk Assessment', desc: 'Evaluate your exposure to the copper network decommissioning.' },
   { n: '03', to: '/tools/failover-readiness', title: 'Business Continuity Readiness Check', desc: 'How prepared is your organization for a connectivity outage?' },
-  { n: '04', to: '/tools/ai-roi-calculator', title: 'AI Solutions ROI Calculator', desc: 'Estimate the return on investment from deploying AI agents across your organization.' },
+  { n: '04', to: '/tools/ai-roi-calculator', title: 'AI Automation ROI Calculator', desc: 'Size what repetitive manual work costs you today, then model what automating part of it is worth.' },
   { n: '05', to: '/tools/ai-readiness', title: 'AI Readiness Assessment', desc: 'Evaluate how prepared your organization is for AI adoption.' },
 ];
 
@@ -14,7 +14,7 @@ const Tools = () => (
   <div className="bg-canvas text-body antialiased">
     <Seo
       title="Free Telecom Assessment Tools | TrustedNetworx"
-      description="Interactive tools to evaluate your telecom infrastructure: POTS replacement ROI, copper sunset risk, and business continuity readiness."
+      description="Interactive tools to size your telecom position: POTS replacement ROI, copper sunset risk, business continuity readiness, and AI automation readiness."
     />
 
     {/* Hero */}

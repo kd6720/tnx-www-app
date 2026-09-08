@@ -18,8 +18,8 @@ const Blog = () => {
   return (
     <div className="bg-canvas text-body antialiased">
       <Seo
-        title="TrustedNetworx Blog — Insights on Telecom, AI & Connectivity"
-        description="Practical insights on telecom modernization, AI for business, compliance, and connectivity from the TrustedNetworx team."
+        title="TrustedNetworx Blog | Telecom, AI & Connectivity Insights"
+        description="Practical insights on telecom modernization, AI for business, copper retirement, compliance, and connectivity from the operators behind TrustedNetworx."
       />
 
       {/* Hero */}

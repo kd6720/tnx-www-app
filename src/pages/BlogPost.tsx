@@ -103,7 +103,7 @@ const BlogPost = () => {
           <p className="font-mono text-xs uppercase tracking-mono-label text-muted-text">About the author</p>
           <h2 className="mt-2 font-display text-display-h3 font-semibold text-ink">{post.author}</h2>
           <p className="mt-3 leading-relaxed text-body">
-            Carter Dewey leads solution architecture at TrustedNetworx, helping multi-site
+            Carter Dewey is CEO &amp; Founder of TrustedNetworx, helping multi-site
             organizations navigate telecom modernization, POTS replacement, and AI-powered
             operations — translating complex infrastructure challenges into practical, phased
             migration roadmaps.
