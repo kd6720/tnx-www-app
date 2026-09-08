@@ -15,14 +15,14 @@ const capabilities = [
 
 const whoFor = [
   'Telecom agents and MSPs tired of bending HubSpot or Pipedrive into shape',
-  'Reseller programs that need partner-level visibility without exposing other partners\u2019 deals',
+  'Reseller programs that need partner-level visibility without exposing other partners’ deals',
   'Small sales teams that want automation without an admin',
 ];
 
 const faqs = [
   { q: 'Can I import from Pipedrive / HubSpot?', a: 'Yes — CSV import with field mapping.' },
   { q: 'Does it replace Partner Hub?', a: 'No. Partner Hub manages agents; TNX CRM manages deals. They share data.' },
-  { q: 'Can partners see each other\u2019s deals?', a: 'No. Partner visibility is scoped to their own book.' },
+  { q: 'Can partners see each other’s deals?', a: 'No. Partner visibility is scoped to their own book.' },
 ];
 
 const Crm = () => {
@@ -39,8 +39,8 @@ const Crm = () => {
   return (
     <div className="bg-canvas text-body antialiased">
       <Seo
-        title="TNX CRM — Opportunity Management for Telecom, MSP & Channel Sales | TrustedNetworx"
-        description="Track direct, agent, and reseller deals with telecom-native fields and AI agents that keep the pipeline current. Simple, flat pricing."
+        title="TNX CRM — Opportunity Management Telecom | TrustedNetworx"
+        description="Track direct, agent, and reseller deals with telecom-native fields and AI agents that keep the pipeline current, from the operators behind TrustedNetworx."
         jsonLd={[
           {
             '@context': 'https://schema.org',

@@ -448,10 +448,11 @@ const AiReadinessAssessment = () => {
               <div className="rounded-xl bg-navy-50 border border-navy-200 p-4 flex items-start gap-3">
                 <TrendingUp size={18} className="text-brand-500 flex-shrink-0 mt-0.5" />
                 <p className="text-sm text-navy-600 leading-relaxed">
-                  Organizations that score Advanced or AI-Ready typically deploy AI agents 3–6×
-                  faster than those in Early or Developing stages. Even mid-range organizations
-                  can achieve meaningful automation by focusing on the right starting points —
-                  targeting high-volume, well-documented processes first.
+                  A higher score usually means less groundwork before the first agent can go
+                  live — documented processes, clean data, and a named owner are what shorten a
+                  deployment. A mid-range score is not a blocker. It points to where the
+                  groundwork is, and the fastest first build is almost always a high-volume,
+                  well-documented process.
                 </p>
               </div>
             </div>

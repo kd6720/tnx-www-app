@@ -67,7 +67,7 @@ const PotsReplacement = () => (
   <div className="bg-canvas text-body antialiased">
     <Seo
       title="POTS Replacement | TrustedNetworx"
-      description="Replace legacy analog lines with the DataRemote POTS IN A BOX platform — 8-line 5G and LTE units with 48-hour battery backup, aligned with UL 864, deployed and monitored by TrustedNetworx."
+      description="Replace legacy analog copper lines with the DataRemote POTS IN A BOX platform: 8-line 5G and LTE units with 48-hour battery backup, aligned with UL 864."
       jsonLd={{
         '@context': 'https://schema.org',
         '@type': 'Service',

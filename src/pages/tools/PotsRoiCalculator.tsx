@@ -201,7 +201,7 @@ const PotsRoiCalculator = () => {
                 <input
                   type="range"
                   min={30}
-                  max={150}
+                  max={500}
                   step={5}
                   value={monthlyCost}
                   onChange={(e) => setMonthlyCost(Number(e.target.value))}
@@ -209,7 +209,7 @@ const PotsRoiCalculator = () => {
                 />
                 <div className="flex justify-between text-xs text-navy-400 mt-1">
                   <span>$30</span>
-                  <span>$150</span>
+                  <span>$500</span>
                 </div>
               </div>
 

@@ -4,112 +4,63 @@ import {
   ArrowRight,
   DollarSign,
   BarChart3,
-  Brain,
   Clock,
-  Zap,
   Users,
   Percent,
-  CheckCircle2,
-  Send,
   Info,
 } from 'lucide-react';
 import Seo from '../../components/Seo';
 import MultiStepForm from '../../components/MultiStepForm';
 
-const CRM_ENDPOINT = '/.netlify/functions/lead';
-
-const AI_HOURLY_EQUIVALENT = 15;
+/**
+ * Scenario modeling only.
+ *
+ * This page previously hardcoded AI_HOURLY_EQUIVALENT = 15 and published it as
+ * "Estimated AI agent equivalent cost: ~$15/hr". That is a price statement, it
+ * was never sourced or approved, and it was the denominator behind a headline
+ * ROI percentage that ran into the hundreds at the default inputs — the kind of
+ * number a serious buyer discounts on sight.
+ *
+ * What the page asserts now: nothing. The cost panel is arithmetic on the
+ * reader's own four inputs. The automation rate is the reader's assumption and
+ * is labelled as such. There is no TrustedNetworx price, no ROI multiple, and
+ * no default scenario value anywhere on the page.
+ *
+ * Do not reintroduce a per-hour agent cost, an ROI percentage, a payback
+ * period, or a default automation rate without an approved, sourced figure.
+ * See src/pages/tools/PotsRoiCalculator.tsx, which carries the same constraint.
+ */
+const BAND_SPREAD = 10;
+const BAND_FLOOR = 5;
+const BAND_CEILING = 90;
 
 const AiRoiCalculator = () => {
-  // Input state
+  // Input state — all four supplied by the reader.
   const [employees, setEmployees] = useState(50);
   const [hoursSpent, setHoursSpent] = useState(15);
   const [hourlyCost, setHourlyCost] = useState(65);
-  const [automationPct, setAutomationPct] = useState(50);
+  const [automationPct, setAutomationPct] = useState(0);
 
-  // Calculations
-  const hoursSavedPerWeek = useMemo(
-    () => employees * hoursSpent * (automationPct / 100),
-    [employees, hoursSpent, automationPct],
-  );
-  const weeklySavings = useMemo(
-    () => hoursSavedPerWeek * hourlyCost,
-    [hoursSavedPerWeek, hourlyCost],
-  );
-  const monthlySavings = useMemo(() => weeklySavings * 4.33, [weeklySavings]);
-  const annualSavings = useMemo(() => weeklySavings * 52, [weeklySavings]);
-  const currentAnnualSpend = useMemo(
-    () => employees * hoursSpent * 52 * hourlyCost,
-    [employees, hoursSpent, hourlyCost],
-  );
-  const aiCost = useMemo(
-    () => hoursSavedPerWeek * 52 * AI_HOURLY_EQUIVALENT,
-    [hoursSavedPerWeek],
-  );
-  const netAnnualSavings = useMemo(
-    () => annualSavings - aiCost,
-    [annualSavings, aiCost],
-  );
-  const roiPct = useMemo(
-    () => (aiCost > 0 ? (netAnnualSavings / aiCost) * 100 : 0),
-    [netAnnualSavings, aiCost],
-  );
-  const hoursReclaimedPerYear = useMemo(
-    () => hoursSavedPerWeek * 52,
-    [hoursSavedPerWeek],
-  );
+  // What the repetitive-task time costs today. Reader's figures only.
+  const weeklyHours = useMemo(() => employees * hoursSpent, [employees, hoursSpent]);
+  const annualHours = weeklyHours * 52;
+  const weeklyCost = weeklyHours * hourlyCost;
+  const annualCost = annualHours * hourlyCost;
 
-  // Form state
+  const band = useMemo(() => {
+    if (automationPct <= 0) return null;
+    const low = Math.max(BAND_FLOOR, automationPct - BAND_SPREAD);
+    const high = Math.min(BAND_CEILING, automationPct + BAND_SPREAD);
+    const at = (pct: number) => ({
+      pct,
+      hours: annualHours * (pct / 100),
+      weekly: weeklyCost * (pct / 100),
+      annual: annualCost * (pct / 100),
+    });
+    return { low: at(low), mid: at(automationPct), high: at(high) };
+  }, [automationPct, annualHours, weeklyCost, annualCost]);
+
   const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-  });
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitting(true);
-    try {
-      await fetch(CRM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          company: formData.company,
-          source: 'AI Solutions ROI Calculator',
-          calculator_results: JSON.stringify({
-            employees,
-            hoursSpent,
-            hourlyCost,
-            automationPct,
-            weeklySavings: Math.round(weeklySavings),
-            monthlySavings: Math.round(monthlySavings),
-            annualSavings: Math.round(annualSavings),
-            currentAnnualSpend: Math.round(currentAnnualSpend),
-            aiCost: Math.round(aiCost),
-            netAnnualSavings: Math.round(netAnnualSavings),
-            roiPct: Math.round(roiPct),
-            hoursReclaimedPerYear: Math.round(hoursReclaimedPerYear),
-          }),
-        }),
-      });
-      setSubmitted(true);
-    } catch {
-      setSubmitted(true);
-    } finally {
-      setSubmitting(false);
-    }
-  };
 
   const formatCurrency = (n: number) =>
     new Intl.NumberFormat('en-US', {
@@ -124,15 +75,11 @@ const AiRoiCalculator = () => {
 
   const hasResults = employees > 0 && hoursSpent > 0 && hourlyCost > 0;
 
-  // For comparison bar: current spend vs AI-powered spend
-  const aiPoweredAnnualSpend = currentAnnualSpend - netAnnualSavings;
-  const barMax = Math.max(currentAnnualSpend, aiPoweredAnnualSpend);
-
   return (
     <div className="bg-navy-50">
       <Seo
-        title="AI Solutions ROI Calculator | TrustedNetworx"
-        description="Estimate the return on investment from deploying AI agents and automation across your organization. Interactive ROI tool from TrustedNetworx."
+        title="AI Automation ROI Calculator | TrustedNetworx"
+        description="Size what repetitive manual work costs your organization each year, then model what automating a share of it would be worth. Planning tool from TrustedNetworx."
       />
 
       {/* Hero */}
@@ -148,13 +95,13 @@ const AiRoiCalculator = () => {
                 Interactive ROI Calculator
               </span>
               <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
-                {'AI Solutions '}
+                {'AI Automation '}
                 <span className="text-brand-300">
                   ROI Calculator
                 </span>
               </h1>
               <p className="mt-6 max-w-xl text-lg sm:text-xl text-navy-200">
-                Estimate the return on investment from deploying AI agents and automation across your organization.
+                Start with what repetitive work costs you today. Then model what automating part of it is worth.
               </p>
             </div>
           </div>
@@ -243,163 +190,178 @@ const AiRoiCalculator = () => {
                   <span>$150</span>
                 </div>
               </div>
-
-              {/* Automation percentage slider */}
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <label className="text-sm font-semibold text-navy-800">
-                    Percentage AI could realistically automate
-                  </label>
-                  <span className="text-2xl font-extrabold text-brand-600">{`${automationPct}%`}</span>
-                </div>
-                <input
-                  type="range"
-                  min={10}
-                  max={90}
-                  step={5}
-                  value={automationPct}
-                  onChange={(e) => setAutomationPct(Number(e.target.value))}
-                  className="w-full h-2 bg-navy-200 rounded-lg appearance-none cursor-pointer accent-brand-600"
-                />
-                <div className="flex justify-between text-xs text-navy-400 mt-1">
-                  <span>10%</span>
-                  <span>90%</span>
-                </div>
-              </div>
             </div>
           </div>
 
-          {/* Results */}
+          {/* Current cost */}
+          {hasResults && (
+            <div className="mt-8 rounded-2xl bg-white border border-navy-200 p-6 sm:p-10">
+              <div className="flex items-center gap-3 mb-8">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-navy-700 to-navy-900 text-white">
+                  <DollarSign size={20} />
+                </span>
+                <div>
+                  <h3 className="text-xl font-extrabold text-navy-900">What This Work Costs You Today</h3>
+                  <p className="text-sm text-navy-500">
+                    {`Your figures: ${employees} people, ${hoursSpent} hrs/wk each on repetitive tasks, at ${formatCurrency(hourlyCost)}/hr fully loaded`}
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="rounded-xl bg-navy-50 border border-navy-100 p-6 text-center">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
+                    Hours per Year
+                  </p>
+                  <p className="text-3xl sm:text-4xl font-extrabold text-navy-900">
+                    {formatNumber(annualHours)}
+                  </p>
+                </div>
+                <div className="rounded-xl bg-navy-50 border border-navy-100 p-6 text-center">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
+                    Cost per Week
+                  </p>
+                  <p className="text-3xl sm:text-4xl font-extrabold text-navy-900">
+                    {formatCurrency(weeklyCost)}
+                  </p>
+                </div>
+                <div className="rounded-xl bg-navy-50 border border-navy-100 p-6 text-center">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
+                    Cost per Year
+                  </p>
+                  <p className="text-3xl sm:text-4xl font-extrabold text-navy-900">
+                    {formatCurrency(annualCost)}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6 rounded-xl bg-navy-50 border border-navy-100 p-4 flex items-center gap-3">
+                <Clock size={20} className="text-navy-400 flex-shrink-0" />
+                <p className="text-sm text-navy-600">
+                  {`That is ${formatNumber(annualHours)} hours a year your team spends on work it did not hire those people to do.`}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Scenario band */}
           {hasResults && (
             <div className="mt-8 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 p-6 sm:p-10">
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-6">
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white">
                   <BarChart3 size={20} />
                 </span>
                 <div>
-                  <h3 className="text-xl font-extrabold text-navy-900">Your Savings Projection</h3>
+                  <h3 className="text-xl font-extrabold text-navy-900">Model an Automation Rate</h3>
                   <p className="text-sm text-navy-500">
-                    {`Based on ${employees} employees, ${hoursSpent} hrs/wk repetitive tasks at ${formatCurrency(hourlyCost)}/hr, ${automationPct}% automatable`}
+                    Move the slider to see what automating a share of that work would be worth.
                   </p>
                 </div>
               </div>
 
-              {/* Big number cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                <div className="rounded-xl bg-white border border-emerald-100 p-6 text-center shadow-sm">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
-                    Weekly Net Savings
-                  </p>
-                  <p className="text-3xl sm:text-4xl font-extrabold text-emerald-600">
-                    {formatCurrency(weeklySavings)}
-                  </p>
-                  <p className="mt-1 text-xs text-navy-400">per week</p>
+              <div className="mb-8">
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-sm font-semibold text-navy-800">
+                    Share of this work to model as automated
+                  </label>
+                  <span className="text-2xl font-extrabold text-emerald-600">
+                    {automationPct > 0 ? `${automationPct}%` : '—'}
+                  </span>
                 </div>
-                <div className="rounded-xl bg-white border border-emerald-100 p-6 text-center shadow-sm">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
-                    Monthly Net Savings
-                  </p>
-                  <p className="text-3xl sm:text-4xl font-extrabold text-emerald-600">
-                    {formatCurrency(monthlySavings)}
-                  </p>
-                  <p className="mt-1 text-xs text-navy-400">per month (4.33 wks)</p>
-                </div>
-                <div className="rounded-xl bg-white border border-emerald-100 p-6 text-center shadow-sm">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
-                    Annual Net Savings
-                  </p>
-                  <p className="text-3xl sm:text-4xl font-extrabold text-emerald-600">
-                    {formatCurrency(netAnnualSavings)}
-                  </p>
-                  <p className="mt-1 text-xs text-navy-400">per year (after AI cost)</p>
+                <input
+                  type="range"
+                  min={0}
+                  max={BAND_CEILING}
+                  step={5}
+                  value={automationPct}
+                  onChange={(e) => setAutomationPct(Number(e.target.value))}
+                  className="w-full h-2 bg-navy-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                />
+                <div className="flex justify-between text-xs text-navy-400 mt-1">
+                  <span>0%</span>
+                  <span>{`${BAND_CEILING}%`}</span>
                 </div>
               </div>
 
-              {/* ROI highlight */}
-              <div className="rounded-xl bg-white border border-brand-100 p-6 mb-8 text-center">
-                <div className="flex items-center justify-center gap-2 mb-1">
-                  <TrendingUp size={24} className="text-brand-500" />
-                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400">
-                    Return on Investment
+              {band ? (
+                <>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className="rounded-xl bg-white/70 border border-emerald-100 p-6 text-center">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
+                        {`At ${band.low.pct}%`}
+                      </p>
+                      <p className="text-2xl sm:text-3xl font-extrabold text-navy-700">
+                        {formatCurrency(band.low.annual)}
+                      </p>
+                      <p className="mt-1 text-xs text-navy-400">per year</p>
+                    </div>
+                    <div className="rounded-xl bg-white border-2 border-emerald-300 p-6 text-center shadow-sm">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-emerald-600 mb-2">
+                        {`At ${band.mid.pct}%`}
+                      </p>
+                      <p className="text-3xl sm:text-4xl font-extrabold text-emerald-600">
+                        {formatCurrency(band.mid.annual)}
+                      </p>
+                      <p className="mt-1 text-xs text-navy-400">per year</p>
+                    </div>
+                    <div className="rounded-xl bg-white/70 border border-emerald-100 p-6 text-center">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-navy-400 mb-2">
+                        {`At ${band.high.pct}%`}
+                      </p>
+                      <p className="text-2xl sm:text-3xl font-extrabold text-navy-700">
+                        {formatCurrency(band.high.annual)}
+                      </p>
+                      <p className="mt-1 text-xs text-navy-400">per year</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className="rounded-xl bg-white/60 border border-navy-100 p-4 flex items-center gap-3">
+                      <Clock size={20} className="text-navy-400 flex-shrink-0" />
+                      <div>
+                        <p className="text-xs text-navy-400">Hours reclaimed per year</p>
+                        <p className="text-lg font-bold text-navy-900">
+                          {formatNumber(band.mid.hours)}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="rounded-xl bg-white/60 border border-navy-100 p-4 flex items-center gap-3">
+                      <Users size={20} className="text-navy-400 flex-shrink-0" />
+                      <div>
+                        <p className="text-xs text-navy-400">Employees in scope</p>
+                        <p className="text-lg font-bold text-navy-900">{employees}</p>
+                      </div>
+                    </div>
+                    <div className="rounded-xl bg-white/60 border border-navy-100 p-4 flex items-center gap-3">
+                      <Percent size={20} className="text-navy-400 flex-shrink-0" />
+                      <div>
+                        <p className="text-xs text-navy-400">Weekly value at this rate</p>
+                        <p className="text-lg font-bold text-navy-900">
+                          {formatCurrency(band.mid.weekly)}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className="rounded-xl bg-white/70 border border-emerald-100 p-8 text-center">
+                  <p className="text-navy-500">
+                    Move the slider above to model an automation rate against your current cost.
                   </p>
                 </div>
-                <p className="text-5xl sm:text-6xl font-extrabold text-brand-600">
-                  {`${Math.round(roiPct)}%`}
-                </p>
-                <p className="mt-1 text-sm text-navy-500">
-                  {`Net savings of ${formatCurrency(netAnnualSavings)} on an AI investment of ${formatCurrency(aiCost)}`}
-                </p>
-              </div>
+              )}
 
-              {/* Spend comparison bar */}
-              <h4 className="font-semibold text-navy-900 mb-3">Annual Spend Comparison</h4>
-              <div className="space-y-3 mb-6">
+              <div className="mt-6 rounded-xl bg-white/70 border border-navy-100 p-4 flex items-start gap-3">
+                <Info size={18} className="text-navy-500 flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span className="text-navy-600">Current Spend</span>
-                    <span className="font-semibold text-navy-900">
-                      {formatCurrency(currentAnnualSpend)}
-                    </span>
-                  </div>
-                  <div className="h-4 rounded-full bg-navy-100 overflow-hidden">
-                    <div
-                      className="h-full rounded-full bg-navy-400 transition-all duration-700"
-                      style={{ width: barMax > 0 ? `${(currentAnnualSpend / barMax) * 100}%` : '0%' }}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span className="text-emerald-700">AI-Powered Spend</span>
-                    <span className="font-semibold text-emerald-700">
-                      {formatCurrency(aiPoweredAnnualSpend)}
-                    </span>
-                  </div>
-                  <div className="h-4 rounded-full bg-navy-100 overflow-hidden">
-                    <div
-                      className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 transition-all duration-700"
-                      style={{
-                        width: barMax > 0 ? `${(aiPoweredAnnualSpend / barMax) * 100}%` : '0%',
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Context metrics */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="rounded-xl bg-white/60 border border-navy-100 p-4 flex items-center gap-3">
-                  <Clock size={20} className="text-navy-400 flex-shrink-0" />
-                  <div>
-                    <p className="text-xs text-navy-400">Hours Reclaimed per Year</p>
-                    <p className="text-lg font-bold text-navy-900">
-                      {formatNumber(hoursReclaimedPerYear)}
-                    </p>
-                  </div>
-                </div>
-                <div className="rounded-xl bg-white/60 border border-navy-100 p-4 flex items-center gap-3">
-                  <Users size={20} className="text-navy-400 flex-shrink-0" />
-                  <div>
-                    <p className="text-xs text-navy-400">Employees Impacted</p>
-                    <p className="text-lg font-bold text-navy-900">{employees}</p>
-                  </div>
-                </div>
-                <div className="rounded-xl bg-white/60 border border-navy-100 p-4 flex items-center gap-3">
-                  <Percent size={20} className="text-navy-400 flex-shrink-0" />
-                  <div>
-                    <p className="text-xs text-navy-400">Automation Rate</p>
-                    <p className="text-lg font-bold text-navy-900">{`${automationPct}%`}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* AI cost transparency */}
-              <div className="mt-4 rounded-xl bg-brand-50 border border-brand-200 p-4 flex items-start gap-3">
-                <Info size={18} className="text-brand-600 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-sm font-semibold text-brand-800">AI Agent Cost Transparency</p>
-                  <p className="text-sm text-brand-700">
-                    {`Estimated AI agent equivalent cost: ~$${AI_HOURLY_EQUIVALENT}/hr (compared to ${formatCurrency(hourlyCost)}/hr human cost). Annual AI cost: ${formatCurrency(aiCost)}. Actual pricing depends on your specific deployment and use cases.`}
+                  <p className="text-sm font-semibold text-navy-800">This is a model, not a quote.</p>
+                  <p className="text-sm text-navy-600">
+                    The automation rate is the one you selected, and the figures above are the
+                    gross value of the time it represents — not net of what the agents cost to
+                    build and run. We do not publish a per-agent or per-hour price here, because
+                    the real number depends on task volume, how many systems the agent has to
+                    touch, and how clean the underlying data is. Tell us which workflow you have
+                    in mind and we will scope that one.
                   </p>
                 </div>
               </div>
@@ -411,7 +373,7 @@ const AiRoiCalculator = () => {
             {!showForm ? (
               <div className="text-center">
                 <p className="text-navy-500 mb-4">
-                  Ready to deploy AI agents across your workforce?
+                  Want your actual numbers instead of a model?
                 </p>
                 <button onClick={() => setShowForm(true)} className="btn-primary">
                   Explore AI Workforce Solutions

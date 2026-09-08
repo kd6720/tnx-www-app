@@ -229,7 +229,7 @@ const CopperSunsetRisk = () => {
     <div className="bg-navy-50">
       <Seo
         title="Copper Sunset Risk Assessment | TrustedNetworx"
-        description="Evaluate your organization's exposure to the copper network decommissioning. Interactive risk assessment tool from TrustedNetworx."
+        description="Size your organization's exposure to the copper network shutdown. Identify at-risk phone lines, elevator lines, alarm panels, fax machines, and POS lines."
       />
 
       {/* Hero */}

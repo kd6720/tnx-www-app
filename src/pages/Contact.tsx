@@ -15,7 +15,7 @@ const Contact = () => (
   <div className="bg-canvas text-body antialiased">
     <Seo
       title="Contact Us | TrustedNetworx"
-      description="Get in touch with the TrustedNetworx team to discuss your managed telecom, connectivity, voice, and AI needs."
+      description="Get in touch with the TrustedNetworx team to scope managed telecom, POTS replacement, voice, connectivity, mobility, or an AI agent build for your business."
       jsonLd={{
         '@context': 'https://schema.org',
         '@type': 'LocalBusiness',

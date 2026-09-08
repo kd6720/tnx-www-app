@@ -39,7 +39,7 @@ const PartnerHub = () => {
   return (
     <div className="bg-canvas text-body antialiased">
       <Seo
-        title="TNX Partner Hub — AI Agent Management Platform for MSPs & Channel Partners | TrustedNetworx"
+        title="TNX Partner Hub — AI Agent Management | TrustedNetworx"
         description="Deploy, budget, monitor, and govern AI agents for sales, support, and operations from one multi-tenant hub. Built by an operator, for MSPs and resellers."
         jsonLd={[
           {

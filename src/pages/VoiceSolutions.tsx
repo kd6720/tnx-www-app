@@ -20,8 +20,8 @@ const enterprise = [
 const VoiceSolutions = () => (
   <div className="bg-canvas text-body antialiased">
     <Seo
-      title="Voice Solutions — IP PBX & Unified Communications | TrustedNetworx"
-      description="Enterprise voice communications from TrustedNetworx — cloud-based IP PBX, HD voice, unified communications, voice analytics, and scalable cloud calling for modern business."
+      title="Voice Solutions — IP PBX & UCaaS | TrustedNetworx"
+      description="Enterprise voice from TrustedNetworx: cloud IP PBX, HD voice, unified communications, voice analytics, and cloud calling that scales with the business."
       jsonLd={{
         '@context': 'https://schema.org',
         '@type': 'Service',

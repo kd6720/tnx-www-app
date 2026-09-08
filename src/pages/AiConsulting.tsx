@@ -36,18 +36,34 @@ const differentiators = [
   { n: '04', title: 'Operator-to-operator', desc: 'We advise from experience running telecom operations — not from textbooks.' },
 ];
 
+/**
+ * Stats strip.
+ *
+ * Two tiles were removed rather than softened:
+ *  - "40%+ Reduction in manual admin time" had no source. A hedged version of
+ *    an unsourced number reads worse than no number.
+ *  - "3x Faster lead follow-up with AI" had no source and no definition of
+ *    what it was 3x faster than.
+ *
+ * "Weeks — not months" was also dropped: it contradicted the 5–10 day window
+ * published on / and /ai-workforce. Two timeframes on one site is a defect.
+ *
+ * The three that remain are defensible. 24/7 is what the agents do, 5–10 days
+ * is Carter's own confirmed deployment window (keep in sync with Home.tsx and
+ * AiWorkforce.tsx), and the starting scope is a description of the method, not
+ * a claim about outcomes. Do not put an unsourced round number back here.
+ */
 const stats = [
-  { value: '40%+', label: 'Reduction in manual admin time' },
-  { value: '3x', label: 'Faster lead follow-up with AI' },
   { value: '24/7', label: 'AI-assisted customer engagement' },
-  { value: 'Weeks', label: 'Not months — to first deployment' },
+  { value: '5–10 days', label: 'From kickoff to first agent live' },
+  { value: 'One workflow', label: 'Where every engagement starts' },
 ];
 
 const AiConsulting = () => (
   <div className="bg-canvas text-body antialiased">
     <Seo
       title="AI Consulting & Solutions | TrustedNetworx"
-      description="Practical AI consulting and implementation for telecom operators, channel partners, and multi-site businesses — automation, customer engagement, and strategy with measurable ROI."
+      description="Practical AI consulting and implementation for telecom operators, channel partners, and multi-site businesses — automation, engagement, and strategy that ships."
       jsonLd={{
         '@context': 'https://schema.org',
         '@type': 'Service',
@@ -91,9 +107,9 @@ const AiConsulting = () => (
     {/* Stats strip */}
     <section className="border-b border-hairline bg-white">
       <div className="mx-auto w-full max-w-site px-6 py-10 md:px-gutter">
-        <div className="grid grid-cols-2 md:grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3">
           {stats.map(({ value, label }, i) => (
-            <div key={label} className={`py-6${i > 0 ? ' border-l border-hairline pl-8' : ''}${i % 2 === 1 ? ' max-md:border-l max-md:border-hairline max-md:pl-8' : ''}`}>
+            <div key={label} className={`py-6${i > 0 ? ' sm:border-l sm:border-hairline sm:pl-8 max-sm:border-t max-sm:border-hairline' : ''}`}>
               <p className="font-display text-stat font-semibold text-ink">{value}</p>
               <p className="mt-2 font-mono text-xs uppercase tracking-mono-label text-muted-text">{label}</p>
             </div>
