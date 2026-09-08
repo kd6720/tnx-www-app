@@ -4,7 +4,7 @@ import Seo from '../components/Seo';
 
 const whyChooseUs = [
   { n: '01', title: 'Proven telecom expertise', desc: 'Decades of industry experience tackling the complex challenges of connectivity and infrastructure modernization.' },
-  { n: '02', title: 'Strategic global partnerships', desc: 'High-profile projects with global telecom leaders, government bodies, and Fortune 500 companies.' },
+  { n: '02', title: 'Strategic global partnerships', desc: 'High-profile projects with global telecom leaders and government bodies.' },
   { n: '03', title: 'Future-ready solutions', desc: 'Cellular data to cloud communication — customized to your evolving needs.' },
   { n: '04', title: 'Dependable & scalable', desc: 'Strategies that cut costs, lift operational efficiency, and grow with you.' },
 ];
@@ -13,7 +13,7 @@ const About = () => (
   <div className="bg-canvas text-body antialiased">
     <Seo
       title="About Us | TrustedNetworx"
-      description="Founded on 25+ years of telecom and IoT experience, TrustedNetworx delivers advanced connectivity, voice, and managed solutions for enterprise and multi-site organizations."
+      description="TrustedNetworx delivers managed telecom, connectivity, voice, and AI solutions for enterprise and multi-site organizations, built on operator experience."
     />
 
     {/* Hero */}
@@ -86,7 +86,7 @@ const About = () => (
               A track record with the carriers.
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-body">
-              AT&amp;T, Verizon, T-Mobile, US Cellular, MetTel, Fusion Connect, Xirgo
+              AT&amp;T, Verizon, T-Mobile, UScellular, MetTel, Fusion Connect, Xirgo
               Technologies, DataRemote, and more — from POTS line replacement to enterprise
               mobility, we help businesses transition to next-generation networks with confidence.
             </p>
