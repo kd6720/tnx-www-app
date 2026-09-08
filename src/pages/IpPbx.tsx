@@ -8,7 +8,7 @@ const IpPbx = () => {
         <div className="bg-navy-50">
             <Seo
                 title="IP PBX | TrustedNetworx"
-                description="Cloud-based IP PBX business phone systems with advanced calling features, collaboration tools, and enterprise-grade reliability from TrustedNetworx."
+                description="Cloud-based IP PBX business phone systems with advanced calling features, collaboration tools, and enterprise-grade reliability, delivered by TrustedNetworx."
             />
             {/* Hero Section */}
             <div className="relative min-h-[460px] flex items-center overflow-hidden">

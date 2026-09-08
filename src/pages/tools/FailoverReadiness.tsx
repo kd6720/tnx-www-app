@@ -237,7 +237,7 @@ const FailoverReadiness = () => {
     <div className="bg-navy-50">
       <Seo
         title="Business Continuity Readiness Check | TrustedNetworx"
-        description="How prepared is your organization for a connectivity outage? Assess your failover readiness with this interactive tool from TrustedNetworx."
+        description="How prepared is your organization for a connectivity outage? Assess wireless failover and business continuity readiness with this TrustedNetworx tool."
       />
 
       {/* Hero */}

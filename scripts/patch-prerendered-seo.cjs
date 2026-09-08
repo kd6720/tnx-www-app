@@ -211,7 +211,7 @@ function patchBlogIndex(distDir) {
   ensureHtmlShell(filePath, path.join(distDir, 'index.html'));
   patchPage(filePath, {
     title: 'TrustedNetworx Blog | Telecom, AI & Connectivity Insights',
-    description: 'Practical insights on telecom modernization, AI for business, compliance, and connectivity from TrustedNetworx.',
+    description: 'Practical insights on telecom modernization, AI for business, copper retirement, compliance, and connectivity from the operators behind TrustedNetworx.',
     canonical: `${SITE_URL}/blog`,
     image: DEFAULT_OG_IMAGE,
     type: 'website',
@@ -379,7 +379,7 @@ const ROUTE_PAGES = [
   {
     route: 'about',
     title: 'About Us | TrustedNetworx',
-    description: 'With 25+ years in telecom and IoT, TrustedNetworx delivers advanced connectivity, voice, and managed solutions for enterprise and multi-site organizations.',
+    description: 'TrustedNetworx delivers managed telecom, connectivity, voice, and AI solutions for enterprise and multi-site organizations, built on operator experience.',
     jsonLd: [buildBreadcrumbList('about')],
   },
   {
@@ -392,7 +392,7 @@ const ROUTE_PAGES = [
     route: 'pots-replacement',
     heroPoster: '/media/hero-pots-poster.v2.jpg',
     title: 'POTS Replacement | TrustedNetworx',
-    description: 'Replace legacy analog lines with the DataRemote POTS IN A BOX platform — 8-line 5G and LTE units with 48-hour battery backup, aligned with UL 864, deployed and monitored by TrustedNetworx.',
+    description: 'Replace legacy analog copper lines with the DataRemote POTS IN A BOX platform: 8-line 5G and LTE units with 48-hour battery backup, aligned with UL 864.',
     jsonLd: [
       serviceJsonLd({
         name: 'POTS Replacement',
@@ -407,8 +407,8 @@ const ROUTE_PAGES = [
     route: 'pots-replacement/90x1',
     heroPoster: '/media/hero-pots-poster.v2.jpg',
     heroImage: '/product/90x1-hero.v2.webp',
-    title: 'DataRemote POTS IN A BOX 90X1 — 5G POTS Replacement | TrustedNetworx',
-    description: 'The DataRemote 90X1 replaces eight analog lines over 5G Sub-6 with an 18-cell 15Ah battery and up to 48 hours of standby. UL 864 aligned, CSFM listed, deployed and monitored by TrustedNetworx.',
+    title: 'DataRemote 90X1 — 5G POTS Replacement | TrustedNetworx',
+    description: 'The DataRemote 90X1 replaces eight analog lines over 5G Sub-6 with up to 48 hours of standby. UL 864 aligned, CSFM listed, deployed by TrustedNetworx.',
     jsonLd: [
       productJsonLd({
         name: 'POTS IN A BOX 90X1',
@@ -423,8 +423,8 @@ const ROUTE_PAGES = [
     route: 'pots-replacement/90x2',
     heroPoster: '/media/hero-pots-poster.v2.jpg',
     heroImage: '/product/90x2-hero.v2.webp',
-    title: 'DataRemote POTS IN A BOX 90X2 — LTE POTS Replacement | TrustedNetworx',
-    description: 'The DataRemote 90X2 replaces eight analog lines over LTE including band 14 for FirstNet, with a 48-hour battery and a 12VDC 4.0A UPS output. FirstNet Trusted and Bell Canada approved.',
+    title: 'DataRemote 90X2 — LTE POTS Replacement | TrustedNetworx',
+    description: 'The DataRemote 90X2 replaces eight analog lines over LTE including band 14 for FirstNet. FirstNet Trusted and Bell Canada approved, with 48-hour battery.',
     jsonLd: [
       productJsonLd({
         name: 'POTS IN A BOX 90X2',
@@ -439,8 +439,8 @@ const ROUTE_PAGES = [
     route: 'pots-replacement/90x5',
     heroPoster: '/media/hero-pots-poster.v2.jpg',
     heroImage: '/product/90x5-hero.v2.webp',
-    title: 'DataRemote POTS IN A BOX 90X5 — Modular POTS Replacement | TrustedNetworx',
-    description: 'The DataRemote 90X5 is a modular POTS replacement platform: a PoE-detachable 5G RedCap radio, a 4-line gateway expandable to 8 via RJ-14, and a swappable battery module. Pre-order, specifications preliminary.',
+    title: 'DataRemote 90X5 — Modular POTS Replacement | TrustedNetworx',
+    description: 'The DataRemote 90X5 is a modular platform: a PoE-detachable 5G RedCap radio and a 4-line gateway expandable to 8. Pre-order, specifications preliminary.',
     jsonLd: [
       productJsonLd({
         name: 'POTS IN A BOX 90X5',
@@ -454,8 +454,8 @@ const ROUTE_PAGES = [
   {
     route: 'pots-replacement/ara',
     heroPoster: '/media/hero-pots-poster.v2.jpg',
-    title: 'Ara — DataRemote POTS IN A BOX Device Management | TrustedNetworx',
-    description: 'Ara is DataRemote’s cloud device-management platform for the POTS IN A BOX family: remote access, firmware upgrade, line-status alerts, no-reboot configuration and a RESTful API for OSS/BSS integration.',
+    title: 'Ara — POTS IN A BOX Device Management | TrustedNetworx',
+    description: 'Ara is DataRemote\'s cloud device-management platform for the POTS IN A BOX family: remote access, firmware upgrade, line-status alerts, and a REST API.',
     jsonLd: [
       productJsonLd({
         name: 'Ara',
@@ -469,7 +469,7 @@ const ROUTE_PAGES = [
     route: 'ai-consulting',
     heroPoster: '/media/hero-ai-consulting-poster.v2.jpg',
     title: 'AI Consulting & Solutions | TrustedNetworx',
-    description: 'Practical AI consulting and implementation for telecom operators, channel partners, and multi-site businesses — automation, customer engagement, and strategy with measurable ROI.',
+    description: 'Practical AI consulting and implementation for telecom operators, channel partners, and multi-site businesses — automation, engagement, and strategy that ships.',
     jsonLd: [
       serviceJsonLd({
         name: 'AI Consulting',
@@ -484,7 +484,7 @@ const ROUTE_PAGES = [
     route: 'ai-workforce',
     heroPoster: '/media/hero-ai-workforce-poster.v2.jpg',
     title: 'AI Workforce — AI Agents for Telecom | TrustedNetworx',
-    description: 'Deploy AI sales, service, and operations agents built for telecom. Lead qualification, scheduling, email triage, infrastructure monitoring — 24/7, telecom-native.',
+    description: 'Deploy AI sales, service, and operations agents built for telecom: lead qualification, scheduling, email triage, and infrastructure monitoring, running 24/7.',
     jsonLd: [
       serviceJsonLd({
         name: 'AI Workforce',
@@ -516,8 +516,8 @@ const ROUTE_PAGES = [
   {
     route: 'voice-solutions',
     heroPoster: '/media/hero-voice-poster.v2.jpg',
-    title: 'Voice Solutions — IP PBX & Unified Communications | TrustedNetworx',
-    description: 'Enterprise voice communications from TrustedNetworx — cloud-based IP PBX, HD voice, unified communications, voice analytics, and scalable cloud calling for modern business.',
+    title: 'Voice Solutions — IP PBX & UCaaS | TrustedNetworx',
+    description: 'Enterprise voice from TrustedNetworx: cloud IP PBX, HD voice, unified communications, voice analytics, and cloud calling that scales with the business.',
     jsonLd: [
       serviceJsonLd({
         name: 'Voice Solutions / IP PBX',
@@ -532,7 +532,7 @@ const ROUTE_PAGES = [
     route: 'mobility-solutions',
     heroPoster: '/media/hero-mobility-poster.v2.jpg',
     title: 'Mobility Solutions | TrustedNetworx',
-    description: 'Enterprise mobility management from TrustedNetworx — MDaaS, IoT connectivity, and unified endpoint management to keep your mobile workforce secure and productive.',
+    description: 'Enterprise mobility management from TrustedNetworx: MDaaS, IoT connectivity, and unified endpoint management to keep a mobile workforce secure and productive.',
     jsonLd: [
       serviceJsonLd({
         name: 'Mobility Solutions',
@@ -546,7 +546,7 @@ const ROUTE_PAGES = [
   {
     route: 'platforms/partner-hub',
     heroPoster: '/media/hero-partner-hub-poster.v2.jpg',
-    title: 'TNX Partner Hub — AI Agent Management Platform for MSPs & Channel Partners | TrustedNetworx',
+    title: 'TNX Partner Hub — AI Agent Management | TrustedNetworx',
     description: 'Deploy, budget, monitor, and govern AI agents for sales, support, and operations from one multi-tenant hub. Built by an operator, for MSPs and resellers.',
     jsonLd: [
       softwareAppJsonLd({
@@ -566,8 +566,8 @@ const ROUTE_PAGES = [
   {
     route: 'platforms/crm',
     heroPoster: '/media/hero-crm-poster.v2.jpg',
-    title: 'TNX CRM — Opportunity Management for Telecom, MSP & Channel Sales | TrustedNetworx',
-    description: 'Track direct, agent, and reseller deals with telecom-native fields and AI agents that keep the pipeline current. Simple, flat pricing.',
+    title: 'TNX CRM — Opportunity Management Telecom | TrustedNetworx',
+    description: 'Track direct, agent, and reseller deals with telecom-native fields and AI agents that keep the pipeline current, from the operators behind TrustedNetworx.',
     jsonLd: [
       softwareAppJsonLd({
         name: 'TNX CRM',
@@ -599,44 +599,44 @@ const ROUTE_PAGES = [
   {
     route: 'tools',
     title: 'Free Telecom Assessment Tools | TrustedNetworx',
-    description: 'Interactive tools to evaluate your telecom infrastructure: POTS replacement ROI, copper sunset risk, and business continuity readiness.',
+    description: 'Interactive tools to size your telecom position: POTS replacement ROI, copper sunset risk, business continuity readiness, and AI automation readiness.',
     jsonLd: [buildBreadcrumbList('tools')],
   },
   {
     route: 'tools/pots-roi-calculator',
     title: 'POTS Replacement ROI Calculator | TrustedNetworx',
-    description: 'Calculate the cost savings of replacing legacy POTS lines with IP/cellular alternatives. See estimated ROI, break-even timeline, and total cost of ownership.',
+    description: 'Size what your legacy POTS copper lines cost you today and model what a per-line cost reduction is worth. Interactive planning tool from TrustedNetworx.',
     jsonLd: [buildBreadcrumbList('tools/pots-roi-calculator')],
   },
   {
     route: 'tools/copper-sunset-risk',
     title: 'Copper Sunset Risk Assessment | TrustedNetworx',
-    description: 'Assess your organization\'s exposure to the copper network shutdown. Identify at-risk phone lines, elevator lines, alarm panels, and fax machines.',
+    description: 'Size your organization\'s exposure to the copper network shutdown. Identify at-risk phone lines, elevator lines, alarm panels, fax machines, and POS lines.',
     jsonLd: [buildBreadcrumbList('tools/copper-sunset-risk')],
   },
   {
     route: 'tools/failover-readiness',
-    title: 'Failover Readiness Check | TrustedNetworx',
-    description: 'Check how prepared your business is for an internet outage. Score your network resilience and get recommendations for LTE/5G wireless failover.',
+    title: 'Business Continuity Readiness Check | TrustedNetworx',
+    description: 'Check how prepared your business is for an internet outage. Score your network resilience and get a recommendation on LTE and 5G wireless failover options.',
     jsonLd: [buildBreadcrumbList('tools/failover-readiness')],
   },
   {
     route: 'tools/ai-roi-calculator',
-    title: 'AI Implementation ROI Calculator | TrustedNetworx',
-    description: 'Estimate the return on investment for AI automation in your business. Compare manual vs. AI-powered workflows across sales, service, and operations.',
+    title: 'AI Automation ROI Calculator | TrustedNetworx',
+    description: 'Size what repetitive manual work costs your organization each year, then model what automating a share of it would be worth. Planning tool from TrustedNetworx.',
     jsonLd: [buildBreadcrumbList('tools/ai-roi-calculator')],
   },
   {
     route: 'tools/ai-readiness',
     title: 'AI Readiness Assessment | TrustedNetworx',
-    description: 'Evaluate your organization\'s readiness for AI adoption. Score data maturity, operational readiness, and workforce alignment for successful AI deployment.',
+    description: 'Score how prepared your organization is to adopt AI agents and automation, then get a scoped starting point. Interactive assessment from TrustedNetworx.',
     jsonLd: [buildBreadcrumbList('tools/ai-readiness')],
   },
   {
     route: 'contact',
     heroPoster: '/media/hero-contact-poster.v2.jpg',
     title: 'Contact Us | TrustedNetworx',
-    description: 'Get in touch with the TrustedNetworx team to discuss your managed telecom, connectivity, voice, and AI needs.',
+    description: 'Get in touch with the TrustedNetworx team to scope managed telecom, POTS replacement, voice, connectivity, mobility, or an AI agent build for your business.',
     jsonLd: [
       {
         '@context': 'https://schema.org',

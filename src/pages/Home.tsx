@@ -94,8 +94,8 @@ const Home = () => {
   return (
     <div className="bg-canvas text-body antialiased">
       <Seo
-        title="TrustedNetworx — AI Agents & Managed Telecom for Multi-Site Operators"
-        description="AI agents and managed telecom for multi-site operators: POTS replacement, voice, connectivity, and mobility — with the AI workforce to sell, support, and monitor 24/7."
+        title="TrustedNetworx — AI Agents & Managed Telecom"
+        description="AI agents and managed telecom for multi-site operators: POTS replacement, voice, connectivity, and mobility, with the AI workforce to sell, support, monitor."
       />
 
       {/* ── Navy band: hero + stats strip ───────────────────────────── */}
