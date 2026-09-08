@@ -32,7 +32,7 @@ const AiWorkforce = () => (
   <div className="bg-canvas text-body antialiased">
     <Seo
       title="AI Workforce — AI Agents for Telecom | TrustedNetworx"
-      description="Deploy AI sales, service, and operations agents built for telecom. Lead qualification, scheduling, email triage, infrastructure monitoring — 24/7, telecom-native."
+      description="Deploy AI sales, service, and operations agents built for telecom: lead qualification, scheduling, email triage, and infrastructure monitoring, running 24/7."
       jsonLd={{
         '@context': 'https://schema.org',
         '@type': 'Service',
