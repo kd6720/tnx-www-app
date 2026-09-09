@@ -116,7 +116,7 @@ def generate_image(prompt: str, output_path: Path) -> dict:
         arguments={
             "prompt": prompt,
             "image_size": "landscape_16_9",
-            "num_inference_steps": 4,
+            "num_inference_steps": 8,
             "output_format": "png",
             "enable_safety_checker": False,
         },
