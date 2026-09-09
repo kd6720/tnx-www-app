@@ -21,8 +21,6 @@ import {
 const aiSolutions = [
   { to: '/ai-workforce', label: 'AI Workforce', desc: 'AI agents for telecom', icon: Bot },
   { to: '/ai-consulting', label: 'AI Consulting', desc: 'Practical AI automation', icon: Bot },
-  { to: '/tools/ai-readiness', label: 'AI Readiness', desc: 'Free AI readiness assessment', icon: Wrench },
-  { to: '/tools/ai-roi-calculator', label: 'AI ROI Calculator', desc: 'Estimate your AI payback', icon: Wrench },
   { to: '/ai', label: 'AI Overview', desc: 'All AI resources in one place', icon: Bot },
 ];
 
@@ -61,6 +59,8 @@ const telecom = [
 const resources = [
   { to: '/blog', label: 'Blog', desc: 'Telecom & AI insights', icon: BookOpen },
   { to: '/tools', label: 'Free Tools', desc: 'ROI, risk & readiness assessments', icon: Wrench },
+  { to: '/tools/ai-readiness', label: 'AI Readiness', desc: 'Free AI readiness assessment', icon: Wrench },
+  { to: '/tools/ai-roi-calculator', label: 'AI ROI Calculator', desc: 'Estimate your AI payback', icon: Wrench },
 ];
 
 const company = [
