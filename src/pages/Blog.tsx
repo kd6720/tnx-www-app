@@ -62,27 +62,42 @@ const Blog = () => {
 
       {/* Post list */}
       <section className="border-b border-hairline">
-        <div className="mx-auto w-full max-w-[68ch] px-6 py-section md:px-gutter">
+        <div className="mx-auto w-full max-w-4xl px-6 py-section md:px-gutter">
           {filteredPosts.length === 0 ? (
             <p className="py-20 text-lg text-body">No posts in this category yet.</p>
           ) : (
             <ul className="divide-y divide-hairline border-t border-hairline">
               {filteredPosts.map((post: BlogPost) => (
                 <li key={post.slug}>
-                  <Link to={`/blog/${post.slug}`} className="group block py-5">
-                    <p className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
-                      {post.category}
-                      <span className="mx-2 text-hairline">·</span>
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </p>
-                    <h2 className="mt-2 font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
-                      {post.title}
-                    </h2>
-                    <p className="mt-2 leading-relaxed text-body">{post.description}</p>
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    className="group grid gap-6 py-6 sm:grid-cols-[220px_1fr] sm:items-center"
+                  >
+                    {post.image && (
+                      <div className="aspect-video w-full overflow-hidden rounded-xl bg-navy-100">
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                        />
+                      </div>
+                    )}
+                    <div>
+                      <p className="font-mono text-xs uppercase tracking-mono-label text-muted-text">
+                        {post.category}
+                        <span className="mx-2 text-hairline">·</span>
+                        {new Date(post.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </p>
+                      <h2 className="mt-2 font-display text-display-h3 font-semibold text-ink group-hover:text-brand-600">
+                        {post.title}
+                      </h2>
+                      <p className="mt-2 leading-relaxed text-body">{post.description}</p>
+                    </div>
                   </Link>
                 </li>
               ))}

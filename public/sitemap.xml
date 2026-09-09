@@ -21,6 +21,26 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://trustednetworx.com/pots-replacement/90x1</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://trustednetworx.com/pots-replacement/90x2</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://trustednetworx.com/pots-replacement/90x5</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://trustednetworx.com/pots-replacement/ara</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://trustednetworx.com/internet-connectivity</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
