@@ -1,6 +1,6 @@
 ---
 title: "Emergency Communication Requirements for Senior Living Facilities"
-seoTitle: "Emergency Communication Requirements"
+seoTitle: "Senior Living Emergency Communication Requirements"
 date: "2026-08-02"
 category: "Compliance & Regulation"
 description: "A breakdown of emergency call, fire alarm, and elevator phone requirements for senior living operators — and how to stay compliant without overspending."

@@ -95,14 +95,24 @@ export function getCategories(): string[] {
 }
 
 /**
- * Related reading for an article: three posts from the same category, newest
- * first (ALL_POSTS is already date-sorted), excluding the post itself. Tops up
- * from other categories when the category has fewer than three other posts.
+ * Related reading for an article: the next three posts after this one in its
+ * category, wrapping around the end.
+ *
+ * A fixed window rather than "the three newest" — newest-first gave every post
+ * the same three newest targets, so 39 of 55 posts received no inbound blog link
+ * at all. Taking i+1..i+3 from the category (ALL_POSTS is date-sorted, so this
+ * is the next three going back in time) gives every post exactly three inbound
+ * and three outbound links inside its category. Tops up from other categories
+ * when the category has fewer than four posts.
  */
 export function getRelatedPosts(post: BlogPost, limit = 3): BlogPost[] {
-  const sameCategory = ALL_POSTS.filter((p) => p.category === post.category && p.slug !== post.slug);
+  const sameCategory = ALL_POSTS.filter((p) => p.category === post.category);
+  const i = sameCategory.findIndex((p) => p.slug === post.slug);
+  const window = i === -1
+    ? sameCategory
+    : [...sameCategory.slice(i + 1), ...sameCategory.slice(0, i)];
   const otherCategories = ALL_POSTS.filter((p) => p.category !== post.category);
-  return [...sameCategory, ...otherCategories].slice(0, limit);
+  return [...window, ...otherCategories].slice(0, limit);
 }
 
 /**

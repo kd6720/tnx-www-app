@@ -156,7 +156,7 @@ const BlogPost = () => {
                       to={`/blog/${related.slug}`}
                       className="text-sm font-semibold text-brand-600 hover:text-brand-700"
                     >
-                      {related.title}
+                      {related.seoTitle || related.title}
                     </Link>
                   </li>
                 ))}
