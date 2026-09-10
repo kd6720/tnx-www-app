@@ -20,16 +20,37 @@
     <meta property="og:image" content="https://trustednetworx.com/TrustedNetworx-Hero-Image.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://trustednetworx.com" />
+    <!--
+      Organization node — canonical entity for the whole site, referenced from
+      every page's structured data by "@id": "https://trustednetworx.com/#organization".
+      The PostalAddress below is copied verbatim from the /contact LocalBusiness
+      node so the two never drift; /contact now points at this @id instead of
+      restating the address.
+
+      NOTE FOR CARTER: no "sameAs" array is emitted. sameAs requires a verified
+      public profile URL (LinkedIn, Crunchbase, Wikidata, …) and none exists in
+      this repo. Add it here — and only here — once a real profile URL is
+      confirmed.
+    -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Organization",
+        "@id": "https://trustednetworx.com/#organization",
         "name": "TrustedNetworx",
         "url": "https://trustednetworx.com",
         "logo": "https://trustednetworx.com/logo.svg",
         "description": "Managed telecom solutions provider delivering POTS replacement, AI consulting, internet connectivity, voice, and mobility solutions for enterprise and multi-site businesses.",
         "telephone": "+1-305-498-7530",
         "email": "sales@trustednetworx.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "18001 Old Cutler Rd",
+          "addressLocality": "Miami",
+          "addressRegion": "FL",
+          "postalCode": "33157",
+          "addressCountry": "US"
+        },
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+1-305-498-7530",

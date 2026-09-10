@@ -36,7 +36,15 @@ const BlogPost = () => {
     datePublished: post.date,
     dateModified: post.date,
     articleSection: post.category,
-    author: { '@type': 'Person', name: post.author },
+    author:
+      post.author === 'Carter Dewey'
+        ? {
+            '@type': 'Person',
+            '@id': `${SITE_URL}/about/team#carter-dewey`,
+            name: 'Carter Dewey',
+            url: `${SITE_URL}/about/team`,
+          }
+        : { '@type': 'Person', name: post.author },
     publisher: {
       '@type': 'Organization',
       name: 'TrustedNetworx',

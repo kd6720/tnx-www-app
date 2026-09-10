@@ -238,6 +238,17 @@ const FailoverReadiness = () => {
       <Seo
         title="Business Continuity Readiness Check | TrustedNetworx"
         description="How prepared is your organization for a connectivity outage? Assess wireless failover and business continuity readiness with this TrustedNetworx tool."
+        jsonLd={{
+          // Free tool → WebApplication (name = page title without site suffix).
+          '@context': 'https://schema.org',
+          '@type': 'WebApplication',
+          name: 'Business Continuity Readiness Check',
+          url: 'https://trustednetworx.com/tools/failover-readiness',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Any',
+          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+          publisher: { '@id': 'https://trustednetworx.com/#organization' },
+        }}
       />
 
       {/* Hero */}

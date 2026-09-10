@@ -20,6 +20,17 @@ const Blog = () => {
       <Seo
         title="TrustedNetworx Blog | Telecom, AI & Connectivity Insights"
         description="Practical insights on telecom modernization, AI for business, copper retirement, compliance, and connectivity from the operators behind TrustedNetworx."
+        jsonLd={{
+          // Blog hub. The BreadcrumbList (Home > Blog) is added automatically
+          // by the Seo component.
+          '@context': 'https://schema.org',
+          '@type': 'Blog',
+          name: 'TrustedNetworx Blog',
+          url: 'https://trustednetworx.com/blog',
+          description:
+            'Practical insights on telecom modernization, AI for business, copper retirement, compliance, and connectivity from the operators behind TrustedNetworx.',
+          publisher: { '@id': 'https://trustednetworx.com/#organization' },
+        }}
       />
 
       {/* Hero */}

@@ -124,6 +124,19 @@ const PotsRoiCalculator = () => {
       <Seo
         title="POTS Replacement ROI Calculator | TrustedNetworx"
         description="Size what your legacy POTS copper lines cost you today and model what a per-line cost reduction is worth. Interactive planning tool from TrustedNetworx."
+        jsonLd={{
+          // Free tool → WebApplication. "name" is the page title without the
+          // " | TrustedNetworx" suffix. price "0" USD reflects the nav's
+          // "Free Tools" label; publisher is the site Organization by @id.
+          '@context': 'https://schema.org',
+          '@type': 'WebApplication',
+          name: 'POTS Replacement ROI Calculator',
+          url: 'https://trustednetworx.com/tools/pots-roi-calculator',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Any',
+          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+          publisher: { '@id': 'https://trustednetworx.com/#organization' },
+        }}
       />
 
       {/* Hero */}

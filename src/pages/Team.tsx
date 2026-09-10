@@ -44,6 +44,24 @@ const Team = () => (
     <Seo
       title="Our Team | TrustedNetworx"
       description="Meet the leadership and partners behind TrustedNetworx — telecom experts, enterprise architects, and creative professionals driving connectivity forward."
+      jsonLd={{
+        // Carter Dewey — Person node. Every fact here is already published on
+        // this page (see the `members` bio above): "CEO & Founder", SVP of
+        // Global Sales at DataRemote, Inc. from April 2016, and 12 years with
+        // AT&T. No knowsAbout and no sameAs — a sameAs needs a verified public
+        // profile URL and none exists in the repo.
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        '@id': 'https://trustednetworx.com/about/team#carter-dewey',
+        name: 'Carter Dewey',
+        jobTitle: 'CEO & Founder',
+        url: 'https://trustednetworx.com/about/team',
+        worksFor: { '@id': 'https://trustednetworx.com/#organization' },
+        alumniOf: [
+          { '@type': 'Organization', name: 'AT&T' },
+          { '@type': 'Organization', name: 'DataRemote, Inc.' },
+        ],
+      }}
     />
 
     {/* Hero */}
