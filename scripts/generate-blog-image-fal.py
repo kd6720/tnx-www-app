@@ -138,6 +138,20 @@ def generate_image(prompt: str, output_path: Path) -> dict:
     }
 
 
+def make_thumbnail(png_path: Path) -> None:
+    """Generate a 640x360 WebP thumbnail for the blog list page."""
+    try:
+        from PIL import Image
+    except ImportError:
+        return
+    thumb_dir = png_path.parent / 'thumbs'
+    thumb_dir.mkdir(parents=True, exist_ok=True)
+    thumb_path = thumb_dir / (png_path.stem + '.webp')
+    im = Image.open(png_path).convert('RGB')
+    im.thumbnail((640, 360), Image.LANCZOS)
+    im.save(thumb_path, 'WEBP', quality=80)
+
+
 def main() -> int:
     if len(sys.argv) < 3:
         print("Usage: generate-blog-image-fal.py <title> <output_path> [subject_brief]", file=sys.stderr)
@@ -163,6 +177,8 @@ def main() -> int:
         except Exception as exc:
             print(str(exc), file=sys.stderr)
             return 1
+
+        make_thumbnail(output_path)
 
         comparison = compare_against_recent(output_path, references)
         attempts.append({
