@@ -20,6 +20,7 @@ import aiEmailTriage2026 from '../content/blog/ai-email-triage-2026.md?raw';
 import sdWanExplained from '../content/blog/sd-wan-explained-for-business-leaders.md?raw';
 import whenAiSalesAgentsOutperformHumans from '../content/blog/when-ai-sales-agents-outperform-humans.md?raw';
 import whenComplianceDrivesInnovation from '../content/blog/when-compliance-drives-innovation-instead-of-blocking-it.md?raw';
+import complianceDeadlinesUpgradeWindow from '../content/blog/compliance-deadlines-upgrade-window-2026.md?raw';
 import migratingToVoipBusinessLeaders from '../content/blog/migrating-to-voip-what-business-leaders-get-wrong.md?raw';
 import thirtyDayAiPilot from '../content/blog/30-day-ai-pilot-how-to-test-ai.md?raw';
 import aiPoweredCustomerService from '../content/blog/ai-powered-customer-service-24-7-support.md?raw';
@@ -202,6 +203,7 @@ const RAW_POSTS: [string, string][] = [
   ['ul-864-fire-alarm-monitoring-compliance-migration', ul864FireAlarmMonitoring],
   ['security-system-communications-pots-to-ip-cellular', securitySystemCommsPotsIpCellular],
   ['when-compliance-drives-innovation-instead-of-blocking-it', whenComplianceDrivesInnovation],
+  ['compliance-deadlines-upgrade-window-2026', complianceDeadlinesUpgradeWindow],
 ];
 
 const ALL_POSTS: BlogPost[] = RAW_POSTS
