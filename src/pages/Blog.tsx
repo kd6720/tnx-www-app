@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { getAllPosts, getCategories, BlogPost } from '../utils/blog';
+import { getAllPosts, getCategories, thumbImageSrc, BlogPost } from '../utils/blog';
 import Seo from '../components/Seo';
 
 const Blog = () => {
@@ -67,7 +67,7 @@ const Blog = () => {
             <p className="py-20 text-lg text-body">No posts in this category yet.</p>
           ) : (
             <ul className="divide-y divide-hairline border-t border-hairline">
-              {filteredPosts.map((post: BlogPost) => (
+              {filteredPosts.map((post: BlogPost, index: number) => (
                 <li key={post.slug}>
                   <Link
                     to={`/blog/${post.slug}`}
@@ -76,8 +76,12 @@ const Blog = () => {
                     {post.image && (
                       <div className="aspect-video w-full overflow-hidden rounded-xl bg-navy-100">
                         <img
-                          src={post.image?.replace('/blog-images/', '/blog-images/thumbs/').replace(/\.png$/, '.jpg')}
+                          src={thumbImageSrc(post)}
                           alt={post.title}
+                          width={640}
+                          height={360}
+                          loading={index < 4 ? 'eager' : 'lazy'}
+                          decoding="async"
                           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                         />
                       </div>
