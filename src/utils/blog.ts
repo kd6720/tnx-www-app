@@ -74,6 +74,7 @@ import elevatorPhoneCopperSunset2026 from '../content/blog/elevator-phone-copper
 import backToSchoolBandwidthSchoolNetworks2026 from '../content/blog/back-to-school-bandwidth-school-networks-2026.md?raw';
 import fccPotsForbearanceCostOfWaiting2026 from '../content/blog/fcc-pots-forbearance-cost-of-waiting-2026.md?raw';
 import ul864ListedVsCompliantFireAlarm2026 from '../content/blog/ul-864-listed-vs-compliant-fire-alarm-2026.md?raw';
+import securityPanelCopperSunsetInventory2026 from '../content/blog/security-panel-copper-sunset-inventory-2026.md?raw';
 
 
 export interface BlogPost {
@@ -125,6 +126,7 @@ function buildExcerpt(content: string): string {
 }
 
 const RAW_POSTS: [string, string][] = [
+  ['security-panel-copper-sunset-inventory-2026', securityPanelCopperSunsetInventory2026],
   ['ul-864-listed-vs-compliant-fire-alarm-2026', ul864ListedVsCompliantFireAlarm2026],
   ['fcc-pots-forbearance-cost-of-waiting-2026', fccPotsForbearanceCostOfWaiting2026],
   ['back-to-school-bandwidth-school-networks-2026', backToSchoolBandwidthSchoolNetworks2026],
