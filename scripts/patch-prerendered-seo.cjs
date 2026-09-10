@@ -71,6 +71,57 @@ function upsertTitle(html, title) {
   return html.replace('</head>', `<title>${escapeAttr(title)}</title>\n</head>`);
 }
 
+// Singleton head tags: exactly one copy is allowed per built page.
+const SINGLETON_META = [
+  ['name', 'description'],
+  ['property', 'og:type'],
+  ['property', 'og:site_name'],
+  ['property', 'og:url'],
+  ['property', 'og:title'],
+  ['property', 'og:description'],
+  ['property', 'og:image'],
+  ['name', 'twitter:card'],
+  ['name', 'twitter:title'],
+  ['name', 'twitter:description'],
+  ['name', 'twitter:image'],
+];
+
+/**
+ * Collapse duplicate singleton head tags down to one copy.
+ *
+ * Why the homepage needs this and route pages do not: every route page is run
+ * through `patchPage`, whose `upsert*` helpers strip all existing copies and
+ * append exactly one. The homepage shell (`dist/index.html`) is NOT patched that
+ * way, so react-helmet's rendered tags (`data-rh="true"`) sit alongside the
+ * ones written by hand in `index.html` — two canonicals, two descriptions, two
+ * og:* — which is what the 2026-09-10 SEO audit flagged.
+ *
+ * This keeps the LAST copy (the page's own rendered value wins over the shell
+ * default), drops the `data-rh` attribute the kept copy carries, and appends it
+ * the same way `upsert*` does. No value is invented or altered: it only removes
+ * byte-identical duplicates.
+ */
+function dedupeHeadTags(html) {
+  let removed = 0;
+  for (const [attr, name] of SINGLETON_META) {
+    const regex = new RegExp(`<meta[^>]*${attr}="${name}"[^>]*>`, 'gi');
+    const found = html.match(regex);
+    if (!found || found.length < 2) continue;
+    const keep = found[found.length - 1].replace(/\s*data-rh="true"/g, '');
+    html = html.replace(regex, '').replace('</head>', `${keep}\n</head>`);
+    removed += found.length - 1;
+  }
+  const canonRe = /<link[^>]*rel="canonical"[^>]*>/gi;
+  const canon = html.match(canonRe);
+  if (canon && canon.length > 1) {
+    const keep = canon[canon.length - 1].replace(/\s*data-rh="true"/g, '');
+    html = html.replace(canonRe, '').replace('</head>', `${keep}\n</head>`);
+    removed += canon.length - 1;
+  }
+  if (removed) console.log(`[postbuild] Homepage: removed ${removed} duplicate head tag copies.`);
+  return html;
+}
+
 function stripStructuredData(html, type) {
   // Match each ld+json script individually (tolerating attributes like
   // react-helmet's data-rh="true"), parse it, and drop blocks of the given
@@ -179,6 +230,7 @@ function patchPage(filePath, seo) {
   html = upsertMeta(html, 'name', 'description', seo.description);
   html = upsertLink(html, 'canonical', seo.canonical);
   html = upsertMeta(html, 'property', 'og:type', seo.type);
+  html = upsertMeta(html, 'property', 'og:site_name', 'TrustedNetworx');
   html = upsertMeta(html, 'property', 'og:title', seo.title);
   html = upsertMeta(html, 'property', 'og:description', seo.description);
   html = upsertMeta(html, 'property', 'og:url', seo.canonical);
@@ -702,6 +754,10 @@ function main() {
     '</head>',
     '<link rel="preload" as="image" href="/media/hero-home-poster.v2.jpg" fetchpriority="high">\n</head>'
   );
+  // The homepage is the one page not routed through patchPage, so it keeps both
+  // the shell's hand-written head tags and react-helmet's rendered copies.
+  // Collapse them to one of each (see dedupeHeadTags).
+  indexHtml = dedupeHeadTags(indexHtml);
   fs.writeFileSync(indexPath, indexHtml, 'utf8');
 
   console.log('[postbuild] Patched prerendered blog SEO metadata.');
