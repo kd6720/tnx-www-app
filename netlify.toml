@@ -174,13 +174,15 @@
   status = 200
   force = true
 
-# Known SPA routes → index.html (200) so deep-linking and refresh work.
-# Unknown paths fall through to /404.html (404) below instead of a soft-404.
+# --- Route rewrites: each SPA route serves ITS OWN prerendered file -----
+# force = true so the URL is served directly (200, no 301 to the
+# trailing-slash form), matching the canonical tag on that page.
+# This mirrors the /blog/:slug rule below, which already behaved correctly.
 #
 # IMPORTANT: every route registered in src/App.tsx MUST have an explicit
-# redirect here (or a matching static file), or it 404s in production after
-# this soft-404 fix. Sprint 2/3 add /platforms/partner-hub, /platforms/crm,
-# /partners, and /ai — add them to this list as part of those sprints.
+# redirect here (or a matching static file), or it 404s in production.
+# Both the bare and trailing-slash forms are listed so neither hop happens.
+
 [[redirects]]
   from = "/"
   to = "/index.html"
@@ -188,103 +190,292 @@
 
 [[redirects]]
   from = "/about"
-  to = "/index.html"
+  to = "/about/index.html"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/about/"
+  to = "/about/index.html"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/about/team"
-  to = "/index.html"
+  to = "/about/team/index.html"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/about/team/"
+  to = "/about/team/index.html"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/pots-replacement"
-  to = "/index.html"
+  to = "/pots-replacement/index.html"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/ai-consulting"
-  to = "/index.html"
+  from = "/pots-replacement/"
+  to = "/pots-replacement/index.html"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/internet-connectivity"
-  to = "/index.html"
+  from = "/pots-replacement/90x1"
+  to = "/pots-replacement/90x1/index.html"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/mobility-solutions"
-  to = "/index.html"
+  from = "/pots-replacement/90x1/"
+  to = "/pots-replacement/90x1/index.html"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/voice-solutions"
-  to = "/index.html"
+  from = "/pots-replacement/90x2"
+  to = "/pots-replacement/90x2/index.html"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/ai-workforce"
-  to = "/index.html"
+  from = "/pots-replacement/90x2/"
+  to = "/pots-replacement/90x2/index.html"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/contact"
-  to = "/index.html"
+  from = "/pots-replacement/90x5"
+  to = "/pots-replacement/90x5/index.html"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/platforms/partner-hub"
-  to = "/index.html"
+  from = "/pots-replacement/90x5/"
+  to = "/pots-replacement/90x5/index.html"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/platforms/crm"
-  to = "/index.html"
+  from = "/pots-replacement/ara"
+  to = "/pots-replacement/ara/index.html"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/partners"
-  to = "/index.html"
+  from = "/pots-replacement/ara/"
+  to = "/pots-replacement/ara/index.html"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/ai"
-  to = "/index.html"
+  to = "/ai/index.html"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/ai/"
+  to = "/ai/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ai-workforce"
+  to = "/ai-workforce/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ai-workforce/"
+  to = "/ai-workforce/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ai-consulting"
+  to = "/ai-consulting/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ai-consulting/"
+  to = "/ai-consulting/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/internet-connectivity"
+  to = "/internet-connectivity/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/internet-connectivity/"
+  to = "/internet-connectivity/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/voice-solutions"
+  to = "/voice-solutions/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/voice-solutions/"
+  to = "/voice-solutions/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/mobility-solutions"
+  to = "/mobility-solutions/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/mobility-solutions/"
+  to = "/mobility-solutions/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/partners"
+  to = "/partners/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/partners/"
+  to = "/partners/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/platforms/partner-hub"
+  to = "/platforms/partner-hub/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/platforms/partner-hub/"
+  to = "/platforms/partner-hub/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/platforms/crm"
+  to = "/platforms/crm/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/platforms/crm/"
+  to = "/platforms/crm/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/contact/"
+  to = "/contact/index.html"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/blog"
-  to = "/index.html"
+  to = "/blog/index.html"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog/"
+  to = "/blog/index.html"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/tools"
-  to = "/index.html"
+  to = "/tools/index.html"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/tools/"
+  to = "/tools/index.html"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/tools/pots-roi-calculator"
-  to = "/index.html"
+  to = "/tools/pots-roi-calculator/index.html"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/tools/pots-roi-calculator/"
+  to = "/tools/pots-roi-calculator/index.html"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/tools/copper-sunset-risk"
-  to = "/index.html"
+  to = "/tools/copper-sunset-risk/index.html"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/tools/copper-sunset-risk/"
+  to = "/tools/copper-sunset-risk/index.html"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/tools/failover-readiness"
-  to = "/index.html"
+  to = "/tools/failover-readiness/index.html"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/tools/failover-readiness/"
+  to = "/tools/failover-readiness/index.html"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/tools/ai-roi-calculator"
-  to = "/index.html"
+  to = "/tools/ai-roi-calculator/index.html"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/tools/ai-roi-calculator/"
+  to = "/tools/ai-roi-calculator/index.html"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/tools/ai-readiness"
-  to = "/index.html"
+  to = "/tools/ai-readiness/index.html"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/tools/ai-readiness/"
+  to = "/tools/ai-readiness/index.html"
+  status = 200
+  force = true
+
 
 # Unknown routes → real 404 (soft-404 fix: no more 200-with-homepage).
 [[redirects]]
