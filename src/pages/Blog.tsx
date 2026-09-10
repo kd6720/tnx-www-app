@@ -76,9 +76,8 @@ const Blog = () => {
                     {post.image && (
                       <div className="aspect-video w-full overflow-hidden rounded-xl bg-navy-100">
                         <img
-                          src={post.image}
+                          src={post.image?.replace('/blog-images/', '/blog-images/thumbs/').replace(/\.png$/, '.webp')}
                           alt={post.title}
-                          loading="lazy"
                           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                         />
                       </div>
