@@ -1,8 +1,9 @@
 ---
 title: "Elevator Phones and the Copper Sunset: The Compliance Deadline Nobody Scheduled"
+seoTitle: "Elevator Phones and the Copper Sunset"
 date: "2026-08-27"
 category: "Compliance & Regulation"
-description: "Every elevator emergency phone is a POTS line — and carriers are retiring copper. Here's what that means for your ASME A17.1 compliance and how to migrate before you're red-tagged."
+description: "Every elevator emergency phone is a POTS line — and carriers are retiring copper. Here's what that means for your ASME A17.1 compliance and how to migrate."
 author: "Carter Dewey"
 readTime: "6 min read"
 image: "/blog-images/elevator-phone-copper-sunset-2026.png"

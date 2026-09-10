@@ -1,5 +1,6 @@
 ---
 title: "AI Is Reshaping Telecom — Here's What It Means for Your Business"
+seoTitle: "AI Is Reshaping Telecom"
 date: "2026-06-15"
 category: "AI for Business"
 description: "From AI-powered customer service to intelligent network monitoring — practical AI applications that are delivering real results in telecom today."

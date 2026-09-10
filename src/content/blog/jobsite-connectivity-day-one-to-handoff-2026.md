@@ -1,5 +1,6 @@
 ---
 title: "Jobsite Connectivity: Keeping the Site Online From Day One to Handoff"
+seoTitle: "Jobsite Connectivity: Day One to Handoff"
 date: "2026-08-24"
 category: "Industry Spotlights"
 description: "Why jobsite internet fails when it matters most — and how to build connectivity that survives the trailer moving, the weather, and the schedule."

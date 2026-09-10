@@ -1,5 +1,6 @@
 ---
 title: "The Connected Construction Site: Connectivity for Jobsite Operations"
+seoTitle: "Construction Site Connectivity"
 date: "2026-07-12"
 category: "Industry Spotlights"
 description: "Construction sites need reliable connectivity for trailers, cameras, crews, and cloud workflows without waiting months for permanent circuits."

@@ -9,6 +9,8 @@ const POST_FILES = import.meta.glob('../content/blog/*.md', {
 export interface BlogPost {
   slug: string;
   title: string;
+  /** Optional shorter title for <title>/og:title when the full title is too long. */
+  seoTitle?: string;
   date: string;
   category: string;
   description: string;
@@ -66,6 +68,7 @@ const ALL_POSTS: BlogPost[] = RAW_POSTS
     return {
       slug,
       title: data.title || slug,
+      seoTitle: data.seoTitle || undefined,
       date: data.date || '',
       category: data.category || 'Uncategorized',
       description: data.description || '',
@@ -89,6 +92,38 @@ export function getPostBySlug(slug: string): BlogPost | null {
 export function getCategories(): string[] {
   const categories = new Set(ALL_POSTS.map((p) => p.category));
   return Array.from(categories).sort();
+}
+
+/**
+ * Related reading for an article: three posts from the same category, newest
+ * first (ALL_POSTS is already date-sorted), excluding the post itself. Tops up
+ * from other categories when the category has fewer than three other posts.
+ */
+export function getRelatedPosts(post: BlogPost, limit = 3): BlogPost[] {
+  const sameCategory = ALL_POSTS.filter((p) => p.category === post.category && p.slug !== post.slug);
+  const otherCategories = ALL_POSTS.filter((p) => p.category !== post.category);
+  return [...sameCategory, ...otherCategories].slice(0, limit);
+}
+
+/**
+ * One hub link per blog category. Only routes that already exist are listed —
+ * Industry Spotlights has no hub page (SEO pass 2026-09-10).
+ */
+export const CATEGORY_HUBS: Record<string, { to: string; label: string }> = {
+  'AI for Business': { to: '/ai', label: 'AI for Business' },
+  'Compliance & Regulation': { to: '/pots-replacement', label: 'POTS Replacement' },
+  'Telecom Modernization': { to: '/voice-solutions', label: 'Voice Solutions' },
+};
+
+/**
+ * Document title for a post: "<title> | TrustedNetworx" when that fits within
+ * 60 characters, otherwise the bare title. A frontmatter `seoTitle` replaces
+ * the base title when present. The on-page <h1> always keeps the full title.
+ */
+export function postDocumentTitle(post: Pick<BlogPost, 'title' | 'seoTitle'>): string {
+  const base = post.seoTitle || post.title;
+  const withBrand = `${base} | TrustedNetworx`;
+  return withBrand.length <= 60 ? withBrand : base;
 }
 
 /* ------------------------------------------------------------------ */

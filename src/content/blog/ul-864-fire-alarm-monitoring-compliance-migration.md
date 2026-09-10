@@ -1,9 +1,10 @@
 ---
 title: "UL 864 and Fire Alarm Monitoring: Staying Compliant During Migration"
+seoTitle: "UL 864 and Fire Alarm Monitoring"
 date: "2026-07-29"
 dateModified: "2026-08-28"
 category: "Compliance & Regulation"
-description: "Migrating fire alarm communications away from POTS doesn't have to trigger a compliance headache — here's what UL 864 actually requires and how to stay fully compliant."
+description: "Migrating fire alarm communications away from POTS doesn't have to trigger a compliance headache — here's what UL 864 requires and how to stay fully compliant."
 author: "Carter Dewey"
 readTime: "5 min read"
 image: "/blog-images/ul-864-fire-alarm-monitoring-compliance-migration.png"

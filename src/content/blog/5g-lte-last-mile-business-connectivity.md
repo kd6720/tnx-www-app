@@ -2,7 +2,7 @@
 title: "5G and LTE: The New Last Mile for Business Connectivity"
 date: "2026-06-19"
 category: "Telecom Modernization"
-description: "Cellular isn't just a backup anymore — 5G and LTE are becoming the primary connection for businesses that need speed, flexibility, and reliability without the wait."
+description: "Cellular isn't just a backup — 5G and LTE are becoming the primary connection for businesses that need speed, flexibility, and reliability without the wait."
 author: "Carter Dewey"
 readTime: "6 min read"
 image: "/blog-images/5g-lte-last-mile.png"

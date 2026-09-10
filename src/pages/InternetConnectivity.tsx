@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
@@ -54,6 +55,13 @@ const InternetConnectivity = () => (
               <ArrowRight size={18} />
             </a>
           </div>
+          {/* Plain crawlable link line to the free tools (SEO pass 2026-09-10). */}
+          <p className="mt-6 text-sm text-navy-200">
+            Free tools:{' '}
+            <Link to="/tools/failover-readiness" className="font-semibold text-brand-300 hover:text-brand-200">
+              Business Continuity Readiness Check
+            </Link>
+          </p>
         </div>
       </div>
     </section>

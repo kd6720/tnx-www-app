@@ -1,5 +1,6 @@
 ---
 title: "Security Panels and the Copper Sunset: The Inventory Nobody Did"
+seoTitle: "Security Panels and the Copper Sunset"
 date: "2026-09-10"
 category: "Compliance & Regulation"
 description: "The copper sunset doesn't fail one panel at a time — it fails a whole trunk. Here's the security-system inventory most facilities never do."

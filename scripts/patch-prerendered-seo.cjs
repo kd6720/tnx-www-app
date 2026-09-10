@@ -288,6 +288,7 @@ function patchBlogIndex(distDir) {
 
 function patchBlogPosts(distDir, srcBlogDir, rootDir) {
   const files = fs.readdirSync(srcBlogDir).filter((file) => file.endsWith('.md'));
+  const issues = [];
   for (const file of files) {
     const slug = file.replace(/\.md$/, '');
     const raw = fs.readFileSync(path.join(srcBlogDir, file), 'utf8');
@@ -296,6 +297,13 @@ function patchBlogPosts(distDir, srcBlogDir, rootDir) {
     ensureHtmlShell(htmlPath, path.join(distDir, 'index.html'));
 
     const title = data.title || slug;
+    // Title rule (SEO pass 2026-09-10): "<title> | TrustedNetworx" when that is
+    // ≤ 60 characters, otherwise the bare title. An optional frontmatter
+    // `seoTitle` stands in for the base title when present. The on-page <h1>
+    // (and the BlogPosting headline) always keep the full title.
+    const baseTitle = data.seoTitle || title;
+    const withBrand = `${baseTitle} | TrustedNetworx`;
+    const pageTitle = withBrand.length <= 60 ? withBrand : baseTitle;
     const description = data.description || DEFAULT_DESCRIPTION;
     const canonical = `${SITE_URL}/blog/${slug}`;
     const image = versionedImageUrl(rootDir, data.image);
@@ -327,13 +335,44 @@ function patchBlogPosts(distDir, srcBlogDir, rootDir) {
     };
 
     patchPage(htmlPath, {
-      title: `${title} | TrustedNetworx Blog`,
+      title: pageTitle,
       description,
       canonical,
       image,
       type: 'article',
       jsonLd: [articleJsonLd, breadcrumbJsonLd],
     });
+
+    // Build-time SEO guard input. Redirect stubs are excluded: they are
+    // redirect-only, carry no canonical page of their own and are absent from
+    // the sitemap, so their shells are not held to the live-post limits.
+    if (!data.redirect) {
+      issues.push({ slug, title: pageTitle, titleLen: pageTitle.length, descLen: description.length });
+    }
+  }
+  return issues;
+}
+
+/**
+ * Build-time guard (SEO pass 2026-09-10): warn — never fail — when a live
+ * blog post ships a <title> over 60 characters or a description outside the
+ * 120–160 range. Runs last so the warning lists every offending slug in one
+ * place at the end of the build log.
+ */
+function reportBlogSeoWarnings(issues) {
+  const longTitles = issues.filter((i) => i.titleLen > 60);
+  const badDescriptions = issues.filter((i) => i.descLen < 120 || i.descLen > 160);
+
+  if (longTitles.length) {
+    console.warn(`[postbuild] WARNING: ${longTitles.length} blog <title> over 60 characters:`);
+    for (const i of longTitles) console.warn(`[postbuild]   - ${i.slug}: ${i.titleLen} chars — ${i.title}`);
+  }
+  if (badDescriptions.length) {
+    console.warn(`[postbuild] WARNING: ${badDescriptions.length} blog description outside 120–160 characters:`);
+    for (const i of badDescriptions) console.warn(`[postbuild]   - ${i.slug}: ${i.descLen} chars`);
+  }
+  if (!longTitles.length && !badDescriptions.length) {
+    console.log(`[postbuild] Blog SEO guard passed: ${issues.length} live posts, all <title> ≤ 60 and descriptions 120–160.`);
   }
 }
 
@@ -854,7 +893,7 @@ function main() {
   const srcBlogDir = path.join(root, 'src', 'content', 'blog');
 
   patchBlogIndex(distDir);
-  patchBlogPosts(distDir, srcBlogDir, root);
+  const blogIssues = patchBlogPosts(distDir, srcBlogDir, root);
   patchRoutePages(distDir);
 
   // Homepage shell: strip the hero video src (so parse time never fetches it)
@@ -874,6 +913,7 @@ function main() {
   fs.writeFileSync(indexPath, indexHtml, 'utf8');
 
   console.log('[postbuild] Patched prerendered blog SEO metadata.');
+  reportBlogSeoWarnings(blogIssues);
 }
 
 main();

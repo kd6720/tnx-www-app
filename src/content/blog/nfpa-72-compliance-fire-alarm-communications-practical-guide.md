@@ -1,5 +1,6 @@
 ---
 title: "NFPA 72 Compliance for Fire Alarm Communications: A Practical Guide"
+seoTitle: "NFPA 72 Compliance for Fire Alarm"
 date: "2026-07-07"
 dateModified: "2026-08-13"
 category: "Compliance & Regulation"

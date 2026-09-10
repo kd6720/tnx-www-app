@@ -1,5 +1,6 @@
 ---
 title: "Auto Dealership Connectivity: What a Down Day Costs the Rooftop"
+seoTitle: "Auto Dealership Connectivity"
 date: "2026-08-26"
 category: "Industry Spotlights"
 description: "When a dealership's network drops, sales, service, and financing all stop at once. What a down day actually costs — and how to prevent it."

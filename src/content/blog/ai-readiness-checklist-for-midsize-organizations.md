@@ -1,5 +1,6 @@
 ---
 title: "AI Readiness Checklist: Is Your Organization Ready for AI Agents?"
+seoTitle: "AI Readiness Checklist for AI Agents"
 date: "2026-06-12"
 category: "AI for Business"
 description: "A practical, no-nonsense checklist to evaluate whether your organization is prepared for AI adoption — and what to fix if it isn't."
