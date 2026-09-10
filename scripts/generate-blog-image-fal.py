@@ -146,10 +146,10 @@ def make_thumbnail(png_path: Path) -> None:
         return
     thumb_dir = png_path.parent / 'thumbs'
     thumb_dir.mkdir(parents=True, exist_ok=True)
-    thumb_path = thumb_dir / (png_path.stem + '.webp')
+    thumb_path = thumb_dir / (png_path.stem + '.jpg')
     im = Image.open(png_path).convert('RGB')
     im.thumbnail((640, 360), Image.LANCZOS)
-    im.save(thumb_path, 'WEBP', quality=80)
+    im.save(thumb_path, 'JPEG', quality=82)
 
 
 def main() -> int:
