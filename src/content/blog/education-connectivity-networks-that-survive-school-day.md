@@ -1,5 +1,6 @@
 ---
 title: "Education Connectivity: Building Networks That Survive the School Day"
+seoTitle: "Education Connectivity: Networks That Survive"
 date: "2026-07-27"
 category: "Industry Spotlights"
 description: "Why K-12 and higher-ed networks crash during peak usage — and how smart connectivity design keeps students online all day."

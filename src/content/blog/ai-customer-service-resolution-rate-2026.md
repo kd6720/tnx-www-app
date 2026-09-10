@@ -1,5 +1,6 @@
 ---
 title: "AI Customer Service: Resolution Rate Is the Only Metric That Matters"
+seoTitle: "AI Customer Service: Resolution Rate"
 date: "2026-08-21"
 category: "AI for Business"
 description: "Why containment rate is a vanity metric — and how to build AI customer service that actually resolves tickets instead of deflecting them."

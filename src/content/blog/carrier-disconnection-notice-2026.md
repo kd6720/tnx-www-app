@@ -1,5 +1,6 @@
 ---
 title: "What Actually Happens When a Carrier Sends a Disconnection Notice"
+seoTitle: "When a Carrier Sends a Disconnection Notice"
 date: "2026-08-15"
 category: "Telecom Modernization"
 description: "A carrier disconnection notice starts a 45-day clock. Here's the week-by-week plan to migrate without an outage, a compliance gap, or a panic buy."

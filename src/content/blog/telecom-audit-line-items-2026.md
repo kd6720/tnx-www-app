@@ -1,5 +1,6 @@
 ---
 title: "The Telecom Audit: Line Items Draining Your Budget Every Month"
+seoTitle: "The Telecom Audit: Line Items"
 date: "2026-08-19"
 category: "Telecom Modernization"
 description: "Most businesses overpay on telecom by 20–30% without knowing it. Here are the specific line items a real audit uncovers and exactly how to fix each one."

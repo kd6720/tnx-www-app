@@ -2,7 +2,7 @@
 title: "AI Email Triage: How to Stop Drowning in Your Inbox"
 date: "2026-08-10"
 category: "AI for Business"
-description: "AI-powered email triage can reclaim 2+ hours a day by filtering noise, flagging priority messages, and drafting replies — here's how to set it up without breaking anything."
+description: "AI-powered email triage can reclaim 2+ hours a day by filtering noise, flagging priority messages — here's how to set it up without breaking anything."
 author: "Carter Dewey"
 readTime: "5 min read"
 image: "/blog-images/ai-email-triage-2026.png"

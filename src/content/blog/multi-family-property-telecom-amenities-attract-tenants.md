@@ -1,5 +1,6 @@
 ---
 title: "Multi-Family Property Telecom: Amenities That Attract Tenants"
+seoTitle: "Multi-Family Property Telecom: Amenities"
 date: "2026-07-23"
 category: "Industry Spotlights"
 description: "The telecom amenities that actually move the needle on lease conversions — and the ones tenants stopped caring about five years ago."

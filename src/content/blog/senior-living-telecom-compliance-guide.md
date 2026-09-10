@@ -1,5 +1,6 @@
 ---
 title: "Senior Living Telecom Compliance: What Every Operator Needs to Know"
+seoTitle: "Senior Living Telecom Compliance"
 date: "2026-06-10"
 category: "Industry Spotlights"
 description: "NFPA 72, emergency phones, nurse call systems — a practical guide to staying compliant while reducing costs."

@@ -1,5 +1,6 @@
 ---
 title: "AI-Powered Customer Service: 24/7 Support Without the Burnout"
+seoTitle: "AI-Powered Customer Service: 24/7 Support"
 date: "2026-07-04"
 category: "AI for Business"
 description: "AI-powered customer service handles routine inquiries around the clock so your team can focus on what humans do best."

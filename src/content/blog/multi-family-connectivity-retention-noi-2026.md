@@ -1,5 +1,6 @@
 ---
 title: "Multi-Family Connectivity: The Retention and NOI Math Owners Keep Skipping"
+seoTitle: "Multi-Family Connectivity: Retention and NOI"
 date: "2026-08-26"
 category: "Industry Spotlights"
 description: "Bad connectivity doesn't just annoy tenants — it costs owners turnover, NOI, and asset value. The retention math most pro formas leave out."

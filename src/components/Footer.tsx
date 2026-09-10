@@ -10,6 +10,17 @@ const solutionLinks = [
   { to: '/mobility-solutions', label: 'Mobility Solutions' },
 ];
 
+// Free tools — plain links (label = tool name) so crawlers see /tools and every
+// calculator. The Navbar's Resources dropdown is not in the prerendered HTML.
+const freeToolLinks = [
+  { to: '/tools', label: 'All Free Tools' },
+  { to: '/tools/pots-roi-calculator', label: 'POTS Replacement ROI Calculator' },
+  { to: '/tools/copper-sunset-risk', label: 'Copper Sunset Risk Assessment' },
+  { to: '/tools/failover-readiness', label: 'Business Continuity Readiness Check' },
+  { to: '/tools/ai-roi-calculator', label: 'AI Automation ROI Calculator' },
+  { to: '/tools/ai-readiness', label: 'AI Readiness Assessment' },
+];
+
 const platformLinks = [
   { to: '/platforms/partner-hub', label: 'TNX Partner Hub' },
   { to: '/platforms/crm', label: 'TNX CRM' },
@@ -30,7 +41,7 @@ const Footer = () => {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
           {/* Brand */}
           <div className="lg:col-span-4">
             <Link to="/" className="flex items-center gap-2.5">
@@ -52,75 +63,92 @@ const Footer = () => {
             </Link>
           </div>
 
-          {/* Solutions */}
-          <div className="lg:col-span-2">
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-white">Solutions</h3>
-            <ul className="mt-4 space-y-3">
-              {solutionLinks.map(({ to, label }) => (
-                <li key={to}>
-                  <Link to={to} className="text-sm text-navy-300 transition-colors hover:text-brand-300">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Link groups */}
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-8 lg:grid-cols-5">
+            {/* Solutions */}
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-white">Solutions</h3>
+              <ul className="mt-4 space-y-3">
+                {solutionLinks.map(({ to, label }) => (
+                  <li key={to}>
+                    <Link to={to} className="text-sm text-navy-300 transition-colors hover:text-brand-300">
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Platforms */}
-          <div className="lg:col-span-2">
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-white">Platforms</h3>
-            <ul className="mt-4 space-y-3">
-              {platformLinks.map(({ to, label }) => (
-                <li key={to}>
-                  <Link to={to} className="text-sm text-navy-300 transition-colors hover:text-brand-300">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* Free Tools */}
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-white">Free Tools</h3>
+              <ul className="mt-4 space-y-3">
+                {freeToolLinks.map(({ to, label }) => (
+                  <li key={to}>
+                    <Link to={to} className="text-sm text-navy-300 transition-colors hover:text-brand-300">
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Company */}
-          <div className="lg:col-span-2">
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-white">Company</h3>
-            <ul className="mt-4 space-y-3">
-              {companyLinks.map(({ to, label }) => (
-                <li key={to}>
-                  <Link to={to} className="text-sm text-navy-300 transition-colors hover:text-brand-300">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* Platforms */}
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-white">Platforms</h3>
+              <ul className="mt-4 space-y-3">
+                {platformLinks.map(({ to, label }) => (
+                  <li key={to}>
+                    <Link to={to} className="text-sm text-navy-300 transition-colors hover:text-brand-300">
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Contact */}
-          <div className="lg:col-span-2">
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-white">Contact</h3>
-            <ul className="mt-4 space-y-4">
-              <li>
-                <a
-                  href="tel:13054987530"
-                  className="flex items-start gap-3 text-sm text-navy-300 transition-colors hover:text-brand-300"
-                >
-                  <Phone size={18} className="mt-0.5 flex-shrink-0 text-brand-400" />
-                  305-498-7530
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:sales@trustednetworx.com"
-                  className="flex items-start gap-3 text-sm text-navy-300 transition-colors hover:text-brand-300"
-                >
-                  <Mail size={18} className="mt-0.5 flex-shrink-0 text-brand-400" />
-                  sales@trustednetworx.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3 text-sm text-navy-300">
-                <MapPin size={18} className="mt-0.5 flex-shrink-0 text-brand-400" />
-                18001 Old Cutler Rd, Miami, FL 33157
-              </li>
-            </ul>
+            {/* Company */}
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-white">Company</h3>
+              <ul className="mt-4 space-y-3">
+                {companyLinks.map(({ to, label }) => (
+                  <li key={to}>
+                    <Link to={to} className="text-sm text-navy-300 transition-colors hover:text-brand-300">
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-white">Contact</h3>
+              <ul className="mt-4 space-y-4">
+                <li>
+                  <a
+                    href="tel:13054987530"
+                    className="flex items-start gap-3 text-sm text-navy-300 transition-colors hover:text-brand-300"
+                  >
+                    <Phone size={18} className="mt-0.5 flex-shrink-0 text-brand-400" />
+                    305-498-7530
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:sales@trustednetworx.com"
+                    className="flex items-start gap-3 text-sm text-navy-300 transition-colors hover:text-brand-300"
+                  >
+                    <Mail size={18} className="mt-0.5 flex-shrink-0 text-brand-400" />
+                    sales@trustednetworx.com
+                  </a>
+                </li>
+                <li className="flex items-start gap-3 text-sm text-navy-300">
+                  <MapPin size={18} className="mt-0.5 flex-shrink-0 text-brand-400" />
+                  18001 Old Cutler Rd, Miami, FL 33157
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 

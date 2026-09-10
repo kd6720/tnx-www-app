@@ -1,5 +1,6 @@
 ---
 title: "Bandwidth Planning for 2026: How Much Does Your Business Actually Need?"
+seoTitle: "Bandwidth Planning for 2026"
 date: "2026-08-06"
 category: "Telecom Modernization"
 description: "Stop guessing your bandwidth requirements. A practical framework for calculating what your multi-site business actually needs in 2026."

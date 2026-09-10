@@ -2,7 +2,7 @@
 title: "When AI Sales Agents Outperform Humans (And When They Don't)"
 date: "2026-07-03"
 category: "AI for Business"
-description: "AI sales agents excel at volume and consistency, but humans still win on relationship-building and complex negotiation — here's where each belongs in your pipeline."
+description: "AI sales agents excel at volume and consistency, but humans win on relationship-building and complex negotiation — here's where each belongs in your pipeline."
 author: "Carter Dewey"
 readTime: "6 min read"
 image: "/blog-images/when-ai-sales-agents-outperform-humans.png"

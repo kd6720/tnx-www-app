@@ -43,6 +43,17 @@ const Ai = () => (
             The workforce, the tools, and the playbooks — everything TrustedNetworx publishes on AI,
             in one place.
           </p>
+          {/* Plain crawlable link line to the free tools (SEO pass 2026-09-10). */}
+          <p className="mt-6 text-sm text-navy-200">
+            Free tools:{' '}
+            <Link to="/tools/ai-roi-calculator" className="font-semibold text-brand-300 hover:text-brand-200">
+              AI Automation ROI Calculator
+            </Link>{' '}
+            ·{' '}
+            <Link to="/tools/ai-readiness" className="font-semibold text-brand-300 hover:text-brand-200">
+              AI Readiness Assessment
+            </Link>
+          </p>
         </div>
       </div>
     </section>

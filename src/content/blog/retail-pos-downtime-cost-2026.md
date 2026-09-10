@@ -1,5 +1,6 @@
 ---
 title: "Retail Connectivity: What One Hour of POS Downtime Actually Costs"
+seoTitle: "Retail Connectivity: POS Downtime Costs"
 date: "2026-08-25"
 category: "Industry Spotlights"
 description: "A POS outage isn't just lost sales — it's lost customers and a hole in your inventory. Here's what downtime really costs and how to stop it."

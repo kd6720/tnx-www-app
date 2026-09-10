@@ -1,5 +1,6 @@
 ---
 title: "Back-to-School Bandwidth: How to Keep School Networks From Crashing in Week One"
+seoTitle: "Back-to-School Bandwidth: School Networks"
 date: "2026-08-27"
 category: "Industry Spotlights"
 description: "Every August, school networks buckle under the back-to-school surge. Here's how to test capacity, add failover, and use E-Rate before the first bell rings."

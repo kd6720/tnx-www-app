@@ -2,7 +2,7 @@
 title: "Security System Communications: From POTS to IP to Cellular"
 date: "2026-07-30"
 category: "Compliance & Regulation"
-description: "Security systems still running on POTS lines are a liability. Here's how to migrate alarm communications to IP and cellular without triggering false alarms or compliance gaps."
+description: "Security systems still running on POTS lines are a liability. Here's how to migrate alarm communications to IP and cellular without triggering false alarms."
 author: "Carter Dewey"
 readTime: "5 min read"
 image: "/blog-images/security-system-communications-pots-to-ip-cellular.png"

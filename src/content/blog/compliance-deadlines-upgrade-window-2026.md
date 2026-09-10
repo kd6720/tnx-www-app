@@ -1,5 +1,6 @@
 ---
 title: "When Compliance Drives Innovation: Turning Deadlines Into Upgrades"
+seoTitle: "When Compliance Drives Innovation"
 date: "2026-09-10"
 category: "Compliance & Regulation"
 description: "Compliance deadlines force the upgrade you kept deferring. Here's how to turn a POTS or fire-code mandate into a funded, modern network."

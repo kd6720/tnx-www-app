@@ -1,5 +1,6 @@
 ---
 title: "Business Continuity Starts with Connectivity: A Practical Guide to Wireless Failover"
+seoTitle: "Business Continuity: Wireless Failover"
 date: "2026-06-05"
 category: "Telecom Modernization"
 description: "When your primary connection goes down, wireless failover keeps your business running. Here's how to build a resilient connectivity strategy."

@@ -3,7 +3,13 @@ import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { getPostBySlug, heroImageSrc } from '../utils/blog';
+import {
+  getPostBySlug,
+  heroImageSrc,
+  getRelatedPosts,
+  CATEGORY_HUBS,
+  postDocumentTitle,
+} from '../utils/blog';
 import Seo, { SITE_URL } from '../components/Seo';
 
 const BlogPost = () => {
@@ -27,6 +33,11 @@ const BlogPost = () => {
 
   const heroSrc = heroImageSrc(post);
   const canonicalPath = `/blog/${post.slug}`;
+  // <title> uses the 60-char rule (with optional seoTitle); the on-page <h1>
+  // below always keeps the full post.title.
+  const documentTitle = postDocumentTitle(post);
+  const relatedPosts = getRelatedPosts(post);
+  const hub = CATEGORY_HUBS[post.category];
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -65,7 +76,7 @@ const BlogPost = () => {
   return (
     <div className="bg-canvas text-body antialiased">
       <Seo
-        title={`${post.title} | TrustedNetworx Blog`}
+        title={documentTitle}
         description={post.description}
         type="article"
         image={post.image}
@@ -106,6 +117,7 @@ const BlogPost = () => {
               alt={post.title}
               width={1024}
               height={576}
+              fetchPriority="high"
               decoding="async"
               className="h-full w-full object-cover"
             />
@@ -129,6 +141,37 @@ const BlogPost = () => {
           </p>
         </div>
       </article>
+
+      {/* Related reading — rendered in the app (and captured by react-snap into
+          the prerendered HTML) so every post links to three other posts. */}
+      {(relatedPosts.length > 0 || hub) && (
+        <section className="border-t border-hairline bg-white">
+          <div className="mx-auto w-full max-w-[68ch] px-6 py-section md:px-gutter">
+            <h2 className="font-display text-display-h3 font-semibold text-ink">Related reading</h2>
+            {relatedPosts.length > 0 && (
+              <ul className="mt-6 space-y-3">
+                {relatedPosts.map((related) => (
+                  <li key={related.slug}>
+                    <Link
+                      to={`/blog/${related.slug}`}
+                      className="text-sm font-semibold text-brand-600 hover:text-brand-700"
+                    >
+                      {related.seoTitle || related.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {hub && (
+              <p className="mt-6 text-sm text-body">
+                <Link to={hub.to} className="font-semibold text-brand-600 hover:text-brand-700">
+                  {hub.label}
+                </Link>
+              </p>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="bg-navy-950">

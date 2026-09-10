@@ -1,5 +1,6 @@
 ---
 title: "Fixed Wireless vs Fiber vs Cable: How to Pick the Right Primary Connection"
+seoTitle: "Fixed Wireless vs Fiber vs Cable"
 date: "2026-06-27"
 category: "Telecom Modernization"
 description: "Fixed wireless, fiber, or cable — which primary connection is right for your business? A practical comparison for multi-site decision makers."
