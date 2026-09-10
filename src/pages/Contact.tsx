@@ -17,20 +17,14 @@ const Contact = () => (
       title="Contact Us | TrustedNetworx"
       description="Get in touch with the TrustedNetworx team to scope managed telecom, POTS replacement, voice, connectivity, mobility, or an AI agent build for your business."
       jsonLd={{
+        // This LocalBusiness is the same real-world entity as the Organization
+        // node (shipped from index.html on every page) — it references that
+        // node by @id instead of restating name/telephone/email/url/address.
+        // The address now lives on the Organization node and is shared through
+        // this @id; only the LocalBusiness-specific openingHours is kept here.
         '@context': 'https://schema.org',
         '@type': 'LocalBusiness',
-        name: 'TrustedNetworx',
-        telephone: '+1-305-498-7530',
-        email: 'sales@trustednetworx.com',
-        url: 'https://trustednetworx.com',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: '18001 Old Cutler Rd',
-          addressLocality: 'Miami',
-          addressRegion: 'FL',
-          postalCode: '33157',
-          addressCountry: 'US',
-        },
+        '@id': 'https://trustednetworx.com/#organization',
         openingHours: 'Mo-Fr 09:00-18:00',
       }}
     />

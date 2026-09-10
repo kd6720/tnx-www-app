@@ -80,6 +80,17 @@ const AiRoiCalculator = () => {
       <Seo
         title="AI Automation ROI Calculator | TrustedNetworx"
         description="Size what repetitive manual work costs your organization each year, then model what automating a share of it would be worth. Planning tool from TrustedNetworx."
+        jsonLd={{
+          // Free tool → WebApplication (name = page title without site suffix).
+          '@context': 'https://schema.org',
+          '@type': 'WebApplication',
+          name: 'AI Automation ROI Calculator',
+          url: 'https://trustednetworx.com/tools/ai-roi-calculator',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Any',
+          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+          publisher: { '@id': 'https://trustednetworx.com/#organization' },
+        }}
       />
 
       {/* Hero */}

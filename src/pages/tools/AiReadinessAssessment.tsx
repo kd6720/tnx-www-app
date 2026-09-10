@@ -283,6 +283,17 @@ const AiReadinessAssessment = () => {
       <Seo
         title="AI Readiness Assessment | TrustedNetworx"
         description="Evaluate how prepared your organization is to adopt AI agents and automation. Interactive assessment tool from TrustedNetworx."
+        jsonLd={{
+          // Free tool → WebApplication (name = page title without site suffix).
+          '@context': 'https://schema.org',
+          '@type': 'WebApplication',
+          name: 'AI Readiness Assessment',
+          url: 'https://trustednetworx.com/tools/ai-readiness',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Any',
+          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+          publisher: { '@id': 'https://trustednetworx.com/#organization' },
+        }}
       />
 
       {/* Hero */}

@@ -4,6 +4,11 @@ const path = require('path');
 const crypto = require('crypto');
 
 const SITE_URL = 'https://trustednetworx.com';
+// Canonical Organization entity. The node itself (with @id + PostalAddress)
+// lives in index.html and is therefore present on every built page; other
+// nodes reference it by this @id instead of restating it.
+const ORG_ID = `${SITE_URL}/#organization`;
+const CARTER_DEWEY_ID = `${SITE_URL}/about/team#carter-dewey`;
 const DEFAULT_OG_IMAGE = `${SITE_URL}/TrustedNetworx-Hero-Image.jpg`;
 const DEFAULT_DESCRIPTION = 'TrustedNetworx is a managed telecom solutions provider delivering POTS replacement, AI consulting, internet connectivity, IP PBX, mobility, and voice solutions for enterprise and multi-site businesses.';
 
@@ -15,10 +20,14 @@ const STRUCTURED_DATA_TYPES = [
   'BlogPosting',
   'Service',
   'SoftwareApplication',
+  'WebApplication',
+  'CollectionPage',
+  'Blog',
   'FAQPage',
   'BreadcrumbList',
   'LocalBusiness',
   'Product',
+  'Person',
 ];
 
 function parseFrontmatter(raw) {
@@ -267,7 +276,13 @@ function patchBlogIndex(distDir) {
     canonical: `${SITE_URL}/blog`,
     image: DEFAULT_OG_IMAGE,
     type: 'website',
-    jsonLd: [],
+    jsonLd: [
+      blogJsonLd({
+        name: 'TrustedNetworx Blog',
+        description: 'Practical insights on telecom modernization, AI for business, copper retirement, compliance, and connectivity from the operators behind TrustedNetworx.',
+      }),
+      buildBreadcrumbList('blog'),
+    ],
   });
 }
 
@@ -293,10 +308,7 @@ function patchBlogPosts(distDir, srcBlogDir, rootDir) {
       datePublished: data.date,
       dateModified: data.dateModified || data.date,
       articleSection: data.category || 'Blog',
-      author:
-        !data.author || data.author === 'TrustedNetworx'
-          ? { '@type': 'Organization', name: 'TrustedNetworx' }
-          : { '@type': 'Person', name: data.author },
+      author: authorJsonLd(data.author),
       publisher: {
         '@type': 'Organization',
         name: 'TrustedNetworx',
@@ -427,6 +439,90 @@ function faqPageJsonLd(faqs) {
   };
 }
 
+/**
+ * Person node for Carter Dewey. Every fact here is already published on
+ * /about/team (src/pages/Team.tsx): "CEO & Founder", SVP of Global Sales at
+ * DataRemote, Inc. from April 2016, and 12 years with AT&T. No knowsAbout and
+ * no sameAs — a sameAs requires a verified public profile URL and none exists
+ * in the repo.
+ */
+function carterDeweyJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': CARTER_DEWEY_ID,
+    name: 'Carter Dewey',
+    jobTitle: 'CEO & Founder',
+    url: `${SITE_URL}/about/team`,
+    worksFor: { '@id': ORG_ID },
+    alumniOf: [
+      { '@type': 'Organization', name: 'AT&T' },
+      { '@type': 'Organization', name: 'DataRemote, Inc.' },
+    ],
+  };
+}
+
+/**
+ * WebApplication schema for the five free calculator/assessment pages.
+ * `name` is the page title without the " | TrustedNetworx" suffix; price is
+ * "0" USD, matching the nav's "Free Tools" label.
+ */
+function webApplicationJsonLd({ name, route }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name,
+    url: `${SITE_URL}/${route}`,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Any',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    publisher: { '@id': ORG_ID },
+  };
+}
+
+/** CollectionPage schema for a hub page (currently /tools). */
+function collectionPageJsonLd({ name, route, description }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name,
+    url: `${SITE_URL}/${route}`,
+    description,
+    publisher: { '@id': ORG_ID },
+  };
+}
+
+/** Blog schema for the /blog hub. */
+function blogJsonLd({ name, description }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name,
+    url: `${SITE_URL}/blog`,
+    description,
+    publisher: { '@id': ORG_ID },
+  };
+}
+
+/**
+ * Blog post author node. Carter Dewey's posts reference the Person node on
+ * /about/team by @id so the author is the same entity sitewide.
+ */
+function authorJsonLd(author) {
+  if (!author || author === 'TrustedNetworx') {
+    return { '@type': 'Organization', name: 'TrustedNetworx' };
+  }
+  if (author === 'Carter Dewey') {
+    return {
+      '@type': 'Person',
+      '@id': CARTER_DEWEY_ID,
+      name: 'Carter Dewey',
+      url: `${SITE_URL}/about/team`,
+    };
+  }
+  return { '@type': 'Person', name: author };
+}
+
 const ROUTE_PAGES = [
   {
     route: 'about',
@@ -438,7 +534,7 @@ const ROUTE_PAGES = [
     route: 'about/team',
     title: 'Our Team | TrustedNetworx',
     description: 'Meet the leadership and partners behind TrustedNetworx — telecom experts, enterprise architects, and creative professionals driving connectivity forward.',
-    jsonLd: [buildBreadcrumbList('about/team')],
+    jsonLd: [carterDeweyJsonLd(), buildBreadcrumbList('about/team')],
   },
   {
     route: 'pots-replacement',
@@ -652,37 +748,60 @@ const ROUTE_PAGES = [
     route: 'tools',
     title: 'Free Telecom Assessment Tools | TrustedNetworx',
     description: 'Interactive tools to size your telecom position: POTS replacement ROI, copper sunset risk, business continuity readiness, and AI automation readiness.',
-    jsonLd: [buildBreadcrumbList('tools')],
+    jsonLd: [
+      collectionPageJsonLd({
+        name: 'Free Telecom Assessment Tools',
+        route: 'tools',
+        description:
+          'Interactive tools to size your telecom position: POTS replacement ROI, copper sunset risk, business continuity readiness, and AI automation readiness.',
+      }),
+      buildBreadcrumbList('tools'),
+    ],
   },
   {
     route: 'tools/pots-roi-calculator',
     title: 'POTS Replacement ROI Calculator | TrustedNetworx',
     description: 'Size what your legacy POTS copper lines cost you today and model what a per-line cost reduction is worth. Interactive planning tool from TrustedNetworx.',
-    jsonLd: [buildBreadcrumbList('tools/pots-roi-calculator')],
+    jsonLd: [
+      webApplicationJsonLd({ name: 'POTS Replacement ROI Calculator', route: 'tools/pots-roi-calculator' }),
+      buildBreadcrumbList('tools/pots-roi-calculator'),
+    ],
   },
   {
     route: 'tools/copper-sunset-risk',
     title: 'Copper Sunset Risk Assessment | TrustedNetworx',
     description: 'Size your organization\'s exposure to the copper network shutdown. Identify at-risk phone lines, elevator lines, alarm panels, fax machines, and POS lines.',
-    jsonLd: [buildBreadcrumbList('tools/copper-sunset-risk')],
+    jsonLd: [
+      webApplicationJsonLd({ name: 'Copper Sunset Risk Assessment', route: 'tools/copper-sunset-risk' }),
+      buildBreadcrumbList('tools/copper-sunset-risk'),
+    ],
   },
   {
     route: 'tools/failover-readiness',
     title: 'Business Continuity Readiness Check | TrustedNetworx',
     description: 'Check how prepared your business is for an internet outage. Score your network resilience and get a recommendation on LTE and 5G wireless failover options.',
-    jsonLd: [buildBreadcrumbList('tools/failover-readiness')],
+    jsonLd: [
+      webApplicationJsonLd({ name: 'Business Continuity Readiness Check', route: 'tools/failover-readiness' }),
+      buildBreadcrumbList('tools/failover-readiness'),
+    ],
   },
   {
     route: 'tools/ai-roi-calculator',
     title: 'AI Automation ROI Calculator | TrustedNetworx',
     description: 'Size what repetitive manual work costs your organization each year, then model what automating a share of it would be worth. Planning tool from TrustedNetworx.',
-    jsonLd: [buildBreadcrumbList('tools/ai-roi-calculator')],
+    jsonLd: [
+      webApplicationJsonLd({ name: 'AI Automation ROI Calculator', route: 'tools/ai-roi-calculator' }),
+      buildBreadcrumbList('tools/ai-roi-calculator'),
+    ],
   },
   {
     route: 'tools/ai-readiness',
     title: 'AI Readiness Assessment | TrustedNetworx',
     description: 'Score how prepared your organization is to adopt AI agents and automation, then get a scoped starting point. Interactive assessment from TrustedNetworx.',
-    jsonLd: [buildBreadcrumbList('tools/ai-readiness')],
+    jsonLd: [
+      webApplicationJsonLd({ name: 'AI Readiness Assessment', route: 'tools/ai-readiness' }),
+      buildBreadcrumbList('tools/ai-readiness'),
+    ],
   },
   {
     route: 'contact',
@@ -691,20 +810,14 @@ const ROUTE_PAGES = [
     description: 'Get in touch with the TrustedNetworx team to scope managed telecom, POTS replacement, voice, connectivity, mobility, or an AI agent build for your business.',
     jsonLd: [
       {
+        // Same real-world entity as the Organization node (shipped from
+        // index.html on every page) — references it by @id instead of
+        // restating name/telephone/email/url/address. The address now lives on
+        // the Organization node and is shared through this @id; only the
+        // LocalBusiness-specific openingHours is kept here.
         '@context': 'https://schema.org',
         '@type': 'LocalBusiness',
-        name: 'TrustedNetworx',
-        telephone: '+1-305-498-7530',
-        email: 'sales@trustednetworx.com',
-        url: 'https://trustednetworx.com',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: '18001 Old Cutler Rd',
-          addressLocality: 'Miami',
-          addressRegion: 'FL',
-          postalCode: '33157',
-          addressCountry: 'US',
-        },
+        '@id': ORG_ID,
         openingHours: 'Mo-Fr 09:00-18:00',
       },
       buildBreadcrumbList('contact'),

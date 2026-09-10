@@ -15,6 +15,17 @@ const Tools = () => (
     <Seo
       title="Free Telecom Assessment Tools | TrustedNetworx"
       description="Interactive tools to size your telecom position: POTS replacement ROI, copper sunset risk, business continuity readiness, and AI automation readiness."
+      jsonLd={{
+        // Hub for the five free tools → CollectionPage. The BreadcrumbList is
+        // added automatically by the Seo component.
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Free Telecom Assessment Tools',
+        url: 'https://trustednetworx.com/tools',
+        description:
+          'Interactive tools to size your telecom position: POTS replacement ROI, copper sunset risk, business continuity readiness, and AI automation readiness.',
+        publisher: { '@id': 'https://trustednetworx.com/#organization' },
+      }}
     />
 
     {/* Hero */}

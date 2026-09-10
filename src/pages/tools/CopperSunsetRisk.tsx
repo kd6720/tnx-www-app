@@ -230,6 +230,17 @@ const CopperSunsetRisk = () => {
       <Seo
         title="Copper Sunset Risk Assessment | TrustedNetworx"
         description="Size your organization's exposure to the copper network shutdown. Identify at-risk phone lines, elevator lines, alarm panels, fax machines, and POS lines."
+        jsonLd={{
+          // Free tool → WebApplication (name = page title without site suffix).
+          '@context': 'https://schema.org',
+          '@type': 'WebApplication',
+          name: 'Copper Sunset Risk Assessment',
+          url: 'https://trustednetworx.com/tools/copper-sunset-risk',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Any',
+          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+          publisher: { '@id': 'https://trustednetworx.com/#organization' },
+        }}
       />
 
       {/* Hero */}
