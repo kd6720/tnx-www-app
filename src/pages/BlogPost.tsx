@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { getPostBySlug } from '../utils/blog';
+import { getPostBySlug, heroImageSrc } from '../utils/blog';
 import Seo, { SITE_URL } from '../components/Seo';
 
 const BlogPost = () => {
@@ -25,6 +25,7 @@ const BlogPost = () => {
     );
   }
 
+  const heroSrc = heroImageSrc(post);
   const canonicalPath = `/blog/${post.slug}`;
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -63,38 +64,48 @@ const BlogPost = () => {
         jsonLd={[articleJsonLd, breadcrumbJsonLd]}
       />
 
-      {/* Back link */}
-      <div className="border-b border-hairline bg-white">
-        <div className="mx-auto w-full max-w-[68ch] px-6 py-4 md:px-gutter">
-          <Link to="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-muted-text hover:text-brand-600">
+      {/* Hero — navy so it sits under the fixed transparent navbar. The back
+          link used to live in a white bar at the very top of the page, which
+          the fixed navbar covered: the link was visible but unclickable, and
+          the navbar's white text vanished against it. */}
+      <section className="bg-navy-950 pb-12 pt-28 md:pb-16 md:pt-32">
+        <div className="mx-auto w-full max-w-[68ch] px-6 md:px-gutter">
+          <Link
+            to="/blog"
+            className="relative inline-flex items-center gap-2 text-sm font-semibold text-navy-200 transition-colors hover:text-white"
+          >
             <ArrowLeft size={16} />
             Back to Blog
           </Link>
-        </div>
-      </div>
-
-      {/* Article */}
-      <article className="mx-auto w-full max-w-[68ch] px-6 py-14 md:px-gutter">
-        <header>
-          <p className="font-mono text-xs uppercase tracking-mono-label text-accent-text">{post.category}</p>
-          <h1 className="mt-4 font-display text-display-h2 font-semibold leading-tight text-ink">{post.title}</h1>
-          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs uppercase tracking-mono-label text-muted-text">
+          <p className="mt-8 font-mono text-xs uppercase tracking-mono-label text-accent-500">{post.category}</p>
+          <h1 className="mt-4 font-display text-display-h2 font-semibold leading-tight text-white">{post.title}</h1>
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs uppercase tracking-mono-label text-navy-300">
             <span>
               {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </span>
             <span>{post.author}</span>
             <span>{post.readTime}</span>
           </div>
-        </header>
+        </div>
+      </section>
 
-        {post.image && (
-          <div className="mt-8 aspect-[16/9] overflow-hidden rounded-lg border border-hairline">
-            <img src={post.image} alt={post.title} className="h-full w-full object-cover" />
+      {/* Article */}
+      <article className="mx-auto w-full max-w-[68ch] px-6 py-12 md:px-gutter">
+        {heroSrc && (
+          <div className="aspect-[16/9] overflow-hidden rounded-lg border border-hairline bg-navy-100">
+            <img
+              src={heroSrc}
+              alt={post.title}
+              width={1024}
+              height={576}
+              decoding="async"
+              className="h-full w-full object-cover"
+            />
           </div>
         )}
 
         {/* Body — 18px / 1.7 line-height */}
-        <div className="mt-8 prose prose-lg max-w-none [&_p]:text-[18px] [&_p]:leading-[1.7] [&_li]:text-[18px] [&_li]:leading-[1.7]">
+        <div className={`${heroSrc ? 'mt-10' : ''} prose prose-lg max-w-none [&_p]:text-[18px] [&_p]:leading-[1.7] [&_li]:text-[18px] [&_li]:leading-[1.7]`}>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
         </div>
 
