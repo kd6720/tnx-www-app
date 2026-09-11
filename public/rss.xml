@@ -7,6 +7,15 @@
   <language>en-us</language>
   <atom:link href="https://trustednetworx.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>AI Answering Service vs. Voicemail: What Actually Gets Answered</title>
+    <link>https://trustednetworx.com/blog/ai-answering-service-for-business-vs-voicemail</link>
+    <guid isPermaLink="true">https://trustednetworx.com/blog/ai-answering-service-for-business-vs-voicemail</guid>
+    <pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
+    <description>AI answering service for business: what AI should answer, what voicemail still does well, and how to tell which inbound calls you are losing right now.</description>
+    <category>AI for Business</category>
+    <enclosure url="https://trustednetworx.com/blog-images/ai-answering-service-for-business-vs-voicemail.png" type="image/png"/>
+  </item>
+  <item>
     <title>When Compliance Drives Innovation: Turning Deadlines Into Upgrades</title>
     <link>https://trustednetworx.com/blog/compliance-deadlines-upgrade-window-2026</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/compliance-deadlines-upgrade-window-2026</guid>
@@ -38,7 +47,7 @@
     <link>https://trustednetworx.com/blog/elevator-phone-copper-sunset-2026</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/elevator-phone-copper-sunset-2026</guid>
     <pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
-    <description>Every elevator emergency phone is a POTS line — and carriers are retiring copper. Here's what that means for your ASME A17.1 compliance and how to migrate before you're red-tagged.</description>
+    <description>Every elevator emergency phone is a POTS line — and carriers are retiring copper. Here's what that means for your ASME A17.1 compliance and how to migrate.</description>
     <category>Compliance &amp; Regulation</category>
     <enclosure url="https://trustednetworx.com/blog-images/elevator-phone-copper-sunset-2026.png" type="image/png"/>
   </item>
@@ -200,7 +209,7 @@
     <link>https://trustednetworx.com/blog/ai-email-triage-2026</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/ai-email-triage-2026</guid>
     <pubDate>Mon, 10 Aug 2026 00:00:00 GMT</pubDate>
-    <description>AI-powered email triage can reclaim 2+ hours a day by filtering noise, flagging priority messages, and drafting replies — here's how to set it up without breaking anything.</description>
+    <description>AI-powered email triage can reclaim 2+ hours a day by filtering noise, flagging priority messages — here's how to set it up without breaking anything.</description>
     <category>AI for Business</category>
     <enclosure url="https://trustednetworx.com/blog-images/ai-email-triage-2026.png" type="image/png"/>
   </item>
@@ -236,7 +245,7 @@
     <link>https://trustednetworx.com/blog/managed-connectivity-outsourcing-network</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/managed-connectivity-outsourcing-network</guid>
     <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
-    <description>Stop treating your network like a DIY project. Managed connectivity cuts costs, reduces downtime, and lets your team focus on the business — not the blinking lights.</description>
+    <description>Stop treating your network like a DIY project. Managed connectivity reduces downtime and lets your team focus on the business — not the blinking lights.</description>
     <category>Telecom Modernization</category>
     <enclosure url="https://trustednetworx.com/blog-images/managed-connectivity-outsourcing-network.png" type="image/png"/>
   </item>
@@ -245,7 +254,7 @@
     <link>https://trustednetworx.com/blog/emergency-communication-requirements-senior-living-facilities</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/emergency-communication-requirements-senior-living-facilities</guid>
     <pubDate>Sun, 02 Aug 2026 00:00:00 GMT</pubDate>
-    <description>A practical breakdown of emergency call, fire alarm, and elevator phone requirements for senior living operators — and how to stay compliant without overspending.</description>
+    <description>A breakdown of emergency call, fire alarm, and elevator phone requirements for senior living operators — and how to stay compliant without overspending.</description>
     <category>Compliance &amp; Regulation</category>
     <enclosure url="https://trustednetworx.com/blog-images/emergency-communication-requirements-senior-living-facilities.png" type="image/png"/>
   </item>
@@ -272,7 +281,7 @@
     <link>https://trustednetworx.com/blog/security-system-communications-pots-to-ip-cellular</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/security-system-communications-pots-to-ip-cellular</guid>
     <pubDate>Thu, 30 Jul 2026 00:00:00 GMT</pubDate>
-    <description>Security systems still running on POTS lines are a liability. Here's how to migrate alarm communications to IP and cellular without triggering false alarms or compliance gaps.</description>
+    <description>Security systems still running on POTS lines are a liability. Here's how to migrate alarm communications to IP and cellular without triggering false alarms.</description>
     <category>Compliance &amp; Regulation</category>
     <enclosure url="https://trustednetworx.com/blog-images/security-system-communications-pots-to-ip-cellular.png" type="image/png"/>
   </item>
@@ -281,7 +290,7 @@
     <link>https://trustednetworx.com/blog/ul-864-fire-alarm-monitoring-compliance-migration</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/ul-864-fire-alarm-monitoring-compliance-migration</guid>
     <pubDate>Wed, 29 Jul 2026 00:00:00 GMT</pubDate>
-    <description>Migrating fire alarm communications away from POTS doesn't have to trigger a compliance headache — here's what UL 864 actually requires and how to stay fully compliant.</description>
+    <description>Migrating fire alarm communications away from POTS doesn't have to trigger a compliance headache — here's what UL 864 requires and how to stay fully compliant.</description>
     <category>Compliance &amp; Regulation</category>
     <enclosure url="https://trustednetworx.com/blog-images/ul-864-fire-alarm-monitoring-compliance-migration.png" type="image/png"/>
   </item>
@@ -326,7 +335,7 @@
     <link>https://trustednetworx.com/blog/government-telecom-modernization-navigating-procurement-compliance</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/government-telecom-modernization-navigating-procurement-compliance</guid>
     <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
-    <description>Government telecom modernization requires navigating complex procurement rules, strict compliance, and legacy infrastructure — here's how to do it without getting stuck.</description>
+    <description>Government telecom modernization requires navigating procurement rules, compliance, and legacy infrastructure — here's how to do it without getting stuck.</description>
     <category>Industry Spotlights</category>
     <enclosure url="https://trustednetworx.com/blog-images/government-telecom-modernization-navigating-procurement-compliance.png" type="image/png"/>
   </item>
@@ -389,7 +398,7 @@
     <link>https://trustednetworx.com/blog/when-ai-sales-agents-outperform-humans</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/when-ai-sales-agents-outperform-humans</guid>
     <pubDate>Fri, 03 Jul 2026 00:00:00 GMT</pubDate>
-    <description>AI sales agents excel at volume and consistency, but humans still win on relationship-building and complex negotiation — here's where each belongs in your pipeline.</description>
+    <description>AI sales agents excel at volume and consistency, but humans win on relationship-building and complex negotiation — here's where each belongs in your pipeline.</description>
     <category>AI for Business</category>
     <enclosure url="https://trustednetworx.com/blog-images/when-ai-sales-agents-outperform-humans.png" type="image/png"/>
   </item>
@@ -443,7 +452,7 @@
     <link>https://trustednetworx.com/blog/5g-lte-last-mile-business-connectivity</link>
     <guid isPermaLink="true">https://trustednetworx.com/blog/5g-lte-last-mile-business-connectivity</guid>
     <pubDate>Fri, 19 Jun 2026 00:00:00 GMT</pubDate>
-    <description>Cellular isn't just a backup anymore — 5G and LTE are becoming the primary connection for businesses that need speed, flexibility, and reliability without the wait.</description>
+    <description>Cellular isn't just a backup — 5G and LTE are becoming the primary connection for businesses that need speed, flexibility, and reliability without the wait.</description>
     <category>Telecom Modernization</category>
     <enclosure url="https://trustednetworx.com/blog-images/5g-lte-last-mile.png" type="image/png"/>
   </item>
